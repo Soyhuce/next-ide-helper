@@ -14,11 +14,11 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use Soyhuce\NextIdeHelper\Domain\Models\Output\ModelDocBlock;
 use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderDocBlock;
 use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderHelperFile;
 use Soyhuce\NextIdeHelper\Domain\Models\Output\RelationsHelperFile;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class ModelsCommand extends Command
 {

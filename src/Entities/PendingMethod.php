@@ -3,7 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Entities;
 
 use ReflectionFunction;
-use Soyhuce\NextIdeHelper\Support\Output\FunctionExporter;
+use Soyhuce\NextIdeHelper\Support\FunctionExporter;
 
 class PendingMethod
 {

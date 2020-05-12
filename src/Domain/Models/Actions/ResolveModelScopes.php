@@ -5,8 +5,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
-use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\UsesReflection;
 
 class ResolveModelScopes implements ModelResolver

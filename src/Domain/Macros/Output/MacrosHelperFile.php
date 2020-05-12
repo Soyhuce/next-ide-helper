@@ -4,8 +4,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Macros\Output;
 
 use ReflectionClass;
 use ReflectionFunction;
+use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
-use Soyhuce\NextIdeHelper\Entities\PendingMethod;
 
 class MacrosHelperFile
 {
@@ -18,12 +18,12 @@ class MacrosHelperFile
 
     public function amend(IdeHelperFile $ideHelperFile)
     {
-        $helperClass = $ideHelperFile->getOrAddClass($this->class->getName());
+        $class = $ideHelperFile->getOrAddClass($this->class->getName());
 
         foreach ($this->macros() as $name => $macro) {
             $macro = new ReflectionFunction($macro);
 
-            $helperClass->addMethod(PendingMethod::new($name)->from($macro));
+            $class->addMethod(Method::fromFunction($name, $macro));
         }
     }
 

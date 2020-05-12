@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\QueryBuilder;
-use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderDocBlock;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class QueryBuilderHelperFile

@@ -1,0 +1,23 @@
+<?php
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures
+{
+    class SomeMacroable
+    {
+        public function foo(string  $bar): string
+        {
+            return Str::upper($bar);
+        }
+
+        /**
+         * Convert some string to lowercase
+         *
+         * @param string the input
+         * @return string the input in lowercase
+        */
+        public function toLower(string  $value): string
+        {
+            return Str::lower($value);
+        }
+    }
+}

@@ -36,7 +36,10 @@ class MacrosCommandTest extends TestCase
         $this->artisan('next-ide-helper:macros')
             ->assertExitCode(0);
 
-        $this->markTestIncomplete('Test file content');
+        $this->assertFileEquals(
+            $this->expectedPath('_ide_macros.stub'),
+            $this->fixturePath('_ide_macros.php')
+        );
     }
 
     protected function tearDown(): void

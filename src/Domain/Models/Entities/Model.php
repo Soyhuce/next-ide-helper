@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\AttributeCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\RelationCollection;
-use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
-use Soyhuce\NextIdeHelper\Domain\Models\Entities\Collection;
 use Soyhuce\NextIdeHelper\Entities\Method;
-use Soyhuce\NextIdeHelper\Domain\Models\Entities\QueryBuilder;
-use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 
 class Model
 {

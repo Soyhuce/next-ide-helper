@@ -2,9 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Exceptions\CannotConnectDatabase;
 
 class ResolveModelAttributes implements ModelResolver

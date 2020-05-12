@@ -5,7 +5,6 @@ namespace Soyhuce\NextIdeHelper\Support\Output;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use ReflectionClass;
-use Soyhuce\NextIdeHelper\Support\Output\WritesMultiline;
 
 class DocBlock
 {
