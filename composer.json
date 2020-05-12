@@ -1,0 +1,51 @@
+{
+    "name": "soyhuce/next-ide-helper",
+    "description": "Next generation of Ide Helper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bastien Philippe",
+            "email": "bastien.philippe@soyhuce.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "composer/composer": "^1.9",
+        "doctrine/dbal": "^2.10",
+        "illuminate/console": "^7.0",
+        "illuminate/database": "^7.0",
+        "illuminate/support": "^7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Soyhuce\\NextIdeHelper\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "cs": "vendor/bin/php-cs-fixer fix",
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

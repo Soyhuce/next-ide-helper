@@ -1,0 +1,74 @@
+<?php
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures {
+
+    /**
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmail(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery wherePassword(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereRememberToken(string|null $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmailDomain(string $domain, ?string $area = null)
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User findOrFail($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User findOrNew($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User|null first(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrCreate(array $attributes, array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrFail(array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrNew(array $attributes = [], array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User forceCreate(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User getModel()
+     * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User newModelInstance(array $attributes = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User updateOrCreate(array $attributes, array $values = [])
+     * @template TModelClass
+     * @extends \Illuminate\Database\Eloquent\Builder<\Soyhuce\NextIdeHelper\Tests\Fixtures\User>
+     */
+    class UserQuery extends \Illuminate\Database\Eloquent\Builder {}
+}
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post {
+
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\User
+     */
+    class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo {}
+}
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User {
+
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+     */
+    class LaravelPosts extends \Illuminate\Database\Eloquent\Relations\HasMany {}
+
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+     */
+    class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany {}
+}
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures {
+
+    /**
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
+     */
+    class User {
+        public function laravelPosts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts {}
+
+        public function posts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts {}
+    }
+}
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog {
+
+    class Post {
+        public function user(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User {}
+    }
+}
