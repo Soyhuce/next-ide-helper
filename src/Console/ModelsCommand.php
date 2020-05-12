@@ -30,12 +30,11 @@ class ModelsCommand extends Command
     /** @var string */
     protected $description = 'Generates meta-data to help ide understand your models.';
 
-    public function handle(): void
+    public function handle(FindModels $findModels): void
     {
         $this->bootstrapApplication();
 
         $models = new ModelCollection();
-        $findModels = new FindModels();
         foreach (config('next-ide-helper.models.directories') as $directory) {
             $models = $models->merge($findModels->execute($directory));
         }

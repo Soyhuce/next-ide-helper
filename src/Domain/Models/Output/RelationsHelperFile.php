@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Entities\PendingMethod;
+use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class RelationsHelperFile
@@ -23,9 +23,7 @@ class RelationsHelperFile
             $fakeRelationClass = IdeHelperFile::relation($this->model->fqcn, $relation->name);
 
             $file->getOrAddClass($this->model->fqcn)
-                ->addMethod(
-                    PendingMethod::new($relation->name)->returns($fakeRelationClass)
-                );
+                ->addMethod(Method::new($relation->name)->returnType($fakeRelationClass));
 
             $file->getOrAddClass($fakeRelationClass)
                 ->extends(get_class($relation->eloquentRelation()))

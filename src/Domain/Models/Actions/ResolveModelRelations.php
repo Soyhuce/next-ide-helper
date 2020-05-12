@@ -8,12 +8,10 @@ use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
-use Soyhuce\NextIdeHelper\Support\UsesReflection;
+use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class ResolveModelRelations implements ModelResolver
 {
-    use UsesReflection;
-
     private ModelCollection $models;
 
     private array $relationsMethods = [
@@ -66,7 +64,7 @@ class ResolveModelRelations implements ModelResolver
             return false;
         }
 
-        $returnType = $this->extractOrGuessReturnType($method);
+        $returnType = FunctionReflection::returnType($method);
         if ($returnType === null) {
             return false;
         }

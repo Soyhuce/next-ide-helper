@@ -1,11 +1,12 @@
 <?php
 
-namespace Soyhuce\NextIdeHelper\Support;
+namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Str;
 use ReflectionFunction;
+use ReflectionFunctionAbstract;
 
-class FunctionExporter
+class FunctionReflection
 {
     public static function docblock(ReflectionFunction $function): ?array
     {
@@ -23,24 +24,25 @@ class FunctionExporter
             ->toArray();
     }
 
-    public static function parameters(ReflectionFunction $function): string
+    public static function parameters(ReflectionFunctionAbstract $function): string
+    {
+        return implode(', ', static::parameterList($function));
+    }
+
+    /**
+     * @return array<string>
+     */
+    public static function parameterList(ReflectionFunctionAbstract $function): array
     {
         $parameters = [];
         foreach ($function->getParameters() as $parameter) {
-            $type = $parameter->hasType() ? $parameter->getType()->getName() : '';
-            $variadic = $parameter->isVariadic() ? '...' : '';
-            $name = '$' . $parameter->getName();
-            $optional = !$parameter->isVariadic() && $parameter->isOptional() ?
-                '= ' . str_replace(PHP_EOL, ' ', var_export($parameter->getDefaultValue(), true)) :
-                '';
-
-            $parameters[] = trim("${type} ${variadic} ${name} ${optional}");
+            $parameters[] = ParameterReflection::asString($parameter);
         }
 
-        return implode(', ', $parameters);
+        return $parameters;
     }
 
-    public static function returnType(ReflectionFunction $function): ?string
+    public static function returnType(ReflectionFunctionAbstract $function): ?string
     {
         if (!$function->hasReturnType()) {
             return null;
@@ -48,11 +50,7 @@ class FunctionExporter
 
         $type = $function->getReturnType();
 
-        $returnType = $type->getName();
-
-        if (!$type->isBuiltin()) {
-            $returnType = '\\' . $returnType;
-        }
+        $returnType = TypeReflection::asString($type);
 
         if ($type->allowsNull()) {
             $returnType = '?' . $returnType;
@@ -61,7 +59,7 @@ class FunctionExporter
         return $returnType;
     }
 
-    public static function body(ReflectionFunction $function): array
+    public static function bodyLines(ReflectionFunctionAbstract $function): array
     {
         $filename = $function->getFileName();
         $start_line = $function->getStartLine();

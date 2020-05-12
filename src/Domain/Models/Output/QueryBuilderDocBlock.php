@@ -89,7 +89,7 @@ class QueryBuilderDocBlock extends DocBlock
                         ? IdeHelperFile::eloquentBuilder($this->model->fqcn)
                         : $this->model->queryBuilder->fqcn,
                     $scope->name,
-                    implode(', ', $scope->parameters)
+                    $scope->parameters
                 );
             });
     }

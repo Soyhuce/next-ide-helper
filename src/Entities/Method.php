@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
 use ReflectionFunction;
-use Soyhuce\NextIdeHelper\Support\FunctionExporter;
+use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class Method
 {
@@ -31,10 +31,10 @@ class Method
     public static function fromFunction(string $name, ReflectionFunction $function): self
     {
         return self::new($name)
-            ->docblock(FunctionExporter::docblock($function))
-            ->parameters(FunctionExporter::parameters($function))
-            ->returnType(FunctionExporter::returnType($function))
-            ->body(FunctionExporter::body($function));
+            ->docblock(FunctionReflection::docblock($function))
+            ->parameters(FunctionReflection::parameters($function))
+            ->returnType(FunctionReflection::returnType($function))
+            ->body(FunctionReflection::bodyLines($function));
     }
 
     public function docblock(?array $docblock): self

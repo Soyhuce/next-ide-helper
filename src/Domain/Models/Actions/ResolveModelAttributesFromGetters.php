@@ -7,12 +7,10 @@ use ReflectionClass;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Support\UsesReflection;
+use Soyhuce\NextIdeHelper\Support\Reflection\TypeReflection;
 
 class ResolveModelAttributesFromGetters implements ModelResolver
 {
-    use UsesReflection;
-
     public function execute(Model $model): void
     {
         $getters = $this->findGetterMethods($model);
@@ -24,13 +22,13 @@ class ResolveModelAttributesFromGetters implements ModelResolver
             if ($attribute === null) {
                 $attribute = new Attribute(
                     $name,
-                    $this->typeName($getter->getReturnType())
+                    TypeReflection::asString($getter->getReturnType())
                 );
                 $attribute->readOnly = true;
                 $attribute->nullable = $getter->getReturnType()->allowsNull();
                 $model->addAttribute($attribute);
             } else {
-                $attribute->type = $this->typeName($getter->getReturnType());
+                $attribute->type = TypeReflection::asString($getter->getReturnType());
                 $attribute->nullable = $getter->getReturnType()->allowsNull();
             }
         }

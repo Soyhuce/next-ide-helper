@@ -7,22 +7,20 @@ use ReflectionClass;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Entities\Method;
-use Soyhuce\NextIdeHelper\Support\UsesReflection;
+use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class ResolveModelScopes implements ModelResolver
 {
-    use UsesReflection;
-
     public function execute(Model $model): void
     {
         $methods = $this->findScopeMethods($model);
 
         /** @var ReflectionMethod $method */
         foreach ($methods as $method) {
-            $scope = new Method(
-                $this->methodName($method->getName()),
-                $this->methodParameters($method->getParameters())
-            );
+            $scope = Method::new($this->methodName($method->getName()));
+
+            $parameters = array_slice(FunctionReflection::parameterList($method), 1);
+            $scope->parameters(implode(', ', $parameters));
 
             $model->addScope($scope);
         }
@@ -47,20 +45,5 @@ class ResolveModelScopes implements ModelResolver
     private function methodName(string $name): string
     {
         return Str::of($name)->after('scope')->camel();
-    }
-
-    /**
-     * @param array<\ReflectionParameter> $reflectionParameters
-     * @return array<string>
-     */
-    private function methodParameters(array $reflectionParameters): array
-    {
-        $parameters = [];
-
-        for ($i = 1; $i < count($reflectionParameters); $i++) {
-            $parameters[] = $this->parameterString($reflectionParameters[$i]);
-        }
-
-        return $parameters;
     }
 }
