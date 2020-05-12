@@ -4,21 +4,21 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Soyhuce\NextIdeHelper\Domain\Actions\FindModels;
-use Soyhuce\NextIdeHelper\Domain\Actions\ModelResolver;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelAttributes;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelAttributesFromGetters;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelCollection;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelQueryBuilder;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelRelations;
-use Soyhuce\NextIdeHelper\Domain\Actions\ResolveModelScopes;
-use Soyhuce\NextIdeHelper\Domain\Collections\ModelCollection;
-use Soyhuce\NextIdeHelper\Domain\Models\Model;
-use Soyhuce\NextIdeHelper\Domain\Output\HelperFile\IdeHelperFile;
-use Soyhuce\NextIdeHelper\Domain\Output\ModelDocBlock;
-use Soyhuce\NextIdeHelper\Domain\Output\QueryBuilderDocBlock;
-use Soyhuce\NextIdeHelper\Domain\Output\QueryBuilderHelperFile;
-use Soyhuce\NextIdeHelper\Domain\Output\RelationsHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelCollection;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelQueryBuilder;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes;
+use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
+use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Models\Output\ModelDocBlock;
+use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderDocBlock;
+use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Models\Output\RelationsHelperFile;
 
 class ModelsCommand extends Command
 {

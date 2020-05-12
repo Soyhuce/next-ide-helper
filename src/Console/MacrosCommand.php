@@ -5,9 +5,9 @@ namespace Soyhuce\NextIdeHelper\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use ReflectionClass;
-use Soyhuce\NextIdeHelper\Domain\Actions\FindMacroableClasses;
-use Soyhuce\NextIdeHelper\Domain\Output\HelperFile\IdeHelperFile;
-use Soyhuce\NextIdeHelper\Domain\Output\MacrosHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Macros\Actions\FindMacroableClasses;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Macros\Output\MacrosHelperFile;
 
 class MacrosCommand extends Command
 {
@@ -19,12 +19,11 @@ class MacrosCommand extends Command
     /** @var string */
     protected $description = 'Generate an IDE helper file for Laravel macros';
 
-    public function handle()
+    public function handle(FindMacroableClasses $findMacroables): void
     {
         $this->bootstrapApplication();
 
         $macroables = new Collection();
-        $findMacroables = new FindMacroableClasses();
         foreach (config('next-ide-helper.macros.directories') as $directory) {
             $macroables = $macroables->merge($findMacroables->execute($directory));
         }
