@@ -3,7 +3,6 @@
 namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
-use Soyhuce\NextIdeHelper\Entities\Klass;
 use Soyhuce\NextIdeHelper\Support\Output\WritesMultiline;
 
 class Nemespace
@@ -46,5 +45,34 @@ class Nemespace
             )
             ->add('}')
             ->implode(PHP_EOL);
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function toArray(): array
+    {
+        return Collection::make(["namespace {$this->name}", '{'])
+            ->merge($this->classesLines())
+            ->add('}')
+            ->toArray();
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
+    protected function classesLines(): Collection
+    {
+        $lines = collect();
+
+        $classes = $this->classes->sortBy(static fn (Klass $klass) => $klass->getName());
+        foreach ($classes as $class) {
+            $lines = $lines->merge(
+                collect($class->toArray())
+                    ->map(static fn (string $line) => $line ? str_repeat(' ', 4) . $line : $line)
+            )->add('');
+        }
+
+        return $lines->splice(0, -1);
     }
 }

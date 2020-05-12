@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Entities\Klass;
 use Soyhuce\NextIdeHelper\Entities\Nemespace;
-use Soyhuce\NextIdeHelper\Support\Output\WritesMultiline;
 
 class IdeHelperFile
 {
@@ -23,12 +22,14 @@ class IdeHelperFile
         $this->namespaces = collect();
     }
 
+    // todo : not here
     public static function eloquentBuilder(string $modelFqcn): string
     {
         return (string) Str::of($modelFqcn)->trim('\\')
             ->prepend('\\IdeHelper\\')->append('Query');
     }
 
+    // todo : not here
     public static function relation(string $modelFqcn, string $relationName): string
     {
         return (string) Str::of($modelFqcn)->trim('\\')
@@ -58,17 +59,13 @@ class IdeHelperFile
 
     public function render(): void
     {
-        $content = Collection::make([
-            '<?php',
-        ])
-            ->merge(
-                $this->namespaces
-                    ->sortBy(fn (Nemespace $namespaceHelper) => $namespaceHelper->getName())
-                    ->map(fn (Nemespace $namespaceHelper) => $namespaceHelper->toString())
-            )
-            ->map(fn (string $line): string => $this->line($line))
-            ->implode(PHP_EOL);
+        $lines = Collection::make(['<?php', '']);
 
-        File::put($this->filePath, $content);
+        $namespaces = $this->namespaces->sortBy(static fn (Nemespace $namespace) => $namespace->getName());
+        foreach ($namespaces as $namespace) {
+            $lines = $lines->merge($namespace->toArray())->add('');
+        }
+
+        File::put($this->filePath, $lines->implode(PHP_EOL));
     }
 }

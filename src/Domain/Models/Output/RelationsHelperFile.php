@@ -4,8 +4,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use Soyhuce\NextIdeHelper\Entities\PendingMethod;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class RelationsHelperFile
 {

@@ -5,9 +5,9 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
-use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
-use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Entities\Method;
+use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class QueryBuilderDocBlock extends DocBlock

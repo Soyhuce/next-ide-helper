@@ -4,7 +4,6 @@ namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Soyhuce\NextIdeHelper\Entities\PendingMethod;
 
 class Klass
 {
@@ -42,25 +41,25 @@ class Klass
         return $this->name;
     }
 
-    public function addMethod(PendingMethod $method)
+    public function addMethod(Method $method)
     {
-        $result = "public function {$method->name}(";
-        if ($method->params !== null) {
-            $result .= $method->params;
-        }
-        $result .= ')';
+        //$result = "public function {$method->name}(";
+        //if ($method->params !== null) {
+        //    $result .= $method->params;
+        //}
+        //$result .= ')';
+        //
+        //if ($method->return !== null) {
+        //    $result .= ": {$method->return}";
+        //}
+        //
+        //if ($method->body !== null) {
+        //    $result .= PHP_EOL . '{' . PHP_EOL . $method->body . PHP_EOL . '}';
+        //} else {
+        //    $result .= ' {}';
+        //}
 
-        if ($method->return !== null) {
-            $result .= ": {$method->return}";
-        }
-
-        if ($method->body !== null) {
-            $result .= PHP_EOL . '{' . PHP_EOL . $method->body . PHP_EOL . '}';
-        } else {
-            $result .= ' {}';
-        }
-
-        $this->methods->add($result);
+        $this->methods->add($method);
     }
 
     public function toString(): string
@@ -95,5 +94,62 @@ class Klass
         }
 
         return $result;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function toArray(): array
+    {
+        return collect()
+            ->merge($this->docblockLines())
+            ->add($this->classDefinition())
+            ->add('{')
+            ->merge($this->methodsLines())
+            ->add('}')
+            ->toArray();
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
+    private function docblockLines(): Collection
+    {
+        if ($this->docTags->isEmpty()) {
+            return collect();
+        }
+
+        return collect($this->docTags)
+            ->prepend('/**')
+            ->push(' */');
+    }
+
+    private function classDefinition(): string
+    {
+        $definition = "class {$this->name}";
+
+        if ($this->extends === null) {
+            return $definition;
+        }
+
+        return $definition . ' extends ' . Str::start($this->extends, '\\');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
+    private function methodsLines(): Collection
+    {
+        $lines = collect();
+
+        $methods = $this->methods->sortBy(static fn (Method $method) => $method->name);
+        foreach ($methods as $method) {
+            $lines = $lines->merge(
+                collect($method->toArray())
+                    ->map(static fn (string $line) => $line ? str_repeat(' ', 4) . $line : $line)
+            )->add('');
+        }
+
+        return $lines->splice(0, -1);
     }
 }

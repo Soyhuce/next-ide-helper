@@ -6,8 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Macros\Actions\FindMacroableClasses;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use Soyhuce\NextIdeHelper\Domain\Macros\Output\MacrosHelperFile;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class MacrosCommand extends Command
 {

@@ -4,9 +4,9 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Extensions;
 
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
+use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 
 class VirtualAttributeResolver implements ModelResolver
 {
