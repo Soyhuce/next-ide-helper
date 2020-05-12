@@ -74,7 +74,7 @@ class FunctionReflection
         $spaces = max(Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 4, 0);
 
         return $lines->map(
-            static fn (string $line) => (string) Str::of($line)->substr($spaces)->rtrim(PHP_EOL)
+            static fn (string $line) => rtrim(Str::of($line)->substr($spaces), PHP_EOL)
         )->toArray();
     }
 }
