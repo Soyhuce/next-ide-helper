@@ -1,0 +1,74 @@
+<?php
+
+namespace Soyhuce\NextIdeHelper\Support\Output;
+
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Entities\Klass;
+use Soyhuce\NextIdeHelper\Entities\Nemespace;
+use Soyhuce\NextIdeHelper\Support\Output\WritesMultiline;
+
+class IdeHelperFile
+{
+    use WritesMultiline;
+
+    private string $filePath;
+
+    private Collection $namespaces;
+
+    public function __construct(string $filePath)
+    {
+        $this->filePath = $filePath;
+        $this->namespaces = collect();
+    }
+
+    public static function eloquentBuilder(string $modelFqcn): string
+    {
+        return (string) Str::of($modelFqcn)->trim('\\')
+            ->prepend('\\IdeHelper\\')->append('Query');
+    }
+
+    public static function relation(string $modelFqcn, string $relationName): string
+    {
+        return (string) Str::of($modelFqcn)->trim('\\')
+            ->prepend('\\IdeHelper\\')
+            ->append(Str::of($relationName)->studly()->prepend('\\'));
+    }
+
+    public function getOrAddClass(string $fqcn): Klass
+    {
+        $namespace = (string) Str::of($fqcn)->beforeLast('\\')->trim('\\');
+        $class = Str::afterLast($fqcn, '\\');
+
+        return $this->getOrAddNamespace($namespace)->getOrAddClass($class);
+    }
+
+    private function getOrAddNamespace(string $name): Nemespace
+    {
+        $namespace = $this->namespaces->get($name);
+
+        if ($namespace === null) {
+            $namespace = new Nemespace($name);
+            $this->namespaces->put($name, $namespace);
+        }
+
+        return $namespace;
+    }
+
+    public function render(): void
+    {
+        $content = Collection::make([
+            '<?php',
+        ])
+            ->merge(
+                $this->namespaces
+                    ->sortBy(fn (Nemespace $namespaceHelper) => $namespaceHelper->getName())
+                    ->map(fn (Nemespace $namespaceHelper) => $namespaceHelper->toString())
+            )
+            ->map(fn (string $line): string => $this->line($line))
+            ->implode(PHP_EOL);
+
+        File::put($this->filePath, $content);
+    }
+}
