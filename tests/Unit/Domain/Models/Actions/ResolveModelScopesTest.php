@@ -28,10 +28,7 @@ class ResolveModelScopesTest extends TestCase
 
         $scope = $model->scopes[0];
         $this->assertEquals('whereEmailDomain', $scope->name);
-        $this->assertEquals([
-            'string $domain',
-            '?string $area = null',
-        ], $scope->parameters);
+        $this->assertEquals('string $domain, ?string $area = null', $scope->parameters);
     }
 
     /**

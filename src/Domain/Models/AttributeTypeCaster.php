@@ -9,12 +9,10 @@ use Illuminate\Support\Str;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Support\UsesReflection;
+use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class AttributeTypeCaster
 {
-    use UsesReflection;
-
     private Model $model;
 
     public function __construct(Model $model)
@@ -153,6 +151,6 @@ class AttributeTypeCaster
     {
         $method = (new ReflectionClass($caster))->getMethod('get');
 
-        return $this->extractOrGuessReturnType($method);
+        return FunctionReflection::returnType($method) ?? 'mixed';
     }
 }

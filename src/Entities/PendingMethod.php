@@ -3,7 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Entities;
 
 use ReflectionFunction;
-use Soyhuce\NextIdeHelper\Support\FunctionExporter;
+use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class PendingMethod
 {
@@ -48,9 +48,9 @@ class PendingMethod
 
     public function from(ReflectionFunction $function): self
     {
-        $this->params(FunctionExporter::parameters($function))
-            ->returns(FunctionExporter::returnType($function))
-            ->body(FunctionExporter::body($function));
+        $this->params(FunctionReflection::parameters($function))
+            ->returns(FunctionReflection::returnType($function))
+            ->body(FunctionReflection::bodyLines($function));
 
         return $this;
     }

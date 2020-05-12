@@ -1,7 +1,7 @@
 <?php
 
-namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures {
-
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
+{
     /**
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereId(int|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmail(string $value)
@@ -29,46 +29,62 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures {
      * @template TModelClass
      * @extends \Illuminate\Database\Eloquent\Builder<\Soyhuce\NextIdeHelper\Tests\Fixtures\User>
      */
-    class UserQuery extends \Illuminate\Database\Eloquent\Builder {}
+    class UserQuery extends \Illuminate\Database\Eloquent\Builder
+    {
+    }
 }
 
-namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post {
-
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+{
     /**
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\User
      */
-    class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo {}
+    class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+    }
 }
 
-namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User {
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
+{
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+     */
+    class LaravelPosts extends \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+    }
 
     /**
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
      */
-    class LaravelPosts extends \Illuminate\Database\Eloquent\Relations\HasMany {}
-
-    /**
-     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
-     */
-    class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany {}
+    class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+    }
 }
 
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures {
-
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures
+{
     /**
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
      */
-    class User {
-        public function laravelPosts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts {}
+    class User
+    {
+        public function laravelPosts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts
+        {
+        }
 
-        public function posts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts {}
+        public function posts(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts
+        {
+        }
     }
 }
 
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog {
-
-    class Post {
-        public function user(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User {}
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
+{
+    class Post
+    {
+        public function user(): \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User
+        {
+        }
     }
 }

@@ -43,22 +43,6 @@ class Klass
 
     public function addMethod(Method $method)
     {
-        //$result = "public function {$method->name}(";
-        //if ($method->params !== null) {
-        //    $result .= $method->params;
-        //}
-        //$result .= ')';
-        //
-        //if ($method->return !== null) {
-        //    $result .= ": {$method->return}";
-        //}
-        //
-        //if ($method->body !== null) {
-        //    $result .= PHP_EOL . '{' . PHP_EOL . $method->body . PHP_EOL . '}';
-        //} else {
-        //    $result .= ' {}';
-        //}
-
         $this->methods->add($method);
     }
 
