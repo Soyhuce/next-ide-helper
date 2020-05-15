@@ -40,6 +40,7 @@ class RelationsHelperFile
         if (!$related->queryBuilder->isBuiltIn()) {
             return $related->queryBuilder->fqcn;
         }
+
         return IdeHelperFile::eloquentBuilder($related->fqcn);
     }
 }
