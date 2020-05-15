@@ -1,6 +1,13 @@
 {
     "name": "soyhuce/next-ide-helper",
     "description": "Next generation of Ide Helper",
+    "keywords": [
+        "laravel",
+        "ide",
+        "autocompletion",
+        "phpdoc",
+        "phpstorm"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
