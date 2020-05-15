@@ -21,7 +21,7 @@ return [
         'directories' => ['app'],
 
         /**
-         * Name of the file generated in addition to the php docblocks
+         * Name of the generated file in addition to the php docblocks
          */
         'file_name' => '_ide_models.php',
 
@@ -47,8 +47,19 @@ return [
         'directories' => ['app', 'vendor'],
 
         /**
-         * Name of the file generated
+         * Name of the generated file
          */
         'file_name' => '_ide_macros.php',
     ],
+
+    /**
+     * Configure meta command
+     */
+    'meta' => [
+
+        /**
+         * Name of the generated file
+         */
+        'file_name' => '.phpstorm.meta.php',
+    ]
 ];
