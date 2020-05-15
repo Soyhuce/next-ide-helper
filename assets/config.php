@@ -6,7 +6,7 @@ return [
      * The bootstrapper use to boot your application before running analyses.
      * You may want, for exemple, to setup a database for your tenant model in
      * case of multitenant application.
-     * The class must implement \Soyhuce\IdeHelper\Console\Bootstrapper
+     * The class must implement \Soyhuce\NextIdeHelper\Console\Bootstrapper
      */
     'bootstrapper' => null,
 
@@ -27,11 +27,11 @@ return [
 
         /**
          * List of the extensions you want to use to tweak the way models are resolved
-         * The extensions must implement \Soyhuce\IdeHelper\Domain\Actions\ModelResolver
+         * The extensions must implement \Soyhuce\NextIdeHelper\Domain\Actions\ModelResolver
          *
          * Some extensions are already available :
-         * - Soyhuce\IdeHelper\Extensions\SpatieEnumResolver
-         * - Soyhuce\IdeHelper\Extensions\VirtualAttributeResolver
+         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver
+         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\VirtualAttributeResolver
          */
         'extensions' => [],
     ],
