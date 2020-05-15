@@ -190,7 +190,7 @@ class UserBuilder extends Builder
 }
 ```
 
-If your model does not define a custom builder, `next-ide-helper:models` will create fake classes in `_ide_models.php` with the docblock to provides auto-completion.
+If your model does not define a custom builder, `next-ide-helper:models` will create fake classes in `_ide_models.php` with the docblocks to provides auto-completion.
 
 ### Scopes
 
@@ -210,7 +210,7 @@ class User extends Model
 
 This will produce `@method \App\Builder\UserBuilder whereVerified(bool $verified = true)` on your custom builder.
 
-Note that your ide can complain with `Non-static method 'whereVerified' should not be called statically, but the class has the '__magic' method.` if you just call `User::whereVerified()`. That's why we advice you to use call your queries using `User::query()->...`.
+Note that your ide can complain with `Non-static method 'whereVerified' should not be called statically, but the class has the '__magic' method.` if you just call `User::whereVerified()`. That's why we advise you to use `User::query()->...`.
 
 ### Relations
 
@@ -269,9 +269,9 @@ class UserRole extends Spatie\Enum\Enum
 }
 ```
 
-By default, the package will resolve `role` attribute as a string (`@property string $role`) but thanks to `spatie/laravel-enum' it will be cast as `UserRole`.
+By default, the package will resolve `role` attribute as a string (`@property string $role`) but thanks to `spatie/laravel-enum` it will be cast as `UserRole`.
 
-That's why this package provides a way to customize some resolution logic adding your custom resolver in 'next-ide-helper.models.extensions' config.
+That's why this package provides a way to customize some resolution logic adding your custom resolver in `next-ide-helper.models.extensions` config.
 
 We already provide an extension for `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
 
@@ -352,10 +352,10 @@ Now, you just have to add it in you `next-ide-helper.php` config file :
 
 Your bootstrapper benefits from laravel dependency injection in its constructor. 
 
-#Contributing
+# Contributing
 
 You are welcome to contribute to this project ! Please see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-#License
+# License
 
 This package is provided under the [MIT License](LICENSE.md)
