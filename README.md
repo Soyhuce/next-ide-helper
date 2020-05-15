@@ -347,7 +347,7 @@ class MultitenantBootstrapper implements \Soyhuce\NextIdeHelper\Console\Bootstra
 
 Now, you just have to add it in you `next-ide-helper.php` config file :
 ```php
-'bootstrapper' => \App\Support\MultitenantBootstrapper,
+'bootstrapper' => \App\Support\MultitenantBootstrapper::class,
 ```
 
 Your bootstrapper benefits from laravel dependency injection in its constructor. 
