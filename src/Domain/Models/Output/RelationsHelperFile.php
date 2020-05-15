@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
@@ -28,8 +29,17 @@ class RelationsHelperFile
             $file->getOrAddClass($fakeRelationClass)
                 ->extends(get_class($relation->eloquentRelation()))
                 ->addDocTags(Collection::make([
-                    " * @mixin {$relation->related->fqcn}",
+                    " * @mixin {$this->relatedQueryBuilder($relation)}",
                 ]));
         }
+    }
+
+    private function relatedQueryBuilder(Relation $relation): string
+    {
+        $related = $relation->related;
+        if (!$related->queryBuilder->isBuiltIn()) {
+            return $related->queryBuilder->fqcn;
+        }
+        return IdeHelperFile::eloquentBuilder($related->fqcn);
     }
 }

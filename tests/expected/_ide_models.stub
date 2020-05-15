@@ -37,7 +37,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 {
     /**
-     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\User
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
      */
     class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
@@ -47,14 +47,14 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
 {
     /**
-     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
      */
     class LaravelPosts extends \Illuminate\Database\Eloquent\Relations\HasMany
     {
     }
 
     /**
-     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
      */
     class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany
     {
