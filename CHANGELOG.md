@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
+    - method types
+    - magic relation methods
+
 ## [0.1.0] - 2020-05-15
 
 ### Added
