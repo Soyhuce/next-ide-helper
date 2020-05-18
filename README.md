@@ -22,6 +22,7 @@ All notable changes are described in the [changelog](CHANGELOG.md).
         - [Extensions](#extensions)
     - [Macros](#macros)
     - [Phpstorm meta](#phpstorm-meta)
+    - [Factories](#factories)
     - [Custom application bootstrap](#custom-application-bootstrap)
  - [Contributing](#contributing)
  - [License](#license)    
@@ -250,7 +251,8 @@ Sometimes, the command cannot resolve or anticipate every way everything are res
 Let's take for example [spatie/laravel-enum](https://github.com/spatie/laravel-enum) package.
 
 ```php
-class User extends Model {
+class User extends Model
+{
     
     use Spatie\Enum\Laravel\HasEnums;
 
@@ -317,6 +319,51 @@ The command `php artisan next-ide-helper:meta` will generate a `.phpstorm.meta.p
 
 ![](assets/doc/optional_autocomplete.png) 
 ![](assets/doc/app_autocomplete.png) 
+ 
+## Factories
+
+Laravel 8 factories will bring some improvements with new class-based factories but will also bring some magic.
+
+You can already use then with [soyhuce/laravel-8-factories](https://github.com/Soyhuce/laravel-8-factories).
+
+The command `php artisan next-ide-helper:factories` will add docblocks to your factories in order to correctly type some methods. It will also explicit magic methods for model relations.
+
+For example, if you have 
+```php
+class User extends Model                        
+{
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    public function newCollection(array $models = [])
+    {
+        return new UserCollection($models);
+    }
+}
+``` 
+this command will generate the docblock in `UserFactory`:
+```php
+/**
+ * @method \App\User createOne($attributes = [])
+ * @method \App\User|\App\Collections\UserCollection create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User makeOne($attributes = [])
+ * @method \App\User|\App\Collections\UserCollection make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User newModel(array $attributes = [])
+ * @method \Database\Factories\UserFactory forRole($attributes = [])
+ * @method \Database\Factories\UserFactory hasPosts($count = 1, $attributes = [])
+ */
+class UserFactory extends Factory
+{
+    //    
+}
+```
  
 ## Custom application bootstrap
  
