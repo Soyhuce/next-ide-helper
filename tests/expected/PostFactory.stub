@@ -1,0 +1,37 @@
+<?php
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
+
+/**
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post createOne($attributes = [])
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post makeOne($attributes = [])
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post newModel(array $attributes = [])
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\PostFactory forUser($attributes = [])
+ */
+class PostFactory  extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Post::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition(): array
+    {
+        return [
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->text
+        ];
+    }
+}
