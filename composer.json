@@ -30,7 +30,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
         "orchestra/testbench": "^5.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "soyhuce/laravel-8-factories": "^0.1.0"
     },
     "autoload": {
         "psr-4": {

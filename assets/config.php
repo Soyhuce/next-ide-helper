@@ -61,5 +61,16 @@ return [
          * Name of the generated file
          */
         'file_name' => '.phpstorm.meta.php',
-    ]
+    ],
+
+    /**
+     * Configure factories command
+     */
+    'factories' => [
+
+        /**
+         * Which directories to scan factories
+         */
+        'directories' => ['database/factories'],
+    ],
 ];
