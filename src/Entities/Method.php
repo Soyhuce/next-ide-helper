@@ -79,6 +79,16 @@ class Method
             ->toArray();
     }
 
+    public function toDocTag(): string
+    {
+        return sprintf(
+            ' * @method %s %s(%s)',
+            $this->returnType ?? 'mixed',
+            $this->name,
+            $this->parameters
+        );
+    }
+
     private function docblockLines(): Collection
     {
         if ($this->docblock === null) {
