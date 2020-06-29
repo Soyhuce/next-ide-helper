@@ -4,6 +4,16 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.1.2] - 2020-06-29
+
+### Changed
+
+- relations methods are now defined in docblock instead of actual methods in _ide_models.php file
+
+### Fixed
+
+- add static for `Model::query()` method in docblocks in _ide_models.php file
+
 ## [0.1.1] - 2020-05-18
 
 ### Added
