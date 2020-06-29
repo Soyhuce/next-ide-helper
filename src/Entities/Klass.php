@@ -29,6 +29,13 @@ class Klass
         return $this;
     }
 
+    public function addDocTag(string $docTag): self
+    {
+        $this->docTags->add($docTag);
+
+        return $this;
+    }
+
     public function addDocTags(Collection $docTags): self
     {
         $this->docTags = $this->docTags->merge($docTags);

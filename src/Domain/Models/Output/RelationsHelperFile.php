@@ -24,7 +24,9 @@ class RelationsHelperFile
             $fakeRelationClass = IdeHelperFile::relation($this->model->fqcn, $relation->name);
 
             $file->getOrAddClass($this->model->fqcn)
-                ->addMethod(Method::new($relation->name)->returnType($fakeRelationClass));
+                ->addDocTag(
+                    Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag()
+                );
 
             $file->getOrAddClass($fakeRelationClass)
                 ->extends(get_class($relation->eloquentRelation()))
