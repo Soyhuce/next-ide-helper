@@ -34,7 +34,7 @@ class QueryBuilderHelperFile
 
         $file->getOrAddClass($this->model->fqcn)
             ->addDocTags(Collection::make([
-                " * @method {$fakeEloquentBuilder} query()",
+                " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",
             ]));
     }
