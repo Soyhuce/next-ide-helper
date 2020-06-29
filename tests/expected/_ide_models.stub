@@ -64,7 +64,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
      */
     class User
