@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.1.3] - 2020-07-02
+
+### Fixed
+
+- nullable parameter syntax for factory docblock
+
 ## [0.1.2] - 2020-06-29
 
 ### Changed
