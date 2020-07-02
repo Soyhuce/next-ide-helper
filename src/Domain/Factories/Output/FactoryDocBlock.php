@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Factories\Output;
 
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
@@ -62,12 +63,16 @@ class FactoryDocBlock extends DocBlock
     {
         $related = class_basename($relation->related->fqcn);
 
-        if (Str::camel($related) === $relation->name) {
-            return $this->forRelation($relation);
-        }
-
         if (Str::camel(Str::plural($related)) === $relation->name) {
             return $this->hasRelation($relation);
+        }
+
+        if ($relation->eloquentRelation() instanceof HasOne) {
+            return $this->hasRelation($relation);
+        }
+
+        if (Str::camel($related) === $relation->name) {
+            return $this->forRelation($relation);
         }
 
         return null;

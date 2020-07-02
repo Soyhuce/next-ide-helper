@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Changed
+
+- HasOne relations are documented with `has` in factories docblocks
+
 ## [0.1.3] - 2020-07-02
 
 ### Fixed
