@@ -2,7 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Factories\Output;
 
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
@@ -61,18 +63,16 @@ class FactoryDocBlock extends DocBlock
 
     private function relationHelper(Relation $relation): ?string
     {
-        $related = class_basename($relation->related->fqcn);
-
-        if (Str::camel(Str::plural($related)) === $relation->name) {
-            return $this->hasRelation($relation);
-        }
-
-        if ($relation->eloquentRelation() instanceof HasOne) {
-            return $this->hasRelation($relation);
-        }
-
-        if (Str::camel($related) === $relation->name) {
+        if ($relation->eloquentRelation() instanceof BelongsTo) {
             return $this->forRelation($relation);
+        }
+
+        if ($relation->eloquentRelation() instanceof HasOneOrMany) {
+            return $this->hasRelation($relation);
+        }
+
+        if ($relation->eloquentRelation() instanceof BelongsToMany) {
+            return $this->hasRelation($relation);
         }
 
         return null;

@@ -13,6 +13,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User makeOne($attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User|\Illuminate\Database\Eloquent\Collection make($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User newModel(array $attributes = [])
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory hasLaravelPosts($count = 1, $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory hasPosts($count = 1, $attributes = [])
  */
 class UserFactory extends Factory
