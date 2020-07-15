@@ -16,7 +16,7 @@ class ResolveModelAttributeTest extends TestCase
     /**
      * @test
      */
-    public function attributes_are_resolved_from_database()
+    public function attributesAreResolvedFromDatabase()
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -30,7 +30,7 @@ class ResolveModelAttributeTest extends TestCase
     /**
      * @test
      */
-    public function timestamps_are_correctly_resolved()
+    public function timestampsAreCorrectlyResolved()
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 

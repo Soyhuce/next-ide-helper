@@ -3,9 +3,6 @@
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMacroable;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMixin;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
 /**
@@ -17,7 +14,7 @@ class MetaCommandTest extends TestCase
      * @test
      * @covers ::handle
      */
-    public function the_command_is_successful()
+    public function theCommandIsSuccessful()
     {
         config([
             'next-ide-helper.meta' => [

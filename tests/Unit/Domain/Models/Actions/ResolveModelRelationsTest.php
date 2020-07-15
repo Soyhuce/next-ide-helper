@@ -16,7 +16,7 @@ class ResolveModelRelationsTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_model_relations()
+    public function itFindsModelRelations()
     {
         $finder = new FindModels();
         $models = $finder->execute($this->fixturePath());
@@ -38,7 +38,7 @@ class ResolveModelRelationsTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_model_custom_relations()
+    public function itFindsModelCustomRelations()
     {
         $finder = new FindModels();
         $models = $finder->execute($this->fixturePath());

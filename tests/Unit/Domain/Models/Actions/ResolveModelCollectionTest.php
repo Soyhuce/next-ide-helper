@@ -15,7 +15,7 @@ class ResolveModelCollectionTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_builtin_collection()
+    public function itFindsBuiltinCollection()
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -32,7 +32,7 @@ class ResolveModelCollectionTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_custom_collection()
+    public function itFindsCustomCollection()
     {
         $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 

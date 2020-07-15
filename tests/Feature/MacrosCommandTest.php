@@ -14,7 +14,7 @@ class MacrosCommandTest extends TestCase
     {
         parent::setUp();
 
-        SomeMacroable::macro('foo', function (string $bar): string {
+        SomeMacroable::macro('foo', static function (string $bar): string {
             return Str::upper($bar);
         });
 
@@ -24,7 +24,7 @@ class MacrosCommandTest extends TestCase
     /**
      * @test
      */
-    public function the_command_is_successful()
+    public function theCommandIsSuccessful()
     {
         config([
             'next-ide-helper.macros' => [

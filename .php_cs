@@ -5,6 +5,7 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('vendor')
     ->in([
         __DIR__.'/src',
+        __DIR__.'/tests',
     ])
     ->name('*.php')
     ->ignoreDotFiles(true)
@@ -163,7 +164,7 @@ return PhpCsFixer\Config::create()
         'space_after_semicolon' => true,
         'standardize_increment' => true,
         'standardize_not_equals' => true,
-        'static_lambda' => true, // risky
+        'static_lambda' => false, // risky
         'switch_case_semicolon_to_colon' => true,
         'ternary_operator_spaces' => true,
         'ternary_to_null_coalescing' => true,

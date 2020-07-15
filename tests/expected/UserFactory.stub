@@ -38,7 +38,7 @@ class UserFactory extends Factory
             'address' => new Address([
                 'streetAddress' => $this->faker->streetAddress,
                 'postcode' => $this->faker->postcode,
-                'city' => $this->faker->city
+                'city' => $this->faker->city,
             ]),
             'remember_token' => Str::random(10),
         ];

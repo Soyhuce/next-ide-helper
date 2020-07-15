@@ -23,7 +23,7 @@ trait ResetsFixtures
     public function backupFixtures(): void
     {
         $this->fixtureBackup = Collection::make(File::allFiles($this->fixturePath()))
-            ->mapWithKeys(function (string $file) {
+            ->mapWithKeys(static function (string $file) {
                 return [$file => File::get($file)];
             });
     }

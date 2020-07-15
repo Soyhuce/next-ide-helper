@@ -13,7 +13,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post newModel(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\PostFactory forUser($attributes = [])
  */
-class PostFactory  extends Factory
+class PostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -31,7 +31,7 @@ class PostFactory  extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'content' => $this->faker->text
+            'content' => $this->faker->text,
         ];
     }
 }

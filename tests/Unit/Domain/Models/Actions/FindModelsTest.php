@@ -17,7 +17,7 @@ class FindModelsTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_all_models(): void
+    public function itFindsAllModels(): void
     {
         $finder = new FindModels();
 
@@ -29,7 +29,7 @@ class FindModelsTest extends TestCase
     /**
      * @test
      */
-    public function model_name_and_paths_are_correct(): void
+    public function modelNameAndPathsAreCorrect(): void
     {
         $finder = new FindModels();
 

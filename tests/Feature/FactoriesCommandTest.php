@@ -2,10 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMacroable;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMixin;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 use Soyhuce\NextIdeHelper\Tests\UsesFixtures;
 
@@ -16,7 +12,7 @@ class FactoriesCommandTest extends TestCase
     /**
      * @test
      */
-    public function the_command_is_successful()
+    public function theCommandIsSuccessful()
     {
         config([
             'next-ide-helper.factories' => [
@@ -26,7 +22,6 @@ class FactoriesCommandTest extends TestCase
 
         $this->artisan('next-ide-helper:factories')
             ->assertExitCode(0);
-
 
         $this->assertFileEquals(
             $this->expectedPath('PostFactory.stub'),

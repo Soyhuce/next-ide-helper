@@ -16,7 +16,7 @@ class ModelsCommandTest extends TestCase
     /**
      * @test
      */
-    public function the_command_is_successful()
+    public function theCommandIsSuccessful()
     {
         config([
             'next-ide-helper.models' => [

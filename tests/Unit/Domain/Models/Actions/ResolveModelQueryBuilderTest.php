@@ -18,7 +18,7 @@ class ResolveModelQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_builtin_builder()
+    public function itFindsBuiltinBuilder()
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -35,7 +35,7 @@ class ResolveModelQueryBuilderTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_custom_builder()
+    public function itFindsCustomBuilder()
     {
         $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 

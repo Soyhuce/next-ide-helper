@@ -3,8 +3,6 @@
 namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Factory\Actions;
 
 use Soyhuce\NextIdeHelper\Domain\Factories\Actions\FindFactories;
-use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
-use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 use Soyhuce\NextIdeHelper\Tests\UsesFixtures;
 
@@ -18,7 +16,7 @@ class FindFactoriesTest extends TestCase
     /**
      * @test
      */
-    public function it_finds_all_factories(): void
+    public function itFindsAllFactories(): void
     {
         $finder = new FindFactories();
 
@@ -30,7 +28,7 @@ class FindFactoriesTest extends TestCase
     /**
      * @test
      */
-    public function factory_name_and_paths_are_correct(): void
+    public function factoryNameAndPathsAreCorrect(): void
     {
         $finder = new FindFactories();
 
