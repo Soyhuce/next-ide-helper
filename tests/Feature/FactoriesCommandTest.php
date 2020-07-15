@@ -2,12 +2,12 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
+use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
-use Soyhuce\NextIdeHelper\Tests\UsesFixtures;
 
 class FactoriesCommandTest extends TestCase
 {
-    use UsesFixtures;
+    use ResetsFixtures;
 
     /**
      * @test

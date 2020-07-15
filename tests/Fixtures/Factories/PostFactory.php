@@ -5,14 +5,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 
-/**
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post createOne($attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection create($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post makeOne($attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection make($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post newModel(array $attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\PostFactory forUser($attributes = [])
- */
 class PostFactory extends Factory
 {
     /**
