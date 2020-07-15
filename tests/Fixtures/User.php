@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
@@ -19,6 +20,8 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  */
 class User extends Model
 {
+    use HasFactory;
+
     protected $casts = [
         'address' => AddressCaster::class,
     ];

@@ -36,6 +36,7 @@ class ModelDocBlock extends DocBlock
             $this->all(),
             $this->query(),
             $this->queryMixin(),
+            $this->factory(),
             ' */',
         ])
             ->map(fn (?string $line): string => $this->line($line))
@@ -101,5 +102,22 @@ class ModelDocBlock extends DocBlock
         }
 
         return " * @mixin {$this->model->queryBuilder->fqcn}";
+    }
+
+    private function factory(): ?string
+    {
+        if (!trait_exists(\Illuminate\Database\Eloquent\Factories\HasFactory::class)) {
+            return null;
+        }
+
+        if (!in_array(\Illuminate\Database\Eloquent\Factories\HasFactory::class, class_uses_recursive($this->model->fqcn))) {
+            return null;
+        }
+
+        $factory = get_class(
+            ($this->model->fqcn)::factory()
+        );
+
+        return " * @method static \\{$factory} factory(\$count = 1, \$state = [])";
     }
 }

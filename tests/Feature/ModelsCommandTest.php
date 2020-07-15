@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
@@ -12,6 +13,14 @@ use Soyhuce\NextIdeHelper\Tests\TestCase;
 class ModelsCommandTest extends TestCase
 {
     use ResetsFixtures;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        Factory::guessFactoryNamesUsing(function (string $modelFqcn) {
+            return 'Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\\' . class_basename($modelFqcn) . 'Factory';
+        });
+    }
 
     /**
      * @test

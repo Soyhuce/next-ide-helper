@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
@@ -16,9 +17,12 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
+ * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
  */
 class User extends Model
 {
+    use HasFactory;
+
     protected $casts = [
         'address' => AddressCaster::class,
     ];
