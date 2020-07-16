@@ -101,7 +101,13 @@ class ModelDocBlock extends DocBlock
             return null;
         }
 
-        return " * @mixin {$this->model->queryBuilder->fqcn}";
+        $mixin = " * @mixin {$this->model->queryBuilder->fqcn}";
+
+        if (config('next-ide-helper.models.larastan_friendly', false)) {
+            $mixin .= "<{$this->model->fqcn}>";
+        }
+
+        return $mixin;
     }
 
     private function factory(): ?string

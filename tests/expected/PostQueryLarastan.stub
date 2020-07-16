@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection getModels(array|string $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post newModelInstance(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post updateOrCreate(array $attributes, array $values = [])
+ * @template TModelClass of \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+ * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>
  */
 class PostQuery extends Builder
 {
