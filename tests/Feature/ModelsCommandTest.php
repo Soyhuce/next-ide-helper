@@ -58,6 +58,43 @@ class ModelsCommandTest extends TestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function theCommandIsSuccessfulWithLarastanFriendlyComments()
+    {
+        config([
+            'next-ide-helper.models' => [
+                'directories' => [$this->fixturePath()],
+                'file_name' => $this->fixturePath() . '/_ide_models.php',
+                'larastan_friendly' => true,
+            ],
+        ]);
+
+        $this->artisan('next-ide-helper:models')
+            ->assertExitCode(0);
+
+        $this->assertFileEquals(
+            $this->expectedPath('PostLarastan.stub'),
+            $this->fixturePath('Blog/Post.php')
+        );
+
+        $this->assertFileEquals(
+            $this->expectedPath('User.stub'),
+            $this->fixturePath('User.php')
+        );
+
+        $this->assertFileEquals(
+            $this->expectedPath('PostQueryLarastan.stub'),
+            $this->fixturePath('Blog/PostQuery.php')
+        );
+
+        $this->assertFileEquals(
+            $this->expectedPath('_ide_modelsLarastan.stub'),
+            $this->fixturePath('_ide_models.php')
+        );
+    }
+
     protected function tearDown(): void
     {
         File::delete($this->fixturePath('_ide_models.php'));

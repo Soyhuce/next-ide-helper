@@ -34,6 +34,11 @@ return [
          * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\VirtualAttributeResolver
          */
         'extensions' => [],
+
+        /**
+         * Use Larastan friendly docblock when possible
+         */
+        'larastan_friendly' => false,
     ],
 
     /**

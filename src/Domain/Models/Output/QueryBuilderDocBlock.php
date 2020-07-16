@@ -38,7 +38,10 @@ class QueryBuilderDocBlock extends DocBlock
             ->merge($this->attributeScopes())
             ->merge($this->scopeMethods())
             ->merge($this->resultMethods())
-            ->merge($this->templateBlock());
+            ->when(
+                $this->larastanFriendly(),
+                fn (Collection $collection) => $collection->merge($this->templateBlock())
+            );
     }
 
     private function docblock(): string
@@ -122,8 +125,13 @@ class QueryBuilderDocBlock extends DocBlock
     private function templateBlock(): Collection
     {
         return Collection::make([
-            ' * @template TModelClass',
-            " * @extends \\Illuminate\\Database\\Eloquent\\Builder<{$this->model->fqcn}>",
+            " * @template TModelClass of {$this->model->fqcn}",
+            ' * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>',
         ]);
+    }
+
+    private function larastanFriendly(): bool
+    {
+        return config('next-ide-helper.models.larastan_friendly', false);
     }
 }
