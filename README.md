@@ -23,6 +23,7 @@ All notable changes are described in the [changelog](CHANGELOG.md).
     - [Macros](#macros)
     - [Phpstorm meta](#phpstorm-meta)
     - [Factories](#factories)
+    - [Aliases](#aliases)
     - [Custom application bootstrap](#custom-application-bootstrap)
  - [Contributing](#contributing)
  - [License](#license)    
@@ -364,6 +365,14 @@ class UserFactory extends Factory
     //    
 }
 ```
+
+## Aliases
+
+Sometimes we don't want to use fully qualified class names but prefer to use Laravel aliases.
+
+The command `php artisan next-ide-helper:aliases` will create a file which can be understood by your ide. 
+
+It will then provide auto-completion, syntax hightlight, ... for the aliases defined in your `config/app.php` file as well as the ones defined by the package you use.
  
 ## Custom application bootstrap
  
