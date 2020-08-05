@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.1.5] - 2020-08-05
+
 ### Added
 
 - command `next-ide-helper:aliases` to generate a file helping the ide to understand aliases  
