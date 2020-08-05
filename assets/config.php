@@ -11,6 +11,17 @@ return [
     'bootstrapper' => null,
 
     /**
+     * Configure aliases command
+     */
+    'aliases' => [
+
+        /**
+         * Name of the generated file
+         */
+        'file_name' => '_ide_aliases.php',
+    ],
+
+    /**
      * Configure models command
      */
     'models' => [

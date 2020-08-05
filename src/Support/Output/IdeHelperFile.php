@@ -39,7 +39,10 @@ class IdeHelperFile
 
     public function getOrAddClass(string $fqcn): Klass
     {
-        $namespace = (string) Str::of($fqcn)->beforeLast('\\')->trim('\\');
+        $namespace = (string) Str::of($fqcn)
+            ->start('\\')
+            ->beforeLast('\\')
+            ->trim('\\');
         $class = Str::afterLast($fqcn, '\\');
 
         return $this->getOrAddNamespace($namespace)->getOrAddClass($class);
@@ -66,6 +69,7 @@ class IdeHelperFile
             $lines = $lines->merge($namespace->toArray())->add('');
         }
 
-        File::put($this->filePath, $lines->implode(PHP_EOL));
+        $content = $lines->map(fn (string $line) => rtrim($line, ' '))->implode(PHP_EOL);
+        File::put($this->filePath, $content);
     }
 }
