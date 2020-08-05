@@ -8,6 +8,13 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - command `next-ide-helper:aliases` to generate a file helping the ide to understand aliases  
 
+## [0.1.4] - 2020-07-16
+
+### Added
+
+- Option to generate larastan-friendly doc blocks for models
+- Typed `factory` method on model using `HasFactory`
+
 ### Changed
 
 - HasOne relations are documented with `has` in factories docblocks
