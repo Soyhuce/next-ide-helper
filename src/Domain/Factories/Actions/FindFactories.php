@@ -25,7 +25,7 @@ class FindFactories
             }
         }
 
-        return $factories;
+        return $factories->sortBy(fn (Factory $factory) => $factory->fqcn);
     }
 
     private function isEloquentFactory(string $class): bool
