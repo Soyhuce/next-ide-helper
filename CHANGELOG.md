@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- command `next-ide-helper:aliases` to generate a file helping the ide to understand aliases  
+
 ### Changed
 
 - HasOne relations are documented with `has` in factories docblocks
