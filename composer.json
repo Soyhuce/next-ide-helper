@@ -16,22 +16,19 @@
             "email": "bastien.philippe@soyhuce.fr"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.4",
         "composer/composer": "^1.9",
         "doctrine/dbal": "^2.10",
-        "illuminate/console": "^7.0",
-        "illuminate/database": "^7.0",
-        "illuminate/support": "^7.0",
-        "illuminate/view": "^7.0"
+        "illuminate/console": "^7.0|^8.0",
+        "illuminate/database": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0",
+        "illuminate/view": "^7.0|^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17",
         "orchestra/testbench": "^5.0",
-        "phpunit/phpunit": "^9.0",
-        "soyhuce/laravel-8-factories": "^0.1.0"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
@@ -54,7 +51,10 @@
         "cs": "vendor/bin/php-cs-fixer fix",
         "test": "vendor/bin/phpunit"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
+        "preferred-install": "dist",
         "sort-packages": true
     }
 }
