@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.2.1] - 2020-08-31
+
+### Added
+
+- Allow installing composer/composer ^2.0
+
 ## [0.2.0] - 2020-08-27
 
 ### Added
