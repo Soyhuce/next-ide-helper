@@ -21,7 +21,7 @@ class SomeMixin
 
     public function havingVariadic()
     {
-        return function(string &... $params): void {
+        return function (string &...$params): void {
             $params[] = 'foo';
             foreach ($params as $param) {
                 echo $param;
