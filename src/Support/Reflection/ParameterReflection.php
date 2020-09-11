@@ -15,17 +15,19 @@ class ParameterReflection
                 $export .= '?';
             }
             $export .= TypeReflection::asString($parameter->getType()) . ' ';
-        } elseif ($parameter->isVariadic()) {
-            $export .= '...';
         }
 
         if ($parameter->isPassedByReference()) {
             $export .= '&';
         }
 
+        if ($parameter->isVariadic()) {
+            $export .= '... ';
+        }
+
         $export .= '$' . $parameter->getName();
 
-        if ($parameter->isOptional()) {
+        if ($parameter->isOptional() && !$parameter->isVariadic()) {
             $export .= ' = ';
             if ($parameter->isDefaultValueAvailable()) {
                 if ($parameter->isDefaultValueConstant()) {

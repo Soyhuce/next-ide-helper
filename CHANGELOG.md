@@ -4,6 +4,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Fixed
+- ParameterReflection::asString when the parameter is variadic
+
 ## [0.2.1] - 2020-08-31
 
 ### Added
