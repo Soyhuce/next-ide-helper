@@ -35,6 +35,7 @@ class FactoryDocBlock extends DocBlock
             '/**',
             $this->creationMethods(),
             $this->relations(),
+            $this->extraMethods(),
             ' */',
         ])
             ->map(fn (?string $line): string => $this->line($line))
@@ -94,5 +95,14 @@ class FactoryDocBlock extends DocBlock
             $this->factory->fqcn,
             Str::studly($relation->name)
         );
+    }
+
+    private function extraMethods(): string
+    {
+        return $this->factory->extraMethods
+            ->filter()
+            ->sort()
+            ->map(fn (string $method) => ' * @method ' . $method)
+            ->implode(PHP_EOL);
     }
 }
