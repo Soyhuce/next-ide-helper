@@ -42,6 +42,7 @@ return [
          *
          * Some extensions are already available :
          * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver
+         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver
          * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\VirtualAttributeResolver
          */
         'extensions' => [],

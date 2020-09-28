@@ -276,7 +276,9 @@ By default, the package will resolve `role` attribute as a string (`@property st
 
 That's why this package provides a way to customize some resolution logic adding your custom resolver in `next-ide-helper.models.extensions` config.
 
-We already provide an extension for `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
+We already provide an extension for : 
+- `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
+- `Spatie\ModelStates\State` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver`.
 
 Just add the extension in the config  and re-run the models command: 
 ```php
