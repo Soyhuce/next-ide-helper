@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.2.3] - 2020-09-28
+
+### Added
+- SpatieModelStateResolver to resolve model states from `spatie/laravel-model-states`
+- Ability to add extensions for Laravel factories
+
 ## [0.2.2] - 2020-09-11
 
 ### Fixed
