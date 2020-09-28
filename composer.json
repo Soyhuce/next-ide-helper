@@ -1,6 +1,6 @@
 {
     "name": "soyhuce/next-ide-helper",
-    "description": "Next generation of Ide Helper",
+    "description": "Laravel ide helper rebuilt under steroids",
     "keywords": [
         "laravel",
         "ide",
