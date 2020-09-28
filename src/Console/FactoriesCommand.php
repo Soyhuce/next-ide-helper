@@ -45,6 +45,12 @@ class FactoriesCommand extends Command
             }
         }
 
+        foreach ($this->factoryResolvers() as $factoryResolver) {
+            foreach ($factories as $factory) {
+                $factoryResolver->execute($factory);
+            }
+        }
+
         foreach ($factories as $factory) {
             (new FactoryDocBlock($factory))->render();
         }
@@ -64,5 +70,15 @@ class FactoriesCommand extends Command
             new ResolveModelCollection(),
             new ResolveModelRelations($models),
         ];
+    }
+
+    /**
+     * @return array<\Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver>
+     */
+    private function factoryResolvers(): array
+    {
+        return collect(config('next-ide-helper.factories.extensions'))
+            ->map(fn (string $class) => new $class())
+            ->toArray();
     }
 }

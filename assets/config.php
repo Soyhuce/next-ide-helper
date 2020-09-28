@@ -88,5 +88,11 @@ return [
          * Which directories to scan factories
          */
         'directories' => ['database/factories'],
+
+        /**
+         * List of the extensions you want to use to tweak the way models are resolved
+         * The extensions must implement \Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver
+         */
+        'extensions' => [],
     ],
 ];
