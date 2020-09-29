@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.2.5] - 2020-09-29
+
+### Fixed
+- Fix self return type in macros
+- Remove extra space after ... in macros
+
 ## [0.2.4] - 2020-09-29
 
 ### Added
