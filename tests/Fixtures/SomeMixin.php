@@ -28,4 +28,11 @@ class SomeMixin
             }
         };
     }
+
+    public function havingSelfAsReturnType()
+    {
+        return function (): self {
+            return $this;
+        };
+    }
 }

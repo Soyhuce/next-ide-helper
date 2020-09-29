@@ -22,7 +22,7 @@ class ParameterReflection
         }
 
         if ($parameter->isVariadic()) {
-            $export .= '... ';
+            $export .= '...';
         }
 
         $export .= '$' . $parameter->getName();

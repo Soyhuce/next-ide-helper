@@ -9,7 +9,12 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
             return Str::upper($bar);
         }
 
-        public function havingVariadic(string &... $params): void
+        public function havingSelfAsReturnType(): self
+        {
+            return $this;
+        }
+
+        public function havingVariadic(string &...$params): void
         {
             $params[] = 'foo';
             foreach ($params as $param) {

@@ -14,10 +14,15 @@ class TypeReflection
         } else {
             $name = (string) $type;
         }
-        if (!$type->isBuiltin()) {
-            $name = '\\' . $name;
+
+        if ($type->isBuiltin()) {
+            return $name;
         }
 
-        return $name;
+        if ($name === 'self') {
+            return $name;
+        }
+
+        return '\\' . $name;
     }
 }
