@@ -4,6 +4,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.2.4] - 2020-09-29
+
+### Added
+- Ability to add docblock methods for Laravel factories
+
 ## [0.2.3] - 2020-09-28
 
 ### Added
