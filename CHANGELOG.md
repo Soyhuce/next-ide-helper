@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- Support PHP 8
+
 ## [0.2.5] - 2020-09-29
 
 ### Fixed
