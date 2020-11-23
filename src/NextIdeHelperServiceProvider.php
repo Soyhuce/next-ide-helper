@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper;
 
 use Illuminate\Support\ServiceProvider;
 use Soyhuce\NextIdeHelper\Console\AliasesCommand;
+use Soyhuce\NextIdeHelper\Console\AllCommand;
 use Soyhuce\NextIdeHelper\Console\FactoriesCommand;
 use Soyhuce\NextIdeHelper\Console\MacrosCommand;
 use Soyhuce\NextIdeHelper\Console\MetaCommand;
@@ -36,6 +37,7 @@ class NextIdeHelperServiceProvider extends ServiceProvider
 
             $this->commands([
                 AliasesCommand::class,
+                AllCommand::class,
                 FactoriesCommand::class,
                 MacrosCommand::class,
                 MetaCommand::class,
