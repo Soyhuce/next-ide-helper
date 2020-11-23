@@ -1,4 +1,4 @@
-# Next Ide Helper for Laravel 
+# Next Ide Helper for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/next-ide-helper.svg?style=flat-square)](https://packagist.org/packages/soyhuce/next-ide-helper)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/run-tests?label=tests)
@@ -8,12 +8,13 @@ This package aims to be an easy extendable ide-helper generator.
 
 It was inspired by the great work of [barryvdh/laravel-ide-helper](https://github.com/barryvdh/laravel-ide-helper).
 
-It provides completion for Eloquent magic (model attributes, scopes, relations, ...), registered macros of Macroable classes, container instances, ... 
+It provides completion for Eloquent magic (model attributes, scopes, relations, ...), registered macros of Macroable
+classes, container instances, ...
 
 All notable changes are described in the [changelog](CHANGELOG.md).
 
- - [Installation](#installation)
- - [Usage](#usage)
+- [Installation](#installation)
+- [Usage](#usage)
     - [Models](#models)
         - [Attributes](#attributes)
         - [Custom Collection](#custom-collection)
@@ -24,9 +25,10 @@ All notable changes are described in the [changelog](CHANGELOG.md).
     - [Phpstorm meta](#phpstorm-meta)
     - [Factories](#factories)
     - [Aliases](#aliases)
+    - [Generate all](#generate-all)
     - [Custom application bootstrap](#custom-application-bootstrap)
- - [Contributing](#contributing)
- - [License](#license)    
+- [Contributing](#contributing)
+- [License](#license)
 
 # Installation
 
@@ -37,24 +39,27 @@ composer require --dev soyhuce/next-ide-helper
 ``` 
 
 You may want to publish configuration file :
+
 ```shell script
 php artisan vendor:publish --tag=next-ide-helper:config
 ```
 
 You're done !
 
-# Usage 
+# Usage
 
 ## Models
- 
-The command `php artisan next-ide-helper:models` will generate multiple elements to help your ide understand what you are doing.
-This package needs you to have access to a migrated database.
 
-It will add docblock to your classes and will create an `_ide_models.php` file. This file **must not** be included but only analyzed by your ide.
+The command `php artisan next-ide-helper:models` will generate multiple elements to help your ide understand what you
+are doing. This package needs you to have access to a migrated database.
+
+It will add docblock to your classes and will create an `_ide_models.php` file. This file **must not** be included but
+only analyzed by your ide.
 
 ### Attributes
 
-The command resolves model attributes from the database. They are added to your model class docblock. If the attribute has a cast, the package will cast properly the attribute.
+The command resolves model attributes from the database. They are added to your model class docblock. If the attribute
+has a cast, the package will cast properly the attribute.
 
 ```php
 /**
@@ -75,8 +80,9 @@ class User extends \Illuminate\Database\Eloquent\Model
     ];
 }
 ```
- 
+
 Attribute casting will also work with custom casts :
+
 ```php
 use App\Email;
 
@@ -97,9 +103,10 @@ class User extends Model
     ];
 }
 ```
+
 This will produce `@property \App\Email $email`
 
-Note that the type must be defined as return type or in docblock's `@return` of the `get` method. 
+Note that the type must be defined as return type or in docblock's `@return` of the `get` method.
 
 The command also adds attributes from accessors as read-only properties :
 
@@ -118,7 +125,9 @@ class User extends Model
 
 ### Custom collection
 
-In case your model defines a custom collection, the command will add `all` method on the model's docblock to re-define return type :
+In case your model defines a custom collection, the command will add `all` method on the model's docblock to re-define
+return type :
+
 ```php
 use \App\Collections\UserCollection;
 
@@ -154,6 +163,7 @@ class User extends Model
 ```
 
 It will also add some tags on the builder to help your ide :
+
 - where clauses based on model attributes
 - return values for result values
 
@@ -192,11 +202,13 @@ class UserBuilder extends Builder
 }
 ```
 
-If your model does not define a custom builder, `next-ide-helper:models` will create fake classes in `_ide_models.php` with the docblocks to provides auto-completion.
+If your model does not define a custom builder, `next-ide-helper:models` will create fake classes in `_ide_models.php`
+with the docblocks to provides auto-completion.
 
 ### Scopes
 
-All scopes of your models will be added as method of their builder (in the custom query builder or in `_ide_models.php`).
+All scopes of your models will be added as method of their builder (in the custom query builder or in `_ide_models.php`)
+.
 
 ```php
 class User extends Model
@@ -212,7 +224,9 @@ class User extends Model
 
 This will produce `@method \App\Builder\UserBuilder whereVerified(bool $verified = true)` on your custom builder.
 
-Note that your ide can complain with `Non-static method 'whereVerified' should not be called statically, but the class has the '__magic' method.` if you just call `User::whereVerified()`. That's why we advise you to use `User::query()->...`.
+Note that your ide can complain
+with `Non-static method 'whereVerified' should not be called statically, but the class has the '__magic' method.` if you
+just call `User::whereVerified()`. That's why we advise you to use `User::query()->...`.
 
 ### Relations
 
@@ -246,7 +260,7 @@ Custom builders and custom collections are also correctly resolved by the ide :
 ![](assets/doc/collection_for_relation_autocomplete.png)
 
 ### Extensions
- 
+
 Sometimes, the command cannot resolve or anticipate every way everything are resolved.
 
 Let's take for example [spatie/laravel-enum](https://github.com/spatie/laravel-enum) package.
@@ -272,15 +286,19 @@ class UserRole extends Spatie\Enum\Enum
 }
 ```
 
-By default, the package will resolve `role` attribute as a string (`@property string $role`) but thanks to `spatie/laravel-enum` it will be cast as `UserRole`.
+By default, the package will resolve `role` attribute as a string (`@property string $role`) but thanks
+to `spatie/laravel-enum` it will be cast as `UserRole`.
 
-That's why this package provides a way to customize some resolution logic adding your custom resolver in `next-ide-helper.models.extensions` config.
+That's why this package provides a way to customize some resolution logic adding your custom resolver
+in `next-ide-helper.models.extensions` config.
 
-We already provide an extension for : 
+We already provide an extension for :
+
 - `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
 - `Spatie\ModelStates\State` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver`.
 
-Just add the extension in the config  and re-run the models command: 
+Just add the extension in the config and re-run the models command:
+
 ```php
 'extensions' => [
     \Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver::class,
@@ -288,6 +306,7 @@ Just add the extension in the config  and re-run the models command:
 ```
 
 You will get :
+
 ```php
 /**
  * @property \App\UserRole $role
@@ -296,12 +315,14 @@ class User extends Model
 {
 }
 ```
- 
+
 ## Macros
- 
-This package provides a `next-ide-helper:macros`. The command resolves all registered macros and generates a `_ide_macros.php` file which provides auto-completion for `Macroable` macros.
+
+This package provides a `next-ide-helper:macros`. The command resolves all registered macros and generates
+a `_ide_macros.php` file which provides auto-completion for `Macroable` macros.
 
 For example :
+
 ```php
 use Illuminate\Support\Collection;
 
@@ -318,20 +339,23 @@ Just like `_ide_models.php`, the `_ide_macros.php` file must not be included but
 
 ## Phpstorm meta
 
-The command `php artisan next-ide-helper:meta` will generate a `.phpstorm.meta.php` file. It will provide completion for container bindings and some laravel helpers
+The command `php artisan next-ide-helper:meta` will generate a `.phpstorm.meta.php` file. It will provide completion for
+container bindings and some laravel helpers
 
-![](assets/doc/optional_autocomplete.png) 
-![](assets/doc/app_autocomplete.png) 
- 
+![](assets/doc/optional_autocomplete.png)
+![](assets/doc/app_autocomplete.png)
+
 ## Factories
 
 Laravel 8 factories will bring some improvements with new class-based factories but will also bring some magic.
 
 You can already use then with [soyhuce/laravel-8-factories](https://github.com/Soyhuce/laravel-8-factories).
 
-The command `php artisan next-ide-helper:factories` will add docblocks to your factories in order to correctly type some methods. It will also explicit magic methods for model relations.
+The command `php artisan next-ide-helper:factories` will add docblocks to your factories in order to correctly type some
+methods. It will also explicit magic methods for model relations.
 
-For example, if you have 
+For example, if you have
+
 ```php
 class User extends Model                        
 {
@@ -351,7 +375,9 @@ class User extends Model
     }
 }
 ``` 
+
 this command will generate the docblock in `UserFactory`:
+
 ```php
 /**
  * @method \App\User createOne($attributes = [])
@@ -372,15 +398,29 @@ class UserFactory extends Factory
 
 Sometimes we don't want to use fully qualified class names but prefer to use Laravel aliases.
 
-The command `php artisan next-ide-helper:aliases` will create a file which can be understood by your ide. 
+The command `php artisan next-ide-helper:aliases` will create a file which can be understood by your ide.
 
-It will then provide auto-completion, syntax hightlight, ... for the aliases defined in your `config/app.php` file as well as the ones defined by the package you use.
- 
+It will then provide auto-completion, syntax hightlight, ... for the aliases defined in your `config/app.php` file as
+well as the ones defined by the package you use.
+
+## Generate all
+
+You can generate all next-ide-helper files using `next-ide-helper:all`.
+
+It will generate for you :
+
+- Models
+- Macros
+- Phpstorm meta
+- Aliases
+- Factories (if you are using Laravel 8 class based model factories)
+
 ## Custom application bootstrap
- 
-Sometimes you may want to bootstrap the environment before the command is executed.
-For example in a multi-tenant multi-database application, you need to bootstrap your tenant connection in order to let this package resolve table columns.
- 
+
+Sometimes you may want to bootstrap the environment before the command is executed. For example in a multi-tenant
+multi-database application, you need to bootstrap your tenant connection in order to let this package resolve table
+columns.
+
 In that case, you just have to create your own bootstrapper and configure the package to use it :
 
 ```php
@@ -404,11 +444,12 @@ class MultitenantBootstrapper implements \Soyhuce\NextIdeHelper\Console\Bootstra
 ```
 
 Now, you just have to add it in you `next-ide-helper.php` config file :
+
 ```php
 'bootstrapper' => \App\Support\MultitenantBootstrapper::class,
 ```
 
-Your bootstrapper benefits from laravel dependency injection in its constructor. 
+Your bootstrapper benefits from laravel dependency injection in its constructor.
 
 # Contributing
 

@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.3.1] - 2020-11-23
+
 ### Added
 
 - next-ide-helper:all command to run all commands
