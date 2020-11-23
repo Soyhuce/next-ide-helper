@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- next-ide-helper:all command to run all commands
+
 ## [0.3.0] - 2020-11-09
 
 ### Added
@@ -13,23 +17,27 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ## [0.2.5] - 2020-09-29
 
 ### Fixed
+
 - Fix self return type in macros
 - Remove extra space after ... in macros
 
 ## [0.2.4] - 2020-09-29
 
 ### Added
+
 - Ability to add docblock methods for Laravel factories
 
 ## [0.2.3] - 2020-09-28
 
 ### Added
+
 - SpatieModelStateResolver to resolve model states from `spatie/laravel-model-states`
 - Ability to add extensions for Laravel factories
 
 ## [0.2.2] - 2020-09-11
 
 ### Fixed
+
 - ParameterReflection::asString when the parameter is variadic
 
 ## [0.2.1] - 2020-08-31
@@ -48,7 +56,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Added
 
-- command `next-ide-helper:aliases` to generate a file helping the ide to understand aliases  
+- command `next-ide-helper:aliases` to generate a file helping the ide to understand aliases
 
 ## [0.1.4] - 2020-07-16
 
@@ -109,6 +117,6 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - Phpstorm Meta :
     - generation of file with meta to provide auto-completion
-    
+
 - Misc :
     - custom bootstrapper
