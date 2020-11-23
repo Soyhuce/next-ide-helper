@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.3.2] - 2020-11-23
+
+### Fixed
+
+- add missing command registration
+
 ## [0.3.1] - 2020-11-23
 
 ### Added
