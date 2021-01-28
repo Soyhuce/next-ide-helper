@@ -25,13 +25,6 @@ class FactoriesCommand extends Command
     {
         $this->bootstrapApplication();
 
-        if (!$this->eloquentFactoryExist()) {
-            $this->info('It looks like you are not using Laravel 8 factories');
-            $this->info('If you are under Laravel 7, check https://github.com/Soyhuce/laravel-8-factories');
-
-            return;
-        }
-
         $factories = new Collection();
         foreach (config('next-ide-helper.factories.directories') as $directory) {
             $factories = $factories->merge($findFactories->execute($directory));
@@ -56,11 +49,6 @@ class FactoriesCommand extends Command
         }
     }
 
-    private function eloquentFactoryExist(): bool
-    {
-        return class_exists(\Illuminate\Database\Eloquent\Factories\Factory::class);
-    }
-
     /**
      * @return array<\Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver>
      */
@@ -78,7 +66,7 @@ class FactoriesCommand extends Command
     private function factoryResolvers(): array
     {
         return collect(config('next-ide-helper.factories.extensions'))
-            ->map(fn (string $class) => new $class())
+            ->map(fn(string $class) => new $class())
             ->toArray();
     }
 }
