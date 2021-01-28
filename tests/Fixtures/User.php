@@ -24,6 +24,7 @@ class User extends Model
 
     protected $casts = [
         'address' => AddressCaster::class,
+        'shipping_address' => Address::class,
     ];
 
     public function posts(): HasMany

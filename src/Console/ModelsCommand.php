@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromCasts;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelQueryBuilder;
@@ -65,13 +66,14 @@ class ModelsCommand extends Command
             [
                 new ResolveModelAttributes(),
                 new ResolveModelAttributesFromGetters(),
+                new ResolveModelAttributesFromCasts(),
                 new ResolveModelCollection(),
                 new ResolveModelQueryBuilder(),
                 new ResolveModelScopes(),
                 new ResolveModelRelations($models),
             ],
             Collection::make(config('next-ide-helper.models.extensions'))
-                ->map(static fn (string $class): ModelResolver => new $class())
+                ->map(static fn(string $class): ModelResolver => new $class())
                 ->toArray()
         );
     }

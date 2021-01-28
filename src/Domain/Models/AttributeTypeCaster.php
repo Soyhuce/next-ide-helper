@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
@@ -88,6 +89,10 @@ class AttributeTypeCaster
             return $this->resolveCustomCast($castType);
         }
 
+        if ($this->isCastable($castType)) {
+            return '\\' . $castType;
+        }
+
         return 'mixed';
     }
 
@@ -152,5 +157,10 @@ class AttributeTypeCaster
         $method = (new ReflectionClass($caster))->getMethod('get');
 
         return FunctionReflection::returnType($method) ?? 'mixed';
+    }
+
+    private function isCastable(string $castType): bool
+    {
+        return class_exists($castType) && in_array(Castable::class, class_implements($castType));
     }
 }

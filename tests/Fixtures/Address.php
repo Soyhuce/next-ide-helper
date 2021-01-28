@@ -2,7 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
-class Address
+use Illuminate\Contracts\Database\Eloquent\Castable;
+
+class Address implements Castable
 {
     private array $values;
 
@@ -14,5 +16,10 @@ class Address
     public function toArray(): array
     {
         return $this->values;
+    }
+
+    public static function castUsing($arguments = []): string
+    {
+        return AddressCaster::class;
     }
 }
