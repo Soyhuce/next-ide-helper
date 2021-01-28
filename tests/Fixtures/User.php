@@ -23,8 +23,8 @@ class User extends Model
     use HasFactory;
 
     protected $casts = [
-        'address' => AddressCaster::class,
-        'shipping_address' => Address::class,
+        'address' => Address::class,
+        'shipping_address' => AddressCaster::class,
     ];
 
     public function posts(): HasMany

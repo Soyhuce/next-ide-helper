@@ -2,6 +2,8 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
+use Illuminate\Support\Str;
+
 class Attribute
 {
     public string $name;
@@ -17,8 +19,18 @@ class Attribute
     public function __construct(string $name, string $type)
     {
         $this->name = $name;
-        $this->type = $type;
+        $this->setType($type);
         $this->nullable = false;
+    }
+
+    public function setType(string $type): void
+    {
+        if (Str::startsWith($type, '?')) {
+            $type = Str::replaceFirst('?', '', $type);
+            $this->nullable = true;
+        }
+
+        $this->type = $type;
     }
 
     public function toUnionType(): string

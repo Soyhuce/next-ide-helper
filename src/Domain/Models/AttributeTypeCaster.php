@@ -38,7 +38,7 @@ class AttributeTypeCaster
                 break;
         }
 
-        $attribute->type = $type;
+        $attribute->setType($type);
 
         return $attribute;
     }

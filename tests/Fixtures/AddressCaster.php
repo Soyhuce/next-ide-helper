@@ -6,7 +6,7 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class AddressCaster implements CastsAttributes
 {
-    public function get($model, string $key, $value, array $attributes): Address
+    public function get($model, string $key, $value, array $attributes): ?Address
     {
         return new Address(json_decode($value, true));
     }

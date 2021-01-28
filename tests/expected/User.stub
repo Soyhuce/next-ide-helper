@@ -15,7 +15,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
- * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address $shipping_address
+ * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
@@ -25,8 +25,8 @@ class User extends Model
     use HasFactory;
 
     protected $casts = [
-        'address' => AddressCaster::class,
-        'shipping_address' => Address::class,
+        'address' => Address::class,
+        'shipping_address' => AddressCaster::class,
     ];
 
     public function posts(): HasMany
