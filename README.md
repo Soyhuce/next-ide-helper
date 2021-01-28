@@ -297,6 +297,8 @@ We already provide an extension for :
 - `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
 - `Spatie\ModelStates\State` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver`.
 
+> `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver` is for `spatie/laravel-model-states^1.0` only. When using `spatie/laravel-model-states:^2.0`, the states will be resolved automatically thanks to the `$casts` attribute.
+
 Just add the extension in the config and re-run the models command:
 
 ```php
