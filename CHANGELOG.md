@@ -4,6 +4,20 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.3.3] - 2021-01-28
+
+### Added
+
+- Support for Castable interface
+
+### Fixed
+
+- Nullable type for custom casts (#15)
+
+### Changed
+
+- Laravel minimum version is now 8.0
+
 ## [0.3.2] - 2020-11-23
 
 ### Fixed
