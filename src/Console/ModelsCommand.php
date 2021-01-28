@@ -73,7 +73,7 @@ class ModelsCommand extends Command
                 new ResolveModelRelations($models),
             ],
             Collection::make(config('next-ide-helper.models.extensions'))
-                ->map(static fn(string $class): ModelResolver => new $class())
+                ->map(static fn (string $class): ModelResolver => new $class())
                 ->toArray()
         );
     }
