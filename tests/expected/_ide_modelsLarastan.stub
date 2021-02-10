@@ -28,6 +28,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User getModel()
      * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User newModelInstance(array $attributes = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User sole(array|string $columns = ['*'])
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User updateOrCreate(array $attributes, array $values = [])
      * @template TModelClass of \Soyhuce\NextIdeHelper\Tests\Fixtures\User
      * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>
