@@ -8,6 +8,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - Attributes with CastsInboundAttribues cast have database defined type.
 
+### Fixed
+
+- Add static for macros when declared static
+
 ## [0.3.3] - 2021-01-28
 
 ### Added

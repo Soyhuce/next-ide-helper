@@ -14,7 +14,7 @@ class SomeMixin
          * @param string the input
          * @return string the input in lowercase
          */
-        return function (string $value): string {
+        return static function (string $value): string {
             return Str::lower($value);
         };
     }

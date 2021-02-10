@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     class SomeMacroable
     {
-        public function foo(string $bar): string
+        public static function foo(string $bar): string
         {
             return Str::upper($bar);
         }
@@ -28,7 +28,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
          * @param string the input
          * @return string the input in lowercase
         */
-        public function toLower(string $value): string
+        public static function toLower(string $value): string
         {
             return Str::lower($value);
         }
