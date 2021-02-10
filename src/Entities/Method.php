@@ -10,7 +10,7 @@ class Method
 {
     public string $name;
 
-    private bool $static = false;
+    private bool $isStatic = false;
 
     public ?array $docblock = null;
 
@@ -34,7 +34,7 @@ class Method
     {
         return self::new($name)
             ->docblock(FunctionReflection::docblock($function))
-            ->static(FunctionReflection::static($function))
+            ->isStatic(FunctionReflection::isStatic($function))
             ->parameters(FunctionReflection::parameters($function))
             ->returnType(FunctionReflection::returnType($function))
             ->body(FunctionReflection::bodyLines($function));
@@ -47,9 +47,9 @@ class Method
         return $this;
     }
 
-    private function static(bool $static): self
+    private function isStatic(bool $isStatic): self
     {
-        $this->static = $static;
+        $this->isStatic = $isStatic;
 
         return $this;
     }
@@ -114,7 +114,7 @@ class Method
     {
         $definition = 'public ';
 
-        if ($this->static) {
+        if ($this->isStatic) {
             $definition .= 'static ';
         }
 

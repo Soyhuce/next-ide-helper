@@ -24,7 +24,7 @@ class FunctionReflection
             ->toArray();
     }
 
-    public static function static(ReflectionFunction $function): bool
+    public static function isStatic(ReflectionFunction $function): bool
     {
         return $function->getClosureThis() === null;
     }
