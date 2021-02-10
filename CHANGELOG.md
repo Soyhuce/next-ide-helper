@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.4.0] - 2021-02-10
+
 ### Added
 
 - Attributes with CastsInboundAttribues cast have database defined type.
