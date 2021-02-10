@@ -7,6 +7,8 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmail(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery wherePassword(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereName(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereNullableName(string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereRememberToken(string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
