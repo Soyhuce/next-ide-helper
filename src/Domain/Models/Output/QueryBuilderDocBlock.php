@@ -40,7 +40,7 @@ class QueryBuilderDocBlock extends DocBlock
             ->merge($this->resultMethods())
             ->when(
                 $this->larastanFriendly(),
-                fn(Collection $collection) => $collection->merge($this->templateBlock())
+                fn (Collection $collection) => $collection->merge($this->templateBlock())
             );
     }
 
@@ -49,7 +49,7 @@ class QueryBuilderDocBlock extends DocBlock
         return $this->docTags()
             ->prepend('/**')
             ->push(' */')
-            ->map(fn(?string $line): string => $this->line($line))
+            ->map(fn (?string $line): string => $this->line($line))
             ->implode('');
     }
 
@@ -120,7 +120,7 @@ class QueryBuilderDocBlock extends DocBlock
             "{$model} sole(array|string \$columns = ['*'])",
             "{$model} updateOrCreate(array \$attributes, array \$values = [])",
         ])
-            ->map(static fn(string $method) => " * @method {$method}");
+            ->map(static fn (string $method) => " * @method {$method}");
     }
 
     private function templateBlock(): Collection
