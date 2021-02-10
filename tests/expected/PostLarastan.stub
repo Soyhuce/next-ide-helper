@@ -13,6 +13,8 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property string|null $subtitle
  * @property string $content
  * @property int $user_id
+ * @property string $likes
+ * @property string|null $address
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property-read string $slug

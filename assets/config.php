@@ -48,6 +48,18 @@ return [
         'extensions' => [],
 
         /**
+         * Add override to define manually attribute type for some models
+         *
+         * Overrides should be declared as follow :
+         * MyModel::class => [
+         *      'attribute' => 'type'
+         * ]
+         *
+         * Prepend the type with '?' to mark it as nullable.
+         */
+        'overrides' => [],
+
+        /**
          * Use Larastan friendly docblock when possible
          */
         'larastan_friendly' => false,

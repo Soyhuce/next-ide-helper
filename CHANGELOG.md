@@ -8,6 +8,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - Attributes with CastsInboundAttribues cast have database defined type.
 - Return type for `sole` method
+- Add ability to override type for model attributes
 
 ### Fixed
 

@@ -19,6 +19,10 @@ class CreatePostsTable extends Migration
             $table->string('subtitle')->nullable();
             $table->text('content');
             $table->unsignedBigInteger('user_id');
+
+            $table->string('likes');
+            $table->json('address')->nullable();
+
             $table->timestamps();
 
             $table->foreign('user_id')
