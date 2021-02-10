@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class AttributeTypeCaster
                 $type = $this->dateClass();
 
                 break;
-            case $this->hasCast($attribute):
+            case $this->hasCast($attribute) && $this->isNotInboundCast($attribute):
                 $type = $this->resolveFromCast($attribute);
 
                 break;
@@ -51,6 +52,11 @@ class AttributeTypeCaster
     private function hasCast(Attribute $attribute): bool
     {
         return $this->model->instance()->hasCast($attribute->name);
+    }
+
+    private function isNotInboundCast(Attribute $attribute): bool
+    {
+        return !is_subclass_of($this->model->instance()->getCasts()[$attribute->name], CastsInboundAttributes::class);
     }
 
     private function resolveFromCast(Attribute $attribute)

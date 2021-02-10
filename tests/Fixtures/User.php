@@ -25,6 +25,8 @@ class User extends Model
     protected $casts = [
         'address' => Address::class,
         'shipping_address' => AddressCaster::class,
+        'name' => Uppercase::class,
+        'nullable_name' => Uppercase::class,
     ];
 
     public function posts(): HasMany
