@@ -20,8 +20,13 @@ class FunctionReflection
         $spaces = Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 1;
 
         return $lines->splice(1, -1)
-            ->map(static fn (string $line) => Str::substr($line, $spaces))
+            ->map(static fn(string $line) => Str::substr($line, $spaces))
             ->toArray();
+    }
+
+    public static function static(ReflectionFunction $function): bool
+    {
+        return $function->getClosureThis() === null;
     }
 
     public static function parameters(ReflectionFunctionAbstract $function): string
@@ -74,7 +79,7 @@ class FunctionReflection
         $spaces = max(Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 4, 0);
 
         return $lines->map(
-            static fn (string $line) => rtrim(Str::of($line)->substr($spaces), PHP_EOL)
+            static fn(string $line) => rtrim(Str::of($line)->substr($spaces), PHP_EOL)
         )->toArray();
     }
 }

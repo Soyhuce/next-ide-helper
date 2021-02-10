@@ -10,6 +10,8 @@ class Method
 {
     public string $name;
 
+    private bool $static = false;
+
     public ?array $docblock = null;
 
     public ?string $parameters = null;
@@ -32,6 +34,7 @@ class Method
     {
         return self::new($name)
             ->docblock(FunctionReflection::docblock($function))
+            ->static(FunctionReflection::static($function))
             ->parameters(FunctionReflection::parameters($function))
             ->returnType(FunctionReflection::returnType($function))
             ->body(FunctionReflection::bodyLines($function));
@@ -40,6 +43,13 @@ class Method
     public function docblock(?array $docblock): self
     {
         $this->docblock = $docblock;
+
+        return $this;
+    }
+
+    private function static(bool $static): self
+    {
+        $this->static = $static;
 
         return $this;
     }
@@ -102,7 +112,13 @@ class Method
 
     private function definition(): string
     {
-        $definition = "public function {$this->name}({$this->parameters})";
+        $definition = 'public ';
+
+        if ($this->static) {
+            $definition .= 'static ';
+        }
+
+        $definition .= "function {$this->name}({$this->parameters})";
 
         if ($this->returnType === null) {
             return $definition;
