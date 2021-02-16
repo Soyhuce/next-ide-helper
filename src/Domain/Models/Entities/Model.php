@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\AttributeCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\RelationCollection;
@@ -60,5 +61,10 @@ class Model
     public function instance(): EloquentModel
     {
         return $this->instance ??= new $this->fqcn();
+    }
+
+    public function softDeletes(): bool
+    {
+        return in_array(SoftDeletes::class, class_uses($this->fqcn));
     }
 }

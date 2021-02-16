@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- Query builder completion for models using `SoftDeletes`
+
 ## [0.4.0] - 2021-02-10
 
 ### Added
