@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string|null $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post create(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null find($id, array $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection findMany($id, array $columns = ['*'])
@@ -30,6 +31,10 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post newModelInstance(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post sole(array|string $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post updateOrCreate(array $attributes, array $values = [])
+ * @method int restore()
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery withTrashed(bool $withTrashed = true)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery withoutTrashed()
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery onlyTrashed()
  */
 class PostQuery extends Builder
 {

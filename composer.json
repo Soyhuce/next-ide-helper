@@ -1,60 +1,61 @@
 {
-    "name": "soyhuce/next-ide-helper",
-    "description": "Laravel ide helper rebuilt under steroids",
-    "keywords": [
-        "laravel",
-        "ide",
-        "autocompletion",
-        "phpdoc",
-        "phpstorm"
-    ],
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Bastien Philippe",
-            "email": "bastien.philippe@soyhuce.fr"
-        }
-    ],
-    "require": {
-        "php": "^7.4|^8.0",
-        "composer/composer": "^1.9|^2.0",
-        "doctrine/dbal": "^2.10",
-        "illuminate/console": "^8.0",
-        "illuminate/database": "^8.0",
-        "illuminate/support": "^8.0",
-        "illuminate/view": "^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.3",
-        "mockery/mockery": "^1.4"
-    },
-    "autoload": {
-        "psr-4": {
-            "Soyhuce\\NextIdeHelper\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
-            ]
-        }
-    },
-    "scripts": {
-        "cs": "vendor/bin/php-cs-fixer fix",
-        "test": "vendor/bin/phpunit"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
+  "name": "soyhuce/next-ide-helper",
+  "description": "Laravel ide helper rebuilt under steroids",
+  "keywords": [
+    "laravel",
+    "ide",
+    "autocompletion",
+    "phpdoc",
+    "phpstorm"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bastien Philippe",
+      "email": "bastien.philippe@soyhuce.fr"
     }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "composer/composer": "^1.9|^2.0",
+    "doctrine/dbal": "^2.10",
+    "illuminate/console": "^8.0",
+    "illuminate/database": "^8.0",
+    "illuminate/support": "^8.0",
+    "illuminate/view": "^8.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.3",
+    "mockery/mockery": "^1.4",
+    "friendsofphp/php-cs-fixer": "^2.18"
+  },
+  "autoload": {
+    "psr-4": {
+      "Soyhuce\\NextIdeHelper\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "cs": "vendor/bin/php-cs-fixer fix",
+    "test": "vendor/bin/phpunit"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
 }

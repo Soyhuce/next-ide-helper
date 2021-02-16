@@ -8,7 +8,6 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class QueryBuilderDocBlock extends DocBlock
 {
@@ -38,6 +37,10 @@ class QueryBuilderDocBlock extends DocBlock
             ->merge($this->attributeScopes())
             ->merge($this->scopeMethods())
             ->merge($this->resultMethods())
+            ->when(
+                $this->model->softDeletes(),
+                fn (Collection $collection) => $collection->merge($this->softDeletesMethods())
+            )
             ->when(
                 $this->larastanFriendly(),
                 fn (Collection $collection) => $collection->merge($this->templateBlock())
@@ -88,9 +91,7 @@ class QueryBuilderDocBlock extends DocBlock
             ->map(function (Method $scope): string {
                 return sprintf(
                     ' * @method %s %s(%s)',
-                    $this->model->queryBuilder->isBuiltIn()
-                        ? IdeHelperFile::eloquentBuilder($this->model->fqcn)
-                        : $this->model->queryBuilder->fqcn,
+                    $this->model->queryBuilder->fqcn,
                     $scope->name,
                     $scope->parameters
                 );
@@ -119,6 +120,19 @@ class QueryBuilderDocBlock extends DocBlock
             "{$model} newModelInstance(array \$attributes = [])",
             "{$model} sole(array|string \$columns = ['*'])",
             "{$model} updateOrCreate(array \$attributes, array \$values = [])",
+        ])
+            ->map(static fn (string $method) => " * @method {$method}");
+    }
+
+    private function softDeletesMethods(): Collection
+    {
+        $builder = $this->model->queryBuilder->fqcn;
+
+        return Collection::make([
+            'int restore()',
+            "${builder} withTrashed(bool \$withTrashed = true)",
+            "${builder} withoutTrashed()",
+            "${builder} onlyTrashed()",
         ])
             ->map(static fn (string $method) => " * @method {$method}");
     }

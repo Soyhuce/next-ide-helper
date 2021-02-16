@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->json('address')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')
                 ->references('id')
