@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Address;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
@@ -37,6 +38,7 @@ class ModelsCommandTest extends TestCase
                     Post::class => [
                         'likes' => 'int',
                         'address' => '?' . Address::class,
+                        'user' => '?' . User::class,
                     ],
                 ],
             ],

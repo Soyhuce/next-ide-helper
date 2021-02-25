@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
+use Illuminate\Support\Str;
 use ReflectionObject;
 
 class Relation
@@ -14,6 +15,8 @@ class Relation
 
     public Model $related;
 
+    public ?string $returnType = null;
+
     public function __construct(string $name, Model $parent, Model $related)
     {
         $this->name = $name;
@@ -23,6 +26,10 @@ class Relation
 
     public function returnType(): string
     {
+        if ($this->returnType !== null) {
+            return $this->returnType;
+        }
+
         $relation = $this->eloquentRelation();
         $relation->initRelation([$this->parent->instance()], $this->name);
         $defaultValue = $this->parent->instance()->getRelation($this->name);
@@ -36,6 +43,14 @@ class Relation
         }
 
         return "{$this->related->fqcn}|null";
+    }
+
+    public function forceReturnType(string $returnType): void
+    {
+        if (Str::startsWith($returnType, '?')) {
+            $returnType = Str::after($returnType, '?') . '|null';
+        }
+        $this->returnType = $returnType;
     }
 
     public function eloquentRelation(): EloquentRelation

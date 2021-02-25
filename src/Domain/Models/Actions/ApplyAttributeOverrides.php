@@ -21,11 +21,14 @@ class ApplyAttributeOverrides implements ModelResolver
     {
         foreach ($this->overridesFor($model) as $name => $type) {
             $attribute = $model->attributes->findByName($name);
-            if ($attribute === null) {
-                continue;
+            if ($attribute !== null) {
+                $attribute->setType($this->format($type));
             }
 
-            $attribute->setType($this->format($type));
+            $relation = $model->relations->findByName($name);
+            if ($relation !== null) {
+                $relation->forceReturnType($this->format($type));
+            }
         }
     }
 

@@ -20,7 +20,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read string $slug
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User $user
+ * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User|null $user
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection all(array|mixed $columns = ['*'])
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery query()
  * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
