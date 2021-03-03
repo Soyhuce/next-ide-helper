@@ -32,5 +32,10 @@ class FactoriesCommandTest extends TestCase
             $this->expectedPath('UserFactory.stub'),
             $this->fixturePath('Factories/UserFactory.php')
         );
+
+        $this->assertFileEquals(
+            $this->expectedPath('CommentFactory.stub'),
+            $this->fixturePath('Factories/CommentFactory.php')
+        );
     }
 }

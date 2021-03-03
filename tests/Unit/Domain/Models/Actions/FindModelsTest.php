@@ -23,7 +23,7 @@ class FindModelsTest extends TestCase
 
         $models = $finder->execute($this->fixturePath());
 
-        $this->assertCount(2, $models);
+        $this->assertCount(3, $models);
     }
 
     /**

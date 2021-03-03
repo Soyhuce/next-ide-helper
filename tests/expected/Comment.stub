@@ -1,0 +1,23 @@
+<?php
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+
+/**
+ * @property int $id
+ * @property string $content
+ * @property string $commentable_type
+ * @property int $commentable_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property-read mixed $commentable
+ */
+class Comment extends Model
+{
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+}

@@ -3,6 +3,36 @@
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereContent(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCommentableType(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCommentableId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment create(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|null find($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment findOrFail($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment findOrNew($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|null first(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrCreate(array $attributes, array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrFail(array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrNew(array $attributes = [], array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment forceCreate(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment getModel()
+     * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment newModelInstance(array $attributes = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment sole(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment updateOrCreate(array $attributes, array $values = [])
+     * @template TModelClass of \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment
+     * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>
+     */
+    class CommentQuery extends \Illuminate\Database\Eloquent\Builder
+    {
+    }
+
+    /**
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereId(int|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmail(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery wherePassword(string $value)
@@ -41,6 +71,13 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 {
     /**
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     */
+    class Comments extends \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+    }
+
+    /**
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
      */
     class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -68,6 +105,14 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     */
+    class Comment
+    {
+    }
+
+    /**
      * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts posts()
@@ -81,6 +126,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
 {
     /**
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\Comments comments()
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User user()
      */
     class Post

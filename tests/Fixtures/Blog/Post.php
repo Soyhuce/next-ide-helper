@@ -4,8 +4,10 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Comment;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 
 class Post extends Model
@@ -20,6 +22,11 @@ class Post extends Model
     public function newCollection(array $models = [])
     {
         return new PostCollection($models);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function user(): BelongsTo

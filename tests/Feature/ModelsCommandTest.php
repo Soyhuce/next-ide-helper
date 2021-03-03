@@ -60,6 +60,11 @@ class ModelsCommandTest extends TestCase
         );
 
         $this->assertFileEquals(
+            $this->expectedPath('Comment.stub'),
+            $this->fixturePath('Comment.php')
+        );
+
+        $this->assertFileEquals(
             $this->expectedPath('PostQuery.stub'),
             $this->fixturePath('Blog/PostQuery.php')
         );
@@ -94,6 +99,11 @@ class ModelsCommandTest extends TestCase
         $this->assertFileEquals(
             $this->expectedPath('User.stub'),
             $this->fixturePath('User.php')
+        );
+
+        $this->assertFileEquals(
+            $this->expectedPath('Comment.stub'),
+            $this->fixturePath('Comment.php')
         );
 
         $this->assertFileEquals(
