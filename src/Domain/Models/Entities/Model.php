@@ -4,10 +4,10 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\AttributeCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\RelationCollection;
 use Soyhuce\NextIdeHelper\Entities\Method;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class Model
 {
@@ -30,7 +30,7 @@ class Model
 
     public function __construct(string $fqcn, string $filePath)
     {
-        $this->fqcn = Str::start($fqcn, '\\');
+        $this->fqcn = Type::qualify($fqcn);
         $this->filePath = $filePath;
         $this->attributes = new AttributeCollection();
         $this->relations = new RelationCollection();

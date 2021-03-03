@@ -3,7 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class QueryBuilder
 {
@@ -13,7 +13,7 @@ class QueryBuilder
 
     public function __construct(string $fqcn, string $filePath)
     {
-        $this->fqcn = Str::start($fqcn, '\\');
+        $this->fqcn = Type::qualify($fqcn);
         $this->filePath = $filePath;
     }
 

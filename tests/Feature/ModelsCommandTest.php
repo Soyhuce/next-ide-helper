@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
+use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Address;
@@ -39,6 +40,7 @@ class ModelsCommandTest extends TestCase
                         'likes' => 'int',
                         'address' => '?' . Address::class,
                         'user' => '?' . User::class,
+                        'created_at' => CarbonInterface::class,
                     ],
                 ],
             ],

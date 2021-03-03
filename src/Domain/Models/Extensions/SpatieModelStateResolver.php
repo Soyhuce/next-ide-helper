@@ -6,7 +6,7 @@ use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Str;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class SpatieModelStateResolver implements ModelResolver
 {
@@ -56,6 +56,6 @@ class SpatieModelStateResolver implements ModelResolver
             return;
         }
 
-        $attribute->type = Str::start($stateClass, '\\');
+        $attribute->type = Type::qualify($stateClass);
     }
 }
