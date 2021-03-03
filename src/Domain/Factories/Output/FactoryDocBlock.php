@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Factories\Output;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
@@ -64,6 +65,10 @@ class FactoryDocBlock extends DocBlock
 
     private function relationHelper(Relation $relation): ?string
     {
+        if ($relation->eloquentRelation() instanceof MorphTo) {
+            return null;
+        }
+
         if ($relation->eloquentRelation() instanceof BelongsTo) {
             return $this->forRelation($relation);
         }

@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
 
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
+use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
@@ -26,11 +27,13 @@ class ResolveModelRelationsTest extends TestCase
 
         $resolveModelRelation->execute($post);
 
-        $this->assertCount(1, $post->relations);
+        $this->assertCount(2, $post->relations);
 
         /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $user */
-        $user = $post->relations->first();
-        $this->assertEquals('user', $user->name);
+        $user = $post->relations->first(function (Relation $relation) {
+            return $relation->name === 'user';
+        });
+        $this->assertNotNull($user);
         $this->assertEquals($post, $user->parent);
         $this->assertEquals($models->findByFqcn(User::class), $user->related);
     }

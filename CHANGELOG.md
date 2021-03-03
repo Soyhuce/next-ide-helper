@@ -7,6 +7,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Fixed
 
 - Correction of the way overrides are exported in docblock when they are an interface or a trait
+- Remove not working tags for MorphTo
 
 ## [0.4.2] - 2021-02-25
 

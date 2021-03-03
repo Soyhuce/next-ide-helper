@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
@@ -21,6 +22,10 @@ class RelationsHelperFile
     {
         /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $relation */
         foreach ($this->model->relations as $relation) {
+            if ($relation->eloquentRelation() instanceof MorphTo) {
+                continue;
+            }
+
             $fakeRelationClass = IdeHelperFile::relation($this->model->fqcn, $relation->name);
 
             $file->getOrAddClass($this->model->fqcn)

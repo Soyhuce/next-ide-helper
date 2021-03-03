@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use Illuminate\Support\Str;
 use ReflectionObject;
@@ -28,6 +29,10 @@ class Relation
     {
         if ($this->returnType !== null) {
             return $this->returnType;
+        }
+
+        if ($this->eloquentRelation() instanceof MorphTo) {
+            return 'mixed';
         }
 
         $relation = $this->eloquentRelation();
