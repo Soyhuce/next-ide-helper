@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class ApplyAttributeOverrides implements ModelResolver
 {
@@ -42,16 +43,12 @@ class ApplyAttributeOverrides implements ModelResolver
 
     private function format(string $type): string
     {
-        $prefix = '';
-        if (Str::startsWith($type, '?')) {
-            $prefix .= '?';
+        if (!Str::startsWith($type, '?')) {
+            return Type::qualify($type);
         }
 
         $type = Str::after($type, '?');
-        if (class_exists($type)) {
-            $prefix .= '\\';
-        }
 
-        return $prefix . $type;
+        return '?' . Type::qualify($type);
     }
 }

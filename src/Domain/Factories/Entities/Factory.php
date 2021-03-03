@@ -4,8 +4,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Factories\Entities;
 
 use Illuminate\Database\Eloquent\Factories\Factory as EloquentFactory;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class Factory
 {
@@ -22,7 +22,7 @@ class Factory
 
     public function __construct(string $fqcn, string $filePath)
     {
-        $this->fqcn = Str::start($fqcn, '\\');
+        $this->fqcn = Type::qualify($fqcn);
         $this->filePath = $filePath;
         $this->extraMethods = new Collection();
     }

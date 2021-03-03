@@ -16,7 +16,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property int $user_id
  * @property int $likes
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $address
- * @property \Illuminate\Support\Carbon $created_at
+ * @property \Carbon\CarbonInterface $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read string $slug

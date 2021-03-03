@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class SpatieEnumResolver implements ModelResolver
 {
@@ -40,7 +41,7 @@ class SpatieEnumResolver implements ModelResolver
         }
 
         [$type, $options] = $this->parseEnumType($enumType);
-        $attribute->type = Str::start($type, '\\');
+        $attribute->type = Type::qualify($type);
         $attribute->nullable = in_array('nullable', $options);
     }
 

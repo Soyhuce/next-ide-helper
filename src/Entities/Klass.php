@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class Klass
 {
@@ -68,7 +69,7 @@ class Klass
         $result .= "    class {$this->name}";
 
         if ($this->extends !== null) {
-            $result .= ' extends ' . Str::start($this->extends, '\\');
+            $result .= ' extends ' . Type::qualify($this->extends);
         }
 
         $result .= ' {';
