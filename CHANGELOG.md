@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.4.3] - 2021-03-03
+
 ### Fixed
 
 - Correction of the way overrides are exported in docblock when they are an interface or a trait
