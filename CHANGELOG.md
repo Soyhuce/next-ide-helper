@@ -8,6 +8,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - In _ide_models file, models do not overwrite real model anymore
 - Add @mixin to model docblock referencing models in _ide_models file
+- Add constructor in _ide_macros files for macroable classes to prevent the ide complaining about constructor
+  arguments (#28)
 
 ### Fixed
 

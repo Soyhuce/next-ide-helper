@@ -3,12 +3,11 @@
 namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Str;
-use ReflectionFunction;
 use ReflectionFunctionAbstract;
 
 class FunctionReflection
 {
-    public static function docblock(ReflectionFunction $function): ?array
+    public static function docblock(ReflectionFunctionAbstract $function): ?array
     {
         $docBlock = $function->getDocComment();
         if ($docBlock === false) {
@@ -24,7 +23,7 @@ class FunctionReflection
             ->toArray();
     }
 
-    public static function isStatic(ReflectionFunction $function): bool
+    public static function isStatic(ReflectionFunctionAbstract $function): bool
     {
         return $function->getClosureThis() === null;
     }
