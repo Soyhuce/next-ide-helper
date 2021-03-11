@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 
 class ModelDocBlock extends DocBlock
 {
@@ -37,9 +38,10 @@ class ModelDocBlock extends DocBlock
             $this->query(),
             $this->queryMixin(),
             $this->factory(),
+            $this->ideHelperModelMixin(),
             ' */',
         ])
-            ->map(fn (?string $line): string => $this->line($line))
+            ->map(fn(?string $line): string => $this->line($line))
             ->implode('');
     }
 
@@ -47,7 +49,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
-            ->map(fn (Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
+            ->map(fn(Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
 
@@ -55,7 +57,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->attributes
             ->onlyReadOnly(true)
-            ->map(fn (Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
+            ->map(fn(Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
 
@@ -73,7 +75,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->relations
             ->sortBy('name')
-            ->map(static fn (Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
+            ->map(static fn(Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
             ->implode(PHP_EOL);
     }
 
@@ -116,7 +118,8 @@ class ModelDocBlock extends DocBlock
             return null;
         }
 
-        if (!in_array(\Illuminate\Database\Eloquent\Factories\HasFactory::class, class_uses_recursive($this->model->fqcn))) {
+        if (!in_array(\Illuminate\Database\Eloquent\Factories\HasFactory::class,
+            class_uses_recursive($this->model->fqcn))) {
             return null;
         }
 
@@ -125,5 +128,10 @@ class ModelDocBlock extends DocBlock
         );
 
         return " * @method static \\{$factory} factory(\$count = 1, \$state = [])";
+    }
+
+    private function ideHelperModelMixin(): string
+    {
+        return ' * @mixin ' . IdeHelperClass::model($this->model->fqcn);
     }
 }

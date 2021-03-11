@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\QueryBuilder;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class QueryBuilderHelperFile
@@ -23,16 +24,16 @@ class QueryBuilderHelperFile
             return;
         }
 
-        $fakeEloquentBuilder = IdeHelperFile::eloquentBuilder($this->model->fqcn);
+        $fakeEloquentBuilder = IdeHelperClass::eloquentBuilder($this->model->fqcn);
         $clone = clone $this->model;
         $clone->queryBuilder = new QueryBuilder($fakeEloquentBuilder, '');
         $queryBuilderDocBlock = new QueryBuilderDocBlock($clone);
 
-        $file->getOrAddClass(IdeHelperFile::eloquentBuilder($this->model->fqcn))
+        $file->getOrAddClass($fakeEloquentBuilder)
             ->extends(EloquentBuilder::class)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
-        $file->getOrAddClass($this->model->fqcn)
+        $file->getOrAddClass(IdeHelperClass::model($this->model->fqcn))
             ->addDocTags(Collection::make([
                 " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",
