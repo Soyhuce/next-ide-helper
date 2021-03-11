@@ -40,6 +40,11 @@ class User extends Model
             ->where('title', 'ilike', '%laravel%');
     }
 
+    public function relationThrowingException(): HasMany
+    {
+        throw new \Exception('Operation not supported');
+    }
+
     public function scopeWhereEmailDomain($query, string $domain, ?string $area = null)
     {
         if ($area !== null) {

@@ -9,6 +9,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - In _ide_models file, models do not overwrite real model anymore
 - Add @mixin to model docblock referencing models in _ide_models file
 
+### Fixed
+
+- Relation throwing an exception do not make the commands to fail anymore but are just ignored
+
 ## [0.4.3] - 2021-03-03
 
 ### Fixed
