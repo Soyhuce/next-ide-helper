@@ -22,21 +22,6 @@ class IdeHelperFile
         $this->namespaces = collect();
     }
 
-    // todo : not here
-    public static function eloquentBuilder(string $modelFqcn): string
-    {
-        return (string) Str::of($modelFqcn)->trim('\\')
-            ->prepend('\\IdeHelper\\')->append('Query');
-    }
-
-    // todo : not here
-    public static function relation(string $modelFqcn, string $relationName): string
-    {
-        return (string) Str::of($modelFqcn)->trim('\\')
-            ->prepend('\\IdeHelper\\')
-            ->append(Str::of($relationName)->studly()->prepend('\\'));
-    }
-
     public function getOrAddClass(string $fqcn): Klass
     {
         $namespace = (string) Str::of($fqcn)
@@ -64,12 +49,12 @@ class IdeHelperFile
     {
         $lines = Collection::make(['<?php', '']);
 
-        $namespaces = $this->namespaces->sortBy(static fn (Nemespace $namespace) => $namespace->getName());
+        $namespaces = $this->namespaces->sortBy(static fn(Nemespace $namespace) => $namespace->getName());
         foreach ($namespaces as $namespace) {
             $lines = $lines->merge($namespace->toArray())->add('');
         }
 
-        $content = $lines->map(fn (string $line) => rtrim($line, ' '))->implode(PHP_EOL);
+        $content = $lines->map(fn(string $line) => rtrim($line, ' '))->implode(PHP_EOL);
         File::put($this->filePath, $content);
     }
 }

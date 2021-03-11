@@ -3,6 +3,14 @@
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     */
+    class Comment
+    {
+    }
+
+    /**
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereId(int|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereContent(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCommentableType(string $value)
@@ -27,6 +35,16 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment updateOrCreate(array $attributes, array $values = [])
      */
     class CommentQuery extends \Illuminate\Database\Eloquent\Builder
+    {
+    }
+
+    /**
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts posts()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts laravelPosts()
+     */
+    class User
     {
     }
 
@@ -64,6 +82,17 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
     }
 }
 
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
+{
+    /**
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\Comments comments()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User user()
+     */
+    class Post
+    {
+    }
+}
+
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 {
     /**
@@ -94,38 +123,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
      */
     class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-    }
-}
-
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures
-{
-    /**
-     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery query()
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
-     */
-    class Comment
-    {
-    }
-
-    /**
-     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts posts()
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts laravelPosts()
-     */
-    class User
-    {
-    }
-}
-
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
-{
-    /**
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\Comments comments()
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User user()
-     */
-    class Post
     {
     }
 }

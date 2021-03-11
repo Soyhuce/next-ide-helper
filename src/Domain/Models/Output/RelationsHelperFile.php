@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Entities\Method;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class RelationsHelperFile
@@ -26,9 +27,9 @@ class RelationsHelperFile
                 continue;
             }
 
-            $fakeRelationClass = IdeHelperFile::relation($this->model->fqcn, $relation->name);
+            $fakeRelationClass = IdeHelperClass::relation($this->model->fqcn, $relation->name);
 
-            $file->getOrAddClass($this->model->fqcn)
+            $file->getOrAddClass(IdeHelperClass::model($this->model->fqcn))
                 ->addDocTag(
                     Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag()
                 );
@@ -48,6 +49,6 @@ class RelationsHelperFile
             return $related->queryBuilder->fqcn;
         }
 
-        return IdeHelperFile::eloquentBuilder($related->fqcn);
+        return IdeHelperClass::eloquentBuilder($related->fqcn);
     }
 }
