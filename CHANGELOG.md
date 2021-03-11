@@ -4,6 +4,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Changed
+
+- In _ide_models file, models do not overwrite real model anymore
+- Add @mixin to model docblock referencing models in _ide_models file
+
 ## [0.4.3] - 2021-03-03
 
 ### Fixed
