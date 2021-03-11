@@ -25,6 +25,11 @@ class MacrosHelperFile
 
             $class->addMethod(Method::fromFunction($name, $macro));
         }
+
+        $constructor = $this->constructor($this->class);
+        if ($constructor !== null) {
+            $class->addMethod($constructor);
+        }
     }
 
     private function macros(): array
@@ -33,5 +38,15 @@ class MacrosHelperFile
         $property->setAccessible(true);
 
         return $property->getValue();
+    }
+
+    private function constructor(ReflectionClass $class): ?Method
+    {
+        $constructor = $class->getConstructor();
+        if ($constructor === null) {
+            return null;
+        }
+
+        return Method::fromMethod('__construct', $constructor);
     }
 }

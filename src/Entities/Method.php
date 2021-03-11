@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
 use ReflectionFunction;
+use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class Method
@@ -38,6 +39,15 @@ class Method
             ->parameters(FunctionReflection::parameters($function))
             ->returnType(FunctionReflection::returnType($function))
             ->body(FunctionReflection::bodyLines($function));
+    }
+
+    public static function fromMethod(string $name, ReflectionMethod $method): self
+    {
+        return self::new($name)
+            ->docblock(FunctionReflection::docblock($method))
+            ->isStatic($method->isStatic())
+            ->parameters(FunctionReflection::parameters($method))
+            ->returnType(FunctionReflection::returnType($method));
     }
 
     public function docblock(?array $docblock): self

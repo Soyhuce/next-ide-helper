@@ -4,6 +4,10 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     class SomeMacroable
     {
+        public function __construct(int $foo)
+        {
+        }
+
         public static function foo(string $bar): string
         {
             return Str::upper($bar);
