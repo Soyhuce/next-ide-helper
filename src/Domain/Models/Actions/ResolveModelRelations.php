@@ -2,12 +2,14 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Exception;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use ReflectionClass;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
+use Soyhuce\NextIdeHelper\Exceptions\UnsupportedRelation;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
 class ResolveModelRelations implements ModelResolver
@@ -38,11 +40,14 @@ class ResolveModelRelations implements ModelResolver
         $methods = $this->findRelationMethods($model);
 
         foreach ($methods as $method) {
-            $model->addRelation(new Relation(
-                $method,
-                $model,
-                $this->findRelatedFromRelation($model, $method)
-            ));
+            try {
+                $model->addRelation(new Relation(
+                    $method,
+                    $model,
+                    $this->findRelatedFromRelation($model, $method)
+                ));
+            } catch (UnsupportedRelation $exception) {
+            }
         }
     }
 
@@ -74,8 +79,13 @@ class ResolveModelRelations implements ModelResolver
 
     private function findRelatedFromRelation(Model $model, string $method): Model
     {
-        /** @var EloquentRelation */
-        $relation = $model->instance()->{$method}();
+        try {
+            /** @var EloquentRelation */
+            $relation = $model->instance()->{$method}();
+        } catch (Exception $exception) {
+            throw new UnsupportedRelation();
+        }
+
         $relatedClass = get_class($relation->getRelated());
 
         $related = $this->models->findByFqcn($relatedClass);
