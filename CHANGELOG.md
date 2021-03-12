@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.5.0] - 2021-03-12
+
 ### Changed
 
 - In _ide_models file, models do not overwrite real model anymore
