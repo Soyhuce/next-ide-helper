@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.5.1] - 2021-03-19
+
 ### Changed
 
 - Add model constructor in _ide_models file
