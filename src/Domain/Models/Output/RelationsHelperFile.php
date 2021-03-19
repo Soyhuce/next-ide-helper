@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
+use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Entities\Method;
@@ -29,7 +30,11 @@ class RelationsHelperFile
 
             $fakeRelationClass = IdeHelperClass::relation($this->model->fqcn, $relation->name);
 
-            $file->getOrAddClass(IdeHelperClass::model($this->model->fqcn))
+            $file->getOrAddClass($this->model->fqcn)
+                ->addMethod(Method::fromMethod(
+                    '__construct',
+                    (new ReflectionClass($this->model->fqcn))->getConstructor()
+                ))
                 ->addDocTag(
                     Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag()
                 );

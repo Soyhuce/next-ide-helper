@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property-read mixed $commentable
- * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment
  */
 class Comment extends Model
 {

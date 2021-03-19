@@ -6,12 +6,6 @@ use Illuminate\Support\Str;
 
 class IdeHelperClass
 {
-    public static function model(string $modelFqcn): string
-    {
-        return (string) Str::of($modelFqcn)->trim('\\')
-            ->prepend('\\IdeHelper\\');
-    }
-
     public static function eloquentBuilder(string $modelFqcn): string
     {
         return (string) Str::of($modelFqcn)->trim('\\')

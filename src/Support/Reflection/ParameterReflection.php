@@ -2,7 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
-use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use ReflectionParameter;
 
 class ParameterReflection
@@ -33,7 +33,7 @@ class ParameterReflection
                 if ($parameter->isDefaultValueConstant()) {
                     $export .= $parameter->getDefaultValueConstantName();
                 } else {
-                    $export .= Str::lower(var_export($parameter->getDefaultValue(), true));
+                    $export .= self::exportValue($parameter->getDefaultValue());
                 }
             } else {
                 $export .= 'null';
@@ -41,5 +41,32 @@ class ParameterReflection
         }
 
         return $export;
+    }
+
+    private static function exportValue($value): string
+    {
+        if ($value === null) {
+            return 'null';
+        }
+        if (!is_array($value)) {
+            return var_export($value, true);
+        }
+        if (!Arr::isAssoc($value)) {
+            return '[' .
+                collect($value)
+                    ->map(function ($item): string {
+                        return self::exportValue($item);
+                    })
+                    ->implode(', ')
+                . ']';
+        }
+
+        return '[' .
+            collect($value)
+                ->map(function ($item, $key): string {
+                    return self::exportValue($key) . ' => ' . self::exportValue($item);
+                })
+                ->implode(', ')
+            . ']';
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 
 class ModelDocBlock extends DocBlock
 {
@@ -38,7 +38,6 @@ class ModelDocBlock extends DocBlock
             $this->query(),
             $this->queryMixin(),
             $this->factory(),
-            $this->ideHelperModelMixin(),
             ' */',
         ])
             ->map(fn (?string $line): string => $this->line($line))
@@ -125,15 +124,8 @@ class ModelDocBlock extends DocBlock
             return null;
         }
 
-        $factory = get_class(
-            ($this->model->fqcn)::factory()
-        );
+        $factory = Factory::resolveFactoryName($this->model->fqcn);
 
         return " * @method static \\{$factory} factory(\$count = 1, \$state = [])";
-    }
-
-    private function ideHelperModelMixin(): string
-    {
-        return ' * @mixin ' . IdeHelperClass::model($this->model->fqcn);
     }
 }

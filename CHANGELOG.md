@@ -4,6 +4,17 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Changed
+
+- Add model constructor in _ide_models file
+- Better export of default parameters in methods
+
+### Fixed
+
+- Do not instanciate the model factory to get its class but use Factory::resolveFactoryName() directly.
+- Revert 0.5.0 : In _ide_models file, models do not overwrite real model anymore
+- Revert 0.5.0 : Add @mixin to model docblock referencing models in _ide_models file
+
 ## [0.5.0] - 2021-03-12
 
 ### Changed

@@ -49,9 +49,13 @@ class Klass
         return $this->name;
     }
 
-    public function addMethod(Method $method)
+    public function addMethod(Method $method): self
     {
-        $this->methods->add($method);
+        if ($this->methods->firstWhere('name', $method->name) === null) {
+            $this->methods->add($method);
+        }
+
+        return $this;
     }
 
     public function toString(): string

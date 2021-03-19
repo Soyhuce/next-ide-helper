@@ -35,4 +35,11 @@ class SomeMixin
             return $this;
         };
     }
+
+    public function havingArrayAsDefaultValue()
+    {
+        return function (array $array = [1, 2, 3, ['some' => 'value']]): void {
+            echo 'hello';
+        };
+    }
 }

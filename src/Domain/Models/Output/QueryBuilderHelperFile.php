@@ -4,8 +4,10 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Collection;
+use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\QueryBuilder;
+use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
@@ -33,7 +35,11 @@ class QueryBuilderHelperFile
             ->extends(EloquentBuilder::class)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
-        $file->getOrAddClass(IdeHelperClass::model($this->model->fqcn))
+        $file->getOrAddClass($this->model->fqcn)
+            ->addMethod(Method::fromMethod(
+                '__construct',
+                (new ReflectionClass($this->model->fqcn))->getConstructor()
+            ))
             ->addDocTags(Collection::make([
                 " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",

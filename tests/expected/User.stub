@@ -21,7 +21,6 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
- * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
  */
 class User extends Model
 {
