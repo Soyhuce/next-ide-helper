@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
@@ -40,7 +41,7 @@ class ModelDocBlock extends DocBlock
             $this->factory(),
             ' */',
         ])
-            ->map(fn (?string $line): string => $this->line($line))
+            ->map(fn(?string $line): string => $this->line($line))
             ->implode('');
     }
 
@@ -48,7 +49,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
-            ->map(fn (Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
+            ->map(fn(Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
 
@@ -56,7 +57,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->attributes
             ->onlyReadOnly(true)
-            ->map(fn (Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
+            ->map(fn(Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
 
@@ -74,7 +75,7 @@ class ModelDocBlock extends DocBlock
     {
         return $this->model->relations
             ->sortBy('name')
-            ->map(static fn (Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
+            ->map(static fn(Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
             ->implode(PHP_EOL);
     }
 
@@ -124,8 +125,8 @@ class ModelDocBlock extends DocBlock
             return null;
         }
 
-        $factory = Factory::resolveFactoryName($this->model->fqcn);
+        $factory = Str::start(Factory::resolveFactoryName($this->model->fqcn), '\\');
 
-        return " * @method static \\{$factory} factory(\$count = 1, \$state = [])";
+        return " * @method static {$factory} factory(\$count = 1, \$state = [])";
     }
 }
