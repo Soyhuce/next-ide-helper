@@ -19,6 +19,9 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.Redis') === null) {
             AliasLoader::getInstance(['RedisManager' => \Illuminate\Support\Facades\Redis::class]);
         }
+        if (config('app.aliases.Date') === null) {
+            AliasLoader::getInstance(['Date' => \Illuminate\Support\Facades\Date::class]);
+        }
 
         config([
             'next-ide-helper.aliases' => [

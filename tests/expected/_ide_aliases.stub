@@ -50,6 +50,10 @@ namespace
     {
     }
 
+    class Date extends \Illuminate\Support\Facades\Date
+    {
+    }
+
     class Eloquent extends \Illuminate\Database\Eloquent\Model
     {
     }
