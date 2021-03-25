@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.5.2] - 2021-03-25
+
 ### Changed
 
 - Fake relation classes in _ide_model do not extend Relation anymore but are marked with @mixin Relation.
