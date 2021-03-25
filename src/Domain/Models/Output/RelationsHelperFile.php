@@ -43,7 +43,7 @@ class RelationsHelperFile
             $file->getOrAddClass($fakeRelationClass)
                 ->addDocTags(Collection::make([
                     " * @mixin {$this->relatedQueryBuilder($relation)}",
-                    " * @mixin " . Type::qualify(get_class($relation->eloquentRelation())),
+                    ' * @mixin ' . Type::qualify(get_class($relation->eloquentRelation())),
                 ]));
         }
     }
