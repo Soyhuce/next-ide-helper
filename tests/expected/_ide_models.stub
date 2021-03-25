@@ -68,15 +68,17 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 {
     /**
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    class Comments extends \Illuminate\Database\Eloquent\Relations\MorphMany
+    class Comments
     {
     }
 
     /**
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    class User extends \Illuminate\Database\Eloquent\Relations\BelongsTo
+    class User
     {
     }
 }
@@ -85,15 +87,17 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
 {
     /**
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    class LaravelPosts extends \Illuminate\Database\Eloquent\Relations\HasMany
+    class LaravelPosts
     {
     }
 
     /**
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    class Posts extends \Illuminate\Database\Eloquent\Relations\HasMany
+    class Posts
     {
     }
 }

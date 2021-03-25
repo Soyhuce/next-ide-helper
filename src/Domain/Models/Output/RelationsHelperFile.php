@@ -10,6 +10,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
+use Soyhuce\NextIdeHelper\Support\Type;
 
 class RelationsHelperFile
 {
@@ -40,9 +41,9 @@ class RelationsHelperFile
                 );
 
             $file->getOrAddClass($fakeRelationClass)
-                ->extends(get_class($relation->eloquentRelation()))
                 ->addDocTags(Collection::make([
                     " * @mixin {$this->relatedQueryBuilder($relation)}",
+                    " * @mixin " . Type::qualify(get_class($relation->eloquentRelation())),
                 ]));
         }
     }
