@@ -44,7 +44,8 @@ class QueryBuilderDocBlock extends DocBlock
             ->when(
                 $this->larastanFriendly(),
                 fn (Collection $collection) => $collection->merge($this->templateBlock())
-            );
+            )
+            ->merge($this->model->queryBuilder->extras);
     }
 
     private function docblock(): string

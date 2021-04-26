@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- Add `extras` in QueryBuilder in order to add more information in query builder doc block.
+
 ## [0.5.2] - 2021-03-25
 
 ### Changed
@@ -19,7 +23,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Fixed
 
-- Do not instanciate the model factory to get its class but use Factory::resolveFactoryName() directly.
+- Do not instantiate the model factory to get its class but use Factory::resolveFactoryName() directly.
 - Revert 0.5.0 : In _ide_models file, models do not overwrite real model anymore
 - Revert 0.5.0 : Add @mixin to model docblock referencing models in _ide_models file
 
