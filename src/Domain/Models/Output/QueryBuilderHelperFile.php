@@ -29,6 +29,7 @@ class QueryBuilderHelperFile
         $fakeEloquentBuilder = IdeHelperClass::eloquentBuilder($this->model->fqcn);
         $clone = clone $this->model;
         $clone->queryBuilder = new QueryBuilder($fakeEloquentBuilder, '');
+        $clone->queryBuilder->extras = $this->model->queryBuilder->extras;
         $queryBuilderDocBlock = new QueryBuilderDocBlock($clone);
 
         $file->getOrAddClass($fakeEloquentBuilder)
