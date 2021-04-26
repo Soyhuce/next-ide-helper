@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.5.3] - 2021-04-26
+
 ### Added
 
 - Add `extras` in QueryBuilder in order to add more information in query builder doc block.
