@@ -26,7 +26,7 @@ class QueryBuilder
         return $this->fqcn === '\\' . EloquentBuilder::class;
     }
 
-    public function addExtras(string $extra): self
+    public function addExtra(string $extra): self
     {
         $this->extras->add($extra);
 
