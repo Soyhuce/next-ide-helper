@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
+use Soyhuce\NextIdeHelper\Tests\Fixtures80\User as User80;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
 /**
@@ -64,5 +65,23 @@ class ResolveModelRelationsTest extends TestCase
         $this->assertEquals('laravelPosts', $laravelPosts->name);
         $this->assertEquals($user, $laravelPosts->parent);
         $this->assertEquals($models->findByFqcn(Post::class), $laravelPosts->related);
+    }
+
+    /**
+     * @test
+     */
+    public function itDoesNotFailWhenModelHaveMethodWithUnionTypeReturn()
+    {
+        $this->onlyForPhp80();
+
+        $finder = new FindModels();
+        $models = $finder->execute($this->fixture80Path());
+        $model = $models->findByFqcn(User80::class);
+
+        $resolveModelRelation = new ResolveModelRelations($models);
+
+        $resolveModelRelation->execute($model);
+
+        $this->assertCount(0, $model->relations);
     }
 }
