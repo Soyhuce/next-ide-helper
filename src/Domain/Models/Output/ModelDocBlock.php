@@ -9,6 +9,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
+use function in_array;
 
 class ModelDocBlock extends DocBlock
 {

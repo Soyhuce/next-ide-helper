@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 trait BootstrapsApplication
 {
-    private function bootstrapApplication()
+    private function bootstrapApplication(): void
     {
         $bootstrapper = config('next-ide-helper.bootstrapper');
 

@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Arr;
 use ReflectionParameter;
+use function is_array;
 
 class ParameterReflection
 {

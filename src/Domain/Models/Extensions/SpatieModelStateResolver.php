@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
+use function in_array;
 
 class SpatieModelStateResolver implements ModelResolver
 {

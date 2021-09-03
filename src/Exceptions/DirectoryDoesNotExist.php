@@ -2,10 +2,12 @@
 
 namespace Soyhuce\NextIdeHelper\Exceptions;
 
-class DirectoryDoesNotExist extends \Exception
+use Exception;
+
+class DirectoryDoesNotExist extends Exception
 {
     public function __construct(string $directory)
     {
-        parent::__construct("Directory ${directory} does not exist");
+        parent::__construct("Directory {$directory} does not exist");
     }
 }

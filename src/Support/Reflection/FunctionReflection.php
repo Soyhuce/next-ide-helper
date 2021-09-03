@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Str;
 use ReflectionFunctionAbstract;
+use function array_slice;
 
 class FunctionReflection
 {

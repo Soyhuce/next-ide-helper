@@ -2,7 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Exceptions;
 
-class CannotConnectDatabase extends \Exception
+use Exception;
+
+class CannotConnectDatabase extends Exception
 {
     public function __construct(string $table, ?string $connection)
     {

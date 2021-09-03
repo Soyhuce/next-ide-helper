@@ -14,7 +14,7 @@ class MetaCommandTest extends TestCase
      * @test
      * @covers ::handle
      */
-    public function theCommandIsSuccessful()
+    public function theCommandIsSuccessful(): void
     {
         config([
             'next-ide-helper.meta' => [

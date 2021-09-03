@@ -10,12 +10,15 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class ResolveModelCollectionTest extends TestCase
 {
     /**
      * @test
      */
-    public function itFindsBuiltinCollection()
+    public function itFindsBuiltinCollection(): void
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -32,7 +35,7 @@ class ResolveModelCollectionTest extends TestCase
     /**
      * @test
      */
-    public function itFindsCustomCollection()
+    public function itFindsCustomCollection(): void
     {
         $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 

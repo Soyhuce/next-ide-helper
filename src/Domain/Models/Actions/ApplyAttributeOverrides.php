@@ -5,12 +5,11 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
+use function get_class;
 
 class ApplyAttributeOverrides implements ModelResolver
 {
-    /**
-     * @var array<string, array<string, string>>
-     */
+    /** @var array<string, array<string, string>> */
     private array $overrides;
 
     public function __construct(array $overrides)

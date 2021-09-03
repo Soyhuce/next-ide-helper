@@ -131,9 +131,9 @@ class QueryBuilderDocBlock extends DocBlock
 
         return Collection::make([
             'int restore()',
-            "${builder} withTrashed(bool \$withTrashed = true)",
-            "${builder} withoutTrashed()",
-            "${builder} onlyTrashed()",
+            "{$builder} withTrashed(bool \$withTrashed = true)",
+            "{$builder} withoutTrashed()",
+            "{$builder} onlyTrashed()",
         ])
             ->map(static fn (string $method) => " * @method {$method}");
     }

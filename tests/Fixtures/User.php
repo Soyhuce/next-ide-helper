@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -42,7 +43,7 @@ class User extends Model
 
     public function relationThrowingException(): HasMany
     {
-        throw new \Exception('Operation not supported');
+        throw new Exception('Operation not supported');
     }
 
     public function scopeWhereEmailDomain($query, string $domain, ?string $area = null)

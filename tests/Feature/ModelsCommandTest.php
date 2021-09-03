@@ -29,7 +29,7 @@ class ModelsCommandTest extends TestCase
     /**
      * @test
      */
-    public function theCommandIsSuccessful()
+    public function theCommandIsSuccessful(): void
     {
         config([
             'next-ide-helper.models' => [
@@ -78,7 +78,7 @@ class ModelsCommandTest extends TestCase
     /**
      * @test
      */
-    public function theCommandIsSuccessfulWithLarastanFriendlyComments()
+    public function theCommandIsSuccessfulWithLarastanFriendlyComments(): void
     {
         config([
             'next-ide-helper.models' => [

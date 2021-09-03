@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Tests;
 
 use Soyhuce\NextIdeHelper\NextIdeHelperServiceProvider;
+use function in_array;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase
 {

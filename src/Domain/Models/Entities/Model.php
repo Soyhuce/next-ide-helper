@@ -8,6 +8,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Collections\AttributeCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\RelationCollection;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Type;
+use function in_array;
 
 class Model
 {

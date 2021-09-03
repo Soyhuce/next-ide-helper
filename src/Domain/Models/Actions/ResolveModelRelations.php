@@ -11,6 +11,8 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Exceptions\UnsupportedRelation;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
+use function get_class;
+use function in_array;
 
 class ResolveModelRelations implements ModelResolver
 {

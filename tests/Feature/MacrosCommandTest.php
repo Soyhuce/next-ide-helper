@@ -8,6 +8,9 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMacroable;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMixin;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class MacrosCommandTest extends TestCase
 {
     protected function setUp(): void
@@ -24,7 +27,7 @@ class MacrosCommandTest extends TestCase
     /**
      * @test
      */
-    public function theCommandIsSuccessful()
+    public function theCommandIsSuccessful(): void
     {
         config([
             'next-ide-helper.macros' => [

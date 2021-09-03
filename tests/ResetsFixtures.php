@@ -15,7 +15,7 @@ trait ResetsFixtures
     {
         $this->backupFixtures();
 
-        $this->beforeApplicationDestroyed(function () {
+        $this->beforeApplicationDestroyed(function (): void {
             $this->restoreFixtures();
         });
     }
@@ -30,7 +30,7 @@ trait ResetsFixtures
 
     public function restoreFixtures(): void
     {
-        $this->fixtureBackup->each(static function (string $content, string $file) {
+        $this->fixtureBackup->each(static function (string $content, string $file): void {
             File::put($file, $content);
         });
     }

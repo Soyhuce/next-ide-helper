@@ -10,7 +10,7 @@ class DocBlock
 {
     use WritesMultiline;
 
-    protected function replacePreviousBlock(string $docBlock, string $fqcn, string $file)
+    protected function replacePreviousBlock(string $docBlock, string $fqcn, string $file): void
     {
         $content = File::get($file);
         $previousDocBlock = $this->previousDocBlock($fqcn);

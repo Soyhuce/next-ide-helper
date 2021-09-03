@@ -8,6 +8,7 @@ use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
+use function array_slice;
 
 class ResolveModelScopes implements ModelResolver
 {
@@ -27,7 +28,7 @@ class ResolveModelScopes implements ModelResolver
     }
 
     /**
-     * @return array<\ReflectionMethod>
+     * @return array<ReflectionMethod>
      */
     private function findScopeMethods(Model $model): array
     {

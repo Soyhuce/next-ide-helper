@@ -16,7 +16,7 @@ class ResolveModelScopesTest extends TestCase
     /**
      * @test
      */
-    public function itFindsScopes()
+    public function itFindsScopes(): void
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -34,7 +34,7 @@ class ResolveModelScopesTest extends TestCase
     /**
      * @test
      */
-    public function modelCanHaveNoScope()
+    public function modelCanHaveNoScope(): void
     {
         $model = new Model(Post::class, $this->fixturePath('/Blog/Post.php'));
 

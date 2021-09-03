@@ -5,6 +5,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Meta\Actions;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use Throwable;
+use function get_class;
+use function is_object;
 
 class ResolveContainerBindings
 {
@@ -27,7 +29,6 @@ class ResolveContainerBindings
     }
 
     /**
-     * @param string $abstract
      * @return mixed|null
      */
     private function resolve(string $abstract)

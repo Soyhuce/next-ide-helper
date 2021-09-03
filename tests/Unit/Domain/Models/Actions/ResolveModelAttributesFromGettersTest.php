@@ -16,7 +16,7 @@ class ResolveModelAttributesFromGettersTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNotResolveAnythingIfModelHasNoGetter()
+    public function itDoesNotResolveAnythingIfModelHasNoGetter(): void
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -30,7 +30,7 @@ class ResolveModelAttributesFromGettersTest extends TestCase
     /**
      * @test
      */
-    public function itDoesResolveReadOnlyAttributes()
+    public function itDoesResolveReadOnlyAttributes(): void
     {
         $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 

@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class AliasesCommandTest extends TestCase
 {
     use ResetsFixtures;
@@ -14,7 +17,7 @@ class AliasesCommandTest extends TestCase
     /**
      * @test
      */
-    public function theCommandIsSuccessful()
+    public function theCommandIsSuccessful(): void
     {
         if (config('app.aliases.Redis') === null) {
             AliasLoader::getInstance(['RedisManager' => \Illuminate\Support\Facades\Redis::class]);
