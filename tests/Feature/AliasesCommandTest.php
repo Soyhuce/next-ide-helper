@@ -22,6 +22,9 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.Date') === null) {
             AliasLoader::getInstance(['Date' => \Illuminate\Support\Facades\Date::class]);
         }
+        if (config('app.aliases.RateLimiter') === null) {
+            AliasLoader::getInstance(['RateLimiter' => \Illuminate\Support\Facades\RateLimiter::class]);
+        }
 
         config([
             'next-ide-helper.aliases' => [
