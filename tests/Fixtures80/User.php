@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    public function intOrString(): int | string
+    public function intOrString(): int|string
     {
         return 'foo';
     }
