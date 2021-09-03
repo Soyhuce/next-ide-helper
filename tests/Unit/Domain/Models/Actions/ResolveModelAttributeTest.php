@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
+use function get_class;
 
 /**
  * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes
@@ -16,7 +17,7 @@ class ResolveModelAttributeTest extends TestCase
     /**
      * @test
      */
-    public function attributesAreResolvedFromDatabase()
+    public function attributesAreResolvedFromDatabase(): void
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 
@@ -30,7 +31,7 @@ class ResolveModelAttributeTest extends TestCase
     /**
      * @test
      */
-    public function timestampsAreCorrectlyResolved()
+    public function timestampsAreCorrectlyResolved(): void
     {
         $model = new Model(User::class, $this->fixturePath('User.php'));
 

@@ -5,6 +5,9 @@ namespace Soyhuce\NextIdeHelper\Tests\Feature;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
+/**
+ * @coversNothing
+ */
 class FactoriesCommandTest extends TestCase
 {
     use ResetsFixtures;
@@ -12,7 +15,7 @@ class FactoriesCommandTest extends TestCase
     /**
      * @test
      */
-    public function theCommandIsSuccessful()
+    public function theCommandIsSuccessful(): void
     {
         config([
             'next-ide-helper.factories' => [

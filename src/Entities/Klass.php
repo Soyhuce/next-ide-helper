@@ -66,7 +66,7 @@ class Klass
             $result .= $this->docTags
                 ->prepend('/**')
                 ->push(' */')
-                ->map(static fn (string $tag): string => "    ${tag}")
+                ->map(static fn (string $tag): string => "    {$tag}")
                 ->implode(PHP_EOL) . PHP_EOL;
         }
 

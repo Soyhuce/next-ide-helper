@@ -13,9 +13,7 @@ class AddressCaster implements CastsAttributes
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
-     * @param string $key
      * @param \Soyhuce\NextIdeHelper\Tests\Fixtures\Address $value
-     * @param array $attributes
      * @return array|false|string
      */
     public function set($model, string $key, $value, array $attributes)

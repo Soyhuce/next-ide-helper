@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use function in_array;
 
 class VirtualAttributeResolver implements ModelResolver
 {
@@ -32,7 +33,7 @@ class VirtualAttributeResolver implements ModelResolver
         return true;
     }
 
-    private function resolveVirtualAttributesFromScopes(Model $model)
+    private function resolveVirtualAttributesFromScopes(Model $model): void
     {
         foreach ($model->scopes as $scope) {
             if (Str::startsWith($scope->name, 'with') && $scope->name !== 'withVirtual') {
@@ -44,7 +45,7 @@ class VirtualAttributeResolver implements ModelResolver
         }
     }
 
-    private function addVirtualAttribute(Model $model, string $attribute)
+    private function addVirtualAttribute(Model $model, string $attribute): void
     {
         $attribute = new Attribute($attribute, 'mixed');
         $attribute->nullable = true; // is attribute really nullable ?

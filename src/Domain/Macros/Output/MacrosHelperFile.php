@@ -16,7 +16,7 @@ class MacrosHelperFile
         $this->class = $class;
     }
 
-    public function amend(IdeHelperFile $ideHelperFile)
+    public function amend(IdeHelperFile $ideHelperFile): void
     {
         $class = $ideHelperFile->getOrAddClass($this->class->getName());
 

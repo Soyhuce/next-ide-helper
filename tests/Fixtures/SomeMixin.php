@@ -9,7 +9,7 @@ class SomeMixin
     public function toLower()
     {
         /**
-         * Convert some string to lowercase
+         * Convert some string to lowercase.
          *
          * @param string the input
          * @return string the input in lowercase

@@ -5,7 +5,9 @@ namespace Soyhuce\NextIdeHelper\Domain\Macros\Actions;
 use Composer\Autoload\ClassMapGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
+use ReflectionClass;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
+use function in_array;
 
 class FindMacroableClasses
 {
@@ -36,7 +38,7 @@ class FindMacroableClasses
             return false;
         }
 
-        $reflectionClass = new \ReflectionClass($class);
+        $reflectionClass = new ReflectionClass($class);
 
         if (!$reflectionClass->hasProperty('macros')) {
             return false;

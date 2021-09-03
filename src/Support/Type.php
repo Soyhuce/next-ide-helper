@@ -2,6 +2,8 @@
 
 namespace Soyhuce\NextIdeHelper\Support;
 
+use function in_array;
+
 class Type
 {
     private static array $builtIn = [

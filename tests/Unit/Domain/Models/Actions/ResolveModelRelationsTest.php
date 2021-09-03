@@ -18,7 +18,7 @@ class ResolveModelRelationsTest extends TestCase
     /**
      * @test
      */
-    public function itFindsModelRelations()
+    public function itFindsModelRelations(): void
     {
         $finder = new FindModels();
         $models = $finder->execute($this->fixturePath());
@@ -42,7 +42,7 @@ class ResolveModelRelationsTest extends TestCase
     /**
      * @test
      */
-    public function itFindsModelCustomRelations()
+    public function itFindsModelCustomRelations(): void
     {
         $finder = new FindModels();
         $models = $finder->execute($this->fixturePath());
@@ -70,7 +70,7 @@ class ResolveModelRelationsTest extends TestCase
     /**
      * @test
      */
-    public function itDoesNotFailWhenModelHaveMethodWithUnionTypeReturn()
+    public function itDoesNotFailWhenModelHaveMethodWithUnionTypeReturn(): void
     {
         $this->onlyForPhp80();
 

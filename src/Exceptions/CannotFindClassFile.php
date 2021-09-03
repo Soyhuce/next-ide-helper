@@ -2,7 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Exceptions;
 
-class CannotFindClassFile extends \Exception
+use Exception;
+
+class CannotFindClassFile extends Exception
 {
     public function __construct(string $class)
     {
