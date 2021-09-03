@@ -4,6 +4,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.5.4] - 2021-09-03
+
+### Added
+
+- Add support for doctrine/dbal:^3.0
+
 ## [0.5.3] - 2021-04-26
 
 ### Added
