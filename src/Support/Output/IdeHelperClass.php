@@ -13,7 +13,7 @@ class IdeHelperClass
         return (string) Str::of($modelFqcn)->trim('\\')
             ->beforeLast($classBasename)
             ->prepend('\\IdeHelper\\')
-            ->append("__${classBasename}Query");
+            ->append("__{$classBasename}Query");
     }
 
     public static function relation(string $modelFqcn, string $relationName): string
