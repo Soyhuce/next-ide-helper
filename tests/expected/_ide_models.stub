@@ -3,12 +3,12 @@
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereId(int|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereContent(string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCommentableType(string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCommentableId(int|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereContent(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCommentableType(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCommentableId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment create(array $attributes = [])
      * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|null find($id, array $columns = ['*'])
      * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
@@ -26,22 +26,22 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment sole(array|string $columns = ['*'])
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment updateOrCreate(array $attributes, array $values = [])
      */
-    class CommentQuery extends \Illuminate\Database\Eloquent\Builder
+    class __CommentQuery extends \Illuminate\Database\Eloquent\Builder
     {
     }
 
     /**
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereId(int|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmail(string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery wherePassword(string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereName(string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereNullableName(string|null $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereRememberToken(string|null $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereShippingAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string|null $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery whereEmailDomain(string $domain, ?string $area = null)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereEmail(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery wherePassword(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereName(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereNullableName(string|null $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereRememberToken(string|null $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereShippingAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string|null $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereEmailDomain(string $domain, ?string $area = null)
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
      * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])
      * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
@@ -59,7 +59,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User sole(array|string $columns = ['*'])
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User updateOrCreate(array $attributes, array $values = [])
      */
-    class UserQuery extends \Illuminate\Database\Eloquent\Builder
+    class __UserQuery extends \Illuminate\Database\Eloquent\Builder
     {
     }
 }
@@ -67,18 +67,18 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
 namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
 {
     /**
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery
      * @mixin \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    class Comments
+    class __Comments
     {
     }
 
     /**
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery
      * @mixin \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    class User
+    class __User
     {
     }
 }
@@ -89,7 +89,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
      * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    class LaravelPosts
+    class __LaravelPosts
     {
     }
 
@@ -97,7 +97,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
      * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
      * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    class Posts
+    class __Posts
     {
     }
 }
@@ -105,8 +105,8 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 {
     /**
-     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery query()
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\CommentQuery
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery
      */
     class Comment
     {
@@ -122,10 +122,10 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
     }
 
     /**
-     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery query()
-     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\UserQuery
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\Posts posts()
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\LaravelPosts laravelPosts()
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__Posts posts()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LaravelPosts laravelPosts()
      */
     class User
     {
@@ -144,8 +144,8 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
 {
     /**
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\Comments comments()
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\User user()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__Comments comments()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__User user()
      */
     class Post
     {
