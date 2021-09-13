@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.6.0] - 2021-09-13
+
 ### Changed
 
 - Prefix generated classes with `__` in order to make them less searchable by the ide.
