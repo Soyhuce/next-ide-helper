@@ -4,6 +4,14 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Changed
+
+- Prefix generated classes with `__` in order to make them less searchable by the ide.
+
+### Fixed
+
+- Don't document magic methods on factories which already exist.
+
 ## [0.5.4] - 2021-09-03
 
 ### Added
