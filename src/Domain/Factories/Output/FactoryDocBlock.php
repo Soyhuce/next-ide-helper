@@ -86,19 +86,31 @@ class FactoryDocBlock extends DocBlock
 
     private function forRelation(Relation $relation): ?string
     {
+        $method = sprintf('for%s', Str::studly($relation->name));
+
+        if (method_exists($this->factory->fqcn, $method)) {
+            return null;
+        }
+
         return sprintf(
-            ' * @method %s for%s($attributes = [])',
+            ' * @method %s %s($attributes = [])',
             $this->factory->fqcn,
-            Str::studly($relation->name)
+            $method
         );
     }
 
-    private function hasRelation(Relation $relation): string
+    private function hasRelation(Relation $relation): ?string
     {
+        $method = sprintf('has%s', Str::studly($relation->name));
+
+        if (method_exists($this->factory->fqcn, $method)) {
+            return null;
+        }
+
         return sprintf(
-            ' * @method %s has%s($count = 1, $attributes = [])',
+            ' * @method %s %s($count = 1, $attributes = [])',
             $this->factory->fqcn,
-            Str::studly($relation->name)
+            $method
         );
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Address;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
+use function is_array;
 
 /**
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User createOne($attributes = [])
@@ -13,7 +14,6 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User makeOne($attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User|\Illuminate\Database\Eloquent\Collection make($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User newModel(array $attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory hasLaravelPosts($count = 1, $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory hasPosts($count = 1, $attributes = [])
  */
 class UserFactory extends Factory
@@ -40,5 +40,17 @@ class UserFactory extends Factory
             ]),
             'remember_token' => Str::random(10),
         ];
+    }
+
+    public function hasLaravelPosts($count = 1, $attributes = []): self
+    {
+        if (is_array($count)) {
+            [$count, $attributes] = [1, $count];
+        }
+
+        return $this->hasPosts(
+            $count,
+            array_merge($attributes, ['title' => 'Laravel : ' . $this->faker->sentence])
+        );
     }
 }
