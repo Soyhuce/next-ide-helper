@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Address;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
+use function is_array;
 
 class UserFactory extends Factory
 {
@@ -31,5 +32,17 @@ class UserFactory extends Factory
             ]),
             'remember_token' => Str::random(10),
         ];
+    }
+
+    public function hasLaravelPosts($count = 1, $attributes = []): self
+    {
+        if (is_array($count)) {
+            [$count, $attributes] = [1, $count];
+        }
+
+        return $this->hasPosts(
+            $count,
+            array_merge($attributes, ['title' => 'Laravel : ' . $this->faker->sentence])
+        );
     }
 }
