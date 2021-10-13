@@ -40,7 +40,7 @@ class ModelsCommandTest extends TestCase
                     Post::class => [
                         'likes' => 'int',
                         'address' => '?' . Address::class,
-                        'user' => '?' . User::class,
+                        'user' => [User::class, null],
                         'created_at' => CarbonInterface::class,
                     ],
                     Comment::class => [

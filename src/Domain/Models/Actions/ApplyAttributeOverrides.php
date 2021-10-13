@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
 use function get_class;
-use function is_array;
 
 class ApplyAttributeOverrides implements ModelResolver
 {
@@ -43,17 +42,18 @@ class ApplyAttributeOverrides implements ModelResolver
 
     private function formats(...$types): string
     {
-        if (is_array($types[0])) {
-            $types = $types[0];
-        }
-
         return collect($types)
-            ->map(fn (string $type) => $this->format($type))
+            ->flatten()
+            ->map(fn (?string $type) => $this->format($type))
             ->join('|');
     }
 
-    private function format(string $type): string
+    private function format(?string $type): string
     {
+        if ($type === null) {
+            return 'null';
+        }
+
         if (!Str::startsWith($type, '?')) {
             return Type::qualify($type);
         }
