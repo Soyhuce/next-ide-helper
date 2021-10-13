@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereCreatedAt(\Carbon\CarbonInterface|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereCommentsCount(int|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post create(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null find($id, array $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection findMany($id, array $columns = ['*'])
