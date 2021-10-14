@@ -16,6 +16,7 @@ class Type
         'resource',
         'string',
         'mixed',
+        'null',
     ];
 
     public static function qualify(string $type): string

@@ -49,10 +49,6 @@ class ApplyAttributeOverrides implements ModelResolver
 
     private function format(?string $type): string
     {
-        if ($type === 'null') {
-            return $type;
-        }
-
         if (!Str::startsWith($type, '?')) {
             return Type::qualify($type);
         }
