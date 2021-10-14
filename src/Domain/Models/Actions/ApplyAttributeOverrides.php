@@ -40,18 +40,17 @@ class ApplyAttributeOverrides implements ModelResolver
         return data_get($this->overrides, get_class($model->instance()), []);
     }
 
-    private function formats(...$types): string
+    private function formats(string $types): string
     {
-        return collect($types)
-            ->flatten()
+        return collect(explode('|', $types))
             ->map(fn (?string $type) => $this->format($type))
             ->join('|');
     }
 
     private function format(?string $type): string
     {
-        if ($type === null) {
-            return 'null';
+        if ($type === 'null') {
+            return $type;
         }
 
         if (!Str::startsWith($type, '?')) {
