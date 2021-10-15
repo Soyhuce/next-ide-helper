@@ -22,12 +22,12 @@ class ApplyAttributeOverrides implements ModelResolver
         foreach ($this->overridesFor($model) as $name => $type) {
             $attribute = $model->attributes->findByName($name);
             if ($attribute !== null) {
-                $attribute->setType($this->formats($type));
+                $attribute->setType($this->formatTypes($type));
             }
 
             $relation = $model->relations->findByName($name);
             if ($relation !== null) {
-                $relation->forceReturnType($this->formats($type));
+                $relation->forceReturnType($this->formatTypes($type));
             }
         }
     }
@@ -40,11 +40,15 @@ class ApplyAttributeOverrides implements ModelResolver
         return data_get($this->overrides, get_class($model->instance()), []);
     }
 
-    private function formats(string $types): string
+    private function formatTypes(string $types): string
     {
-        return collect(explode('|', $types))
-            ->map(fn (?string $type) => $this->format($type))
-            ->join('|');
+        return preg_replace_callback(
+            '/[^|&]+/',
+            function(array $match) {
+                return $this->format($match[0]);
+            },
+            $types,
+        );
     }
 
     private function format(?string $type): string
