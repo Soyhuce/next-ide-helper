@@ -51,7 +51,7 @@ class ApplyAttributeOverrides implements ModelResolver
         );
     }
 
-    private function format(?string $type): string
+    private function format(string $type): string
     {
         if (!Str::startsWith($type, '?')) {
             return Type::qualify($type);
