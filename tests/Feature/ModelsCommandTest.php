@@ -4,9 +4,12 @@ namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Address;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Comment;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Commentable;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
@@ -39,8 +42,11 @@ class ModelsCommandTest extends TestCase
                     Post::class => [
                         'likes' => 'int',
                         'address' => '?' . Address::class,
-                        'user' => '?' . User::class,
+                        'user' => User::class . '|null',
                         'created_at' => CarbonInterface::class,
+                    ],
+                    Comment::class => [
+                        'commentable' => Commentable::class . '&' . Model::class,
                     ],
                 ],
             ],
@@ -102,7 +108,7 @@ class ModelsCommandTest extends TestCase
         );
 
         $this->assertFileEquals(
-            $this->expectedPath('Comment.stub'),
+            $this->expectedPath('CommentLarastan.stub'),
             $this->fixturePath('Comment.php')
         );
 

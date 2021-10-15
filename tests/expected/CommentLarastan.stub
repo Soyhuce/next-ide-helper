@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int $commentable_id
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Commentable&\Illuminate\Database\Eloquent\Model $commentable
+ * @property-read mixed $commentable
  */
 class Comment extends Model
 {
