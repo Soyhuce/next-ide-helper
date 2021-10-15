@@ -44,7 +44,7 @@ class ApplyAttributeOverrides implements ModelResolver
     {
         return preg_replace_callback(
             '/[^|&]+/',
-            function(array $match) {
+            function (array $match) {
                 return $this->format($match[0]);
             },
             $types,

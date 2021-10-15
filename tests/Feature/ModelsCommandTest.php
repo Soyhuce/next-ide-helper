@@ -46,7 +46,7 @@ class ModelsCommandTest extends TestCase
                         'created_at' => CarbonInterface::class,
                     ],
                     Comment::class => [
-                        'commentable' => Commentable::class . '&'. Model::class,
+                        'commentable' => Commentable::class . '&' . Model::class,
                     ],
                 ],
             ],
