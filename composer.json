@@ -27,6 +27,7 @@
   },
   "require-dev": {
     "bamarni/composer-bin-plugin": "^1.4",
+    "mockery/mockery": "^1.4",
     "orchestra/testbench": "^6.4",
     "phpunit/phpunit": "^9.5"
   },
