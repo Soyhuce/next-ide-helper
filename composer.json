@@ -46,9 +46,6 @@
       "providers": [
         "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
       ]
-    },
-    "branch-alias": {
-      "dev-main": "dev-master"
     }
   },
   "scripts": {
