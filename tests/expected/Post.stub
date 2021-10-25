@@ -22,6 +22,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read string $slug
+ * @property-read mixed $mixed
  * @property-read \Illuminate\Database\Eloquent\Collection<\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> $comments
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User|null $user
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection all(array|mixed $columns = ['*'])
@@ -55,5 +56,10 @@ class Post extends Model
     public function getSlugAttribute(): string
     {
         return Str::slug($this->title);
+    }
+
+    public function getMixedAttribute()
+    {
+        return 'foo';
     }
 }

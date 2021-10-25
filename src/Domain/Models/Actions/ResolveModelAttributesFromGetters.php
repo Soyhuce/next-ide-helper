@@ -18,18 +18,21 @@ class ResolveModelAttributesFromGetters implements ModelResolver
         /** @var ReflectionMethod $getter */
         foreach ($getters as $getter) {
             $name = $this->extractAttribute($getter->getName());
+
+            $returnType = $getter->getReturnType();
+            [$type, $nullable] = $returnType === null
+                ? ['mixed', false]
+                : [TypeReflection::asString($returnType), $returnType->allowsNull()];
+
             $attribute = $model->attributes->findByName($name);
             if ($attribute === null) {
-                $attribute = new Attribute(
-                    $name,
-                    TypeReflection::asString($getter->getReturnType())
-                );
+                $attribute = new Attribute($name, $type);
                 $attribute->readOnly = true;
-                $attribute->nullable = $getter->getReturnType()->allowsNull();
+                $attribute->nullable = $nullable;
                 $model->addAttribute($attribute);
             } else {
-                $attribute->type = TypeReflection::asString($getter->getReturnType());
-                $attribute->nullable = $getter->getReturnType()->allowsNull();
+                $attribute->type = $type;
+                $attribute->nullable = $nullable;
             }
         }
     }
@@ -52,9 +55,10 @@ class ResolveModelAttributesFromGetters implements ModelResolver
             && $name !== 'getAttribute';
     }
 
-    private function extractAttribute(string $getterName)
+    private function extractAttribute(string $getterName): string
     {
-        return Str::of($getterName)->replaceFirst('get', '')
+        return (string) Str::of($getterName)
+            ->replaceFirst('get', '')
             ->replaceLast('Attribute', '')
             ->snake();
     }

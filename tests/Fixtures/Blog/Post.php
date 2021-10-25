@@ -38,4 +38,9 @@ class Post extends Model
     {
         return Str::slug($this->title);
     }
+
+    public function getMixedAttribute()
+    {
+        return 'foo';
+    }
 }

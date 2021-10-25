@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Fixed
+
+- Property type is mixed when getPropertyAttribute does not define its return type.
+
 ## [0.6.1] - 2021-10-15
 
 ### Changed

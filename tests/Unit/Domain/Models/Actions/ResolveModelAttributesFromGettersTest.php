@@ -38,7 +38,7 @@ class ResolveModelAttributesFromGettersTest extends TestCase
 
         $resolveAttributes->execute($model);
 
-        $this->assertCount(1, $model->attributes);
+        $this->assertCount(2, $model->attributes);
 
         /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute $attribute */
         $attribute = $model->attributes->first();
