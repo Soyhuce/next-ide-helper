@@ -21,4 +21,3 @@ class User extends Model
         'name' => Name::class,
     ];
 }
-
