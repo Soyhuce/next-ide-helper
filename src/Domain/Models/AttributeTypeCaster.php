@@ -12,6 +12,7 @@ use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
+use function function_exists;
 use function get_class;
 use function in_array;
 
@@ -98,6 +99,10 @@ class AttributeTypeCaster
         }
 
         if ($this->isCastable($castType)) {
+            return '\\' . $castType;
+        }
+
+        if (function_exists('enum_exists') && enum_exists($castType)) {
             return '\\' . $castType;
         }
 

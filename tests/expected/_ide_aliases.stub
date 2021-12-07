@@ -78,6 +78,10 @@ namespace
     {
     }
 
+    class Js extends \Illuminate\Support\Js
+    {
+    }
+
     class Lang extends \Illuminate\Support\Facades\Lang
     {
     }
