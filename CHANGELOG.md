@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.6.3] - 2021-12-07
+
 ### Added
 
 - Support for Enum casting
