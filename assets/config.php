@@ -39,11 +39,6 @@ return [
         /**
          * List of the extensions you want to use to tweak the way models are resolved
          * The extensions must implement \Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver
-         *
-         * Some extensions are already available :
-         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver
-         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver
-         * - Soyhuce\NextIdeHelper\Domain\Models\Extensions\VirtualAttributeResolver
          */
         'extensions' => [],
 

@@ -8,6 +8,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - Laravel 9 support
 
+### Removed
+
+- All the built-in Model extensions
+
 ## [0.6.3] - 2021-12-07
 
 ### Added
