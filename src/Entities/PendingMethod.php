@@ -22,7 +22,7 @@ class PendingMethod
 
     public static function new(string $name): self
     {
-        return new static($name);
+        return new self($name);
     }
 
     public function params(?string $params): self
