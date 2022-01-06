@@ -12,8 +12,10 @@ class Klass
 
     private ?string $extends = null;
 
+    /** @var \Illuminate\Support\Collection<int, string>  */
     private Collection $docTags;
 
+    /** @var \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Entities\Method>  */
     private Collection $methods;
 
     public function __construct(string $name)
@@ -115,7 +117,7 @@ class Klass
             return collect();
         }
 
-        return collect($this->docTags)
+        return (new Collection($this->docTags))
             ->prepend('/**')
             ->push(' */');
     }
