@@ -7,7 +7,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
 
 /**
- * @extends \Illuminate\Support\Collection<\Soyhuce\IdeHelper\Domain\Models\Entities\Model>
+ * @extends \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Domain\Models\Entities\Model>
  */
 class ModelCollection extends Collection
 {

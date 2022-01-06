@@ -7,9 +7,10 @@ parameters:
     - src
 
   # Level 9 is max
-  level: 1
+  level: 2
 
   ignoreErrors:
+    - '#Call to an undefined method ReflectionType::isBuiltin\(\)\.#'
 
   checkMissingIterableValueType: true
   checkGenericClassInNonGenericObjectType: false
