@@ -38,7 +38,7 @@ class ResolveModelScopes implements ModelResolver
             ->all();
     }
 
-    private function isScope(string $name): string
+    private function isScope(string $name): bool
     {
         return Str::startsWith($name, 'scope');
     }
