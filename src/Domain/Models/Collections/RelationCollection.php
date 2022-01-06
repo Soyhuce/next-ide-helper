@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 
 /**
- * @extends \Illuminate\Support\Collection<\Soyhuce\IdeHelper\Domain\Models\Relation>
+ * @extends \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation>
  */
 class RelationCollection extends Collection
 {

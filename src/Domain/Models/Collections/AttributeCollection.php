@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 
 /**
- * @extends \Illuminate\Support\Collection<\Soyhuce\IdeHelper\Domain\Models\Attribute>
+ * @extends \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute>
  */
 class AttributeCollection extends Collection
 {
