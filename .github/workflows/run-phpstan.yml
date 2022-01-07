@@ -13,4 +13,8 @@ jobs:
         uses: php-actions/composer@v6
 
       - name: PHPStan Static Analysis
-        run: ./vendor/bin/phpstan analyse --memory-limit=512M --error-format=github
+        uses: php-actions/phpstan@v3
+        with:
+          path: src/
+          autoload_file: vendor-bin/phpstan/vendor/autoload.php
+          memory_limit: 512M
