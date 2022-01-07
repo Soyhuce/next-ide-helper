@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
 use Exception;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,6 +20,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
+ * @property-read string|null $city
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
@@ -37,6 +39,13 @@ class User extends Model
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function city(): Attribute
+    {
+        return new Attribute(
+            get: fn (): ?string => $this->address->city()
+        );
     }
 
     public function laravelPosts(): HasMany

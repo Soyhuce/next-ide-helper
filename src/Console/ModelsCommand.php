@@ -8,6 +8,7 @@ use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ApplyAttributeOverrides;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromAttributes;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromCasts;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelCollection;
@@ -70,6 +71,7 @@ class ModelsCommand extends Command
             [
                 new ResolveModelAttributes(),
                 new ResolveModelAttributesFromGetters(),
+                new ResolveModelAttributesFromAttributes(),
                 new ResolveModelAttributesFromCasts(),
                 new ResolveModelCollection(),
                 new ResolveModelQueryBuilder(),

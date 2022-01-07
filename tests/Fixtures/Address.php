@@ -13,6 +13,11 @@ class Address implements Castable
         $this->values = $values;
     }
 
+    public function city(): ?string
+    {
+        return $this->values['city'] ?? '';
+    }
+
     public function toArray(): array
     {
         return $this->values;
