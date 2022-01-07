@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.7.0] - 2022-01-07
+
 ### Added
 
 - Laravel 9 support
