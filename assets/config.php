@@ -6,7 +6,7 @@ return [
      * The bootstrapper use to boot your application before running analyses.
      * You may want, for exemple, to setup a database for your tenant model in
      * case of multitenant application.
-     * The class must implement \Soyhuce\NextIdeHelper\Console\Bootstrapper
+     * The class must implement \Soyhuce\NextIdeHelper\Contracts\Bootstrapper
      */
     'bootstrapper' => null,
 
@@ -38,7 +38,7 @@ return [
 
         /**
          * List of the extensions you want to use to tweak the way models are resolved
-         * The extensions must implement \Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver
+         * The extensions must implement \Soyhuce\NextIdeHelper\Contracts\ModelResolver
          */
         'extensions' => [],
 
@@ -99,7 +99,7 @@ return [
 
         /**
          * List of the extensions you want to use to tweak the way models are resolved
-         * The extensions must implement \Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver
+         * The extensions must implement \Soyhuce\NextIdeHelper\Contracts\FactoryResolver
          */
         'extensions' => [],
     ],

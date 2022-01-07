@@ -8,6 +8,9 @@ use function array_slice;
 
 class FunctionReflection
 {
+    /**
+     * @return array<string>|null
+     */
     public static function docblock(ReflectionFunctionAbstract $function): ?array
     {
         $docBlock = $function->getDocComment();
@@ -64,6 +67,9 @@ class FunctionReflection
         return $returnType;
     }
 
+    /**
+     * @return array<string>
+     */
     public static function bodyLines(ReflectionFunctionAbstract $function): array
     {
         $filename = $function->getFileName();

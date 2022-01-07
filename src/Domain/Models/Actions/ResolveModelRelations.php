@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use ReflectionClass;
 use ReflectionMethod;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
@@ -18,6 +19,7 @@ class ResolveModelRelations implements ModelResolver
 {
     private ModelCollection $models;
 
+    /** @var array<string> */
     private array $relationsMethods = [
         'hasOne',
         'hasOneThrough',

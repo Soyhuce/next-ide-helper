@@ -426,7 +426,7 @@ columns.
 In that case, you just have to create your own bootstrapper and configure the package to use it :
 
 ```php
-class MultitenantBootstrapper implements \Soyhuce\NextIdeHelper\Console\Bootstrapper 
+class MultitenantBootstrapper implements \Soyhuce\NextIdeHelper\Contracts\Bootstrapper 
 {
     private Tenancy $tenancy;
 

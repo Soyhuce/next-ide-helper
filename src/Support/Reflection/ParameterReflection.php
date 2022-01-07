@@ -44,7 +44,7 @@ class ParameterReflection
         return $export;
     }
 
-    private static function exportValue($value): string
+    private static function exportValue(mixed $value): string
     {
         if ($value === null) {
             return 'null';

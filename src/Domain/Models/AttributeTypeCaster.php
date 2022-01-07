@@ -62,7 +62,7 @@ class AttributeTypeCaster
         return !is_subclass_of($this->model->instance()->getCasts()[$attribute->name], CastsInboundAttributes::class);
     }
 
-    private function resolveFromCast(Attribute $attribute)
+    private function resolveFromCast(Attribute $attribute): string
     {
         $castType = $this->model->instance()->getCasts()[$attribute->name];
 
@@ -109,7 +109,7 @@ class AttributeTypeCaster
         return 'mixed';
     }
 
-    private function resolveFromDatabaseType(Attribute $attribute)
+    private function resolveFromDatabaseType(Attribute $attribute): string
     {
         switch (Str::lower($attribute->type)) {
             case 'char':

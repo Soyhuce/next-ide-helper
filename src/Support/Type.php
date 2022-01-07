@@ -6,6 +6,7 @@ use function in_array;
 
 class Type
 {
+    /** @var array<string> */
     private static array $builtIn = [
         'array',
         'bool',

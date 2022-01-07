@@ -32,6 +32,9 @@ class MacrosHelperFile
         }
     }
 
+    /**
+     * @return array<string, callable>
+     */
     private function macros(): array
     {
         $property = $this->class->getProperty('macros');
