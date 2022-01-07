@@ -62,6 +62,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
+            ->onlyInDatabase(true)
             ->map(function (Attribute $attribute): string {
                 return sprintf(
                     ' * @method %s where%s(%s $value)',

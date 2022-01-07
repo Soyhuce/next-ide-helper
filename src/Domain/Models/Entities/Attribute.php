@@ -14,6 +14,10 @@ class Attribute
 
     public bool $readOnly = false;
 
+    public bool $writeOnly = false;
+
+    public bool $inDatabase = false;
+
     public ?string $comment = null;
 
     public function __construct(string $name, string $type)

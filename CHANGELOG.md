@@ -7,11 +7,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Added
 
 - Laravel 9 support
-- Support for attribute accessor via \Illuminate\Database\Eloquent\Casts\Attribute
+- Support for attribute accessor and mutators via \Illuminate\Database\Eloquent\Casts\Attribute
 
-### Removed
+### Fixed
 
-- All the built-in Model extensions
+- Delete where* query helper from mutated attributes which does not exist in database 
 
 ### Changed
 
@@ -19,6 +19,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - Soyhuce\NextIdeHelper\Console\Bootstrapper moved to Soyhuce\NextIdeHelper\Contracts\Bootstrapper
 - Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver moved to Soyhuce\NextIdeHelper\Contracts\ModelResolver
 - Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to Soyhuce\NextIdeHelper\Contracts\FactoryResolver
+
+### Removed
+
+- All the built-in Model extensions
 
 ## [0.6.3] - 2021-12-07
 
