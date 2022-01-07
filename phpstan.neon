@@ -7,7 +7,7 @@ parameters:
     - src
 
   # Level 9 is max
-  level: 3
+  level: 4
 
   ignoreErrors:
     - '#Call to an undefined method ReflectionType::isBuiltin\(\)\.#'

@@ -12,10 +12,10 @@ class Klass
 
     private ?string $extends = null;
 
-    /** @var \Illuminate\Support\Collection<int, string>  */
+    /** @var \Illuminate\Support\Collection<int, string> */
     private Collection $docTags;
 
-    /** @var \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Entities\Method>  */
+    /** @var \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Entities\Method> */
     private Collection $methods;
 
     public function __construct(string $name)

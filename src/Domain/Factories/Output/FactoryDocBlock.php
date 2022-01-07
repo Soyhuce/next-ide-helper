@@ -54,7 +54,7 @@ class FactoryDocBlock extends DocBlock
         ])->implode(PHP_EOL);
     }
 
-    private function relations(): ?string
+    private function relations(): string
     {
         return $this->factory->model->relations
             ->map(fn (Relation $relation) => $this->relationHelper($relation))
