@@ -13,21 +13,26 @@ class FindModels
 {
     public function execute(string $dirPath): ModelCollection
     {
-        if (!file_exists($dirPath) || !is_dir($dirPath)) {
+        if (!is_dir($dirPath)) {
             throw new DirectoryDoesNotExist($dirPath);
         }
 
         $models = new ModelCollection();
 
         foreach (ClassMapGenerator::createMap($dirPath) as $class => $path) {
-            if ($this->isEloquentModel($class)) {
-                $models->add(new Model($class, realpath($path)));
+            $path = realpath($path);
+
+            if ($this->isEloquentModel($class) && $path !== false) {
+                $models->add(new Model($class, $path));
             }
         }
 
         return $models;
     }
 
+    /**
+     * @param class-string $class
+     */
     private function isEloquentModel(string $class): bool
     {
         $reflexion = new ReflectionClass($class);

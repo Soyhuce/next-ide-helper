@@ -12,6 +12,7 @@ use function in_array;
 
 class Model
 {
+    /** @var class-string<\Illuminate\Database\Eloquent\Model> */
     public string $fqcn;
 
     public string $filePath;
@@ -29,6 +30,9 @@ class Model
 
     private ?EloquentModel $instance = null;
 
+    /**
+     * @param class-string<\Illuminate\Database\Eloquent\Model> $fqcn
+     */
     public function __construct(string $fqcn, string $filePath)
     {
         $this->fqcn = Type::qualify($fqcn);
@@ -66,6 +70,6 @@ class Model
 
     public function softDeletes(): bool
     {
-        return in_array(SoftDeletes::class, class_uses($this->fqcn));
+        return in_array(SoftDeletes::class, class_uses_recursive($this->fqcn));
     }
 }

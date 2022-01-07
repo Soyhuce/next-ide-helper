@@ -13,21 +13,26 @@ class FindFactories
 {
     public function execute(string $dirPath): Collection
     {
-        if (!file_exists($dirPath) || !is_dir($dirPath)) {
+        if (!is_dir($dirPath)) {
             throw new DirectoryDoesNotExist($dirPath);
         }
 
         $factories = new Collection();
 
         foreach (ClassMapGenerator::createMap($dirPath) as $class => $path) {
-            if ($this->isEloquentFactory($class)) {
-                $factories->add(new Factory($class, realpath($path)));
+            $path = realpath($path);
+
+            if ($this->isEloquentFactory($class) && $path !== false) {
+                $factories->add(new Factory($class, $path));
             }
         }
 
         return $factories->sortBy(fn (Factory $factory) => $factory->fqcn);
     }
 
+    /**
+     * @param class-string $class
+     */
     private function isEloquentFactory(string $class): bool
     {
         $reflexion = new ReflectionClass($class);

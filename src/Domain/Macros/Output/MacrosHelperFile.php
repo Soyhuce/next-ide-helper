@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Macros\Output;
 
+use Closure;
 use ReflectionClass;
 use ReflectionFunction;
 use Soyhuce\NextIdeHelper\Entities\Method;
@@ -33,7 +34,7 @@ class MacrosHelperFile
     }
 
     /**
-     * @return array<string, callable>
+     * @return array<string, Closure>
      */
     private function macros(): array
     {

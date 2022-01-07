@@ -100,6 +100,9 @@ class ResolveModelRelations implements ModelResolver
         return $related;
     }
 
+    /**
+     * @param class-string<\Illuminate\Database\Eloquent\Model> $class
+     */
     private function resolveOutsideModel(string $class): Model
     {
         $model = new Model($class, '/dev/null');
