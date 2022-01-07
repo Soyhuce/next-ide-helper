@@ -41,6 +41,16 @@ parameters:
 			path: src/Domain/Models/Output/QueryBuilderHelperFile.php
 
 		-
+			message: "#^Parameter \\#2 \\$method of static method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:fromMethod\\(\\) expects ReflectionMethod, ReflectionMethod\\|null given\\.$#"
+			count: 1
+			path: src/Domain/Models/Output/QueryBuilderHelperFile.php
+
+		-
+			message: "#^Parameter \\#2 \\$method of static method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:fromMethod\\(\\) expects ReflectionMethod, ReflectionMethod\\|null given\\.$#"
+			count: 1
+			path: src/Domain/Models/Output/RelationsHelperFile.php
+
+		-
 			message: "#^Call to an undefined method ReflectionType\\:\\:isBuiltin\\(\\)\\.$#"
 			count: 1
 			path: src/Support/Reflection/TypeReflection.php
