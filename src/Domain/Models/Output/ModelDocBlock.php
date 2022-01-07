@@ -36,6 +36,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             '/**',
             $this->properties(),
             $this->propertiesRead(),
+            $this->propertiesWrite(),
             $this->relations(),
             $this->all(),
             $this->query(),
@@ -51,6 +52,7 @@ class ModelDocBlock extends DocBlock implements Renderer
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
+            ->onlyWriteOnly(false)
             ->map(fn (Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
@@ -59,7 +61,17 @@ class ModelDocBlock extends DocBlock implements Renderer
     {
         return $this->model->attributes
             ->onlyReadOnly(true)
+            ->onlyWriteOnly(false)
             ->map(fn (Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
+            ->implode(PHP_EOL);
+    }
+
+    private function propertiesWrite(): string
+    {
+        return $this->model->attributes
+            ->onlyReadOnly(false)
+            ->onlyWriteOnly(true)
+            ->map(fn (Attribute $attribute) => ' * @property-write ' . $this->propertyLine($attribute))
             ->implode(PHP_EOL);
     }
 

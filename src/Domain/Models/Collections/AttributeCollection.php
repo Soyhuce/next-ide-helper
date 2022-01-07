@@ -19,4 +19,14 @@ class AttributeCollection extends Collection
     {
         return $this->filter(static fn (Attribute $attribute): bool => $attribute->readOnly === $readOnly);
     }
+
+    public function onlyWriteOnly(bool $writeOnly = true): static
+    {
+        return $this->filter(static fn (Attribute $attribute): bool => $attribute->writeOnly === $writeOnly);
+    }
+
+    public function onlyInDatabase(bool $inDatabase): static
+    {
+        return $this->filter(static fn (Attribute $attribute): bool => $attribute->inDatabase === $inDatabase);
+    }
 }

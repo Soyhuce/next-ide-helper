@@ -40,7 +40,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereRememberToken(string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereShippingAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereEmailDomain(string $domain, ?string $area = null)
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
      * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])

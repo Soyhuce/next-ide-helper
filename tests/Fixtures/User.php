@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 
 /**
@@ -40,6 +42,21 @@ class User extends Model
     {
         return new Attribute(
             get: fn (): ?string => $this->address->city()
+        );
+    }
+
+    public function screamedEmail(): Attribute
+    {
+        return new Attribute(
+            get: fn (): string => Str::upper($this->email),
+            set: fn (string $value): array => ['email' => Str::lower($value)]
+        );
+    }
+
+    public function newPassword(): Attribute
+    {
+        return new Attribute(
+            set: fn (string $value): array => ['password' => Hash::make($value)]
         );
     }
 

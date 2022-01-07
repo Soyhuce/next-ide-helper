@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionMethod;
@@ -19,25 +20,45 @@ class ResolveModelAttributesFromAttributes implements ModelResolver
 
         /** @var ReflectionMethod $attributeMethod */
         foreach ($attributeMethods as $attributeMethod) {
-            $name = $attributeMethod->getName();
-
-            $getter = $this->getAttributeGet($model, $name);
-
-            $returnType = $getter->getReturnType();
-            [$type, $nullable] = $returnType === null
-                ? ['mixed', false]
-                : [TypeReflection::asString($returnType), $returnType->allowsNull()];
-
+            [$getter, $setter] = $this->getAttributeGetterAndSetter($model, $attributeMethod->getName());
+            $name = Str::snake($attributeMethod->getName());
             $attribute = $model->attributes->findByName($name);
+
             if ($attribute === null) {
-                $attribute = new Attribute($name, $type);
+                $attribute = new Attribute($name, '');
                 $attribute->readOnly = true;
-                $attribute->nullable = $nullable;
+                $attribute->writeOnly = true;
                 $model->addAttribute($attribute);
-            } else {
-                $attribute->type = $type;
-                $attribute->nullable = $nullable;
             }
+
+            $type = null;
+
+            if ($getter !== null) {
+                [$getterType, $getterNullable] = $getter->getReturnType() === null
+                    ? ['mixed', false]
+                    : [TypeReflection::asString($getter->getReturnType()), $getter->getReturnType()->allowsNull()];
+                $attribute->writeOnly = false;
+
+                $type = $getterType;
+                $attribute->nullable = $attribute->nullable || $getterNullable;
+            }
+
+            if ($setter !== null) {
+                $firstParameter = $setter->getParameters()[0] ?? null;
+                [$setterType, $setterNullable] = $firstParameter?->getType() === null
+                    ? ['mixed', false]
+                    : [TypeReflection::asString($firstParameter->getType()), $firstParameter->getType()->allowsNull()];
+                $attribute->readOnly = false;
+
+                if ($type === null) {
+                    $type = $setterType;
+                } elseif ($type !== $setterType) {
+                    $type = 'mixed';
+                }
+                $attribute->nullable = $attribute->nullable || $setterNullable;
+            }
+
+            $attribute->setType($type ?? 'mixed');
         }
     }
 
@@ -60,10 +81,16 @@ class ResolveModelAttributesFromAttributes implements ModelResolver
             && $returnType->getName() === \Illuminate\Database\Eloquent\Casts\Attribute::class;
     }
 
-    private function getAttributeGet(Model $model, string $attributeMethod): ReflectionFunction
+    /**
+     * @return array<?ReflectionFunction>
+     */
+    private function getAttributeGetterAndSetter(Model $model, string $attributeMethod): array
     {
         $attribute = $model->instance()->{$attributeMethod}();
 
-        return new ReflectionFunction($attribute->get);
+        return [
+            $attribute->get !== null ? new ReflectionFunction($attribute->get) : null,
+            $attribute->set !== null ? new ReflectionFunction($attribute->set) : null,
+        ];
     }
 }

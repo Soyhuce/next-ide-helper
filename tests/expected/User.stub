@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 
 /**
@@ -19,8 +21,10 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
+ * @property string $screamed_email
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
  * @property-read string|null $city
+ * @property-write string $new_password
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
@@ -45,6 +49,21 @@ class User extends Model
     {
         return new Attribute(
             get: fn (): ?string => $this->address->city()
+        );
+    }
+
+    public function screamedEmail(): Attribute
+    {
+        return new Attribute(
+            get: fn (): string => Str::upper($this->email),
+            set: fn (string $value): array => ['email' => Str::lower($value)]
+        );
+    }
+
+    public function newPassword(): Attribute
+    {
+        return new Attribute(
+            set: fn (string $value): array => ['password' => Hash::make($value)]
         );
     }
 

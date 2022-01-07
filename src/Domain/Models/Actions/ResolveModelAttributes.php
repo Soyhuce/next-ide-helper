@@ -17,6 +17,7 @@ class ResolveModelAttributes implements ModelResolver
 
         foreach ($columns as $column) {
             $attribute = new Attribute($column->getName(), $column->getType()->getName());
+            $attribute->inDatabase = true;
             if (!$column->getNotnull() && !$this->isLaravelTimestamp($model, $attribute)) {
                 $attribute->nullable = true;
             }
