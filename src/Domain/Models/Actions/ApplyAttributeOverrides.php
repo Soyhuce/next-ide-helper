@@ -49,7 +49,7 @@ class ApplyAttributeOverrides implements ModelResolver
                 return $this->format($match[0]);
             },
             $types,
-        );
+        ) ?? $this->format($types);
     }
 
     private function format(string $type): string

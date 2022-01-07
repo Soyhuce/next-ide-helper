@@ -11,11 +11,12 @@ class ParameterReflection
     public static function asString(ReflectionParameter $parameter): string
     {
         $export = '';
-        if ($parameter->hasType()) {
+        $type = $parameter->getType();
+        if ($type !== null) {
             if ($parameter->allowsNull()) {
                 $export .= '?';
             }
-            $export .= TypeReflection::asString($parameter->getType()) . ' ';
+            $export .= TypeReflection::asString($type) . ' ';
         }
 
         if ($parameter->isPassedByReference()) {

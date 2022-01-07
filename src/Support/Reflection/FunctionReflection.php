@@ -52,11 +52,11 @@ class FunctionReflection
 
     public static function returnType(ReflectionFunctionAbstract $function): ?string
     {
-        if (!$function->hasReturnType()) {
+        $type = $function->getReturnType();
+
+        if ($type === null) {
             return null;
         }
-
-        $type = $function->getReturnType();
 
         $returnType = TypeReflection::asString($type);
 
@@ -90,7 +90,12 @@ class FunctionReflection
         }
 
         $lines = collect(array_slice($file, $startLine, $length));
-        $spaces = max(Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 4, 0);
+        $lastLine = $lines->last();
+        if ($lastLine === null) {
+            return [];
+        }
+
+        $spaces = max(Str::length($lastLine) - Str::length(ltrim($lastLine, ' ')) - 4, 0);
 
         return $lines->map(
             static fn (string $line) => rtrim(Str::of($line)->substr($spaces), PHP_EOL)
