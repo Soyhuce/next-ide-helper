@@ -15,7 +15,7 @@ class ResolveModelCollection implements ModelResolver
 
         $file = $class->getFileName();
 
-        if ($file === null) {
+        if ($file === false) {
             throw new CannotFindClassFile($class->getName());
         }
 

@@ -46,7 +46,7 @@ class ModelDocBlock extends DocBlock
             ->implode('');
     }
 
-    private function properties(): ?string
+    private function properties(): string
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
@@ -54,7 +54,7 @@ class ModelDocBlock extends DocBlock
             ->implode(PHP_EOL);
     }
 
-    private function propertiesRead(): ?string
+    private function propertiesRead(): string
     {
         return $this->model->attributes
             ->onlyReadOnly(true)
@@ -72,7 +72,7 @@ class ModelDocBlock extends DocBlock
         return $line;
     }
 
-    private function relations(): ?string
+    private function relations(): string
     {
         return $this->model->relations
             ->sortBy('name')
