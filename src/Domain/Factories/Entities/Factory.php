@@ -9,6 +9,7 @@ use Soyhuce\NextIdeHelper\Support\Type;
 
 class Factory
 {
+    /** @var class-string<\Illuminate\Database\Eloquent\Factories\Factory> */
     public string $fqcn;
 
     public string $filePath;
@@ -20,6 +21,9 @@ class Factory
 
     private ?EloquentFactory $instance = null;
 
+    /**
+     * @param class-string<\Illuminate\Database\Eloquent\Factories\Factory> $fqcn
+     */
     public function __construct(string $fqcn, string $filePath)
     {
         $this->fqcn = Type::qualify($fqcn);

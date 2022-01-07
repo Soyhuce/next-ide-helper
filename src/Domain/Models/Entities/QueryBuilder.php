@@ -8,12 +8,16 @@ use Soyhuce\NextIdeHelper\Support\Type;
 
 class QueryBuilder
 {
+    /** @var class-string<\Illuminate\Database\Eloquent\Builder> */
     public string $fqcn;
 
     public string $filePath;
 
     public Collection $extras;
 
+    /**
+     * @param class-string<\Illuminate\Database\Eloquent\Builder> $fqcn
+     */
     public function __construct(string $fqcn, string $filePath)
     {
         $this->fqcn = Type::qualify($fqcn);

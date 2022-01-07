@@ -73,15 +73,23 @@ class FunctionReflection
     public static function bodyLines(ReflectionFunctionAbstract $function): array
     {
         $filename = $function->getFileName();
-        $start_line = $function->getStartLine();
-        $end_line = $function->getEndLine() - 1;
-        $length = $end_line - $start_line;
-
-        if ($length < 1) {
+        if ($filename === false) {
             return [];
         }
 
-        $lines = collect(array_slice(file($filename), $start_line, $length));
+        $file = file($filename);
+        if ($file === false) {
+            return [];
+        }
+
+        $startLine = $function->getStartLine();
+        $endLine = $function->getEndLine();
+        $length = $endLine - $startLine - 1;
+        if ($startLine === false || $endLine === false || $length < 1) {
+            return [];
+        }
+
+        $lines = collect(array_slice($file, $startLine, $length));
         $spaces = max(Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 4, 0);
 
         return $lines->map(

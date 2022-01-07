@@ -162,9 +162,14 @@ class AttributeTypeCaster
 
     private function isCustomCast(string $castType): bool
     {
-        return class_exists($castType) && in_array(CastsAttributes::class, class_implements($castType));
+        return class_exists($castType)
+            && class_implements($castType) !== false
+            && in_array(CastsAttributes::class, class_implements($castType));
     }
 
+    /**
+     * @param class-string<\Illuminate\Contracts\Database\Eloquent\CastsAttributes> $caster
+     */
     private function resolveCustomCast(string $caster): string
     {
         $method = (new ReflectionClass($caster))->getMethod('get');
@@ -174,6 +179,8 @@ class AttributeTypeCaster
 
     private function isCastable(string $castType): bool
     {
-        return class_exists($castType) && in_array(Castable::class, class_implements($castType));
+        return class_exists($castType)
+            && class_implements($castType)
+            && in_array(Castable::class, class_implements($castType));
     }
 }

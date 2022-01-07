@@ -1,5 +1,6 @@
 includes:
   - ./vendor-bin/phpstan/vendor/nunomaduro/larastan/extension.neon
+  - ./phpstan-baseline.neon
 
 parameters:
 
@@ -7,10 +8,8 @@ parameters:
     - src
 
   # Level 9 is max
-  level: 6
+  level: 7
 
-  ignoreErrors:
-    - '#Call to an undefined method ReflectionType::isBuiltin\(\)\.#'
 
   checkMissingIterableValueType: true
   checkGenericClassInNonGenericObjectType: false

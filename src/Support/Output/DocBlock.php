@@ -10,6 +10,9 @@ class DocBlock
 {
     use WritesMultiline;
 
+    /**
+     * @param class-string $fqcn
+     */
     protected function replacePreviousBlock(string $docBlock, string $fqcn, string $file): void
     {
         $content = File::get($file);
@@ -26,6 +29,9 @@ class DocBlock
         File::put($file, $updatedContent);
     }
 
+    /**
+     * @param class-string $fqcn
+     */
     private function previousDocBlock(string $fqcn): string
     {
         $docBlock = (new ReflectionClass($fqcn))->getDocComment();
