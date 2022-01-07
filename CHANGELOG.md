@@ -7,6 +7,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Added
 
 - Laravel 9 support
+- Support for attribute accessor via \Illuminate\Database\Eloquent\Casts\Attribute
 
 ### Removed
 
@@ -14,6 +15,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Changed
 
+- Laravel 8.77+ required
 - Soyhuce\NextIdeHelper\Console\Bootstrapper moved to Soyhuce\NextIdeHelper\Contracts\Bootstrapper
 - Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver moved to Soyhuce\NextIdeHelper\Contracts\ModelResolver
 - Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to Soyhuce\NextIdeHelper\Contracts\FactoryResolver
