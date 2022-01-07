@@ -83,7 +83,7 @@ class Klass
         if ($this->methods->isNotEmpty()) {
             $result .= PHP_EOL .
                 $this->methods->sort()
-                    ->map(static fn (string $function) => '        ' . $function)
+                    ->map(static fn (Method $method) => '        ' . $method->name)
                     ->implode(PHP_EOL . PHP_EOL)
                 . PHP_EOL;
             $result .= '    }';
