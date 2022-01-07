@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Reflection\TypeReflection;

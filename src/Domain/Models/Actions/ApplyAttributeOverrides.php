@@ -3,18 +3,19 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
 use function get_class;
 
 class ApplyAttributeOverrides implements ModelResolver
 {
-    /** @var array<string, array<string, string>> */
-    private array $overrides;
-
-    public function __construct(array $overrides)
-    {
-        $this->overrides = $overrides;
+    /**
+     * @param array<string, array<string, string>> $overrides
+     */
+    public function __construct(
+        private array $overrides,
+    ) {
     }
 
     public function execute(Model $model): void

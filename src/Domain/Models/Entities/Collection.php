@@ -17,7 +17,7 @@ class Collection
         $this->filePath = $filePath;
     }
 
-    public function isBuiltIn()
+    public function isBuiltIn(): bool
     {
         return $this->fqcn === '\\' . EloquentCollection::class;
     }

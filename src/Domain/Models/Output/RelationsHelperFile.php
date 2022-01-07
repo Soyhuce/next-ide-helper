@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
 use ReflectionClass;
+use Soyhuce\NextIdeHelper\Contracts\Amender;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Entities\Method;
@@ -13,7 +14,7 @@ use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use Soyhuce\NextIdeHelper\Support\Type;
 use function get_class;
 
-class RelationsHelperFile
+class RelationsHelperFile implements Amender
 {
     private Model $model;
 

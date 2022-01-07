@@ -13,12 +13,14 @@ class Method
 
     private bool $isStatic = false;
 
+    /** @var array<string>|null */
     public ?array $docblock = null;
 
     public ?string $parameters = null;
 
     public ?string $returnType = null;
 
+    /** @var array<string>|null */
     public ?array $body = null;
 
     public function __construct(string $name)
@@ -50,6 +52,9 @@ class Method
             ->returnType(FunctionReflection::returnType($method));
     }
 
+    /**
+     * @param array<string>|null $docblock
+     */
     public function docblock(?array $docblock): self
     {
         $this->docblock = $docblock;
@@ -78,6 +83,9 @@ class Method
         return $this;
     }
 
+    /**
+     * @param array<string>|null $body
+     */
     public function body(?array $body): self
     {
         $this->body = $body;
@@ -109,6 +117,9 @@ class Method
         );
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function docblockLines(): Collection
     {
         if ($this->docblock === null) {

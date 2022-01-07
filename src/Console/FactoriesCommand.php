@@ -50,7 +50,7 @@ class FactoriesCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver>
+     * @return array<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>
      */
     private function modelResolver(ModelCollection $models): array
     {
@@ -61,7 +61,7 @@ class FactoriesCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver>
+     * @return array<\Soyhuce\NextIdeHelper\Contracts\FactoryResolver>
      */
     private function factoryResolvers(): array
     {

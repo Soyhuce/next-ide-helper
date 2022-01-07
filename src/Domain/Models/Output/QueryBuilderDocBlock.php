@@ -4,12 +4,13 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Contracts\Renderer;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 
-class QueryBuilderDocBlock extends DocBlock
+class QueryBuilderDocBlock extends DocBlock implements Renderer
 {
     private Model $model;
 

@@ -12,6 +12,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - All the built-in Model extensions
 
+### Changed
+
+- Soyhuce\NextIdeHelper\Console\Bootstrapper moved to Soyhuce\NextIdeHelper\Contracts\Bootstrapper
+- Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver moved to Soyhuce\NextIdeHelper\Contracts\ModelResolver
+- Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to Soyhuce\NextIdeHelper\Contracts\FactoryResolver
+
 ## [0.6.3] - 2021-12-07
 
 ### Added

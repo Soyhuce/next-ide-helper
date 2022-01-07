@@ -1,6 +1,6 @@
 <?php
 
-namespace Soyhuce\NextIdeHelper\Domain\Factories\Actions;
+namespace Soyhuce\NextIdeHelper\Contracts;
 
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
 

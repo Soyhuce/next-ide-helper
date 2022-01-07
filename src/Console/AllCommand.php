@@ -23,6 +23,9 @@ class AllCommand extends Command
         }
     }
 
+    /**
+     * @return array<class-string<\Illuminate\Console\Command>>
+     */
     private function resolveCommands(): array
     {
         $commands = [

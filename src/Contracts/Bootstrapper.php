@@ -1,6 +1,6 @@
 <?php
 
-namespace Soyhuce\NextIdeHelper\Console;
+namespace Soyhuce\NextIdeHelper\Contracts;
 
 interface Bootstrapper
 {

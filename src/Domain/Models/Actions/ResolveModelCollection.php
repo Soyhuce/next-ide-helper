@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use ReflectionClass;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Exceptions\CannotFindClassFile;

@@ -4,9 +4,9 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ApplyAttributeOverrides;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
-use Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromCasts;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
@@ -61,6 +61,9 @@ class ModelsCommand extends Command
         $ideHelperFile->render();
     }
 
+    /**
+     * @return array<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>
+     */
     private function resolvers(ModelCollection $models): array
     {
         return array_merge(
@@ -82,6 +85,9 @@ class ModelsCommand extends Command
         );
     }
 
+    /**
+     * @return array<\Soyhuce\NextIdeHelper\Contracts\Renderer>
+     */
     private function renderers(Model $model): array
     {
         return [
@@ -90,6 +96,9 @@ class ModelsCommand extends Command
         ];
     }
 
+    /**
+     * @return array<\Soyhuce\NextIdeHelper\Contracts\Amender>
+     */
     private function amenders(Model $model): array
     {
         return [

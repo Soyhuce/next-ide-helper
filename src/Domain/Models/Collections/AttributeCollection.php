@@ -15,7 +15,7 @@ class AttributeCollection extends Collection
         return $this->first(static fn (Attribute $attribute) => $attribute->name === $name);
     }
 
-    public function onlyReadOnly(bool $readOnly = true)
+    public function onlyReadOnly(bool $readOnly = true): static
     {
         return $this->filter(static fn (Attribute $attribute): bool => $attribute->readOnly === $readOnly);
     }
