@@ -36,6 +36,11 @@ parameters:
 			path: src/Domain/Models/Entities/QueryBuilder.php
 
 		-
+			message: "#^Call to an undefined static method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:factory\\(\\)\\.$#"
+			count: 1
+			path: src/Domain/Models/Output/ModelDocBlock.php
+
+		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>, string given\\.$#"
 			count: 1
 			path: src/Domain/Models/Output/QueryBuilderHelperFile.php

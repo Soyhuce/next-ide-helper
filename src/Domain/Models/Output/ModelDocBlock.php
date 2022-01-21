@@ -2,7 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Contracts\Renderer;
@@ -139,7 +138,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        $factory = Str::start(Factory::resolveFactoryName($this->model->fqcn), '\\');
+        $factory = Str::start($this->model->fqcn::factory()::class, '\\');
 
         return " * @method static {$factory} factory(\$count = 1, \$state = [])";
     }
