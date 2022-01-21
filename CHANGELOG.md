@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Fixed
+
+- Model factory resolution for Model::factory() docblock
+
 ## [0.7.0] - 2022-01-07
 
 ### Added
