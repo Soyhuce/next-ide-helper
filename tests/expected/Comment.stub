@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \Illuminate\Support\Carbon $datetime
  * @property \Illuminate\Support\Carbon $date
  * @property array $encrypted_array
+ * @property mixed $encrypted
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Commentable&\Illuminate\Database\Eloquent\Model $commentable
  */
 class Comment extends Model
@@ -23,6 +24,7 @@ class Comment extends Model
         'datetime' => 'datetime:Y-m-d H:i:s',
         'date' => 'date:Y-m-d',
         'encrypted_array' => 'encrypted:array',
+        'encrypted' => 'encrypted',
     ];
 
     public function commentable(): MorphTo

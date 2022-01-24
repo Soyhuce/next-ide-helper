@@ -73,7 +73,7 @@ class AttributeTypeCaster
         }
 
         if ($castType === 'encrypted') {
-            [$castType, $arguments] = [$arguments, null];
+            [$castType, $arguments] = [$arguments ?? 'mixed', null];
         }
 
         switch (Str::lower($castType)) {

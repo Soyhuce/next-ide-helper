@@ -11,6 +11,7 @@ class Comment extends Model
         'datetime' => 'datetime:Y-m-d H:i:s',
         'date' => 'date:Y-m-d',
         'encrypted_array' => 'encrypted:array',
+        'encrypted' => 'encrypted',
     ];
 
     public function commentable(): MorphTo

@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Fixed
+
+- Fix error when `encrypted` does not have argument
+
 ## [0.7.2] - 2022-01-24
 
 ### Added
