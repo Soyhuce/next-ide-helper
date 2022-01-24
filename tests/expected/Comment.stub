@@ -12,10 +12,19 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property int $commentable_id
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $datetime
+ * @property \Illuminate\Support\Carbon $date
+ * @property array $encrypted_array
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Commentable&\Illuminate\Database\Eloquent\Model $commentable
  */
 class Comment extends Model
 {
+    protected $casts = [
+        'datetime' => 'datetime:Y-m-d H:i:s',
+        'date' => 'date:Y-m-d',
+        'encrypted_array' => 'encrypted:array',
+    ];
+
     public function commentable(): MorphTo
     {
         return $this->morphTo();
