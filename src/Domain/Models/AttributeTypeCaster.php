@@ -64,7 +64,17 @@ class AttributeTypeCaster
 
     private function resolveFromCast(Attribute $attribute): string
     {
-        $castType = $this->model->instance()->getCasts()[$attribute->name];
+        $cast = $this->model->instance()->getCasts()[$attribute->name];
+
+        if (Str::contains($cast, ':')) {
+            [$castType, $arguments] = explode(':', $cast, 2);
+        } else {
+            [$castType, $arguments] = [$cast, null];
+        }
+
+        if ($castType === 'encrypted') {
+            [$castType, $arguments] = [$arguments, null];
+        }
 
         switch (Str::lower($castType)) {
             case 'int':

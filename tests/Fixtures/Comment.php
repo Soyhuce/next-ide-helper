@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
+    protected $casts = [
+        'datetime' => 'datetime:Y-m-d H:i:s',
+        'date' => 'date:Y-m-d',
+        'encrypted_array' => 'encrypted:array',
+    ];
+
     public function commentable(): MorphTo
     {
         return $this->morphTo();

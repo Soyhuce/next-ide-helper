@@ -4,6 +4,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Added
+
+- Correct cast for date and datetime with custom format
+- Cast for `encrypted` fields
+
 ## [0.7.1] - 2022-01-21
 
 ### Fixed
@@ -19,14 +24,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Fixed
 
-- Delete where* query helper from mutated attributes which does not exist in database 
+- Delete where* query helper from mutated attributes which does not exist in database
 
 ### Changed
 
 - Laravel 8.77+ required
 - Soyhuce\NextIdeHelper\Console\Bootstrapper moved to Soyhuce\NextIdeHelper\Contracts\Bootstrapper
 - Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver moved to Soyhuce\NextIdeHelper\Contracts\ModelResolver
-- Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to Soyhuce\NextIdeHelper\Contracts\FactoryResolver
+- Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to
+  Soyhuce\NextIdeHelper\Contracts\FactoryResolver
 
 ### Removed
 
