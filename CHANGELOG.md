@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.7.2] - 2022-01-24
+
 ### Added
 
 - Correct cast for date and datetime with custom format
