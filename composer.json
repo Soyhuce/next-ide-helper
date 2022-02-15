@@ -18,7 +18,6 @@
   ],
   "require": {
     "php": "^8.0",
-    "composer/composer": "^2.0",
     "doctrine/dbal": "^2.10|^3.0",
     "illuminate/console": "^8.77 || ^9.0",
     "illuminate/database": "^8.77 || ^9.0",

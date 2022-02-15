@@ -4,6 +4,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+### Changed
+
+- Drop composer/composer dependency
+
 ## [0.7.3] - 2022-01-24
 
 ### Fixed
