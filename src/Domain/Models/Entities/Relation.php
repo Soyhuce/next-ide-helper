@@ -65,12 +65,7 @@ class Relation
 
     private function relatedCollection(): string
     {
-        $collection = $this->related->collection;
-        if (!$collection->isBuiltIn()) {
-            return $collection->fqcn;
-        }
-
-        return "{$this->related->collection->fqcn}<{$this->related->fqcn}>";
+        return "{$this->related->collection->fqcn}<int, {$this->related->fqcn}>";
     }
 
     private function isNullable(EloquentRelation $relation): bool

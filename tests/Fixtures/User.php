@@ -79,4 +79,9 @@ class User extends Model
 
         return $query->where('email', 'like', "%@{$domain}");
     }
+
+    public function intOrString(): int|string
+    {
+        return 'foo';
+    }
 }

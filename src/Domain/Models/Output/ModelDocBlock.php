@@ -107,7 +107,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        return " * @method static {$this->model->collection->fqcn} all(array|mixed \$columns = ['*'])";
+        return " * @method static {$this->model->collection->fqcn}<int, {$this->model->fqcn}> all(array|mixed \$columns = ['*'])";
     }
 
     private function queryMixin(): ?string

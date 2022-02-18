@@ -7,6 +7,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Changed
 
 - Drop Laravel 8 support
+- Docblocks for Eloquent Collections now respect Laravel 9 generic template
 
 ## [0.7.3] - 2022-01-24
 
