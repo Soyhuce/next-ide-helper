@@ -1,24 +1,9 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Anonymous function should return Soyhuce\\\\NextIdeHelper\\\\Contracts\\\\ModelResolver but returns object\\.$#"
-			count: 1
-			path: src/Console/ModelsCommand.php
-
-		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory\\>, class\\-string given\\.$#"
 			count: 1
 			path: src/Domain/Factories/Actions/FindFactories.php
-
-		-
-			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Model constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>, string given\\.$#"
-			count: 1
-			path: src/Domain/Factories/Actions/ResolveModels.php
-
-		-
-			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:\\$fqcn \\(class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory\\>\\) does not accept string\\.$#"
-			count: 1
-			path: src/Domain/Factories/Entities/Factory.php
 
 		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Model constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>, class\\-string given\\.$#"
@@ -26,12 +11,7 @@ parameters:
 			path: src/Domain/Models/Actions/FindModels.php
 
 		-
-			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Model\\:\\:\\$fqcn \\(class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\) does not accept string\\.$#"
-			count: 1
-			path: src/Domain/Models/Entities/Model.php
-
-		-
-			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:\\$fqcn \\(class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>\\) does not accept string\\.$#"
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:\\$extras \\(Illuminate\\\\Support\\\\Collection\\<int, string\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
 			path: src/Domain/Models/Entities/QueryBuilder.php
 
@@ -41,22 +21,47 @@ parameters:
 			path: src/Domain/Models/Output/ModelDocBlock.php
 
 		-
-			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>, string given\\.$#"
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\:\\:docblockLines\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
-			path: src/Domain/Models/Output/QueryBuilderHelperFile.php
+			path: src/Entities/Klass.php
 
 		-
-			message: "#^Parameter \\#2 \\$method of static method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:fromMethod\\(\\) expects ReflectionMethod, ReflectionMethod\\|null given\\.$#"
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\:\\:\\$docTags \\(Illuminate\\\\Support\\\\Collection\\<int, string\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
-			path: src/Domain/Models/Output/QueryBuilderHelperFile.php
+			path: src/Entities/Klass.php
 
 		-
-			message: "#^Parameter \\#2 \\$method of static method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:fromMethod\\(\\) expects ReflectionMethod, ReflectionMethod\\|null given\\.$#"
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\:\\:\\$methods \\(Illuminate\\\\Support\\\\Collection\\<int, Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
-			path: src/Domain/Models/Output/RelationsHelperFile.php
+			path: src/Entities/Klass.php
 
 		-
-			message: "#^Call to an undefined method ReflectionType\\:\\:isBuiltin\\(\\)\\.$#"
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:bodyLines\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
-			path: src/Support/Reflection/TypeReflection.php
+			path: src/Entities/Method.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Method\\:\\:docblockLines\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
+			count: 1
+			path: src/Entities/Method.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Nemespace\\:\\:\\$classes \\(Illuminate\\\\Support\\\\Collection\\<string, Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
+			count: 1
+			path: src/Entities/Nemespace.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Output\\\\IdeHelperClass\\:\\:eloquentBuilder\\(\\) should return class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\> but returns string\\.$#"
+			count: 1
+			path: src/Support/Output/IdeHelperClass.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Support\\\\Output\\\\IdeHelperFile\\:\\:\\$namespaces \\(Illuminate\\\\Support\\\\Collection\\<string, Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Nemespace\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
+			count: 1
+			path: src/Support/Output/IdeHelperFile.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Type\\:\\:qualify\\(\\) should return T of string but returns string\\.$#"
+			count: 2
+			path: src/Support/Type.php
 

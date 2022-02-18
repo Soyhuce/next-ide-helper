@@ -65,8 +65,16 @@ class FactoriesCommand extends Command
      */
     private function factoryResolvers(): array
     {
-        return collect(config('next-ide-helper.factories.extensions'))
+        return collect($this->factoryExtensions())
             ->map(fn (string $class) => new $class())
             ->toArray();
+    }
+
+    /**
+     * @return array<int, class-string<\Soyhuce\NextIdeHelper\Contracts\FactoryResolver>>
+     */
+    private function factoryExtensions(): array
+    {
+        return config('next-ide-helper.factories.extensions', []);
     }
 }

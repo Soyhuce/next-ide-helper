@@ -3,7 +3,6 @@
 namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ApplyAttributeOverrides;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
@@ -78,13 +77,21 @@ class ModelsCommand extends Command
                 new ResolveModelScopes(),
                 new ResolveModelRelations($models),
             ],
-            Collection::make(config('next-ide-helper.models.extensions'))
+            collect($this->modelExtensions())
                 ->map(static fn (string $class): ModelResolver => new $class())
                 ->toArray(),
             [
                 new ApplyAttributeOverrides(config('next-ide-helper.models.overrides', [])),
             ]
         );
+    }
+
+    /**
+     * @return array<int, class-string<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>>
+     */
+    private function modelExtensions(): array
+    {
+        return config('next-ide-helper.models.extensions', []);
     }
 
     /**

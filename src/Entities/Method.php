@@ -98,7 +98,10 @@ class Method
      */
     public function toArray(): array
     {
-        return collect()
+        /** @var Collection<int, string> $collection */
+        $collection = new Collection();
+
+        return $collection
             ->merge($this->docblockLines())
             ->add($this->definition())
             ->add('{')
@@ -123,7 +126,7 @@ class Method
     private function docblockLines(): Collection
     {
         if ($this->docblock === null) {
-            return collect();
+            return new Collection();
         }
 
         return collect($this->docblock)
@@ -154,9 +157,9 @@ class Method
     private function bodyLines(): Collection
     {
         if ($this->body === null) {
-            return collect();
+            return new Collection();
         }
 
-        return collect($this->body);
+        return new Collection($this->body);
     }
 }

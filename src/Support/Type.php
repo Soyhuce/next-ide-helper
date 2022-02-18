@@ -20,6 +20,11 @@ class Type
         'null',
     ];
 
+    /**
+     * @template T of string
+     * @param T $type
+     * @return T
+     */
     public static function qualify(string $type): string
     {
         $type = ltrim($type, '\\');

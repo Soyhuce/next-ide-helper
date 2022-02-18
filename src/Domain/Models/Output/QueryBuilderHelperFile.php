@@ -37,14 +37,15 @@ class QueryBuilderHelperFile implements Amender
             ->extends(EloquentBuilder::class)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
-        $file->getOrAddClass($this->model->fqcn)
-            ->addMethod(Method::fromMethod(
-                '__construct',
-                (new ReflectionClass($this->model->fqcn))->getConstructor()
-            ))
+        $model = $file->getOrAddClass($this->model->fqcn)
             ->addDocTags(Collection::make([
                 " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",
             ]));
+
+        $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
+        if ($constructor !== null) {
+            $model->addMethod(Method::fromMethod('__construct', $constructor));
+        }
     }
 }

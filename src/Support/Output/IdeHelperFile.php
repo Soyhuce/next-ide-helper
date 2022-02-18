@@ -14,12 +14,13 @@ class IdeHelperFile
 
     private string $filePath;
 
+    /** @var \Illuminate\Support\Collection<string, \Soyhuce\NextIdeHelper\Entities\Nemespace> */
     private Collection $namespaces;
 
     public function __construct(string $filePath)
     {
         $this->filePath = $filePath;
-        $this->namespaces = collect();
+        $this->namespaces = new Collection();
     }
 
     public function getOrAddClass(string $fqcn): Klass

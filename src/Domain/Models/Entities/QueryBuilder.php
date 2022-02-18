@@ -13,6 +13,7 @@ class QueryBuilder
 
     public string $filePath;
 
+    /** @var \Illuminate\Support\Collection<int, string> */
     public Collection $extras;
 
     /**
@@ -22,7 +23,7 @@ class QueryBuilder
     {
         $this->fqcn = Type::qualify($fqcn);
         $this->filePath = $filePath;
-        $this->extras = collect();
+        $this->extras = new Collection();
     }
 
     public function isBuiltIn(): bool

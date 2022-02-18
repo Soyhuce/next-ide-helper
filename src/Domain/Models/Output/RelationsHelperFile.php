@@ -33,14 +33,13 @@ class RelationsHelperFile implements Amender
 
             $fakeRelationClass = IdeHelperClass::relation($this->model->fqcn, $relation->name);
 
-            $file->getOrAddClass($this->model->fqcn)
-                ->addMethod(Method::fromMethod(
-                    '__construct',
-                    (new ReflectionClass($this->model->fqcn))->getConstructor()
-                ))
-                ->addDocTag(
-                    Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag()
-                );
+            $model = $file->getOrAddClass($this->model->fqcn)
+                ->addDocTag(Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag());
+
+            $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
+            if ($constructor !== null) {
+                $model->addMethod(Method::fromMethod('__construct', $constructor));
+            }
 
             $file->getOrAddClass($fakeRelationClass)
                 ->addDocTags(Collection::make([
