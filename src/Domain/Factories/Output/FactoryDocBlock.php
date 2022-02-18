@@ -37,6 +37,7 @@ class FactoryDocBlock extends DocBlock
             $this->creationMethods(),
             $this->relations(),
             $this->extraMethods(),
+            $this->template(),
             ' */',
         ])
             ->map(fn (?string $line): string => $this->line($line))
@@ -47,9 +48,9 @@ class FactoryDocBlock extends DocBlock
     {
         return collect([
             " * @method {$this->factory->model->fqcn} createOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} create(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
+            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn}<int, {$this->factory->model->fqcn}> create(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
             " * @method {$this->factory->model->fqcn} makeOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} make(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
+            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn}<int, {$this->factory->model->fqcn}> make(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
             " * @method {$this->factory->model->fqcn} newModel(array \$attributes = [])",
         ])->implode(PHP_EOL);
     }
@@ -121,5 +122,13 @@ class FactoryDocBlock extends DocBlock
             ->sort()
             ->map(fn (string $method) => ' * @method ' . $method)
             ->implode(PHP_EOL);
+    }
+
+    private function template(): string
+    {
+        return sprintf(
+            ' * @extends \Illuminate\Database\Eloquent\Factories\Factory<%s>',
+            $this->factory->model->fqcn
+        );
     }
 }
