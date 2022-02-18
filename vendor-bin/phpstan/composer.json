@@ -1,6 +1,6 @@
 {
   "require-dev": {
-    "nunomaduro/larastan": "^1.0.2"
+    "nunomaduro/larastan": "^2.0.0"
   },
   "config": {
     "sort-packages": true,

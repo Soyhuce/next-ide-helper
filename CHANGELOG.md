@@ -7,6 +7,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Changed
 
 - Drop composer/composer dependency
+- Drop Laravel 8 support
 
 ## [0.7.3] - 2022-01-24
 
