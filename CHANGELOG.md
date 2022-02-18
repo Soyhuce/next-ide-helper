@@ -4,6 +4,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.8.0] - 2022-02-18
+
 ### Changed
 
 - Drop Laravel 8 support
