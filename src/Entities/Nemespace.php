@@ -11,6 +11,7 @@ class Nemespace
 
     private string $name;
 
+    /** @var \Illuminate\Support\Collection<string, \Soyhuce\NextIdeHelper\Entities\Klass> */
     private Collection $classes;
 
     public function __construct(string $name)
@@ -63,7 +64,8 @@ class Nemespace
      */
     protected function classesLines(): Collection
     {
-        $lines = collect();
+        /** @var Collection<int, string> $lines */
+        $lines = new Collection();
 
         $classes = $this->classes->sortBy(static fn (Klass $klass) => $klass->getName());
         foreach ($classes as $class) {

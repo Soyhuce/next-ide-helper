@@ -12,15 +12,15 @@ class TypeReflection
     {
         if ($type instanceof ReflectionUnionType) {
             return collect($type->getTypes())
-                ->map(fn (ReflectionType $type) => self::asString($type))
+                ->map(fn (ReflectionNamedType $type) => self::asString($type))
                 ->implode('|');
         }
 
-        if ($type instanceof ReflectionNamedType) {
-            $name = $type->getName();
-        } else {
-            $name = (string) $type;
+        if (!$type instanceof ReflectionNamedType) {
+            return (string) $type;
         }
+
+        $name = $type->getName();
 
         if ($type->isBuiltin()) {
             return $name;

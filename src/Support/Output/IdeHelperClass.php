@@ -6,6 +6,10 @@ use Illuminate\Support\Str;
 
 class IdeHelperClass
 {
+    /**
+     * @param class-string<\Illuminate\Database\Eloquent\Model> $modelFqcn
+     * @return class-string<\Illuminate\Database\Eloquent\Builder>
+     */
     public static function eloquentBuilder(string $modelFqcn): string
     {
         $classBasename = class_basename($modelFqcn);

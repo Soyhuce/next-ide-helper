@@ -99,7 +99,10 @@ class Klass
      */
     public function toArray(): array
     {
-        return collect()
+        /** @var Collection<int, string> $collection */
+        $collection = new Collection();
+
+        return $collection
             ->merge($this->docblockLines())
             ->add($this->classDefinition())
             ->add('{')
@@ -114,7 +117,7 @@ class Klass
     private function docblockLines(): Collection
     {
         if ($this->docTags->isEmpty()) {
-            return collect();
+            return new Collection();
         }
 
         return (new Collection($this->docTags))
@@ -138,7 +141,8 @@ class Klass
      */
     private function methodsLines(): Collection
     {
-        $lines = collect();
+        /** @var Collection<int, string> $lines */
+        $lines = new Collection();
 
         $methods = $this->methods->sortBy(static fn (Method $method) => $method->name);
         foreach ($methods as $method) {

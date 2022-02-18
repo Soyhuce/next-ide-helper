@@ -32,9 +32,15 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
         );
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     public function docTags(): Collection
     {
-        return Collection::make()
+        /** @var Collection<int, string> $collection */
+        $collection = new Collection();
+
+        return $collection
             ->merge($this->attributeScopes())
             ->merge($this->scopeMethods())
             ->merge($this->resultMethods())
@@ -58,11 +64,15 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             ->implode('');
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function attributeScopes(): Collection
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
             ->onlyInDatabase(true)
+            ->toBase()
             ->map(function (Attribute $attribute): string {
                 return sprintf(
                     ' * @method %s where%s(%s $value)',
@@ -88,6 +98,9 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
         return $type;
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function scopeMethods(): Collection
     {
         return collect($this->model->scopes)
@@ -101,6 +114,9 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             });
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function resultMethods(): Collection
     {
         $model = $this->model->fqcn;
@@ -127,6 +143,9 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             ->map(static fn (string $method) => " * @method {$method}");
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function softDeletesMethods(): Collection
     {
         $builder = $this->model->queryBuilder->fqcn;
@@ -140,6 +159,9 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             ->map(static fn (string $method) => " * @method {$method}");
     }
 
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
     private function templateBlock(): Collection
     {
         return Collection::make([
