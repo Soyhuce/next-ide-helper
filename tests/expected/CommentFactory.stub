@@ -7,10 +7,11 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Comment;
 
 /**
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment createOne($attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|\Illuminate\Database\Eloquent\Collection create($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|\Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> create($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment makeOne($attributes = [])
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|\Illuminate\Database\Eloquent\Collection make($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|\Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> make($attributes = [], \Illuminate\Database\Eloquent\Model|null $parent = null)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment newModel(array $attributes = [])
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment>
  */
 class CommentFactory extends Factory
 {
