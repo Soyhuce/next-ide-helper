@@ -104,7 +104,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     private function resultMethods(): Collection
     {
         $model = $this->model->fqcn;
-        $collection = $this->model->collection->fqcn;
+        $collection = "{$this->model->collection->fqcn}<int, {$model}>";
 
         return Collection::make([
             "{$model} create(array \$attributes = [])",
