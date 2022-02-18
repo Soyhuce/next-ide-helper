@@ -132,7 +132,7 @@ return type :
 use \App\Collections\UserCollection;
 
 /**
- * @method static \App\Collections\UserCollection all(array|mixed $columns = ['*'])
+ * @method static \App\Collections\UserCollection<int, \App\Models\User> all(array|mixed $columns = ['*'])
  */
 class User extends Model
 {
@@ -180,18 +180,18 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \App\Builder\UserBuilder whereCreatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \App\Builder\UserBuilder whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \App\User create(array $attributes = [])
- * @method \Illuminate\Database\Eloquent\Collection|\App\User|null find($id, array $columns = ['*'])
- * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
- * @method \Illuminate\Database\Eloquent\Collection|\App\User findOrFail($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User|null find($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> findMany($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User findOrFail($id, array $columns = ['*'])
  * @method \App\User findOrNew($id, array $columns = ['*'])
  * @method \App\User|null first(array|string $columns = ['*'])
  * @method \App\User firstOrCreate(array $attributes, array $values = [])
  * @method \App\User firstOrFail(array $columns = ['*'])
  * @method \App\User firstOrNew(array $attributes = [], array $values = [])
  * @method \App\User forceCreate(array $attributes = [])
- * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> get(array|string $columns = ['*'])
  * @method \App\User getModel()
- * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> getModels(array|string $columns = ['*'])
  * @method \App\User newModelInstance(array $attributes = [])
  * @method \App\User updateOrCreate(array $attributes, array $values = [])
  * @template TModelClass
@@ -234,7 +234,7 @@ The models command will also resolve relations of your model and provide a lot o
 
 ```php
 /**
- * @property-read \Illuminate\Database\Eloquent\Collection<\App\Post> $posts
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Post> $posts
  */
 class User extends Model
 {
@@ -263,60 +263,8 @@ Custom builders and custom collections are also correctly resolved by the ide :
 
 Sometimes, the command cannot resolve or anticipate every way everything are resolved.
 
-Let's take for example [spatie/laravel-enum](https://github.com/spatie/laravel-enum) package.
-
-```php
-class User extends Model
-{
-    
-    use Spatie\Enum\Laravel\HasEnums;
-
-    protected $enums = [
-        'role' => UserRole::class,
-    ];
-}
-
-/**
- * @method static self guest()
- * @method static self regular()
- * @method static self premium()
- */
-class UserRole extends Spatie\Enum\Enum
-{
-}
-```
-
-By default, the package will resolve `role` attribute as a string (`@property string $role`) but thanks
-to `spatie/laravel-enum` it will be cast as `UserRole`.
-
 That's why this package provides a way to customize some resolution logic adding your custom resolver
 in `next-ide-helper.models.extensions` config.
-
-We already provide an extension for :
-
-- `Spatie\Enum\Enum` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver`.
-- `Spatie\ModelStates\State` : `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver`.
-
-> `Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieModelStateResolver` is for `spatie/laravel-model-states^1.0` only. When using `spatie/laravel-model-states:^2.0`, the states will be resolved automatically thanks to the `$casts` attribute.
-
-Just add the extension in the config and re-run the models command:
-
-```php
-'extensions' => [
-    \Soyhuce\NextIdeHelper\Domain\Models\Extensions\SpatieEnumResolver::class,
-]
-```
-
-You will get :
-
-```php
-/**
- * @property \App\UserRole $role
- */
-class User extends Model
-{
-}
-```
 
 ## Macros
 
@@ -349,10 +297,6 @@ container bindings and some laravel helpers
 
 ## Factories
 
-Laravel 8 factories will bring some improvements with new class-based factories but will also bring some magic.
-
-You can already use then with [soyhuce/laravel-8-factories](https://github.com/Soyhuce/laravel-8-factories).
-
 The command `php artisan next-ide-helper:factories` will add docblocks to your factories in order to correctly type some
 methods. It will also explicit magic methods for model relations.
 
@@ -383,12 +327,13 @@ this command will generate the docblock in `UserFactory`:
 ```php
 /**
  * @method \App\User createOne($attributes = [])
- * @method \App\User|\App\Collections\UserCollection create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User|\App\Collections\UserCollection<int, \App\User> create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
  * @method \App\User makeOne($attributes = [])
- * @method \App\User|\App\Collections\UserCollection make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User|\App\Collections\UserCollection<int, \App\User> make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
  * @method \App\User newModel(array $attributes = [])
  * @method \Database\Factories\UserFactory forRole($attributes = [])
  * @method \Database\Factories\UserFactory hasPosts($count = 1, $attributes = [])
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\User>
  */
 class UserFactory extends Factory
 {
