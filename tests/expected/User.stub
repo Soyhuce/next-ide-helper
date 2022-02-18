@@ -25,8 +25,8 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
  * @property-read string|null $city
  * @property-write string $new_password
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
+ * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $laravelPosts
+ * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
  */
 class User extends Model
@@ -85,5 +85,10 @@ class User extends Model
         }
 
         return $query->where('email', 'like', "%@{$domain}");
+    }
+
+    public function intOrString(): int|string
+    {
+        return 'foo';
     }
 }

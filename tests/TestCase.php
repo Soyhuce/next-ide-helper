@@ -25,13 +25,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         return [NextIdeHelperServiceProvider::class];
     }
 
-    protected function onlyForPhp80(): void
-    {
-        if (version_compare(PHP_VERSION, '8.0', '<')) {
-            $this->markTestSkipped('Test skipped for php < 8.0');
-        }
-    }
-
     protected function onlyForPhp81(): void
     {
         if (version_compare(PHP_VERSION, '8.1', '<')) {
