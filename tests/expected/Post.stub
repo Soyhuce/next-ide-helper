@@ -25,7 +25,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property-read mixed $mixed
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> $comments
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User|null $user
- * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> all(array|mixed $columns = ['*'])
+ * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection all(array|mixed $columns = ['*'])
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery query()
  * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
  */

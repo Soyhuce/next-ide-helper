@@ -48,9 +48,9 @@ class FactoryDocBlock extends DocBlock
     {
         return collect([
             " * @method {$this->factory->model->fqcn} createOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn}<int, {$this->factory->model->fqcn}> create(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
+            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} create(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
             " * @method {$this->factory->model->fqcn} makeOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn}<int, {$this->factory->model->fqcn}> make(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
+            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} make(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
             " * @method {$this->factory->model->fqcn} newModel(array \$attributes = [])",
         ])->implode(PHP_EOL);
     }
