@@ -4,6 +4,13 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ## [Next release] - YYYY-MM-DD
 
+## [0.8.1] - 2022-02-21
+
+### Fixed
+
+- Remove generics tags from docblocks in `@method` tags, add `@phpstan-method` with generics in
+  case `models.larastan_friendly` is enabled.
+
 ## [0.8.0] - 2022-02-18
 
 ### Changed

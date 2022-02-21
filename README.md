@@ -132,7 +132,7 @@ return type :
 use \App\Collections\UserCollection;
 
 /**
- * @method static \App\Collections\UserCollection<int, \App\Models\User> all(array|mixed $columns = ['*'])
+ * @method static \App\Collections\UserCollection all(array|mixed $columns = ['*'])
  */
 class User extends Model
 {
@@ -180,18 +180,18 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \App\Builder\UserBuilder whereCreatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \App\Builder\UserBuilder whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \App\User create(array $attributes = [])
- * @method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User|null find($id, array $columns = ['*'])
- * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> findMany($id, array $columns = ['*'])
- * @method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User findOrFail($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection|\App\User|null find($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection|\App\User findOrFail($id, array $columns = ['*'])
  * @method \App\User findOrNew($id, array $columns = ['*'])
  * @method \App\User|null first(array|string $columns = ['*'])
  * @method \App\User firstOrCreate(array $attributes, array $values = [])
  * @method \App\User firstOrFail(array $columns = ['*'])
  * @method \App\User firstOrNew(array $attributes = [], array $values = [])
  * @method \App\User forceCreate(array $attributes = [])
- * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> get(array|string $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
  * @method \App\User getModel()
- * @method \Illuminate\Database\Eloquent\Collection<int, \App\User> getModels(array|string $columns = ['*'])
+ * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
  * @method \App\User newModelInstance(array $attributes = [])
  * @method \App\User updateOrCreate(array $attributes, array $values = [])
  * @template TModelClass
@@ -258,6 +258,35 @@ class Post extends Model
 Custom builders and custom collections are also correctly resolved by the ide :
 
 ![](assets/doc/collection_for_relation_autocomplete.png)
+
+### Larastan friendly tags
+
+In case you use PHPStan or Larastan, you can have more information about the collections
+defining `models.larastan_friendly` config to `true`.
+
+With this config, you will get the extra tags in you models
+
+```php
+/**
+ * @phpstan-method static \App\Collections\UserCollection<int, \App\Models\User> all(array|mixed $columns = ['*'])
+ */
+class User extends Model {}
+```
+
+and in your custom builders
+
+```php
+/**
+ * @phpstan-method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User|null find($id, array $columns = ['*'])
+ * @phpstan-method \Illuminate\Database\Eloquent\Collection<int, \App\User> findMany($id, array $columns = ['*'])
+ * @phpstan-method \Illuminate\Database\Eloquent\Collection<int, \App\User>|\App\User findOrFail($id, array $columns = ['*'])
+ * @phpstan-method \Illuminate\Database\Eloquent\Collection<int, \App\User> get(array|string $columns = ['*'])
+ * @phpstan-method \Illuminate\Database\Eloquent\Collection<int, \App\User> getModels(array|string $columns = ['*'])
+ * @template TModelClass
+ * @extends \Illuminate\Database\Eloquent\Builder<\App\User>
+ */
+class UserBuilder extends Builder {}
+```
 
 ### Extensions
 
@@ -327,9 +356,9 @@ this command will generate the docblock in `UserFactory`:
 ```php
 /**
  * @method \App\User createOne($attributes = [])
- * @method \App\User|\App\Collections\UserCollection<int, \App\User> create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User|\App\Collections\UserCollection create($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
  * @method \App\User makeOne($attributes = [])
- * @method \App\User|\App\Collections\UserCollection<int, \App\User> make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
+ * @method \App\User|\App\Collections\UserCollection make($attributes = [], ?\Illuminate\Database\Eloquent\Model $parent = null)
  * @method \App\User newModel(array $attributes = [])
  * @method \Database\Factories\UserFactory forRole($attributes = [])
  * @method \Database\Factories\UserFactory hasPosts($count = 1, $attributes = [])
