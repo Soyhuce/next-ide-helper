@@ -39,6 +39,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             $this->relations(),
             $this->all(),
             $this->query(),
+            $this->phpstanMethods(),
             $this->queryMixin(),
             $this->factory(),
             ' */',
@@ -107,7 +108,20 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        return " * @method static {$this->model->collection->fqcn}<int, {$this->model->fqcn}> all(array|mixed \$columns = ['*'])";
+        return " * @method static {$this->model->collection->fqcn} all(array|mixed \$columns = ['*'])";
+    }
+
+    private function phpstanMethods(): ?string
+    {
+        if (!config('next-ide-helper.models.larastan_friendly', false)) {
+            return null;
+        }
+
+        if ($this->model->collection->isBuiltIn()) {
+            return null;
+        }
+
+        return " * @phpstan-method static {$this->model->collection->fqcn}<int, {$this->model->fqcn}> all(array|mixed \$columns = ['*'])";
     }
 
     private function queryMixin(): ?string

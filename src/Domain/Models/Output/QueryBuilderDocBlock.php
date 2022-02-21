@@ -50,7 +50,9 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             )
             ->when(
                 $this->larastanFriendly(),
-                fn (Collection $collection) => $collection->merge($this->templateBlock())
+                fn (Collection $collection) => $collection
+                    ->merge($this->phpstanMethods())
+                    ->merge($this->templateBlock())
             )
             ->merge($this->model->queryBuilder->extras);
     }
@@ -120,7 +122,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     private function resultMethods(): Collection
     {
         $model = $this->model->fqcn;
-        $collection = "{$this->model->collection->fqcn}<int, {$model}>";
+        $collection = $this->model->collection->fqcn;
 
         return Collection::make([
             "{$model} create(array \$attributes = [])",
@@ -157,6 +159,24 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             "{$builder} onlyTrashed()",
         ])
             ->map(static fn (string $method) => " * @method {$method}");
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, string>
+     */
+    private function phpstanMethods(): Collection
+    {
+        $model = $this->model->fqcn;
+        $collection = "{$this->model->collection->fqcn}<int, {$model}>";
+
+        return Collection::make([
+            "{$collection}|{$model}|null find(\$id, array \$columns = ['*'])",
+            "{$collection} findMany(\$id, array \$columns = ['*'])",
+            "{$collection}|{$model} findOrFail(\$id, array \$columns = ['*'])",
+            "{$collection} get(array|string \$columns = ['*'])",
+            "{$collection} getModels(array|string \$columns = ['*'])",
+        ])
+            ->map(static fn (string $method) => " * @phpstan-method {$method}");
     }
 
     /**
