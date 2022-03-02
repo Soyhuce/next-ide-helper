@@ -2,10 +2,10 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Factories\Actions;
 
-use Composer\Autoload\ClassMapGenerator;
 use Illuminate\Database\Eloquent\Factories\Factory as EloquentFactory;
 use Illuminate\Support\Collection;
 use ReflectionClass;
+use Soyhuce\ClassmapGenerator\ClassmapGenerator;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
 
@@ -19,7 +19,7 @@ class FindFactories
 
         $factories = new Collection();
 
-        foreach (ClassMapGenerator::createMap($dirPath) as $class => $path) {
+        foreach (ClassmapGenerator::createMap($dirPath) as $class => $path) {
             $path = realpath($path);
 
             if ($this->isEloquentFactory($class) && $path !== false) {
