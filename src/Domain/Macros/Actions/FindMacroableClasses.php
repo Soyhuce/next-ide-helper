@@ -5,7 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Macros\Actions;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use ReflectionClass;
-use Soyhuce\ClassmapGenerator\ClassmapGenerator;
+use Soyhuce\ClassMapGenerator\ClassMapGenerator;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
 use function in_array;
 
@@ -19,7 +19,7 @@ class FindMacroableClasses
 
         $macroables = new Collection();
 
-        foreach (ClassmapGenerator::createMap($dirPath) as $class => $path) {
+        foreach (ClassMapGenerator::createMap($dirPath) as $class => $path) {
             if ($this->isMacroable($class)) {
                 $macroables->add($class);
             }

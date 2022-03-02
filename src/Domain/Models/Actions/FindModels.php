@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use ReflectionClass;
-use Soyhuce\ClassmapGenerator\ClassmapGenerator;
+use Soyhuce\ClassMapGenerator\ClassMapGenerator;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
@@ -19,7 +19,7 @@ class FindModels
 
         $models = new ModelCollection();
 
-        foreach (ClassmapGenerator::createMap($dirPath) as $class => $path) {
+        foreach (ClassMapGenerator::createMap($dirPath) as $class => $path) {
             $path = realpath($path);
 
             if ($this->isEloquentModel($class) && $path !== false) {
