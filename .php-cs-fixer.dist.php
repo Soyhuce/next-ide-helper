@@ -1,30 +1,32 @@
-<?php
+<?php declare(strict_types=1);
 
-$finder = PhpCsFixer\Finder::create()
-    ->notPath('docs/*')
-    ->notPath('vendor')
-    ->in([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-    ])
-    ->name('*.php')
-    ->ignoreDotFiles(true)
-    ->ignoreVCS(true);
+$finder = PhpCsFixer\Finder::create()->in([
+    'config',
+    'src',
+    'tests',
+]);
 
 return (new PhpCsFixer\Config())->setRules([
     /*
      * Alias
      */
-    'array_push' => false, // risky
+    'array_push' => false,
+    // risky
     'backtick_to_shell_exec' => true,
-    'ereg_to_preg' => true, // risky
-    'mb_str_functions' => true, // risky
-    'no_alias_functions' => ['sets' => ['@all']], // risky
+    'ereg_to_preg' => true,
+    // risky
+    'mb_str_functions' => true,
+    // risky
+    'no_alias_functions' => ['sets' => ['@all']],
+    // risky
     'no_alias_language_construct_call' => true,
     'no_mixed_echo_print' => ['use' => 'echo'],
-    'pow_to_exponentiation' => true, // risky
-    'random_api_migration' => true, // risky
-    'set_type_to_cast' => true, // risky
+    'pow_to_exponentiation' => true,
+    // risky
+    'random_api_migration' => true,
+    // risky
+    'set_type_to_cast' => true,
+    // risky
     /*
      * Array notation
      */
@@ -46,12 +48,17 @@ return (new PhpCsFixer\Config())->setRules([
         'position_after_anonymous_constructs' => 'same',
     ],
     'encoding' => true,
-    'non_printable_character' => ['use_escape_sequences_in_strings' => true], // risky
-    'psr_autoloading' => true, // risky
+    'non_printable_character' => ['use_escape_sequences_in_strings' => true],
+    // risky
+    'octal_notation' => true,
+    'psr_autoloading' => true,
+    // risky
     /*
      * Casing
      */
+    'class_reference_name_casing' => true,
     'constant_case' => ['case' => 'lower'],
+    'integer_literal_case' => true,
     'lowercase_keywords' => true,
     'lowercase_static_reference' => true,
     'magic_constant_casing' => true,
@@ -63,31 +70,48 @@ return (new PhpCsFixer\Config())->setRules([
      */
     'cast_spaces' => ['space' => 'single'],
     'lowercase_cast' => true,
-    'modernize_types_casting' => true, // risky
+    'modernize_types_casting' => true,
+    // risky
     'no_short_bool_cast' => true,
     'no_unset_cast' => true,
     'short_scalar_cast' => true,
     /*
      * Class Notation
      */
-    'class_attributes_separation' => ['elements' => ['const' => 'one', 'method' => 'one', 'property' => 'one']],
+    //'class_attributes_separation' => ['elements' => ['const' => 'one', 'method' => 'one', 'property' => 'one', 'trait_import' => 'none', 'case' => 'none']], // Not yet released
+    'class_attributes_separation' => [
+        'elements' => [
+            'const' => 'one',
+            'method' => 'one',
+            'property' => 'one',
+            'trait_import' => 'none',
+        ],
+    ],
     'class_definition' => [
         'multi_line_extends_each_single_line' => false,
         'single_item_single_line' => false,
         'single_line' => false,
     ],
-    'final_class' => false, // risky
-    'final_internal_class' => false, //risky
-    'final_public_method_for_abstract_class' => false, // risky
+    'final_class' => false,
+    // risky
+    'final_internal_class' => false,
+    //risky
+    'final_public_method_for_abstract_class' => false,
+    // risky
     'no_blank_lines_after_class_opening' => true,
     'no_null_property_initialization' => false,
-    'no_php4_constructor' => true, // risky
-    'no_unneeded_final_method' => true, // risky
+    'no_php4_constructor' => true,
+    // risky
+    'no_unneeded_final_method' => true,
+    // risky
     'ordered_class_elements' => ['order' => ['use_trait', 'constant', 'property_static', 'property', 'construct']],
-    'ordered_interfaces' => ['order' => 'alpha', 'direction' => 'ascend'], // risky
-    'ordered_traits' => true, // risky
+    'ordered_interfaces' => ['order' => 'alpha', 'direction' => 'ascend'],
+    // risky
+    'ordered_traits' => true,
+    // risky
     'protected_to_private' => false,
-    'self_accessor' => true, // risky
+    'self_accessor' => true,
+    // risky
     'self_static_accessor' => true,
     'single_class_element_per_statement' => true,
     'single_trait_insert_per_statement' => true,
@@ -95,24 +119,31 @@ return (new PhpCsFixer\Config())->setRules([
     /*
      * Class Usage
      */
-    'date_time_immutable' => true, // risky
+    'date_time_immutable' => true,
+    // risky
     /*
      * Comment
      */
-    'comment_to_phpdoc' => true, // risky
+    'comment_to_phpdoc' => true,
+    // risky
     'header_comment' => false,
     'multiline_comment_opening_closing' => true,
     'no_empty_comment' => true,
     'no_trailing_whitespace_in_comment' => true,
+    //'single_line_comment_spacing' => true, // not yet released
     'single_line_comment_style' => ['comment_types' => ['hash']],
     /*
      * Constant Notation
      */
-    'native_constant_invocation' => false, // risky
+    'native_constant_invocation' => false,
+    // risky
     /*
      * Control structures
      */
+    'control_structure_continuation_position' => ['position' => 'same_line'],
     'elseif' => true,
+    'empty_loop_body' => ['style' => 'semicolon'],
+    'empty_loop_condition' => ['style' => 'while'],
     'include' => true,
     'no_alternative_syntax' => true,
     'no_break_comment' => true,
@@ -139,12 +170,16 @@ return (new PhpCsFixer\Config())->setRules([
     /*
      * Function Notation
      */
-    'combine_nested_dirname' => true, // risky
-    'fopen_flag_order' => true, // risky
-    'fopen_flags' => ['b_mode' => false], // risky
+    'combine_nested_dirname' => true,
+    // risky
+    'fopen_flag_order' => true,
+    // risky
+    'fopen_flags' => ['b_mode' => false],
+    // risky
     'function_declaration' => ['closure_function_spacing' => 'one'],
     'function_typehint_space' => true,
-    'implode_call' => true, // risky
+    'implode_call' => true,
+    // risky
     'lambda_not_used_import' => true,
     'method_argument_space' => [
         'keep_multiple_spaces_after_comma' => false,
@@ -157,17 +192,26 @@ return (new PhpCsFixer\Config())->setRules([
         'strict' => true,
     ],
     'no_spaces_after_function_name' => true,
+    //'no_trailing_comma_in_singleline_function_call' => true, // Not yet released
     'no_unreachable_default_argument_value' => true,
     'no_useless_sprintf' => true,
     'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
-    'phpdoc_to_param_type' => false, // experimental, risky
-    'phpdoc_to_return_type' => false, // experimental, risky
-    'regular_callable_call' => true, // risky
+    'phpdoc_to_param_type' => false,
+    // experimental, risky
+    'phpdoc_to_property_type' => false,
+    // experimental, risky
+    'phpdoc_to_return_type' => false,
+    // experimental, risky
+    'regular_callable_call' => true,
+    // risky
     'return_type_declaration' => true,
     'single_line_throw' => false,
-    'static_lambda' => false, // risky
-    'use_arrow_functions' => false, // risky
-    'void_return' => true, // risky
+    'static_lambda' => false,
+    // risky
+    'use_arrow_functions' => false,
+    // risky
+    'void_return' => true,
+    // risky
     /*
      * Import
      */
@@ -175,6 +219,7 @@ return (new PhpCsFixer\Config())->setRules([
     'global_namespace_import' => ['import_constants' => false, 'import_functions' => true, 'import_classes' => true],
     'group_import' => false,
     'no_leading_import_slash' => true,
+    'no_unneeded_import_alias' => true,
     'no_unused_imports' => true,
     'ordered_imports' => ['sort_algorithm' => 'alpha', 'imports_order' => ['class', 'function', 'const']],
     'single_import_per_statement' => true,
@@ -186,7 +231,9 @@ return (new PhpCsFixer\Config())->setRules([
     'combine_consecutive_issets' => true,
     'combine_consecutive_unsets' => true,
     'declare_equal_normalize' => ['space' => 'none'],
-    'dir_constant' => true, // risky
+    'declare_parentheses' => true,
+    'dir_constant' => true,
+    // risky
     'error_suppression' => false,
     'explicit_indirect_variable' => true,
     'function_to_constant' => [
@@ -198,9 +245,13 @@ return (new PhpCsFixer\Config())->setRules([
             'phpversion',
             'pi',
         ],
-    ], // risky
+    ],
+    // risky
+    'get_class_to_class_keyword' => true,
+    // risky
     'is_null' => true,
-    'no_unset_on_property' => false, // risky
+    'no_unset_on_property' => false,
+    // risky
     'single_space_after_construct' => true,
     /*
      * List Notation
@@ -217,50 +268,67 @@ return (new PhpCsFixer\Config())->setRules([
     /*
      * Naming
      */
-    'no_homoglyph_names' => false, // risky
+    'no_homoglyph_names' => false,
+    // risky
     /*
      * Operator
      */
-    'binary_operator_spaces' => ['default' => 'single_space', 'operators' => ['|' => 'no_space']],
+    'assign_null_coalescing_to_coalesce_equal' => true,
+    'binary_operator_spaces' => ['default' => 'single_space'],
     'concat_space' => ['spacing' => 'one'],
     'increment_style' => false,
     'logical_operators' => true,
     'new_with_braces' => true,
+    'no_space_around_double_colon' => true,
     'not_operator_with_space' => false,
     'not_operator_with_successor_space' => false,
+    'object_operator_without_whitespace' => true,
     'operator_linebreak' => ['only_booleans' => true, 'position' => 'beginning'],
-    'standardize_increment' => true,
+    'standardize_increment' => false,
     'standardize_not_equals' => true,
-    'ternary_to_elvis_operator' => true, // risky
+    'ternary_to_elvis_operator' => true,
+    // risky
     'ternary_to_null_coalescing' => true,
     'unary_operator_spaces' => true,
     /*
      * PHP Tag
      */
-    'blank_line_after_opening_tag' => true,
+    'blank_line_after_opening_tag' => false,
     'echo_tag_syntax' => false,
     'full_opening_tag' => true,
-    'linebreak_after_opening_tag' => true,
+    'linebreak_after_opening_tag' => false,
     'no_closing_tag' => true,
     /*
      * PHPUnit
      */
-    'php_unit_construct' => true, // risky
-    'php_unit_dedicate_assert' => true, // risky
-    'php_unit_dedicate_assert_internal_type' => true, //risky
-    'php_unit_expectation' => true, // risky
+    'php_unit_construct' => true,
+    // risky
+    'php_unit_dedicate_assert' => true,
+    // risky
+    'php_unit_dedicate_assert_internal_type' => true,
+    //risky
+    'php_unit_expectation' => true,
+    // risky
     'php_unit_fqcn_annotation' => true,
     'php_unit_internal_class' => false,
     'php_unit_method_casing' => ['case' => 'camel_case'],
-    'php_unit_mock' => true, // risky
-    'php_unit_mock_short_will_return' => true, // risky
-    'php_unit_namespaced' => true, // risky
-    'php_unit_no_expectation_annotation' => true, // risky
-    'php_unit_set_up_tear_down_visibility' => true, // risky
+    'php_unit_mock' => true,
+    // risky
+    'php_unit_mock_short_will_return' => true,
+    // risky
+    'php_unit_namespaced' => true,
+    // risky
+    'php_unit_no_expectation_annotation' => true,
+    // risky
+    'php_unit_set_up_tear_down_visibility' => true,
+    // risky
     'php_unit_size_class' => false,
-    'php_unit_strict' => false, // risky
-    'php_unit_test_annotation' => ['style' => 'annotation'], // risky
-    'php_unit_test_case_static_method_calls' => ['call_type' => 'this'], // risky
+    'php_unit_strict' => false,
+    // risky
+    'php_unit_test_annotation' => ['style' => 'annotation'],
+    // risky
+    'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
+    // risky
     'php_unit_test_class_requires_covers' => true,
     /*
      * PHPDoc
@@ -332,9 +400,12 @@ return (new PhpCsFixer\Config())->setRules([
     /*
      * Strict
      */
-    'declare_strict_types' => false, // risky
-    'strict_comparison' => false, // risky
-    'strict_param' => false, // risky
+    'declare_strict_types' => true,
+    // risky
+    'strict_comparison' => false,
+    // risky
+    'strict_param' => false,
+    // risky
     /*
      * String Notation
      */
@@ -342,10 +413,13 @@ return (new PhpCsFixer\Config())->setRules([
     'explicit_string_variable' => true,
     'heredoc_to_nowdoc' => true,
     'no_binary_string' => true,
-    'no_trailing_whitespace_in_string' => false, // risky
+    'no_trailing_whitespace_in_string' => false,
+    // risky
     'simple_to_complex_string_variable' => true,
     'single_quote' => true,
-    'string_line_ending' => false, // risky
+    'string_length_to_empty' => true,
+    'string_line_ending' => false,
+    // risky
     /*
      * Whitespace
      */
@@ -378,6 +452,7 @@ return (new PhpCsFixer\Config())->setRules([
     'no_trailing_whitespace' => true,
     'no_whitespace_in_blank_line' => true,
     'single_blank_line_at_eof' => true,
+    'types_spaces' => true,
 ])
     ->setRiskyAllowed(true)
     ->setFinder($finder);
