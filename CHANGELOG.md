@@ -2,6 +2,15 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.9.0 - 2022-03-04
+
+## What's Changed
+
+- Remove composer dependency by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/52
+- Upgrade skeleton by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/53
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.8.1...0.9.0
+
 ## [Next release] - YYYY-MM-DD
 
 ## [0.8.1] - 2022-02-21
@@ -9,7 +18,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Fixed
 
 - Remove generics tags from docblocks in `@method` tags, add `@phpstan-method` with generics in
-  case `models.larastan_friendly` is enabled.
+- case `models.larastan_friendly` is enabled.
 
 ## [0.8.0] - 2022-02-18
 
@@ -55,7 +64,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - Soyhuce\NextIdeHelper\Console\Bootstrapper moved to Soyhuce\NextIdeHelper\Contracts\Bootstrapper
 - Soyhuce\NextIdeHelper\Domain\Models\Actions\ModelResolver moved to Soyhuce\NextIdeHelper\Contracts\ModelResolver
 - Soyhuce\NextIdeHelper\Domain\Factories\Actions\FactoryResolver moved to
-  Soyhuce\NextIdeHelper\Contracts\FactoryResolver
+- Soyhuce\NextIdeHelper\Contracts\FactoryResolver
 
 ### Removed
 
@@ -127,7 +136,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - In _ide_models file, models do not overwrite real model anymore
 - Add @mixin to model docblock referencing models in _ide_models file
 - Add constructor in _ide_macros files for macroable classes to prevent the ide complaining about constructor
-  arguments (#28)
+- arguments (#28)
 
 ### Fixed
 
@@ -272,33 +281,41 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 ### Added
 
 - command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
-    - method types
-    - magic relation methods
+- - method types
+- - magic relation methods
+- 
 
 ## [0.1.0] - 2020-05-15
 
 ### Added
 
 - Models :
-    - attributes
-    - attributes from accessors
-    - attribute casting
-    - custom collection
-    - custom query builder
-    - relations
-    - query builder :
-        - where clauses from attributes
-        - where clauses from scopes
-        - type of result methods
-    - relations :
-        - mixin with related's query builder
-    - custom resolvers
-
+- 
+- - attributes
+- - attributes from accessors
+- - attribute casting
+- - custom collection
+- - custom query builder
+- - relations
+- - query builder :
+- - - where clauses from attributes
+- - - where clauses from scopes
+- - - type of result methods
+- - 
+- - relations :
+- - - mixin with related's query builder
+- - 
+- - custom resolvers
+- 
 - Macros :
-    - generation of file with macros to provide auto-completion
-
+- 
+- - generation of file with macros to provide auto-completion
+- 
 - Phpstorm Meta :
-    - generation of file with meta to provide auto-completion
-
+- 
+- - generation of file with meta to provide auto-completion
+- 
 - Misc :
-    - custom bootstrapper
+- 
+- - custom bootstrapper
+- 
