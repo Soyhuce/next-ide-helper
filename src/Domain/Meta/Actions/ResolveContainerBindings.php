@@ -1,11 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\NextIdeHelper\Domain\Meta\Actions;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use Throwable;
-use function get_class;
 use function is_object;
 
 class ResolveContainerBindings
@@ -24,7 +23,7 @@ class ResolveContainerBindings
             ->mapWithKeys(fn (string $abstract) => [$abstract => $this->resolve($abstract)])
             ->filter()
             ->filter(static fn ($concrete) => is_object($concrete))
-            ->map(static fn ($concrete) => get_class($concrete))
+            ->map(static fn ($concrete) => $concrete::class)
             ->sortKeys();
     }
 
