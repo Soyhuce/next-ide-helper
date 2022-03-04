@@ -1,9 +1,74 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Actions\\\\FindFactories\\:\\:execute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Domain/Factories/Actions/FindFactories.php
+
+		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory\\>, class\\-string given\\.$#"
 			count: 1
 			path: src/Domain/Factories/Actions/FindFactories.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Actions\\\\ResolveModels\\:\\:execute\\(\\) has parameter \\$factories with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Domain/Factories/Actions/ResolveModels.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:__construct\\(\\) has parameter \\$fqcn with generic class Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory but does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Domain/Factories/Entities/Factory.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:instance\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Domain/Factories/Entities/Factory.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:\\$extraMethods with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Domain/Factories/Entities/Factory.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:\\$fqcn with generic class Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Domain/Factories/Entities/Factory.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Factories\\\\Entities\\\\Factory\\:\\:\\$instance with generic class Illuminate\\\\Database\\\\Eloquent\\\\Factories\\\\Factory does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Domain/Factories/Entities/Factory.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Macros\\\\Actions\\\\FindMacroableClasses\\:\\:execute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Domain/Macros/Actions/FindMacroableClasses.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Macros\\\\Output\\\\MacrosHelperFile\\:\\:__construct\\(\\) has parameter \\$class with generic class ReflectionClass but does not specify its types\\: T$#"
+			count: 1
+			path: src/Domain/Macros/Output/MacrosHelperFile.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Macros\\\\Output\\\\MacrosHelperFile\\:\\:constructor\\(\\) has parameter \\$class with generic class ReflectionClass but does not specify its types\\: T$#"
+			count: 1
+			path: src/Domain/Macros/Output/MacrosHelperFile.php
+
+		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Macros\\\\Output\\\\MacrosHelperFile\\:\\:\\$class with generic class ReflectionClass does not specify its types\\: T$#"
+			count: 1
+			path: src/Domain/Macros/Output/MacrosHelperFile.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Meta\\\\Actions\\\\ResolveContainerBindings\\:\\:execute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
+
+		-
+			message: "#^Unable to resolve the template type TMapValue in call to method Illuminate\\\\Support\\\\Collection\\<string,object\\>\\:\\:map\\(\\)$#"
+			count: 1
+			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
 
 		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Model constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>, class\\-string given\\.$#"
@@ -11,14 +76,44 @@ parameters:
 			path: src/Domain/Models/Actions/FindModels.php
 
 		-
+			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\Relation but does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Domain/Models/Actions/ResolveModelRelations.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:__construct\\(\\) has parameter \\$fqcn with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Domain/Models/Entities/QueryBuilder.php
+
+		-
 			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:\\$extras \\(Illuminate\\\\Support\\\\Collection\\<int, string\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
 			path: src/Domain/Models/Entities/QueryBuilder.php
 
 		-
+			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:\\$fqcn with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Domain/Models/Entities/QueryBuilder.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Relation\\:\\:eloquentRelation\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\Relation does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Domain/Models/Entities/Relation.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Relation\\:\\:isNullable\\(\\) has parameter \\$relation with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\Relation but does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: src/Domain/Models/Entities/Relation.php
+
+		-
 			message: "#^Call to an undefined static method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:factory\\(\\)\\.$#"
 			count: 1
 			path: src/Domain/Models/Output/ModelDocBlock.php
+
+		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\:\\:addDocTags\\(\\) has parameter \\$docTags with generic class Illuminate\\\\Support\\\\Collection but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Entities/Klass.php
 
 		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Klass\\:\\:docblockLines\\(\\) should return Illuminate\\\\Support\\\\Collection\\<int, string\\> but returns Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
@@ -51,6 +146,11 @@ parameters:
 			path: src/Entities/Nemespace.php
 
 		-
+			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Output\\\\IdeHelperClass\\:\\:eloquentBuilder\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder does not specify its types\\: TModelClass$#"
+			count: 1
+			path: src/Support/Output/IdeHelperClass.php
+
+		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Output\\\\IdeHelperClass\\:\\:eloquentBuilder\\(\\) should return class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\> but returns string\\.$#"
 			count: 1
 			path: src/Support/Output/IdeHelperClass.php
@@ -59,6 +159,11 @@ parameters:
 			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Support\\\\Output\\\\IdeHelperFile\\:\\:\\$namespaces \\(Illuminate\\\\Support\\\\Collection\\<string, Soyhuce\\\\NextIdeHelper\\\\Entities\\\\Nemespace\\>\\) does not accept Illuminate\\\\Support\\\\Collection\\<\\*NEVER\\*, \\*NEVER\\*\\>\\.$#"
 			count: 1
 			path: src/Support/Output/IdeHelperFile.php
+
+		-
+			message: "#^Casting class ReflectionType to string is deprecated\\.$#"
+			count: 1
+			path: src/Support/Reflection/TypeReflection.php
 
 		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Type\\:\\:qualify\\(\\) should return T of string but returns string\\.$#"
