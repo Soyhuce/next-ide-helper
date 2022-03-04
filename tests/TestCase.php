@@ -2,10 +2,10 @@
 
 namespace Soyhuce\NextIdeHelper\Tests;
 
+use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\NextIdeHelper\NextIdeHelperServiceProvider;
-use function in_array;
 
-abstract class TestCase extends \Orchestra\Testbench\TestCase
+abstract class TestCase extends Orchestra
 {
     use UsesFixtures;
 
@@ -22,7 +22,9 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function getPackageProviders($app)
     {
-        return [NextIdeHelperServiceProvider::class];
+        return [
+            NextIdeHelperServiceProvider::class,
+        ];
     }
 
     protected function onlyForPhp81(): void

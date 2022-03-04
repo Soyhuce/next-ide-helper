@@ -8,12 +8,13 @@
     "phpdoc",
     "phpstorm"
   ],
-  "type": "library",
+  "homepage": "https://github.com/soyhuce/next-ide-helper",
   "license": "MIT",
   "authors": [
     {
       "name": "Bastien Philippe",
-      "email": "bastien.philippe@soyhuce.fr"
+      "email": "bastien.philippe@soyhuce.fr",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -23,11 +24,19 @@
     "illuminate/database": "^9.0",
     "illuminate/support": "^9.0",
     "illuminate/view": "^9.0",
+    "spatie/laravel-package-tools": "^1.9.2",
     "soyhuce/classmap-generator": "^1.0"
   },
   "require-dev": {
-    "bamarni/composer-bin-plugin": "^1.4",
+    "friendsofphp/php-cs-fixer": "^3.6",
+    "nunomaduro/collision": "^6.0",
+    "nunomaduro/larastan": "^2.0.1",
     "orchestra/testbench": "^7.0",
+    "pestphp/pest": "^1.21",
+    "pestphp/pest-plugin-laravel": "^1.1",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.0",
     "phpunit/phpunit": "^9.5"
   },
   "autoload": {
@@ -40,6 +49,24 @@
       "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
     }
   },
+  "scripts": {
+    "cs": "vendor/bin/php-cs-fixer fix",
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "all": [
+      "@cs",
+      "@test",
+      "@analyse"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true
+    }
+  },
   "extra": {
     "laravel": {
       "providers": [
@@ -47,26 +74,6 @@
       ]
     }
   },
-  "scripts": {
-    "post-install-cmd": "@composer bin all install --ansi",
-    "post-update-cmd": "@composer bin all update --ansi",
-    "cs": "vendor/bin/php-cs-fixer fix",
-    "analyse": "vendor/bin/phpstan analyse",
-    "test": "vendor/bin/phpunit",
-    "all": [
-      "@cs",
-      "@analyse",
-      "@test"
-    ]
-  },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "config": {
-    "preferred-install": "dist",
-    "sort-packages": true,
-    "allow-plugins": {
-      "bamarni/composer-bin-plugin": true,
-      "composer/package-versions-deprecated": true
-    }
-  }
+  "prefer-stable": true
 }

@@ -1,7 +1,9 @@
-# Next Ide Helper for Laravel
+# Laravel ide helper rebuilt under steroids
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/next-ide-helper.svg?style=flat-square)](https://packagist.org/packages/soyhuce/next-ide-helper)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/run-tests?label=tests)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/run-tests?label=tests)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/PHPStan?label=phpstan)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3APHPStan+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/next-ide-helper.svg?style=flat-square)](https://packagist.org/packages/soyhuce/next-ide-helper)
 
 This package aims to be an easy extendable ide-helper generator.
@@ -10,8 +12,6 @@ It was inspired by the great work of [barryvdh/laravel-ide-helper](https://githu
 
 It provides completion for Eloquent magic (model attributes, scopes, relations, ...), registered macros of Macroable
 classes, container instances, ...
-
-All notable changes are described in the [changelog](CHANGELOG.md).
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -41,7 +41,7 @@ composer require --dev soyhuce/next-ide-helper
 You may want to publish configuration file :
 
 ```shell script
-php artisan vendor:publish --tag=next-ide-helper:config
+php artisan vendor:publish --tag=next-ide-helper-config
 ```
 
 You're done !
@@ -220,7 +220,7 @@ class User extends Model
 }
 ```
 
-![](assets/doc/model_scope_autocomplete.png)
+![](docs/model_scope_autocomplete.png)
 
 This will produce `@method \App\Builder\UserBuilder whereVerified(bool $verified = true)` on your custom builder.
 
@@ -253,11 +253,11 @@ class Post extends Model
 }
 ``` 
 
-![](assets/doc/scope_for_relation_autocomplete.png)
+![](docs/scope_for_relation_autocomplete.png)
 
 Custom builders and custom collections are also correctly resolved by the ide :
 
-![](assets/doc/collection_for_relation_autocomplete.png)
+![](docs/collection_for_relation_autocomplete.png)
 
 ### Larastan friendly tags
 
@@ -312,7 +312,7 @@ Collection::macro('mapToUpper', function(): Collection {
 
 Thanks to `_ide_macros.php` file, we have auto-completion for the `mapToUpper` method :
 
-![](assets/doc/macro_autocomplete.png)
+![](docs/macro_autocomplete.png)
 
 Just like `_ide_models.php`, the `_ide_macros.php` file must not be included but only analyzed by your ide.
 
@@ -321,8 +321,8 @@ Just like `_ide_models.php`, the `_ide_macros.php` file must not be included but
 The command `php artisan next-ide-helper:meta` will generate a `.phpstorm.meta.php` file. It will provide completion for
 container bindings and some laravel helpers
 
-![](assets/doc/optional_autocomplete.png)
-![](assets/doc/app_autocomplete.png)
+![](docs/optional_autocomplete.png)
+![](docs/app_autocomplete.png)
 
 ## Factories
 
@@ -427,10 +427,23 @@ Now, you just have to add it in you `next-ide-helper.php` config file :
 
 Your bootstrapper benefits from laravel dependency injection in its constructor.
 
-# Contributing
+## Changelog
 
-You are welcome to contribute to this project ! Please see [CONTRIBUTING.md](CONTRIBUTING.md).
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-# License
+## Contributing
 
-This package is provided under the [MIT License](LICENSE.md)
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Bastien Philippe](https://github.com/bastien-phi)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
