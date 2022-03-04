@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
@@ -98,7 +98,7 @@ class FunctionReflection
         $spaces = max(Str::length($lastLine) - Str::length(ltrim($lastLine, ' ')) - 4, 0);
 
         return $lines->map(
-            static fn (string $line) => rtrim(Str::of($line)->substr($spaces), PHP_EOL)
+            static fn (string $line) => Str::of($line)->substr($spaces)->rtrim(PHP_EOL)->toString()
         )->toArray();
     }
 }

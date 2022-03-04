@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\NextIdeHelper\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\NextIdeHelper\NextIdeHelperServiceProvider;
+use function in_array;
 
 abstract class TestCase extends Orchestra
 {

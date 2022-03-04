@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
@@ -46,6 +46,6 @@ class ResolveModelScopes implements ModelResolver
 
     private function methodName(string $name): string
     {
-        return Str::of($name)->after('scope')->camel();
+        return Str::of($name)->after('scope')->camel()->toString();
     }
 }
