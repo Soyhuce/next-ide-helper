@@ -9,6 +9,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
+use Throwable;
 use function in_array;
 
 class ModelDocBlock extends DocBlock implements Renderer
@@ -152,8 +153,12 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        $factory = Str::start($this->model->fqcn::factory()::class, '\\');
+        try {
+            $factory = Str::start($this->model->fqcn::factory()::class, '\\');
 
-        return " * @method static {$factory} factory(\$count = 1, \$state = [])";
+            return " * @method static {$factory} factory(\$count = 1, \$state = [])";
+        } catch (Throwable) {
+            return null;
+        }
     }
 }
