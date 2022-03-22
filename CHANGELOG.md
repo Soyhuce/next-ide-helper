@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.9.1 - 2022-03-22
+
+## What's Changed
+
+- Fix ModelDocBlock when the model uses HasFactory but the factory does not exist by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/54
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.9.0...0.9.1
+
 ## 0.9.0 - 2022-03-04
 
 ## What's Changed
@@ -282,7 +290,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 - command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
 - - method types
+- 
 - - magic relation methods
+- 
 - 
 
 ## [0.1.0] - 2020-05-15
@@ -292,30 +302,52 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - Models :
 - 
 - - attributes
+- 
 - - attributes from accessors
+- 
 - - attribute casting
+- 
 - - custom collection
+- 
 - - custom query builder
+- 
 - - relations
+- 
 - - query builder :
+- 
 - - - where clauses from attributes
+- - 
+- 
 - - - where clauses from scopes
+- - 
+- 
 - - - type of result methods
 - - 
+- 
+- - 
+- 
 - - relations :
+- 
 - - - mixin with related's query builder
 - - 
+- 
+- - 
+- 
 - - custom resolvers
+- 
 - 
 - Macros :
 - 
 - - generation of file with macros to provide auto-completion
 - 
+- 
 - Phpstorm Meta :
 - 
 - - generation of file with meta to provide auto-completion
 - 
+- 
 - Misc :
 - 
 - - custom bootstrapper
+- 
 - 
