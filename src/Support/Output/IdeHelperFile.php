@@ -31,6 +31,10 @@ class IdeHelperFile
             ->trim('\\');
         $class = Str::afterLast($fqcn, '\\');
 
+        if (!str_contains($class, '__')) {
+            $class = 'NextIdeHelper' . $class;
+        }
+
         return $this->getOrAddNamespace($namespace)->getOrAddClass($class);
     }
 

@@ -32,6 +32,11 @@ class ModelDocBlock extends DocBlock implements Renderer
 
     protected function docblock(): string
     {
+        $name = explode('\\', $this->model->fqcn);
+        $last = array_pop($name);
+        $last = 'NextIdeHelper' . $last;
+        $name[] = $last;
+
         return Collection::make([
             '/**',
             $this->properties(),
@@ -43,6 +48,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             $this->phpstanMethods(),
             $this->queryMixin(),
             $this->factory(),
+            ' * @mixin ' . implode('\\', $name),
             ' */',
         ])
             ->map(fn (?string $line): string => $this->line($line))
