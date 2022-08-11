@@ -31,6 +31,9 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.RateLimiter') === null) {
             AliasLoader::getInstance(['RateLimiter' => \Illuminate\Support\Facades\RateLimiter::class]);
         }
+        if (config('app.aliases.Vite') === null) {
+            AliasLoader::getInstance(['Vite' => \Illuminate\Support\Facades\Vite::class]);
+        }
 
         config([
             'next-ide-helper.aliases' => [
