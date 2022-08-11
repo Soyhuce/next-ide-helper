@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Doctrine\DBAL\Types\Type;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
@@ -16,7 +17,7 @@ class ResolveModelAttributes implements ModelResolver
         $typeCaster = new AttributeTypeCaster($model);
 
         foreach ($columns as $column) {
-            $attribute = new Attribute($column->getName(), $column->getType()->getName());
+            $attribute = new Attribute($column->getName(), Type::getTypeRegistry()->lookupName($column->getType()));
             $attribute->inDatabase = true;
             if (!$column->getNotnull() && !$this->isLaravelTimestamp($model, $attribute)) {
                 $attribute->nullable = true;
