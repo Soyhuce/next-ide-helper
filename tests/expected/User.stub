@@ -23,7 +23,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property string $screamed_email
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
- * @property-read string|null $city
+ * @property-read string $city
  * @property-write string $new_password
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $posts

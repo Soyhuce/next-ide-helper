@@ -24,6 +24,7 @@ class ApplyAttributeOverrides implements ModelResolver
             $attribute = $model->attributes->findByName($name);
             if ($attribute !== null) {
                 $attribute->setType($this->formatTypes($type));
+                $attribute->nullable = Str::startsWith($type, '?');
             }
 
             $relation = $model->relations->findByName($name);

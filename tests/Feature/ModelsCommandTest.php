@@ -39,6 +39,9 @@ class ModelsCommandTest extends TestCase
                 'directories' => [$this->fixturePath()],
                 'file_name' => $this->fixturePath() . '/_ide_models.php',
                 'overrides' => [
+                    User::class => [
+                        'city' => 'string',
+                    ],
                     Post::class => [
                         'likes' => 'int',
                         'address' => '?' . Address::class,
@@ -100,11 +103,6 @@ class ModelsCommandTest extends TestCase
         $this->assertFileEquals(
             $this->expectedPath('PostLarastan.stub'),
             $this->fixturePath('Blog/Post.php')
-        );
-
-        $this->assertFileEquals(
-            $this->expectedPath('User.stub'),
-            $this->fixturePath('User.php')
         );
 
         $this->assertFileEquals(
