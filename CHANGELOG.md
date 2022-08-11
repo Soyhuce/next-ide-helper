@@ -2,6 +2,21 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.9.2 - 2022-08-11
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.0 to 1.3.1 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/55
+- Bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/56
+- Fix overriding nullable type by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/59
+- Fix doctrine/dbal deprecation notice by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/61
+
+### New Contributors
+
+- @dependabot made their first contribution in https://github.com/Soyhuce/next-ide-helper/pull/55
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.9.1...0.9.2
+
 ## 0.9.1 - 2022-03-22
 
 ## What's Changed
@@ -291,7 +306,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
 - - method types
 - 
+- 
 - - magic relation methods
+- 
 - 
 - 
 
@@ -303,37 +320,60 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - - attributes
 - 
+- 
 - - attributes from accessors
+- 
 - 
 - - attribute casting
 - 
+- 
 - - custom collection
+- 
 - 
 - - custom query builder
 - 
+- 
 - - relations
 - 
+- 
 - - query builder :
+- 
 - 
 - - - where clauses from attributes
 - - 
 - 
+- - 
+- 
+- 
 - - - where clauses from scopes
 - - 
+- 
+- - 
+- 
 - 
 - - - type of result methods
 - - 
 - 
 - - 
 - 
+- 
+- - 
+- 
+- 
 - - relations :
+- 
 - 
 - - - mixin with related's query builder
 - - 
 - 
 - - 
 - 
+- 
+- - 
+- 
+- 
 - - custom resolvers
+- 
 - 
 - 
 - Macros :
@@ -341,13 +381,16 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - generation of file with macros to provide auto-completion
 - 
 - 
+- 
 - Phpstorm Meta :
 - 
 - - generation of file with meta to provide auto-completion
 - 
 - 
+- 
 - Misc :
 - 
 - - custom bootstrapper
+- 
 - 
 - 
