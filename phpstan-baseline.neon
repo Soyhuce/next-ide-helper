@@ -76,6 +76,14 @@ parameters:
 			path: src/Domain/Models/Actions/FindModels.php
 
 		-
+			message: """
+				#^Call to deprecated method getName\\(\\) of class Doctrine\\\\DBAL\\\\Types\\\\Type\\:
+				this method will be removed in Doctrine DBAL 4\\.0\\.$#
+			"""
+			count: 1
+			path: src/Domain/Models/Actions/ResolveModelAttributes.php
+
+		-
 			message: "#^PHPDoc tag @var contains generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\Relation but does not specify its types\\: TRelatedModel$#"
 			count: 1
 			path: src/Domain/Models/Actions/ResolveModelRelations.php
