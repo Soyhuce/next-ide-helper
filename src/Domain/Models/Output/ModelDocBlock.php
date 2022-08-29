@@ -40,7 +40,6 @@ class ModelDocBlock extends DocBlock implements Renderer
             $this->relations(),
             $this->all(),
             $this->query(),
-            $this->phpstanMethods(),
             $this->queryMixin(),
             $this->factory(),
             ' */',
@@ -100,7 +99,12 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        return " * @method static {$this->model->queryBuilder->fqcn} query()";
+        $type = $this->model->queryBuilder->fqcn;
+        if ($this->larastanFriendly()) {
+            $type .= "<{$this->model->fqcn}>";
+        }
+
+        return " * @method static {$type} query()";
     }
 
     private function all(): ?string
@@ -109,20 +113,12 @@ class ModelDocBlock extends DocBlock implements Renderer
             return null;
         }
 
-        return " * @method static {$this->model->collection->fqcn} all(array|mixed \$columns = ['*'])";
-    }
-
-    private function phpstanMethods(): ?string
-    {
-        if (!config('next-ide-helper.models.larastan_friendly', false)) {
-            return null;
+        $type = $this->model->collection->fqcn;
+        if ($this->larastanFriendly()) {
+            $type .= "<int, {$this->model->fqcn}>";
         }
 
-        if ($this->model->collection->isBuiltIn()) {
-            return null;
-        }
-
-        return " * @phpstan-method static {$this->model->collection->fqcn}<int, {$this->model->fqcn}> all(array|mixed \$columns = ['*'])";
+        return " * @method static {$type} all(array|mixed \$columns = ['*'])";
     }
 
     private function queryMixin(): ?string
@@ -133,7 +129,7 @@ class ModelDocBlock extends DocBlock implements Renderer
 
         $mixin = " * @mixin {$this->model->queryBuilder->fqcn}";
 
-        if (config('next-ide-helper.models.larastan_friendly', false)) {
+        if ($this->larastanFriendly()) {
             $mixin .= "<{$this->model->fqcn}>";
         }
 
@@ -160,5 +156,10 @@ class ModelDocBlock extends DocBlock implements Renderer
         } catch (Throwable) {
             return null;
         }
+    }
+
+    private function larastanFriendly(): bool
+    {
+        return (bool) config('next-ide-helper.models.larastan_friendly', false);
     }
 }
