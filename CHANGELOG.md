@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.10.0 - 2022-08-29
+
+### What's Changed
+
+- Change Larastan friendly rendering by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/62
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.9.2...0.10.0
+
 ## 0.9.2 - 2022-08-11
 
 ### What's Changed
@@ -307,7 +315,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - method types
 - 
 - 
+- 
 - - magic relation methods
+- 
 - 
 - 
 - 
@@ -321,22 +331,29 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - attributes
 - 
 - 
+- 
 - - attributes from accessors
+- 
 - 
 - 
 - - attribute casting
 - 
 - 
+- 
 - - custom collection
+- 
 - 
 - 
 - - custom query builder
 - 
 - 
+- 
 - - relations
 - 
 - 
+- 
 - - query builder :
+- 
 - 
 - 
 - - - where clauses from attributes
@@ -345,10 +362,18 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - 
 - 
 - 
+- - 
+- 
+- 
+- 
 - - - where clauses from scopes
 - - 
 - 
 - - 
+- 
+- 
+- - 
+- 
 - 
 - 
 - - - type of result methods
@@ -360,7 +385,13 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
 - - relations :
+- 
 - 
 - 
 - - - mixin with related's query builder
@@ -372,7 +403,13 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
 - - custom resolvers
+- 
 - 
 - 
 - 
@@ -382,15 +419,18 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - Phpstorm Meta :
 - 
 - - generation of file with meta to provide auto-completion
 - 
 - 
 - 
+- 
 - Misc :
 - 
 - - custom bootstrapper
+- 
 - 
 - 
 - 
