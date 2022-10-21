@@ -4,8 +4,8 @@ namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMacroable;
-use Soyhuce\NextIdeHelper\Tests\Fixtures\SomeMixin;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeMacroable;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeMixin;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
 
 /**
@@ -31,7 +31,7 @@ class MacrosCommandTest extends TestCase
     {
         config([
             'next-ide-helper.macros' => [
-                'directories' => [$this->fixturePath()],
+                'directories' => [$this->fixturePath('Macroable')],
                 'file_name' => $this->fixturePath() . '/_ide_macros.php',
             ],
         ]);

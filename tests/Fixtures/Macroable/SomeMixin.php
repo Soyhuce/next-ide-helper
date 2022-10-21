@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable;
 
 use Illuminate\Support\Str;
 

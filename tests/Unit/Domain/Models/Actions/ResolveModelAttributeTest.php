@@ -25,7 +25,7 @@ class ResolveModelAttributeTest extends TestCase
 
         $resolveAttributes->execute($model);
 
-        $this->assertCount(9, $model->attributes);
+        $this->assertCount(10, $model->attributes);
     }
 
     /**

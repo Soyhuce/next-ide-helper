@@ -31,6 +31,7 @@ class User extends Model
         'shipping_address' => AddressCaster::class,
         'name' => Uppercase::class,
         'nullable_name' => Uppercase::class,
+        'role' => Role::class,
     ];
 
     public function posts(): HasMany

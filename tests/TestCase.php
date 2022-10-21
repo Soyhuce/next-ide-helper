@@ -9,8 +9,8 @@ use function in_array;
 
 abstract class TestCase extends Orchestra
 {
-    use UsesFixtures;
     use InteractsWithDeprecationHandling;
+    use UsesFixtures;
 
     protected function setUp(): void
     {
