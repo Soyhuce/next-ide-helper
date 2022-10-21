@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithDeprecationHandling;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Soyhuce\NextIdeHelper\NextIdeHelperServiceProvider;
 use function in_array;
@@ -9,10 +10,13 @@ use function in_array;
 abstract class TestCase extends Orchestra
 {
     use UsesFixtures;
+    use InteractsWithDeprecationHandling;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->withoutDeprecationHandling();
 
         $this->loadMigrationsFrom(__DIR__ . '/database');
 
