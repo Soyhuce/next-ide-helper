@@ -38,6 +38,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery wherePassword(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereName(string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereRole(\Soyhuce\NextIdeHelper\Tests\Fixtures\Role|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereNullableName(string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereRememberToken(string|null $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)

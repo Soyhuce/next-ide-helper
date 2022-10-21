@@ -1,6 +1,6 @@
 <?php
 
-namespace Soyhuce\NextIdeHelper\Tests\Fixtures
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     class SomeMacroable
     {

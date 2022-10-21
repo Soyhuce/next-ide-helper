@@ -121,35 +121,6 @@ class ModelsCommandTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function theCommandIsSuccessfulWithEnumCast(): void
-    {
-        $this->onlyForPhp81();
-
-        config([
-            'next-ide-helper.models' => [
-                'directories' => [$this->fixture81Path()],
-                'file_name' => $this->fixturePath() . '/_ide_models.php',
-                'larastan_friendly' => false,
-            ],
-        ]);
-
-        $this->artisan('next-ide-helper:models')
-            ->assertExitCode(0);
-
-        $this->assertFileEquals(
-            $this->expectedPath('User81.stub'),
-            $this->fixture81Path('User.php')
-        );
-
-        $this->assertFileEquals(
-            $this->expectedPath('_ide_models81.stub'),
-            $this->fixturePath('_ide_models.php')
-        );
-    }
-
     protected function tearDown(): void
     {
         File::delete($this->fixturePath('_ide_models.php'));
