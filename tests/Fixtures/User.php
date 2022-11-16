@@ -39,7 +39,7 @@ class User extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function city(): Attribute
+    protected function city(): Attribute
     {
         return new Attribute(
             get: fn (): ?string => $this->address->city()
