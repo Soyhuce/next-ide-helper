@@ -2,6 +2,19 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.11.1 - 2022-11-16
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/66
+- TestCase Attribute by @edwinvdpol and @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/68
+
+### New Contributors
+
+- @edwinvdpol made their first contribution in https://github.com/Soyhuce/next-ide-helper/pull/68
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.11.0...0.11.1
+
 ## 0.11.0 - 2022-10-21
 
 ### What's Changed
@@ -327,7 +340,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - magic relation methods
+- 
 - 
 - 
 - 
@@ -345,7 +360,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - attributes from accessors
+- 
 - 
 - 
 - 
@@ -355,7 +372,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - custom collection
+- 
 - 
 - 
 - 
@@ -365,12 +384,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - relations
 - 
 - 
 - 
 - 
+- 
 - - query builder :
+- 
 - 
 - 
 - 
@@ -390,6 +412,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- - 
+- 
+- 
+- 
+- 
+- 
 - - - where clauses from scopes
 - - 
 - 
@@ -401,6 +429,12 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - - 
+- 
+- 
+- 
+- 
+- - 
+- 
 - 
 - 
 - 
@@ -425,7 +459,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
+- 
+- 
 - - relations :
+- 
 - 
 - 
 - 
@@ -450,7 +492,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
+- 
+- 
 - - custom resolvers
+- 
 - 
 - 
 - 
@@ -464,6 +514,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - Phpstorm Meta :
 - 
 - - generation of file with meta to provide auto-completion
@@ -472,9 +523,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - Misc :
 - 
 - - custom bootstrapper
+- 
 - 
 - 
 - 
