@@ -67,7 +67,7 @@ class ResolveModelAttributesFromAttributes implements ModelResolver
      */
     private function findAttributeMethods(Model $model): array
     {
-        return collect((new ReflectionClass($model->fqcn))->getMethods(ReflectionMethod::IS_PUBLIC))
+        return collect((new ReflectionClass($model->fqcn))->getMethods(ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED))
             ->filter(fn (ReflectionMethod $method): bool => !$method->isStatic())
             ->filter(fn (ReflectionMethod $method): bool => $this->isAttributeMethod($method))
             ->all();
@@ -86,7 +86,7 @@ class ResolveModelAttributesFromAttributes implements ModelResolver
      */
     private function getAttributeGetterAndSetter(Model $model, string $attributeMethod): array
     {
-        $attribute = $model->instance()->{$attributeMethod}();
+        $attribute = (fn () => $this->{$attributeMethod}())->call($model->instance());
 
         return [
             $attribute->get !== null ? new ReflectionFunction($attribute->get) : null,
