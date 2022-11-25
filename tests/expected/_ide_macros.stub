@@ -18,6 +18,16 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
             echo 'hello';
         }
 
+        public function havingNullableMixed(mixed $value = null)
+        {
+            return $value;
+        }
+
+        public function havingNullableUnionType(string|int|null $value = null)
+        {
+            return $value;
+        }
+
         public function havingSelfAsReturnType(): self
         {
             return $this;
