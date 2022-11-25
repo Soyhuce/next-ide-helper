@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.11.2 - 2022-11-25
+
+### What's Changed
+
+-Fix macro export when type is mixed or nullable union type by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/69
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.11.1...0.11.2
+
 ## 0.11.1 - 2022-11-16
 
 ### What's Changed
