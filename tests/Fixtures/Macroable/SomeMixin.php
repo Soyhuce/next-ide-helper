@@ -42,4 +42,18 @@ class SomeMixin
             echo 'hello';
         };
     }
+
+    public function havingNullableMixed()
+    {
+        return function (mixed $value = null) {
+            return $value;
+        };
+    }
+
+    public function havingNullableUnionType()
+    {
+        return function (int|string|null $value = null) {
+            return $value;
+        };
+    }
 }

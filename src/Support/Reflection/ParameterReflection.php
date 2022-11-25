@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Arr;
+use ReflectionNamedType;
 use ReflectionParameter;
 use function is_array;
 
@@ -13,7 +14,11 @@ class ParameterReflection
         $export = '';
         $type = $parameter->getType();
         if ($type !== null) {
-            if ($parameter->allowsNull()) {
+            if (
+                $parameter->allowsNull()
+                && $type instanceof ReflectionNamedType
+                && $type->getName() !== 'mixed'
+            ) {
                 $export .= '?';
             }
             $export .= TypeReflection::asString($type) . ' ';
