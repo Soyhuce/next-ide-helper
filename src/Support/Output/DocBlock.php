@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Support\Output;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -19,10 +20,11 @@ class DocBlock
         $previousDocBlock = $this->previousDocBlock($fqcn);
 
         $class = Str::afterLast($fqcn, '\\');
+        $classDeclaration = $this->classDeclaration($content, $class);
 
         $updatedContent = str_replace(
-            "{$previousDocBlock}class {$class}",
-            "{$docBlock}class {$class}",
+            "{$previousDocBlock}{$classDeclaration}",
+            "{$docBlock}{$classDeclaration}",
             $content
         );
 
@@ -41,5 +43,13 @@ class DocBlock
         }
 
         return $docBlock . PHP_EOL;
+    }
+
+    private function classDeclaration(string $content, string $class): string
+    {
+        return Collection::make(explode(PHP_EOL, $content))->first(
+            fn (string $line): bool => Str::contains($line, "class {$class}"),
+            "class {$class}"
+        );
     }
 }
