@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 
 /**
+ * This model is used for testing purposes.
+ * @generated
  * @property int $id
  * @property string $email
  * @property string $password
