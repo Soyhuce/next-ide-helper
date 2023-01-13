@@ -19,6 +19,8 @@ class DocBlock
         $content = File::get($file);
         $previousDocBlock = $this->previousDocBlock($fqcn);
 
+        $docBlock = $this->injectUserDefinedTags($docBlock, $previousDocBlock);
+
         $class = Str::afterLast($fqcn, '\\');
         $classDeclaration = $this->classDeclaration($content, $class);
 
@@ -51,5 +53,16 @@ class DocBlock
             fn (string $line): bool => Str::contains($line, "class {$class}"),
             "class {$class}"
         );
+    }
+
+    private function injectUserDefinedTags(string $docBlock, string $previousDocBlock): string
+    {
+        if (!str_contains($previousDocBlock, '@generated')) {
+            return $docBlock;
+        }
+
+        $header = Str::beforeLast($previousDocBlock, '@generated' . PHP_EOL);
+
+        return str_replace('/**' . PHP_EOL, $header . '@generated' . PHP_EOL, $docBlock);
     }
 }
