@@ -5,6 +5,19 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
+/**
+ * @property int $id
+ * @property string $content
+ * @property string $commentable_type
+ * @property int $commentable_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $datetime
+ * @property \Illuminate\Support\Carbon $date
+ * @property array $encrypted_array
+ * @property mixed $encrypted
+ * @property-read \Illuminate\Database\Eloquent\Model&\Soyhuce\NextIdeHelper\Tests\Fixtures\Commentable $commentable
+ */
 class Comment extends Model
 {
     protected $casts = [

@@ -11,7 +11,7 @@ use function get_class;
 class ApplyAttributeOverrides implements ModelResolver
 {
     /**
-     * @param array<string, array<string, string>> $overrides
+     * @param array<string, array<string, false|string>> $overrides
      */
     public function __construct(
         private array $overrides,
@@ -21,6 +21,13 @@ class ApplyAttributeOverrides implements ModelResolver
     public function execute(Model $model): void
     {
         foreach ($this->overridesFor($model) as $name => $type) {
+            if ($type === false) {
+                $model->attributes->removeByName($name);
+                $model->relations->removeByName($name);
+
+                continue;
+            }
+
             $attribute = $model->attributes->findByName($name);
             if ($attribute !== null) {
                 $attribute->setType($this->formatTypes($type));
@@ -35,7 +42,7 @@ class ApplyAttributeOverrides implements ModelResolver
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, false|string>
      */
     private function overridesFor(Model $model): array
     {

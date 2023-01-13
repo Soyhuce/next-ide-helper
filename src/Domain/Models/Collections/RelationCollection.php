@@ -14,4 +14,13 @@ class RelationCollection extends Collection
     {
         return $this->first(static fn (Relation $relation) => $relation->name === $name);
     }
+
+    public function removeByName(string $name): void
+    {
+        $this->each(function (Relation $relation, int $key) use ($name): void {
+            if ($relation->name === $name) {
+                $this->forget($key);
+            }
+        });
+    }
 }

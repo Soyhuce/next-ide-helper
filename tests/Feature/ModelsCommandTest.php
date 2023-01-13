@@ -41,12 +41,14 @@ class ModelsCommandTest extends TestCase
                 'overrides' => [
                     User::class => [
                         'city' => 'string',
+                        'posts' => false,
                     ],
                     Post::class => [
                         'likes' => 'int',
                         'address' => '?' . Address::class,
                         'user' => User::class . '|null',
                         'created_at' => CarbonInterface::class,
+                        'updated_at' => false,
                     ],
                     Comment::class => [
                         'commentable' => Commentable::class . '&' . Model::class,

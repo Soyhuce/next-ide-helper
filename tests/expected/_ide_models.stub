@@ -92,14 +92,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
     class __LaravelPosts
     {
     }
-
-    /**
-     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
-     * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    class __Posts
-    {
-    }
 }
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures
@@ -124,7 +116,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
     /**
      * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery query()
      * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery
-     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__Posts posts()
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LaravelPosts laravelPosts()
      */
     class User

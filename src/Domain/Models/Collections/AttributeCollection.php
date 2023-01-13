@@ -29,4 +29,13 @@ class AttributeCollection extends Collection
     {
         return $this->filter(static fn (Attribute $attribute): bool => $attribute->inDatabase === $inDatabase);
     }
+
+    public function removeByName(string $name): void
+    {
+        $this->each(function (Attribute $attribute, int $key) use ($name): void {
+            if ($attribute->name === $name) {
+                $this->forget($key);
+            }
+        });
+    }
 }
