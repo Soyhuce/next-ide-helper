@@ -29,7 +29,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery<\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> query()
  * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery<\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post>
  */
-class Post extends Model
+final class Post extends Model
 {
     use SoftDeletes;
 

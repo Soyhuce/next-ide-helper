@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Comment;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 
-class Post extends Model
+final class Post extends Model
 {
     use SoftDeletes;
 
