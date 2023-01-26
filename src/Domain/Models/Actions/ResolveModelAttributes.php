@@ -7,7 +7,6 @@ use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Exceptions\CannotConnectDatabase;
 
 class ResolveModelAttributes implements ModelResolver
 {
@@ -34,16 +33,10 @@ class ResolveModelAttributes implements ModelResolver
     {
         $table = $model->instance()->getTable();
 
-        $columns = $model->instance()
+        return $model->instance()
             ->getConnection()
             ->getDoctrineSchemaManager()
             ->listTableColumns($table);
-
-        if (!$columns) {
-            throw new CannotConnectDatabase($table, $model->instance()->getConnectionName());
-        }
-
-        return $columns;
     }
 
     private function isLaravelTimestamp(Model $model, Attribute $attribute): bool
