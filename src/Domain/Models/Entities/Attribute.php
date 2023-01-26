@@ -23,8 +23,8 @@ class Attribute
     public function __construct(string $name, string $type)
     {
         $this->name = $name;
-        $this->setType($type);
         $this->nullable = false;
+        $this->setType($type);
     }
 
     public function setType(string $type): void

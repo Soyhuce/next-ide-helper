@@ -41,6 +41,7 @@ class ModelsCommandTest extends TestCase
                 'overrides' => [
                     User::class => [
                         'city' => 'string',
+                        'birthday' => CarbonInterface::class,
                     ],
                     Post::class => [
                         'likes' => 'int',

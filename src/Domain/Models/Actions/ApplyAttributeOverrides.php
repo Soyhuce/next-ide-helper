@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
+use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
 use function get_class;
@@ -24,12 +25,15 @@ class ApplyAttributeOverrides implements ModelResolver
             $attribute = $model->attributes->findByName($name);
             if ($attribute !== null) {
                 $attribute->setType($this->formatTypes($type));
-                $attribute->nullable = Str::startsWith($type, '?');
             }
 
             $relation = $model->relations->findByName($name);
             if ($relation !== null) {
                 $relation->forceReturnType($this->formatTypes($type));
+            }
+
+            if ($attribute === null && $relation === null) {
+                $model->addAttribute(new Attribute($name, $this->formatTypes($type)));
             }
         }
     }
