@@ -19,8 +19,10 @@ jobs:
         include:
           - laravel: 9.*
             testbench: 7.*
+            doctrine-dbal: ^2.13.3 || ^3.1.4
           - laravel: 10.*
             testbench: 8.*
+            doctrine-dbal: ^3.5.1
         exclude:
           - php: 8.2
             laravel: 9.*
@@ -55,7 +57,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "doctrine/dbal:${{ matrix.doctrine-dbal }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
