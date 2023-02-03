@@ -102,6 +102,10 @@ namespace
     {
     }
 
+    class Process extends \Illuminate\Support\Facades\Process
+    {
+    }
+
     class Queue extends \Illuminate\Support\Facades\Queue
     {
     }

@@ -28,6 +28,9 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.Js') === null) {
             AliasLoader::getInstance(['Js' => \Illuminate\Support\Js::class]);
         }
+        if (config('app.aliases.Process') === null) {
+            AliasLoader::getInstance(['Process' => \Illuminate\Support\Facades\Process::class]);
+        }
         if (config('app.aliases.RateLimiter') === null) {
             AliasLoader::getInstance(['RateLimiter' => \Illuminate\Support\Facades\RateLimiter::class]);
         }
