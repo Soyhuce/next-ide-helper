@@ -14,16 +14,20 @@ class IdeHelperClass
     {
         $classBasename = class_basename($modelFqcn);
 
-        return (string) Str::of($modelFqcn)->trim('\\')
+        return Str::of($modelFqcn)
+            ->trim('\\')
             ->beforeLast($classBasename)
             ->prepend('\\IdeHelper\\')
-            ->append("__{$classBasename}Query");
+            ->append("__{$classBasename}Query")
+            ->toString();
     }
 
     public static function relation(string $modelFqcn, string $relationName): string
     {
-        return (string) Str::of($modelFqcn)->trim('\\')
+        return Str::of($modelFqcn)
+            ->trim('\\')
             ->prepend('\\IdeHelper\\')
-            ->append(Str::of($relationName)->studly()->prepend('\\__'));
+            ->append(Str::of($relationName)->studly()->prepend('\\__')->toString())
+            ->toString();
     }
 }
