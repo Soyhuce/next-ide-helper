@@ -178,7 +178,7 @@ class AttributeTypeCaster
     }
 
     /**
-     * @param class-string<\Illuminate\Contracts\Database\Eloquent\CastsAttributes> $caster
+     * @param class-string<\Illuminate\Contracts\Database\Eloquent\CastsAttributes<mixed, mixed>> $caster
      */
     private function resolveCustomCast(string $caster): string
     {
