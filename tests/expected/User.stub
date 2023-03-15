@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
@@ -29,6 +30,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property-read string $city
  * @property-write string $new_password
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $laravelPosts
+ * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null $latestPost
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $posts
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
  */
@@ -47,6 +49,11 @@ class User extends Model
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function latestPost(): HasOne
+    {
+        return $this->hasOne(Post::class)->latestOfMany();
     }
 
     protected function city(): Attribute
