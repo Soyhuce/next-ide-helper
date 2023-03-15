@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use Illuminate\Support\Str;
@@ -70,6 +71,10 @@ class Relation
 
     private function isNullable(EloquentRelation $relation): bool
     {
+        if ($relation instanceof HasOne) {
+            return true;
+        }
+
         $object = new ReflectionObject($relation);
         if (!$object->hasProperty('foreignKey')) {
             return false;

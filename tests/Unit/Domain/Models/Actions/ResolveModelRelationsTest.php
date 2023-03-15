@@ -51,7 +51,7 @@ class ResolveModelRelationsTest extends TestCase
 
         $resolveModelRelation->execute($user);
 
-        $this->assertCount(2, $user->relations);
+        $this->assertCount(3, $user->relations);
 
         /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $posts */
         $posts = $user->relations->findByName('posts');
