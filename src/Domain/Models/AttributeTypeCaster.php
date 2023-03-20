@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models;
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
+use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
@@ -12,7 +13,6 @@ use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
-use function function_exists;
 use function get_class;
 use function in_array;
 
@@ -109,10 +109,10 @@ class AttributeTypeCaster
         }
 
         if ($this->isCastable($castType)) {
-            return '\\' . $castType;
+            return $this->resolveCastable($castType, $arguments);
         }
 
-        if (function_exists('enum_exists') && enum_exists($castType)) {
+        if (enum_exists($castType)) {
             return '\\' . $castType;
         }
 
@@ -192,5 +192,15 @@ class AttributeTypeCaster
         return class_exists($castType)
             && class_implements($castType)
             && in_array(Castable::class, class_implements($castType));
+    }
+
+    private function resolveCastable(string $castType, ?string $arguments): string
+    {
+        $arguments = $arguments === null ? [] : explode(',', $arguments);
+
+        return match ($castType) {
+            AsEnumCollection::class => "\\Illuminate\\Support\\Collection<array-key, {$arguments[0]}>",
+            default => "\\{$castType}",
+        };
     }
 }
