@@ -7,6 +7,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereContent(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCommentableType(string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCommentableId(int|string $value)
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereMonths(int|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment create(array $attributes = [])

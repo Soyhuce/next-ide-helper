@@ -15,6 +15,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('content');
             $table->morphs('commentable');
+            $table->tinyInteger('months');
             $table->timestamps();
         });
     }

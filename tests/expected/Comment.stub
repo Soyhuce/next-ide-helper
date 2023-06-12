@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property string $content
  * @property string $commentable_type
  * @property int $commentable_id
+ * @property int $months
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $datetime
