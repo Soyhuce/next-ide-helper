@@ -121,6 +121,16 @@ parameters:
 			path: src/Support/Output/IdeHelperClass.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function ltrim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Support/Reflection/FunctionReflection.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Illuminate\\\\Support\\\\Str\\:\\:length\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Support/Reflection/FunctionReflection.php
+
+		-
 			message: "#^Casting class ReflectionType to string is deprecated\\.$#"
 			count: 1
 			path: src/Support/Reflection/TypeReflection.php
