@@ -7,6 +7,9 @@ use ReflectionFunction;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 
+/**
+ * @method static string plop(int $value)
+ */
 class Method
 {
     public string $name;
@@ -113,7 +116,8 @@ class Method
     public function toDocTag(): string
     {
         return sprintf(
-            ' * @method %s %s(%s)',
+            ' * @method %s%s %s(%s)',
+            $this->isStatic ? 'static ' : '',
             $this->returnType ?? 'mixed',
             $this->name,
             $this->parameters
