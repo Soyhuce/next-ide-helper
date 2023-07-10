@@ -2,54 +2,19 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
+    /**
+     * @method static string foo(string $bar)
+     * @method static string toLower(string $value)
+     * @method void havingVariadic(string &...$params)
+     * @method self havingSelfAsReturnType()
+     * @method void havingArrayAsDefaultValue(array $array = [1, 2, 3, ['some' => 'value']])
+     * @method mixed havingNullableMixed(mixed $value = null)
+     * @method mixed havingNullableUnionType(string|int|null $value = null)
+     */
     class SomeMacroable
     {
         public function __construct(int $foo)
         {
-        }
-
-        public static function foo(string $bar): string
-        {
-            return Str::upper($bar);
-        }
-
-        public function havingArrayAsDefaultValue(array $array = [1, 2, 3, ['some' => 'value']]): void
-        {
-            echo 'hello';
-        }
-
-        public function havingNullableMixed(mixed $value = null)
-        {
-            return $value;
-        }
-
-        public function havingNullableUnionType(string|int|null $value = null)
-        {
-            return $value;
-        }
-
-        public function havingSelfAsReturnType(): self
-        {
-            return $this;
-        }
-
-        public function havingVariadic(string &...$params): void
-        {
-            $params[] = 'foo';
-            foreach ($params as $param) {
-                echo $param;
-            }
-        }
-
-        /**
-         * Convert some string to lowercase.
-         *
-         * @param string the input
-         * @return string the input in lowercase
-        */
-        public static function toLower(string $value): string
-        {
-            return Str::lower($value);
         }
     }
 }
