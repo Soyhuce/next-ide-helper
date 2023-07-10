@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.13.1 - 2023-07-10
+
+### What's Changed
+
+- Fix AsEnumCollection cast by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/81
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.13.0...0.13.1
+
 ## 0.13.0 - 2023-03-15
 
 ### What's Changed
@@ -371,7 +379,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - magic relation methods
+- 
 - 
 - 
 - 
@@ -395,7 +405,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - attributes from accessors
+- 
 - 
 - 
 - 
@@ -411,7 +423,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - custom collection
+- 
 - 
 - 
 - 
@@ -427,6 +441,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - relations
 - 
 - 
@@ -435,7 +450,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - - query builder :
+- 
 - 
 - 
 - 
@@ -479,6 +496,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- - 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 - - - where clauses from scopes
 - - 
 - 
@@ -508,6 +534,15 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - - 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+- 
 - 
 - 
 - 
@@ -559,7 +594,18 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 - - relations :
+- 
 - 
 - 
 - 
@@ -611,7 +657,18 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
+- - 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 - - custom resolvers
+- 
 - 
 - 
 - 
@@ -631,6 +688,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - Phpstorm Meta :
 - 
 - - generation of file with meta to provide auto-completion
@@ -642,9 +700,11 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
+- 
 - Misc :
 - 
 - - custom bootstrapper
+- 
 - 
 - 
 - 
