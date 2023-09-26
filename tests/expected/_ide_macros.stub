@@ -10,6 +10,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
      * @method void havingArrayAsDefaultValue(array $array = [1, 2, 3, ['some' => 'value']])
      * @method mixed havingNullableMixed(mixed $value = null)
      * @method mixed havingNullableUnionType(string|int|null $value = null)
+     * @method string|null returningNullableString()
      */
     class SomeMacroable
     {

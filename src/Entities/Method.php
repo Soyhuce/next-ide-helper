@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Entities;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use ReflectionFunction;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
@@ -118,10 +119,23 @@ class Method
         return sprintf(
             ' * @method %s%s %s(%s)',
             $this->isStatic ? 'static ' : '',
-            $this->returnType ?? 'mixed',
+            $this->returnTypeForDocTag() ?? 'mixed',
             $this->name,
             $this->parameters
         );
+    }
+
+    private function returnTypeForDocTag(): ?string
+    {
+        if ($this->returnType === null) {
+            return null;
+        }
+
+        if (Str::startsWith($this->returnType, '?')) {
+            return Str::of($this->returnType)->after('?')->append('|null')->toString();
+        }
+
+        return $this->returnType;
     }
 
     /**

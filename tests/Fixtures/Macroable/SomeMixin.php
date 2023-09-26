@@ -56,4 +56,11 @@ class SomeMixin
             return $value;
         };
     }
+
+    public function returningNullableString()
+    {
+        return function (): ?string {
+            return null;
+        };
+    }
 }
