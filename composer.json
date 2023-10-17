@@ -49,7 +49,7 @@
     }
   },
   "scripts": {
-    "cs": "vendor/bin/php-cs-fixer fix",
+    "cs": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix",
     "analyse": "vendor/bin/phpstan analyse",
     "test": "vendor/bin/pest",
     "test-coverage": "vendor/bin/pest --coverage",
