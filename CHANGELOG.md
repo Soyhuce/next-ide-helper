@@ -2,6 +2,15 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.15.1 - 2023-10-17
+
+### What's Changed
+
+- Bump stefanzweifel/git-auto-commit-action from 4 to 5 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/94
+- Hashed cast should resolve to a string by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/95
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.15.0...0.15.1
+
 ## 0.15.0 - 2023-09-26
 
 ### What's Changed
@@ -390,7 +399,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Added
 
-- command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
+- command `next-ide-helper:factories` to generate Laravel 8 factories docblock :   
+  
 - - method types   
   
 - 
@@ -419,7 +429,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Added
 
-- Models :
+- Models :   
+  
 - 
 - - attributes   
   
@@ -807,7 +818,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- Macros :
+- Macros :   
+  
 - 
 - - generation of file with macros to provide auto-completion   
   
@@ -821,7 +833,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- Phpstorm Meta :
+- Phpstorm Meta :   
+  
 - 
 - - generation of file with meta to provide auto-completion   
   
@@ -835,7 +848,8 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- Misc :
+- Misc :   
+  
 - 
 - - custom bootstrapper   
   
