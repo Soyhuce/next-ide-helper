@@ -35,6 +35,7 @@ class User extends Model
         'name' => Uppercase::class,
         'nullable_name' => Uppercase::class,
         'role' => Role::class,
+        'password' => 'hashed',
     ];
 
     public function posts(): HasMany
