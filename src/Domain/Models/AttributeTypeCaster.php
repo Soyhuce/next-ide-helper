@@ -76,6 +76,10 @@ class AttributeTypeCaster
             [$castType, $arguments] = [$arguments ?? 'mixed', null];
         }
 
+        if ($castType === 'hashed') {
+            $castType = 'string';
+        }
+
         switch (Str::lower($castType)) {
             case 'int':
             case 'integer':
