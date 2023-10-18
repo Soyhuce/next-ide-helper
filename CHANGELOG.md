@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.15.2 - 2023-10-18
+
+### What's Changed
+
+- Fix class does not exists by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/98
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.15.1...0.15.2
+
 ## 0.15.1 - 2023-10-17
 
 ### What's Changed
