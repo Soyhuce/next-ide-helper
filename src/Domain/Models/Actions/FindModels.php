@@ -35,6 +35,10 @@ class FindModels
      */
     private function isEloquentModel(string $class): bool
     {
+        if (!class_exists($class)) {
+            return false;
+        }
+
         $reflexion = new ReflectionClass($class);
 
         if (!$reflexion->isSubclassOf(EloquentModel::class)) {
