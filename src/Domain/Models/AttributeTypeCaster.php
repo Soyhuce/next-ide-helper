@@ -105,6 +105,8 @@ class AttributeTypeCaster
             case 'date':
             case 'datetime':
             case 'custom_datetime':
+            case 'immutable_date':
+            case 'immutable_datetime':
                 return $this->dateClass();
         }
 
