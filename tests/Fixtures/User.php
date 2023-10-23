@@ -15,15 +15,6 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 /**
  * This model is used for testing purposes.
  * @generated
- * @property int $id
- * @property string $email
- * @property string $password
- * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address $address
- * @property string|null $remember_token
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $laravelPosts
- * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection $posts
  */
 class User extends Model
 {
@@ -36,6 +27,7 @@ class User extends Model
         'nullable_name' => Uppercase::class,
         'role' => Role::class,
         'password' => 'hashed',
+        'updated_at' => 'immutable_datetime',
     ];
 
     public function posts(): HasMany
