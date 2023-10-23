@@ -24,7 +24,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property string|null $nullable_name
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Carbon\CarbonImmutable $updated_at
  * @property string $screamed_email
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
  * @property-read string $city
@@ -45,6 +45,7 @@ class User extends Model
         'nullable_name' => Uppercase::class,
         'role' => Role::class,
         'password' => 'hashed',
+        'updated_at' => 'immutable_datetime',
     ];
 
     public function posts(): HasMany

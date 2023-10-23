@@ -28,12 +28,12 @@ class AttributeTypeCaster
     public function resolve(Attribute $attribute): Attribute
     {
         switch (true) {
-            case $this->isTimestamps($attribute):
-                $type = $this->dateClass();
-
-                break;
             case $this->hasCast($attribute) && $this->isNotInboundCast($attribute):
                 $type = $this->resolveFromCast($attribute);
+
+                break;
+            case $this->isTimestamps($attribute):
+                $type = $this->dateClass();
 
                 break;
             default:
@@ -105,9 +105,10 @@ class AttributeTypeCaster
             case 'date':
             case 'datetime':
             case 'custom_datetime':
+                return $this->dateClass();
             case 'immutable_date':
             case 'immutable_datetime':
-                return $this->dateClass();
+                return $this->immutableDateClass();
         }
 
         if ($this->isCustomCast($castType)) {
@@ -174,6 +175,11 @@ class AttributeTypeCaster
     private function dateClass(): string
     {
         return '\\' . get_class(Date::now());
+    }
+
+    private function immutableDateClass(): string
+    {
+        return '\\' . get_class(Date::now()->toImmutable());
     }
 
     private function isCustomCast(string $castType): bool
