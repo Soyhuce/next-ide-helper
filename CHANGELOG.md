@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.15.3 - 2023-10-23
+
+### What's Changed
+
+- Added immutable dates to type caster  by @bastien-phi and @edwinvdpol in https://github.com/Soyhuce/next-ide-helper/pull/100
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.15.2...0.15.3
+
 ## 0.15.2 - 2023-10-18
 
 ### What's Changed
