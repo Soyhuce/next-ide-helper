@@ -14,6 +14,10 @@ final class Post extends Model
 {
     use SoftDeletes;
 
+    protected $casts = [
+        'metas' => 'array',
+    ];
+
     public function newEloquentBuilder($query)
     {
         return new PostQuery($query);

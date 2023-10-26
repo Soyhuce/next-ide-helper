@@ -18,6 +18,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property int $user_id
  * @property int $likes
  * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $address
+ * @property array<int,string>|null $metas
  * @property \Carbon\CarbonInterface $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -32,6 +33,10 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 final class Post extends Model
 {
     use SoftDeletes;
+
+    protected $casts = [
+        'metas' => 'array',
+    ];
 
     public function newEloquentBuilder($query)
     {
