@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUserId(int|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereLikes(int|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string|null $value)
+ * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereMetas(array<int,string>|string|null $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereCreatedAt(\Carbon\CarbonInterface|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)

@@ -47,6 +47,7 @@ class ModelsCommandTest extends TestCase
                         'address' => '?' . Address::class,
                         'user' => User::class . '|null',
                         'created_at' => CarbonInterface::class,
+                        'metas' => '?array<int,string>',
                     ],
                     Comment::class => [
                         'commentable' => Commentable::class . '&' . Model::class,

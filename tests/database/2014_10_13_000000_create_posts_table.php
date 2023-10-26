@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
 
             $table->string('likes');
             $table->json('address')->nullable();
+            $table->json('metas')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
