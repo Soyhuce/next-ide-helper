@@ -2,7 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Support;
 
-use function in_array;
+use Illuminate\Support\Collection;
 
 class Type
 {
@@ -37,6 +37,6 @@ class Type
 
     public static function isBuiltIn(string $type): bool
     {
-        return in_array($type, self::$builtIn);
+        return Collection::make(self::$builtIn)->contains(fn (string $pattern) => preg_match("#^{$pattern}#", $type));
     }
 }
