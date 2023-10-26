@@ -81,16 +81,6 @@ parameters:
 			path: src/Domain/Models/Actions/ResolveModelRelations.php
 
 		-
-			message: "#^Class Illuminate\\\\Database\\\\Eloquent\\\\Casts\\\\AsEnumCollection not found\\.$#"
-			count: 1
-			path: src/Domain/Models/AttributeTypeCaster.php
-
-		-
-			message: "#^PHPDoc tag @param for parameter \\$caster contains generic type Illuminate\\\\Contracts\\\\Database\\\\Eloquent\\\\CastsAttributes\\<mixed, mixed\\> but interface Illuminate\\\\Contracts\\\\Database\\\\Eloquent\\\\CastsAttributes is not generic\\.$#"
-			count: 1
-			path: src/Domain/Models/AttributeTypeCaster.php
-
-		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\QueryBuilder\\:\\:__construct\\(\\) has parameter \\$fqcn with generic class Illuminate\\\\Database\\\\Eloquent\\\\Builder but does not specify its types\\: TModelClass$#"
 			count: 1
 			path: src/Domain/Models/Entities/QueryBuilder.php
@@ -131,6 +121,16 @@ parameters:
 			path: src/Support/Output/IdeHelperClass.php
 
 		-
+			message: "#^Parameter \\#1 \\$string of function ltrim expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Support/Reflection/FunctionReflection.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Illuminate\\\\Support\\\\Str\\:\\:length\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Support/Reflection/FunctionReflection.php
+
+		-
 			message: "#^Casting class ReflectionType to string is deprecated\\.$#"
 			count: 1
 			path: src/Support/Reflection/TypeReflection.php
@@ -141,7 +141,7 @@ parameters:
 			path: src/Support/Type.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, \\(int\\|string\\)\\)\\: bool\\)\\|string, Closure\\(string\\)\\: 0\\|1\\|false given\\.$#"
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, int\\|string\\)\\: bool\\)\\|string, Closure\\(string\\)\\: \\(0\\|1\\|false\\) given\\.$#"
 			count: 1
 			path: src/Support/Type.php
 
