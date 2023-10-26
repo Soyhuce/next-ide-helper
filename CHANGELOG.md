@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.15.4 - 2023-10-26
+
+### What's Changed
+
+- Fix get type by @ElRochito in https://github.com/Soyhuce/next-ide-helper/pull/101
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.15.3...0.15.4
+
 ## 0.15.3 - 2023-10-23
 
 ### What's Changed
