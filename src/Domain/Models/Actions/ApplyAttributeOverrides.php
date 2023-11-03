@@ -39,16 +39,14 @@ class ApplyAttributeOverrides implements ModelResolver
      */
     private function overridesFor(Model $model): array
     {
-        return data_get($this->overrides, get_class($model->instance()), []);
+        return data_get($this->overrides, $model->instance()::class, []);
     }
 
     private function formatTypes(string $types): string
     {
         return preg_replace_callback(
             '/[^|&]+/',
-            function (array $match) {
-                return $this->format($match[0]);
-            },
+            fn (array $match) => $this->format($match[0]),
             $types,
         ) ?? $this->format($types);
     }

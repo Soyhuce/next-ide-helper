@@ -14,12 +14,9 @@ use function in_array;
 
 class ModelDocBlock extends DocBlock implements Renderer
 {
-    private Model $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(
+        private Model $model
+    ) {}
 
     public function render(): void
     {

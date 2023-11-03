@@ -30,9 +30,7 @@ class ResolveModelRelationsTest extends TestCase
         $this->assertCount(2, $post->relations);
 
         /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $user */
-        $user = $post->relations->first(function (Relation $relation) {
-            return $relation->name === 'user';
-        });
+        $user = $post->relations->first(fn(Relation $relation) => $relation->name === 'user');
         $this->assertNotNull($user);
         $this->assertEquals($post, $user->parent);
         $this->assertEquals($models->findByFqcn(User::class), $user->related);

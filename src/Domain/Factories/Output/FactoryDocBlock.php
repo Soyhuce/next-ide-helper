@@ -14,12 +14,9 @@ use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 
 class FactoryDocBlock extends DocBlock
 {
-    private Factory $factory;
-
-    public function __construct(Factory $factory)
-    {
-        $this->factory = $factory;
-    }
+    public function __construct(
+        private Factory $factory
+    ) {}
 
     public function render(): void
     {

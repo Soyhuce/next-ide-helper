@@ -24,9 +24,9 @@ class ModelsCommandTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Factory::guessFactoryNamesUsing(function (string $modelFqcn) {
-            return 'Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\\' . class_basename($modelFqcn) . 'Factory';
-        });
+        Factory::guessFactoryNamesUsing(
+            fn (string $modelFqcn) => 'Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\\' . class_basename($modelFqcn) . 'Factory'
+        );
     }
 
     /**

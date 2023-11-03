@@ -11,20 +11,13 @@ use ReflectionObject;
 
 class Relation
 {
-    public string $name;
-
-    public Model $parent;
-
-    public Model $related;
-
     public ?string $returnType = null;
 
-    public function __construct(string $name, Model $parent, Model $related)
-    {
-        $this->name = $name;
-        $this->parent = $parent;
-        $this->related = $related;
-    }
+    public function __construct(
+        public string $name,
+        public Model $parent,
+        public Model $related
+    ) {}
 
     public function returnType(): string
     {

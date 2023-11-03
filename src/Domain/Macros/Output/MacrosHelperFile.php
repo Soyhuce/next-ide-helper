@@ -10,12 +10,9 @@ use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 
 class MacrosHelperFile
 {
-    private ReflectionClass $class;
-
-    public function __construct(ReflectionClass $class)
-    {
-        $this->class = $class;
-    }
+    public function __construct(
+        private ReflectionClass $class
+    ) {}
 
     public function amend(IdeHelperFile $ideHelperFile): void
     {

@@ -16,12 +16,9 @@ use function get_class;
 
 class RelationsHelperFile implements Amender
 {
-    private Model $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(
+        private Model $model
+    ) {}
 
     public function amend(IdeHelperFile $file): void
     {
@@ -44,7 +41,7 @@ class RelationsHelperFile implements Amender
             $file->getOrAddClass($fakeRelationClass)
                 ->addDocTags(Collection::make([
                     " * @mixin {$this->relatedQueryBuilder($relation)}",
-                    ' * @mixin ' . Type::qualify(get_class($relation->eloquentRelation())),
+                    ' * @mixin ' . Type::qualify($relation->eloquentRelation()::class),
                 ]));
         }
     }

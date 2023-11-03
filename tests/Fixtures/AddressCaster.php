@@ -8,7 +8,7 @@ class AddressCaster implements CastsAttributes
 {
     public function get($model, string $key, $value, array $attributes): ?Address
     {
-        return new Address(json_decode($value, true));
+        return new Address(json_decode($value, true, flags: JSON_THROW_ON_ERROR));
     }
 
     /**
@@ -18,6 +18,6 @@ class AddressCaster implements CastsAttributes
      */
     public function set($model, string $key, $value, array $attributes)
     {
-        return json_encode($value->toArray());
+        return json_encode($value->toArray(), flags: JSON_THROW_ON_ERROR);
     }
 }
