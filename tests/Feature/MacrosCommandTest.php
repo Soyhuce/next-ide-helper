@@ -17,9 +17,7 @@ class MacrosCommandTest extends TestCase
     {
         parent::setUp();
 
-        SomeMacroable::macro('foo', static function (string $bar): string {
-            return Str::upper($bar);
-        });
+        SomeMacroable::macro('foo', static fn (string $bar): string => Str::upper($bar));
 
         SomeMacroable::mixin(new SomeMixin());
     }

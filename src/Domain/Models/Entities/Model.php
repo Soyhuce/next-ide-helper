@@ -26,7 +26,7 @@ class Model
     public RelationCollection $relations;
 
     /** @var array<\Soyhuce\NextIdeHelper\Entities\Method> */
-    public array $scopes;
+    public array $scopes = [];
 
     private ?EloquentModel $instance = null;
 
@@ -39,7 +39,6 @@ class Model
         $this->filePath = $filePath;
         $this->attributes = new AttributeCollection();
         $this->relations = new RelationCollection();
-        $this->scopes = [];
     }
 
     public function addAttribute(Attribute $attribute): self

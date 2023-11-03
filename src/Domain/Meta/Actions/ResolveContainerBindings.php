@@ -9,12 +9,9 @@ use function is_object;
 
 class ResolveContainerBindings
 {
-    private Application $application;
-
-    public function __construct(Application $application)
-    {
-        $this->application = $application;
-    }
+    public function __construct(
+        private Application $application
+    ) {}
 
     public function execute(): Collection
     {
@@ -34,7 +31,7 @@ class ResolveContainerBindings
     {
         try {
             return $this->application->get($abstract);
-        } catch (Throwable $throwable) {
+        } catch (Throwable) {
             return;
         }
     }

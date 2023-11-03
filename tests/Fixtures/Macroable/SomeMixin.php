@@ -14,9 +14,7 @@ class SomeMixin
          * @param string the input
          * @return string the input in lowercase
          */
-        return static function (string $value): string {
-            return Str::lower($value);
-        };
+        return static fn (string $value): string => Str::lower($value);
     }
 
     public function havingVariadic()
@@ -31,9 +29,7 @@ class SomeMixin
 
     public function havingSelfAsReturnType()
     {
-        return function (): self {
-            return $this;
-        };
+        return fn (): self => $this;
     }
 
     public function havingArrayAsDefaultValue()
@@ -45,22 +41,16 @@ class SomeMixin
 
     public function havingNullableMixed()
     {
-        return function (mixed $value = null) {
-            return $value;
-        };
+        return fn (mixed $value = null) => $value;
     }
 
     public function havingNullableUnionType()
     {
-        return function (int|string|null $value = null) {
-            return $value;
-        };
+        return fn (int|string|null $value = null) => $value;
     }
 
     public function returningNullableString()
     {
-        return function (): ?string {
-            return null;
-        };
+        return fn (): ?string => null;
     }
 }

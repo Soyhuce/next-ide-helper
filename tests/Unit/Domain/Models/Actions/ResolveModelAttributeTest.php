@@ -41,7 +41,7 @@ class ResolveModelAttributeTest extends TestCase
 
         $createdAt = $model->attributes->findByName('created_at');
         $this->assertNotNull($createdAt);
-        $this->assertEquals('\\' . get_class(Date::now()), $createdAt->type);
+        $this->assertEquals('\\' . Date::now()::class, $createdAt->type);
         $this->assertFalse($createdAt->nullable);
     }
 }

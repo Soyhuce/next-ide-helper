@@ -6,12 +6,9 @@ use Illuminate\Contracts\Database\Eloquent\Castable;
 
 class Address implements Castable
 {
-    private array $values;
-
-    public function __construct(array $values)
-    {
-        $this->values = $values;
-    }
+    public function __construct(
+        private array $values
+    ) {}
 
     public function city(): ?string
     {

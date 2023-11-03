@@ -12,12 +12,9 @@ use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 
 class QueryBuilderDocBlock extends DocBlock implements Renderer
 {
-    private Model $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(
+        private Model $model
+    ) {}
 
     public function render(): void
     {
@@ -74,14 +71,12 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             ->onlyReadOnly(false)
             ->onlyInDatabase(true)
             ->toBase()
-            ->map(function (Attribute $attribute): string {
-                return sprintf(
-                    ' * @method %s where%s(%s $value)',
-                    $this->model->queryBuilder->fqcn,
-                    Str::studly($attribute->name),
-                    $this->attributeScopeValueType($attribute)
-                );
-            });
+            ->map(fn (Attribute $attribute): string => sprintf(
+                ' * @method %s where%s(%s $value)',
+                $this->model->queryBuilder->fqcn,
+                Str::studly($attribute->name),
+                $this->attributeScopeValueType($attribute)
+            ));
     }
 
     private function attributeScopeValueType(Attribute $attribute): string
@@ -105,14 +100,12 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     private function scopeMethods(): Collection
     {
         return collect($this->model->scopes)
-            ->map(function (Method $scope): string {
-                return sprintf(
-                    ' * @method %s %s(%s)',
-                    $this->model->queryBuilder->fqcn,
-                    $scope->name,
-                    $scope->parameters
-                );
-            });
+            ->map(fn (Method $scope): string => sprintf(
+                ' * @method %s %s(%s)',
+                $this->model->queryBuilder->fqcn,
+                $scope->name,
+                $scope->parameters
+            ));
     }
 
     /**

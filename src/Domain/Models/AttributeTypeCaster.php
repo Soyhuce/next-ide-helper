@@ -18,29 +18,17 @@ use function in_array;
 
 class AttributeTypeCaster
 {
-    private Model $model;
-
-    public function __construct(Model $model)
-    {
-        $this->model = $model;
-    }
+    public function __construct(
+        private Model $model
+    ) {}
 
     public function resolve(Attribute $attribute): Attribute
     {
-        switch (true) {
-            case $this->hasCast($attribute) && $this->isNotInboundCast($attribute):
-                $type = $this->resolveFromCast($attribute);
-
-                break;
-            case $this->isTimestamps($attribute):
-                $type = $this->dateClass();
-
-                break;
-            default:
-                $type = $this->resolveFromDatabaseType($attribute);
-
-                break;
-        }
+        $type = match (true) {
+            $this->hasCast($attribute) && $this->isNotInboundCast($attribute) => $this->resolveFromCast($attribute),
+            $this->isTimestamps($attribute) => $this->dateClass(),
+            default => $this->resolveFromDatabaseType($attribute),
+        };
 
         $attribute->setType($type);
 
@@ -128,58 +116,53 @@ class AttributeTypeCaster
 
     private function resolveFromDatabaseType(Attribute $attribute): string
     {
-        switch (Str::lower($attribute->type)) {
-            case 'char':
-            case 'string':
-            case 'text':
-            case 'mediumtext':
-            case 'longtext':
-            case 'enum':
-            case 'set':
-            case 'json':
-            case 'jsonb':
-            case 'date':
-            case 'datetime':
-            case 'datetimetz':
-            case 'time':
-            case 'timetz':
-            case 'timestamp':
-            case 'timestamptz':
-            case 'year':
-            case 'binary':
-            case 'uuid':
-            case 'ipaddress':
-            case 'macaddress':
-                return 'string';
-            case 'integer':
-            case 'tinyinteger':
-            case 'tinyint':
-            case 'smallinteger':
-            case 'smallint':
-            case 'mediuminteger':
-            case 'mediumint':
-            case 'biginteger':
-            case 'bigint':
-                return 'int';
-            case 'float':
-            case 'double':
-            case 'decimal':
-                return 'float';
-            case 'boolean':
-                return 'bool';
-            default:
-                return 'mixed';
-        }
+        return match (Str::lower($attribute->type)) {
+            'char',
+            'string',
+            'text',
+            'mediumtext',
+            'longtext',
+            'enum',
+            'set',
+            'json',
+            'jsonb',
+            'date',
+            'datetime',
+            'datetimetz',
+            'time',
+            'timetz',
+            'timestamp',
+            'timestamptz',
+            'year',
+            'binary',
+            'uuid',
+            'ipaddress',
+            'macaddress' => 'string',
+            'integer',
+            'tinyinteger',
+            'tinyint',
+            'smallinteger',
+            'smallint',
+            'mediuminteger',
+            'mediumint',
+            'biginteger',
+            'bigint' => 'int',
+            'float',
+            'double',
+            'decimal' => 'float',
+            'boolean' => 'bool',
+            default => 'mixed',
+        };
     }
 
     private function dateClass(): string
     {
-        return '\\' . get_class(Date::now());
+        return '\\' . Date::now()::class;
     }
 
     private function immutableDateClass(): string
     {
-        return '\\' . get_class(Date::now()->toImmutable());
+        return '\\' . Date::now()->toImmutable()::class;
     }
 
     private function isCustomCast(string $castType): bool

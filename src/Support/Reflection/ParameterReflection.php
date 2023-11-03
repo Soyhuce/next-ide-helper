@@ -61,18 +61,14 @@ class ParameterReflection
         if (!Arr::isAssoc($value)) {
             return '[' .
                 collect($value)
-                    ->map(function ($item): string {
-                        return self::exportValue($item);
-                    })
+                    ->map(self::exportValue(...))
                     ->implode(', ')
                 . ']';
         }
 
         return '[' .
             collect($value)
-                ->map(function ($item, $key): string {
-                    return self::exportValue($key) . ' => ' . self::exportValue($item);
-                })
+                ->map(fn ($item, $key): string => self::exportValue($key) . ' => ' . self::exportValue($item))
                 ->implode(', ')
             . ']';
     }

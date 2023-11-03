@@ -17,8 +17,6 @@ use function in_array;
 
 class ResolveModelRelations implements ModelResolver
 {
-    private ModelCollection $models;
-
     /** @var array<string> */
     private array $relationsMethods = [
         'hasOne',
@@ -34,10 +32,9 @@ class ResolveModelRelations implements ModelResolver
         'morphedByMany',
     ];
 
-    public function __construct(ModelCollection $models)
-    {
-        $this->models = $models;
-    }
+    public function __construct(
+        private ModelCollection $models
+    ) {}
 
     public function execute(Model $model): void
     {
@@ -50,7 +47,7 @@ class ResolveModelRelations implements ModelResolver
                     $model,
                     $this->findRelatedFromRelation($model, $method)
                 ));
-            } catch (UnsupportedRelation $exception) {
+            } catch (UnsupportedRelation) {
             }
         }
     }
@@ -86,11 +83,11 @@ class ResolveModelRelations implements ModelResolver
         try {
             /** @var EloquentRelation */
             $relation = $model->instance()->{$method}();
-        } catch (Exception $exception) {
+        } catch (Exception) {
             throw new UnsupportedRelation();
         }
 
-        $relatedClass = get_class($relation->getRelated());
+        $relatedClass = $relation->getRelated()::class;
 
         $related = $this->models->findByFqcn($relatedClass);
         if ($related === null) {
