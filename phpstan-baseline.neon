@@ -56,11 +56,6 @@ parameters:
 			path: src/Domain/Macros/Output/MacrosHelperFile.php
 
 		-
-			message: "#^Property Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Macros\\\\Output\\\\MacrosHelperFile\\:\\:\\$class with generic class ReflectionClass does not specify its types\\: T$#"
-			count: 1
-			path: src/Domain/Macros/Output/MacrosHelperFile.php
-
-		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Meta\\\\Actions\\\\ResolveContainerBindings\\:\\:execute\\(\\) return type with generic class Illuminate\\\\Support\\\\Collection does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
