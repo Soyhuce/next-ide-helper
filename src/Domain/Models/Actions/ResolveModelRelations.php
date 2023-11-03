@@ -12,7 +12,6 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Exceptions\UnsupportedRelation;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
-use function get_class;
 use function in_array;
 
 class ResolveModelRelations implements ModelResolver
@@ -33,7 +32,7 @@ class ResolveModelRelations implements ModelResolver
     ];
 
     public function __construct(
-        private ModelCollection $models
+        private ModelCollection $models,
     ) {}
 
     public function execute(Model $model): void
@@ -66,7 +65,7 @@ class ResolveModelRelations implements ModelResolver
 
     private function isRelationMethod(ReflectionMethod $method): bool
     {
-        if (in_array($method->getName(), $this->relationsMethods)) {
+        if (in_array($method->getName(), $this->relationsMethods, true)) {
             return false;
         }
 

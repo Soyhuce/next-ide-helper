@@ -20,7 +20,7 @@ abstract class TestCase extends Orchestra
 
         $this->loadMigrationsFrom(__DIR__ . '/database');
 
-        if (in_array(ResetsFixtures::class, class_uses_recursive($this))) {
+        if (in_array(ResetsFixtures::class, class_uses_recursive($this), true)) {
             $this->bootResetsFixtures();
         }
     }

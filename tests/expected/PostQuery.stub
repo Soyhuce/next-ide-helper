@@ -37,6 +37,4 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery withoutTrashed()
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery onlyTrashed()
  */
-class PostQuery extends Builder
-{
-}
+class PostQuery extends Builder {}

@@ -15,7 +15,7 @@ use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 class FactoryDocBlock extends DocBlock
 {
     public function __construct(
-        private Factory $factory
+        private Factory $factory,
     ) {}
 
     public function render(): void
@@ -124,7 +124,7 @@ class FactoryDocBlock extends DocBlock
     private function template(): string
     {
         return sprintf(
-            ' * @extends \Illuminate\Database\Eloquent\Factories\Factory<%s>',
+            ' * @extends \\Illuminate\\Database\\Eloquent\\Factories\\Factory<%s>',
             $this->factory->model->fqcn
         );
     }

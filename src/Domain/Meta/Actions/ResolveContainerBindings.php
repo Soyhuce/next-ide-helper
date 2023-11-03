@@ -10,7 +10,7 @@ use function is_object;
 class ResolveContainerBindings
 {
     public function __construct(
-        private Application $application
+        private Application $application,
     ) {}
 
     public function execute(): Collection

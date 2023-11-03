@@ -39,6 +39,4 @@ use Illuminate\Database\Eloquent\Builder;
  * @template TModelClass of \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
  * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>
  */
-class PostQuery extends Builder
-{
-}
+class PostQuery extends Builder {}

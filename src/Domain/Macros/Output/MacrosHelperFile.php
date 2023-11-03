@@ -11,7 +11,7 @@ use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 class MacrosHelperFile
 {
     public function __construct(
-        private ReflectionClass $class
+        private ReflectionClass $class,
     ) {}
 
     public function amend(IdeHelperFile $ideHelperFile): void

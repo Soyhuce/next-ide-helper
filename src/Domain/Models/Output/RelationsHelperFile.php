@@ -12,12 +12,11 @@ use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use Soyhuce\NextIdeHelper\Support\Type;
-use function get_class;
 
 class RelationsHelperFile implements Amender
 {
     public function __construct(
-        private Model $model
+        private Model $model,
     ) {}
 
     public function amend(IdeHelperFile $file): void

@@ -16,7 +16,7 @@ class Relation
     public function __construct(
         public string $name,
         public Model $parent,
-        public Model $related
+        public Model $related,
     ) {}
 
     public function returnType(): string
