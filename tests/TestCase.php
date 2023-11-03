@@ -31,11 +31,4 @@ abstract class TestCase extends Orchestra
             NextIdeHelperServiceProvider::class,
         ];
     }
-
-    protected function onlyForPhp81(): void
-    {
-        if (version_compare(PHP_VERSION, '8.1', '<')) {
-            $this->markTestSkipped('Test skipped for php < 8.1');
-        }
-    }
 }
