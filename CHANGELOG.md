@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.16.0 - 2023-11-03
+
+### What's Changed
+
+- Tests under PHP 8.3, drop PHP 8.1 and Laravel 9 by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/96
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.15.4...0.16.0
+
 ## 0.15.4 - 2023-10-26
 
 ### What's Changed
