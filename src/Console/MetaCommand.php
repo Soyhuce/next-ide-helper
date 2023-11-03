@@ -18,13 +18,13 @@ class MetaCommand extends Command
 
     /** @var array<string> */
     protected array $methods = [
-        '\Illuminate\Container\Container::makeWith',
-        '\Illuminate\Contracts\Container\Container::make',
-        '\Illuminate\Contracts\Container\Container::makeWith',
-        '\App::make',
-        '\App::makeWith',
-        '\app',
-        '\resolve',
+        '\\Illuminate\\Container\\Container::makeWith',
+        '\\Illuminate\\Contracts\\Container\\Container::make',
+        '\\Illuminate\\Contracts\\Container\\Container::makeWith',
+        '\\App::make',
+        '\\App::makeWith',
+        '\\app',
+        '\\resolve',
     ];
 
     public function handle(ResolveContainerBindings $resolveContainerBindings): void

@@ -35,8 +35,8 @@ class FindFactoriesTest extends TestCase
 
         /** @var \Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory|null $factory */
         $factory = $finder->execute($this->fixturePath('Factories'))->first(
-                fn (Factory $factory) => $factory->fqcn === '\Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\PostFactory'
-            );
+            fn (Factory $factory) => $factory->fqcn === '\\Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Factories\\PostFactory'
+        );
 
         $this->assertNotNull($factory);
         $this->assertEquals($this->fixturePath('Factories/PostFactory.php'), $factory->filePath);

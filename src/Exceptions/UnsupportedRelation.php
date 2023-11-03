@@ -4,6 +4,4 @@ namespace Soyhuce\NextIdeHelper\Exceptions;
 
 use Exception;
 
-class UnsupportedRelation extends Exception
-{
-}
+class UnsupportedRelation extends Exception {}

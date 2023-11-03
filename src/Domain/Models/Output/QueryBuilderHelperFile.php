@@ -15,7 +15,7 @@ use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 class QueryBuilderHelperFile implements Amender
 {
     public function __construct(
-        private Model $model
+        private Model $model,
     ) {}
 
     public function amend(IdeHelperFile $file): void

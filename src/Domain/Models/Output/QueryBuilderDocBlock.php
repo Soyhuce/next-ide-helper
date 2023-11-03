@@ -13,7 +13,7 @@ use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 class QueryBuilderDocBlock extends DocBlock implements Renderer
 {
     public function __construct(
-        private Model $model
+        private Model $model,
     ) {}
 
     public function render(): void
@@ -164,7 +164,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     {
         return Collection::make([
             " * @template TModelClass of {$this->model->fqcn}",
-            ' * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>',
+            ' * @extends \\Illuminate\\Database\\Eloquent\\Builder<TModelClass>',
         ]);
     }
 

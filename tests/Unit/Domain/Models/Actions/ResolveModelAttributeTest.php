@@ -7,7 +7,6 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
-use function get_class;
 
 /**
  * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes

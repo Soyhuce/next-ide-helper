@@ -25,7 +25,7 @@ class ModelsCommandTest extends TestCase
     {
         parent::setUp();
         Factory::guessFactoryNamesUsing(
-            fn (string $modelFqcn) => 'Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\\' . class_basename($modelFqcn) . 'Factory'
+            fn (string $modelFqcn) => 'Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Factories\\' . class_basename($modelFqcn) . 'Factory'
         );
     }
 

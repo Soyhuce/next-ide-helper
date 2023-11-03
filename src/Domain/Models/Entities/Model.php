@@ -69,6 +69,6 @@ class Model
 
     public function softDeletes(): bool
     {
-        return in_array(SoftDeletes::class, class_uses_recursive($this->fqcn));
+        return in_array(SoftDeletes::class, class_uses_recursive($this->fqcn), true);
     }
 }

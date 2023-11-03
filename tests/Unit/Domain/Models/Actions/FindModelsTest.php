@@ -36,7 +36,7 @@ class FindModelsTest extends TestCase
         /** @var Model $model */
         $model = $finder->execute($this->fixturePath('Blog'))->first();
 
-        $this->assertEquals('\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post', $model->fqcn);
+        $this->assertEquals('\\Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Blog\\Post', $model->fqcn);
         $this->assertEquals($this->fixturePath('Blog/Post.php'), $model->filePath);
     }
 }

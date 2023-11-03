@@ -34,7 +34,7 @@ class FindMacroableClasses
             return false;
         }
 
-        if (!in_array(Macroable::class, class_uses_recursive($class))) {
+        if (!in_array(Macroable::class, class_uses_recursive($class), true)) {
             return false;
         }
 

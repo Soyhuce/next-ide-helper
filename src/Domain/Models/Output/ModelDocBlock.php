@@ -15,7 +15,7 @@ use function in_array;
 class ModelDocBlock extends DocBlock implements Renderer
 {
     public function __construct(
-        private Model $model
+        private Model $model,
     ) {}
 
     public function render(): void
@@ -141,7 +141,8 @@ class ModelDocBlock extends DocBlock implements Renderer
 
         if (!in_array(
             \Illuminate\Database\Eloquent\Factories\HasFactory::class,
-            class_uses_recursive($this->model->fqcn)
+            class_uses_recursive($this->model->fqcn),
+            true
         )) {
             return null;
         }

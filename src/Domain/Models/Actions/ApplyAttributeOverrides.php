@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Type;
-use function get_class;
 
 class ApplyAttributeOverrides implements ModelResolver
 {
@@ -15,8 +14,7 @@ class ApplyAttributeOverrides implements ModelResolver
      */
     public function __construct(
         private array $overrides,
-    ) {
-    }
+    ) {}
 
     public function execute(Model $model): void
     {

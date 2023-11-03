@@ -13,13 +13,12 @@ use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
-use function get_class;
 use function in_array;
 
 class AttributeTypeCaster
 {
     public function __construct(
-        private Model $model
+        private Model $model,
     ) {}
 
     public function resolve(Attribute $attribute): Attribute
@@ -37,7 +36,7 @@ class AttributeTypeCaster
 
     private function isTimestamps(Attribute $attribute): bool
     {
-        return in_array($attribute->name, $this->model->instance()->getDates());
+        return in_array($attribute->name, $this->model->instance()->getDates(), true);
     }
 
     private function hasCast(Attribute $attribute): bool
@@ -169,7 +168,7 @@ class AttributeTypeCaster
     {
         return class_exists($castType)
             && class_implements($castType) !== false
-            && in_array(CastsAttributes::class, class_implements($castType));
+            && in_array(CastsAttributes::class, class_implements($castType), true);
     }
 
     /**
@@ -186,7 +185,7 @@ class AttributeTypeCaster
     {
         return class_exists($castType)
             && class_implements($castType)
-            && in_array(Castable::class, class_implements($castType));
+            && in_array(Castable::class, class_implements($castType), true);
     }
 
     private function resolveCastable(string $castType, ?string $arguments): string
