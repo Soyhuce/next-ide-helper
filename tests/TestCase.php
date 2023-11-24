@@ -23,6 +23,8 @@ abstract class TestCase extends Orchestra
         if (in_array(ResetsFixtures::class, class_uses_recursive($this), true)) {
             $this->bootResetsFixtures();
         }
+
+        $this->app->setBasePath(realpath(__DIR__));
     }
 
     protected function getPackageProviders($app)

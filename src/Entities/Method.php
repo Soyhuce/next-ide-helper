@@ -24,8 +24,9 @@ class Method
 
     public ?string $returnType = null;
 
-    /** @var array<string>|null */
-    public ?array $body = null;
+    public ?string $source = null;
+
+    public ?int $line = null;
 
     public function __construct(string $name)
     {
@@ -44,7 +45,8 @@ class Method
             ->isStatic(FunctionReflection::isStatic($function))
             ->parameters(FunctionReflection::parameters($function))
             ->returnType(FunctionReflection::returnType($function))
-            ->body(FunctionReflection::bodyLines($function));
+            ->source(FunctionReflection::source($function))
+            ->line(FunctionReflection::line($function));
     }
 
     public static function fromMethod(string $name, ReflectionMethod $method): self
@@ -87,12 +89,16 @@ class Method
         return $this;
     }
 
-    /**
-     * @param array<string>|null $body
-     */
-    public function body(?array $body): self
+    public function source(?string $source): self
     {
-        $this->body = $body;
+        $this->source = $source;
+
+        return $this;
+    }
+
+    public function line(?int $line): self
+    {
+        $this->line = $line;
 
         return $this;
     }
@@ -109,7 +115,6 @@ class Method
             ->merge($this->docblockLines())
             ->add($this->definition())
             ->add('{')
-            ->merge($this->bodyLines())
             ->add('}')
             ->toArray();
     }
@@ -122,6 +127,19 @@ class Method
             $this->returnTypeForDocTag() ?? 'mixed',
             $this->name,
             $this->parameters
+        );
+    }
+
+    public function toLinkTag(): ?string
+    {
+        if ($this->source === null || $this->line === null) {
+            return null;
+        }
+
+        return sprintf(
+            ' * @see project://%s L%d',
+            Str::after($this->source, base_path().DIRECTORY_SEPARATOR),
+            $this->line
         );
     }
 
@@ -167,17 +185,5 @@ class Method
         }
 
         return $definition . ": {$this->returnType}";
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection<int, string>
-     */
-    private function bodyLines(): Collection
-    {
-        if ($this->body === null) {
-            return new Collection();
-        }
-
-        return new Collection($this->body);
     }
 }

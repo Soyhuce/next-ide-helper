@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.4/phpunit.xsd" backupGlobals="false"
          bootstrap="vendor/autoload.php" colors="true" processIsolation="false" stopOnFailure="false"
          executionOrder="random" failOnWarning="true" failOnRisky="true" failOnEmptyTestSuite="true"
-         beStrictAboutOutputDuringTests="true" cacheDirectory=".phpunit.cache" backupStaticProperties="false">
+         beStrictAboutOutputDuringTests="true" cacheDirectory="phpunit" backupStaticProperties="false">
     <testsuites>
         <testsuite name="Soyhuce Test Suite">
             <directory>tests</directory>

@@ -4,13 +4,21 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     /**
      * @method static string foo(string $bar)
+     * @see project://Feature/MacrosCommandTest.php L20
      * @method static string toLower(string $value)
+     * @see project://Fixtures/Macroable/SomeMixin.php L17
      * @method void havingVariadic(string &...$params)
+     * @see project://Fixtures/Macroable/SomeMixin.php L22
      * @method self havingSelfAsReturnType()
+     * @see project://Fixtures/Macroable/SomeMixin.php L32
      * @method void havingArrayAsDefaultValue(array $array = [1, 2, 3, ['some' => 'value']])
+     * @see project://Fixtures/Macroable/SomeMixin.php L37
      * @method mixed havingNullableMixed(mixed $value = null)
+     * @see project://Fixtures/Macroable/SomeMixin.php L44
      * @method mixed havingNullableUnionType(string|int|null $value = null)
+     * @see project://Fixtures/Macroable/SomeMixin.php L49
      * @method string|null returningNullableString()
+     * @see project://Fixtures/Macroable/SomeMixin.php L54
      */
     class SomeMacroable
     {
