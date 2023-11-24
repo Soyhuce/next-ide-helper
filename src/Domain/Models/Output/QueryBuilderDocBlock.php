@@ -100,12 +100,10 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     private function scopeMethods(): Collection
     {
         return collect($this->model->scopes)
-            ->map(fn (Method $scope): string => sprintf(
-                ' * @method %s %s(%s)',
-                $this->model->queryBuilder->fqcn,
-                $scope->name,
-                $scope->parameters
-            ));
+            ->flatMap(fn (Method $scope): array => array_filter([
+                $scope->returnType($this->model->queryBuilder->fqcn)->toDocTag(),
+                $scope->toLinkTag(),
+            ]));
     }
 
     /**

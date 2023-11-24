@@ -138,7 +138,7 @@ class Method
 
         return sprintf(
             ' * @see project://%s L%d',
-            Str::after($this->source, base_path().DIRECTORY_SEPARATOR),
+            Str::after($this->source, base_path() . DIRECTORY_SEPARATOR),
             $this->line
         );
     }
