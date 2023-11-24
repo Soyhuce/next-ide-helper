@@ -19,7 +19,9 @@ class ResolveModelScopes implements ModelResolver
 
         /** @var ReflectionMethod $method */
         foreach ($methods as $method) {
-            $scope = Method::new($this->methodName($method->getName()));
+            $scope = Method::new($this->methodName($method->getName()))
+                ->source(FunctionReflection::source($method))
+                ->line(FunctionReflection::line($method));
 
             $parameters = array_slice(FunctionReflection::parameterList($method), 1);
             $scope->parameters(implode(', ', $parameters));

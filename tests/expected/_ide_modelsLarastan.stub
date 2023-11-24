@@ -44,6 +44,7 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereUpdatedAt(\Carbon\CarbonImmutable|string $value)
      * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery whereEmailDomain(string $domain, ?string $area = null)
+     * @see project://Fixtures/User.php L76
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
      * @method \Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\User>|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])
      * @method \Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\User> findMany($id, array $columns = ['*'])
