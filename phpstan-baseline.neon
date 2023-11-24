@@ -131,6 +131,11 @@ parameters:
 			path: src/Support/Reflection/TypeReflection.php
 
 		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),ReflectionIntersectionType\\|ReflectionNamedType\\>\\:\\:map\\(\\) expects callable\\(ReflectionIntersectionType\\|ReflectionNamedType, int\\|string\\)\\: string, Closure\\(ReflectionNamedType\\)\\: string given\\.$#"
+			count: 1
+			path: src/Support/Reflection/TypeReflection.php
+
+		-
 			message: "#^Method Soyhuce\\\\NextIdeHelper\\\\Support\\\\Type\\:\\:qualify\\(\\) should return T of string but returns string\\.$#"
 			count: 2
 			path: src/Support/Type.php
