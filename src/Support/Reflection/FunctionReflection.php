@@ -4,7 +4,6 @@ namespace Soyhuce\NextIdeHelper\Support\Reflection;
 
 use Illuminate\Support\Str;
 use ReflectionFunctionAbstract;
-use function array_slice;
 
 class FunctionReflection
 {
@@ -67,38 +66,23 @@ class FunctionReflection
         return $returnType;
     }
 
-    /**
-     * @return array<string>
-     */
-    public static function bodyLines(ReflectionFunctionAbstract $function): array
+    public static function source(ReflectionFunctionAbstract $function): ?string
     {
         $filename = $function->getFileName();
         if ($filename === false) {
-            return [];
+            return '';
         }
 
-        $file = file($filename);
-        if ($file === false) {
-            return [];
+        return $filename;
+    }
+
+    public static function line(ReflectionFunctionAbstract $function): ?int
+    {
+        $line = $function->getStartLine();
+        if ($line === false) {
+            return null;
         }
 
-        $startLine = $function->getStartLine();
-        $endLine = $function->getEndLine();
-        $length = $endLine - $startLine - 1;
-        if ($startLine === false || $endLine === false || $length < 1) {
-            return [];
-        }
-
-        $lines = collect(array_slice($file, $startLine, $length));
-        $lastLine = $lines->last();
-        if ($lastLine === null) {
-            return [];
-        }
-
-        $spaces = max(Str::length($lastLine) - Str::length(ltrim($lastLine, ' ')) - 4, 0);
-
-        return $lines->map(
-            static fn (string $line) => Str::of($line)->substr($spaces)->rtrim(PHP_EOL)->toString()
-        )->toArray();
+        return $line;
     }
 }

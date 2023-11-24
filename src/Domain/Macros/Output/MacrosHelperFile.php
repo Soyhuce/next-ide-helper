@@ -21,7 +21,13 @@ class MacrosHelperFile
         foreach ($this->macros() as $name => $macro) {
             $macro = new ReflectionFunction($macro);
 
-            $class->addDocTag(Method::fromFunction($name, $macro)->toDocTag());
+            $method = Method::fromFunction($name, $macro);
+            $class->addDocTag($method->toDocTag());
+
+            $link = $method->toLinkTag();
+            if ($link !== null) {
+                $class->addDocTag($link);
+            }
         }
 
         $constructor = $this->constructor($this->class);
