@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.17.0 - 2023-11-27
+
+### What's Changed
+
+* Link sources for macros and model scopes by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/103
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.16.0...0.17.0
+
 ## 0.16.0 - 2023-11-03
 
 ### What's Changed
@@ -431,9 +439,9 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Added
 
-- command `next-ide-helper:factories` to generate Laravel 8 factories docblock :   
+- command `next-ide-helper:factories` to generate Laravel 8 factories docblock :
   
-- - method types   
+- - method types
   
 - 
 - 
@@ -444,7 +452,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - magic relation methods   
+- - magic relation methods
   
 - 
 - 
@@ -461,21 +469,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
 ### Added
 
-- Models :   
+- Models :
   
 - 
-- - attributes   
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- - attributes from accessors   
+- - attributes
   
 - 
 - 
@@ -486,7 +483,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - attribute casting   
+- - attributes from accessors
   
 - 
 - 
@@ -497,7 +494,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - custom collection   
+- - attribute casting
   
 - 
 - 
@@ -508,7 +505,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - custom query builder   
+- - custom collection
   
 - 
 - 
@@ -519,7 +516,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - relations   
+- - custom query builder
   
 - 
 - 
@@ -530,7 +527,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - query builder :   
+- - relations
   
 - 
 - 
@@ -541,62 +538,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - - where clauses from attributes      
-       
-  
-- -    
-  
-- 
-- -    
-  
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
+- - query builder :
   
 - 
 - 
@@ -607,43 +549,35 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - - where clauses from scopes      
-       
+- - - where clauses from attributes
+    
   
-- -    
-  
-- 
-- -    
+- - 
   
 - 
-- 
-- -    
+- - 
   
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
 - 
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
@@ -651,8 +585,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
@@ -661,8 +594,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- 
-- -    
+- - 
   
 - 
 - 
@@ -672,63 +604,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- 
-- - - type of result methods      
-       
-  
-- -    
-  
-- 
-- -    
-  
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
+- - 
   
 - 
 - 
@@ -739,7 +615,62 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- -    
+- - - where clauses from scopes
+    
+  
+- - 
+  
+- 
+- - 
+  
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
   
 - 
 - 
@@ -750,7 +681,62 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - relations :   
+- - - type of result methods
+    
+  
+- - 
+  
+- 
+- - 
+  
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
   
 - 
 - 
@@ -761,62 +747,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - - mixin with related's query builder      
-       
-  
-- -    
-  
-- 
-- -    
-  
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
-  
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- -    
+- - 
   
 - 
 - 
@@ -827,7 +758,7 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- -    
+- - relations :
   
 - 
 - 
@@ -838,7 +769,62 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- - custom resolvers   
+- - - mixin with related's query builder
+    
+  
+- - 
+  
+- 
+- - 
+  
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - 
   
 - 
 - 
@@ -849,11 +835,18 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- 
-- Macros :   
+- - 
   
 - 
-- - generation of file with macros to provide auto-completion   
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- - custom resolvers
   
 - 
 - 
@@ -865,10 +858,10 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- Phpstorm Meta :   
+- Macros :
   
 - 
-- - generation of file with meta to provide auto-completion   
+- - generation of file with macros to provide auto-completion
   
 - 
 - 
@@ -880,10 +873,25 @@ All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 - 
 - 
 - 
-- Misc :   
+- Phpstorm Meta :
   
 - 
-- - custom bootstrapper   
+- - generation of file with meta to provide auto-completion
+  
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- Misc :
+  
+- 
+- - custom bootstrapper
   
 - 
 - 
