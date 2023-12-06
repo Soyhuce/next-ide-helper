@@ -2,6 +2,18 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.17.1 - 2023-12-06
+
+### What's Changed
+
+* fix: take account of tables prefix during models attributes resolving by @KarinaRashchynskaya in https://github.com/Soyhuce/next-ide-helper/pull/106
+
+### New Contributors
+
+* @KarinaRashchynskaya made their first contribution in https://github.com/Soyhuce/next-ide-helper/pull/106
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.17.0...0.17.1
+
 ## 0.17.0 - 2023-11-27
 
 ### What's Changed
