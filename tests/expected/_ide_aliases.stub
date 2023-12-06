@@ -98,6 +98,10 @@ namespace
     {
     }
 
+    class Number extends \Illuminate\Support\Number
+    {
+    }
+
     class Password extends \Illuminate\Support\Facades\Password
     {
     }

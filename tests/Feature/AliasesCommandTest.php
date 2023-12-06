@@ -22,20 +22,8 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.Redis') === null) {
             AliasLoader::getInstance(['RedisManager' => \Illuminate\Support\Facades\Redis::class]);
         }
-        if (config('app.aliases.Date') === null) {
-            AliasLoader::getInstance(['Date' => \Illuminate\Support\Facades\Date::class]);
-        }
-        if (config('app.aliases.Js') === null) {
-            AliasLoader::getInstance(['Js' => \Illuminate\Support\Js::class]);
-        }
-        if (config('app.aliases.Process') === null) {
-            AliasLoader::getInstance(['Process' => \Illuminate\Support\Facades\Process::class]);
-        }
-        if (config('app.aliases.RateLimiter') === null) {
-            AliasLoader::getInstance(['RateLimiter' => \Illuminate\Support\Facades\RateLimiter::class]);
-        }
-        if (config('app.aliases.Vite') === null) {
-            AliasLoader::getInstance(['Vite' => \Illuminate\Support\Facades\Vite::class]);
+        if (config('app.aliases.Number') === null) {
+            AliasLoader::getInstance(['Number' => \Illuminate\Support\Number::class]);
         }
 
         config([
