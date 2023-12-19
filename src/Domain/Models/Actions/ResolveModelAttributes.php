@@ -20,6 +20,7 @@ class ResolveModelAttributes implements ModelResolver
             $attribute->inDatabase = true;
             if (!$column->getNotnull() && !$this->isLaravelTimestamp($model, $attribute)) {
                 $attribute->nullable = true;
+                $attribute->nullableInDatabase = true;
             }
 
             $model->addAttribute($typeCaster->resolve($attribute));

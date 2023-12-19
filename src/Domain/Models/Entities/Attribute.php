@@ -18,6 +18,8 @@ class Attribute
 
     public bool $inDatabase = false;
 
+    public bool $nullableInDatabase = false;
+
     public ?string $comment = null;
 
     public function __construct(string $name, string $type)
