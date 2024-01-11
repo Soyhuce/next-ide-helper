@@ -29,7 +29,7 @@ class ResolveModelRelationsTest extends TestCase
 
         $this->assertCount(2, $post->relations);
 
-        /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $user */
+        /** @var Relation $user */
         $user = $post->relations->first(fn (Relation $relation) => $relation->name === 'user');
         $this->assertNotNull($user);
         $this->assertEquals($post, $user->parent);
@@ -51,13 +51,13 @@ class ResolveModelRelationsTest extends TestCase
 
         $this->assertCount(3, $user->relations);
 
-        /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $posts */
+        /** @var Relation $posts */
         $posts = $user->relations->findByName('posts');
         $this->assertEquals('posts', $posts->name);
         $this->assertEquals($user, $posts->parent);
         $this->assertEquals($models->findByFqcn(Post::class), $posts->related);
 
-        /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $laravelPosts */
+        /** @var Relation $laravelPosts */
         $laravelPosts = $user->relations->findByName('laravelPosts');
         $this->assertEquals('laravelPosts', $laravelPosts->name);
         $this->assertEquals($user, $laravelPosts->parent);
