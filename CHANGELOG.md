@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.18.0 - 2024-01-11
+
+### What's Changed
+
+* Add a boolean to Attribute in order to define if it is nullable in database by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/107
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.17.1...0.18.0
+
 ## 0.17.1 - 2023-12-06
 
 ### What's Changed
