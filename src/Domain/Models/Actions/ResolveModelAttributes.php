@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Doctrine\DBAL\Exception as DBalException;
 use Doctrine\DBAL\Types\Type;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Models\AttributeTypeCaster;
@@ -34,10 +35,14 @@ class ResolveModelAttributes implements ModelResolver
     {
         $table = $model->instance()->getConnection()->getTablePrefix() . $model->instance()->getTable();
 
-        return $model->instance()
-            ->getConnection()
-            ->getDoctrineSchemaManager()
-            ->listTableColumns($table);
+        try {
+            return $model->instance()
+                ->getConnection()
+                ->getDoctrineSchemaManager()
+                ->listTableColumns($table);
+        } catch (DBalException) {
+            return [];
+        }
     }
 
     private function isLaravelTimestamp(Model $model, Attribute $attribute): bool
