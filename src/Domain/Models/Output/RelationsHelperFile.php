@@ -21,7 +21,7 @@ class RelationsHelperFile implements Amender
 
     public function amend(IdeHelperFile $file): void
     {
-        /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation $relation */
+        /** @var Relation $relation */
         foreach ($this->model->relations as $relation) {
             if ($relation->eloquentRelation() instanceof MorphTo) {
                 continue;
