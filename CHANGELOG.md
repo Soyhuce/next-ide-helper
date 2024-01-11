@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.18.1 - 2024-01-11
+
+### What's Changed
+
+* Prevent crash when doctrine raises exception by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/109
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.18.0...0.18.1
+
 ## 0.18.0 - 2024-01-11
 
 ### What's Changed
