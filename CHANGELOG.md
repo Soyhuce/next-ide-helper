@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.19.0 - 2024-02-16
+
+### What's Changed
+
+* Support Laravel 11, drop doctrine/dbal, replace soyhuce/classmap-generator with composer/class-map-generator by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/110
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.18.1...0.19.0
+
 ## 0.18.1 - 2024-01-11
 
 ### What's Changed
