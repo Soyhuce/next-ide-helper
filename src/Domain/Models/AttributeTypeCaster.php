@@ -117,6 +117,7 @@ class AttributeTypeCaster
     {
         return match (Str::lower($attribute->type)) {
             'char',
+            'varchar',
             'string',
             'text',
             'mediumtext',

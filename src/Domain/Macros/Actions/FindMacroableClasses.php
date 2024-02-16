@@ -2,10 +2,10 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Macros\Actions;
 
+use Composer\ClassMapGenerator\ClassMapGenerator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use ReflectionClass;
-use Soyhuce\ClassMapGenerator\ClassMapGenerator;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
 use function in_array;
 

@@ -2,9 +2,9 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
+use Composer\ClassMapGenerator\ClassMapGenerator;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use ReflectionClass;
-use Soyhuce\ClassMapGenerator\ClassMapGenerator;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
