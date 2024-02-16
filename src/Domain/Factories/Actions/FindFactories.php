@@ -2,10 +2,10 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Factories\Actions;
 
+use Composer\ClassMapGenerator\ClassMapGenerator;
 use Illuminate\Database\Eloquent\Factories\Factory as EloquentFactory;
 use Illuminate\Support\Collection;
 use ReflectionClass;
-use Soyhuce\ClassMapGenerator\ClassMapGenerator;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
 

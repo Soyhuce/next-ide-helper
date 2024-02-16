@@ -138,6 +138,10 @@ namespace
     {
     }
 
+    class Schedule extends \Illuminate\Support\Facades\Schedule
+    {
+    }
+
     class Schema extends \Illuminate\Support\Facades\Schema
     {
     }
