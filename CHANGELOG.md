@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.19.1 - 2024-02-23
+
+### What's Changed
+
+* Fix attribute type caster for postgresql by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/111
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.19.0...0.19.1
+
 ## 0.19.0 - 2024-02-16
 
 ### What's Changed
