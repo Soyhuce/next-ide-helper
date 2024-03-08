@@ -33,7 +33,7 @@ class FindFactoriesTest extends TestCase
     {
         $finder = new FindFactories();
 
-        /** @var \Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory|null $factory */
+        /** @var Factory|null $factory */
         $factory = $finder->execute($this->fixturePath('Factories'))->first(
             fn (Factory $factory) => $factory->fqcn === '\\Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Factories\\PostFactory'
         );
