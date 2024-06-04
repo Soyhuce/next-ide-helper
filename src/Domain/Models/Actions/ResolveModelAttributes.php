@@ -48,10 +48,6 @@ class ResolveModelAttributes implements ModelResolver
             return false;
         }
 
-        if ($this->isNullableLaravelTimestamp()) {
-            return false;
-        }
-
         if (
             !$this->isNullableLaravelTimestamp()
             && ($attribute->name === $model->instance()->getCreatedAtColumn()
