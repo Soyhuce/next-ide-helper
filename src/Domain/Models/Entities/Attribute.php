@@ -22,10 +22,11 @@ class Attribute
 
     public ?string $comment = null;
 
-    public function __construct(string $name, string $type)
+    public function __construct(string $name, string $type, ?string $comment = null)
     {
         $this->name = $name;
         $this->setType($type);
+        $this->comment = $comment;
         $this->nullable = false;
     }
 
