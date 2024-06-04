@@ -55,6 +55,11 @@ return [
          * Use Larastan friendly docblock when possible.
          */
         'larastan_friendly' => false,
+
+        /**
+         * Always use nullable for timestamps defined in the model. For example: created_at, updated_at.
+         */
+        'nullable_timestamps' => true,
     ],
 
     /**
