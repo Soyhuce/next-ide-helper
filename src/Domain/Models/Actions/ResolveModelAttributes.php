@@ -48,13 +48,14 @@ class ResolveModelAttributes implements ModelResolver
             return false;
         }
 
-        if (!$this->isNullableLaravelTimestamp()) {
+        if ($this->isNullableLaravelTimestamp()) {
             return false;
         }
 
         if (
-            $attribute->name === $model->instance()->getCreatedAtColumn()
-            || $attribute->name === $model->instance()->getUpdatedAtColumn()
+            !$this->isNullableLaravelTimestamp()
+            && ($attribute->name === $model->instance()->getCreatedAtColumn()
+            || $attribute->name === $model->instance()->getUpdatedAtColumn())
         ) {
             return true;
         }
@@ -64,6 +65,6 @@ class ResolveModelAttributes implements ModelResolver
 
     private function isNullableLaravelTimestamp(): bool
     {
-        return (bool) config('next-ide-helper.models.nullable_timestamps', true);
+        return (bool) config('next-ide-helper.models.nullable_timestamps', false);
     }
 }
