@@ -2,6 +2,22 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.19.3 - 2024-06-05
+
+### What's Changed
+
+* Add tests on laravel 11, phpstan on php 8.3 by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/114
+* Bump ramsey/composer-install from 2 to 3 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/113
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/116
+* Fixed comment for ResolveModelAttributes by @zKoz210 in https://github.com/Soyhuce/next-ide-helper/pull/117
+* Added new flag for default laravel nullable timestamps. Issue #84 by @zKoz210 in https://github.com/Soyhuce/next-ide-helper/pull/118
+
+### New Contributors
+
+* @zKoz210 made their first contribution in https://github.com/Soyhuce/next-ide-helper/pull/117
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.19.2...0.19.3
+
 ## 0.19.2 - 2024-02-23
 
 ### What's Changed
