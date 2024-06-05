@@ -20,7 +20,7 @@ class ResolveModelAttributes implements ModelResolver
         foreach ($columns as $column) {
             $attribute = new Attribute($column['name'], $column['type_name'], $column['comment']);
             $attribute->inDatabase = true;
-            if ($column['nullable'] && !$this->isLaravelTimestamp($model, $attribute)) {
+            if ($column['nullable'] && !$this->forceNullableColumnAsNonNullable($model, $attribute)) {
                 $attribute->nullable = true;
                 $attribute->nullableInDatabase = true;
             }
@@ -42,6 +42,15 @@ class ResolveModelAttributes implements ModelResolver
             ->getColumns($model->instance()->getTable());
     }
 
+    private function forceNullableColumnAsNonNullable(Model $model, Attribute $attribute): bool
+    {
+        if (!$this->isLaravelTimestamp($model, $attribute)) {
+            return false;
+        }
+
+        return !$this->modelTimestampsAreNonNullable();
+    }
+
     private function isLaravelTimestamp(Model $model, Attribute $attribute): bool
     {
         if (!$model->instance()->usesTimestamps()) {
@@ -49,9 +58,8 @@ class ResolveModelAttributes implements ModelResolver
         }
 
         if (
-            !$this->isNullableLaravelTimestamp()
-            && ($attribute->name === $model->instance()->getCreatedAtColumn()
-            || $attribute->name === $model->instance()->getUpdatedAtColumn())
+            $attribute->name === $model->instance()->getCreatedAtColumn()
+            || $attribute->name === $model->instance()->getUpdatedAtColumn()
         ) {
             return true;
         }
@@ -59,7 +67,7 @@ class ResolveModelAttributes implements ModelResolver
         return false;
     }
 
-    private function isNullableLaravelTimestamp(): bool
+    private function modelTimestampsAreNonNullable(): bool
     {
         return (bool) config('next-ide-helper.models.nullable_timestamps', false);
     }
