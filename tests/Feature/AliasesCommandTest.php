@@ -28,6 +28,9 @@ class AliasesCommandTest extends TestCase
         if (config('app.aliases.Schedule') === null) {
             AliasLoader::getInstance(['Schedule' => \Illuminate\Support\Facades\Schedule::class]);
         }
+        if (config('app.aliases.Context') === null) {
+            AliasLoader::getInstance(['Context' => \Illuminate\Support\Facades\Context::class]);
+        }
 
         config([
             'next-ide-helper.aliases' => [

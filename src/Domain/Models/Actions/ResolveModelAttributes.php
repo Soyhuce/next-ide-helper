@@ -8,7 +8,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 
 /**
- * @phpstan-type Column array{name: string, type_name: string, nullable: bool}
+ * @phpstan-type Column array{name: string, type_name: string, nullable: bool, comment: string|null}
  */
 class ResolveModelAttributes implements ModelResolver
 {
@@ -18,7 +18,7 @@ class ResolveModelAttributes implements ModelResolver
         $typeCaster = new AttributeTypeCaster($model);
 
         foreach ($columns as $column) {
-            $attribute = new Attribute($column['name'], $column['type_name']);
+            $attribute = new Attribute($column['name'], $column['type_name'], $column['comment']);
             $attribute->inDatabase = true;
             if ($column['nullable'] && !$this->forceNullableColumnAsNonNullable($model, $attribute)) {
                 $attribute->nullable = true;
