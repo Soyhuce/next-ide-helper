@@ -57,7 +57,8 @@ return [
         'larastan_friendly' => false,
 
         /**
-         * Do not use nullable for timestamps defined in the model. For example: created_at, updated_at.
+         * For convenience, model timestamps are by default considered as non-nullable even if they are nullable in the database.
+         * Setting this to true will force the timestamps to be documented as nullable.
          */
         'nullable_timestamps' => false,
     ],

@@ -43,4 +43,23 @@ class ResolveModelAttributeTest extends TestCase
         $this->assertEquals('\\' . Date::now()::class, $createdAt->type);
         $this->assertFalse($createdAt->nullable);
     }
+
+    /**
+     * @test
+     */
+    public function timestampsNullabilityCanBeConfigured(): void
+    {
+        config(['next-ide-helper.models.nullable_timestamps' => true]);
+
+        $model = new Model(User::class, $this->fixturePath('User.php'));
+
+        $resolveAttributes = new ResolveModelAttributes();
+
+        $resolveAttributes->execute($model);
+
+        $createdAt = $model->attributes->findByName('created_at');
+        $this->assertNotNull($createdAt);
+        $this->assertEquals('\\' . Date::now()::class, $createdAt->type);
+        $this->assertTrue($createdAt->nullable);
+    }
 }
