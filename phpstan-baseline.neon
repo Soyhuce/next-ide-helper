@@ -61,11 +61,6 @@ parameters:
 			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
 
 		-
-			message: "#^Unable to resolve the template type TMapValue in call to method Illuminate\\\\Support\\\\Collection\\<string,object\\>\\:\\:map\\(\\)$#"
-			count: 1
-			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
-
-		-
 			message: "#^Parameter \\#1 \\$fqcn of class Soyhuce\\\\NextIdeHelper\\\\Domain\\\\Models\\\\Entities\\\\Model constructor expects class\\-string\\<Illuminate\\\\Database\\\\Eloquent\\\\Model\\>, class\\-string given\\.$#"
 			count: 1
 			path: src/Domain/Models/Actions/FindModels.php

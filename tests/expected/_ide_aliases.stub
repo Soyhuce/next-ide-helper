@@ -38,6 +38,10 @@ namespace
     {
     }
 
+    class Context extends \Illuminate\Support\Facades\Context
+    {
+    }
+
     class Cookie extends \Illuminate\Support\Facades\Cookie
     {
     }
