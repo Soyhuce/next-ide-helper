@@ -52,6 +52,14 @@ return [
         'overrides' => [],
 
         /**
+         * Excluding some models for documentation generation.
+         *
+         * Excludes should be declared as follows :
+         * 'excludes' => [MyModel::class, AnotherModel::class]
+         */
+        'excludes' => [],
+
+        /**
          * Use Larastan friendly docblock when possible.
          */
         'larastan_friendly' => false,

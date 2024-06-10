@@ -45,11 +45,19 @@ class ModelsCommand extends Command
 
         foreach ($this->resolvers($models) as $resolver) {
             foreach ($models as $model) {
+                if ($this->isModelExcluded($model)) {
+                    continue;
+                }
+
                 $resolver->execute($model);
             }
         }
 
         foreach ($models as $model) {
+            if ($this->isModelExcluded($model)) {
+                continue;
+            }
+
             foreach ($this->renderers($model) as $renderer) {
                 $renderer->render();
             }
@@ -84,6 +92,11 @@ class ModelsCommand extends Command
                 new ApplyAttributeOverrides(config('next-ide-helper.models.overrides', [])),
             ]
         );
+    }
+
+    private function isModelExcluded(Model $model): bool
+    {
+        return in_array(get_class($model->instance()), config('next-ide-helper.models.excludes', []), true);
     }
 
     /**
