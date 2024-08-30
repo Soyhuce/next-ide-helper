@@ -11,6 +11,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
 use Throwable;
 use function in_array;
+use function sprintf;
 
 class ModelDocBlock extends DocBlock implements Renderer
 {

@@ -9,6 +9,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
+use function sprintf;
 
 class QueryBuilderDocBlock extends DocBlock implements Renderer
 {

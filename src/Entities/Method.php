@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use ReflectionFunction;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
+use function sprintf;
 
 /**
  * @method static string plop(int $value)
