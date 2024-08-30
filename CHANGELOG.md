@@ -2,6 +2,15 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 0.19.4 - 2024-08-30
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/120
+* Fix meta file generation by @edwinvdpol in https://github.com/Soyhuce/next-ide-helper/pull/121
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.19.3...0.19.4
+
 ## 0.19.3 - 2024-06-05
 
 ### What's Changed
