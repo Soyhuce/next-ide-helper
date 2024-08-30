@@ -121,11 +121,6 @@ parameters:
 			path: src/Support/Reflection/FunctionReflection.php
 
 		-
-			message: "#^Casting class ReflectionType to string is deprecated\\.$#"
-			count: 1
-			path: src/Support/Reflection/TypeReflection.php
-
-		-
 			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),ReflectionIntersectionType\\|ReflectionNamedType\\>\\:\\:map\\(\\) expects callable\\(ReflectionIntersectionType\\|ReflectionNamedType, int\\|string\\)\\: string, Closure\\(ReflectionNamedType\\)\\: string given\\.$#"
 			count: 1
 			path: src/Support/Reflection/TypeReflection.php
@@ -139,4 +134,3 @@ parameters:
 			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),string\\>\\:\\:contains\\(\\) expects \\(callable\\(string, int\\|string\\)\\: bool\\)\\|string, Closure\\(string\\)\\: \\(0\\|1\\|false\\) given\\.$#"
 			count: 1
 			path: src/Support/Type.php
-
