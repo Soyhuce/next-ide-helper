@@ -36,7 +36,13 @@ class MetaCommand extends Command
             'bindings' => $resolveContainerBindings->execute(),
         ]);
 
-        File::put(config('next-ide-helper.meta.file_name'), "<?php\n\n");
-        File::append(config('next-ide-helper.meta.file_name'), $view->render());
+        File::put(
+            config('next-ide-helper.meta.file_name'),
+            <<<PHP
+            <?php
+
+            {$view->render()}
+            PHP
+        );
     }
 }
