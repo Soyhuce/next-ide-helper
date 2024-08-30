@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Domain\Factories\Entities\Factory;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
+use function sprintf;
 
 class FactoryDocBlock extends DocBlock
 {
