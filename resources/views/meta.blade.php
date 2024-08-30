@@ -1,5 +1,3 @@
-{!! "<?php" !!}
-
 namespace PHPSTORM_META {
 
 @foreach($methods as $method)
