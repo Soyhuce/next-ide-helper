@@ -23,7 +23,7 @@ class AliasesCommandTest extends TestCase
             AliasLoader::getInstance(['Concurrency' => \Illuminate\Support\Facades\Concurrency::class]);
         }
         if (config('app.aliases.Uri') === null) {
-            AliasLoader::getInstance(['Number' => \Illuminate\Support\Uri::class]);
+            AliasLoader::getInstance(['Uri' => \Illuminate\Support\Uri::class]);
         }
 
         config([
