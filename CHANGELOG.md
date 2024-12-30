@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 1.0.0 - 2024-12-30
+
+### What's Changed
+
+* Upgrade dependencies and php 8.4 by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/122
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/0.19.4...1.0.0
+
 ## 0.19.4 - 2024-08-30
 
 ### What's Changed
