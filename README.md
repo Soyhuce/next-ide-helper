@@ -1,9 +1,9 @@
 # Laravel ide helper rebuilt under steroids
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soyhuce/next-ide-helper.svg?style=flat-square)](https://packagist.org/packages/soyhuce/next-ide-helper)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/run-tests?label=tests)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/Check%20&%20fix%20styling?label=code%20style)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![GitHub PHPStan Action Status](https://img.shields.io/github/workflow/status/soyhuce/next-ide-helper/PHPStan?label=phpstan)](https://github.com/soyhuce/next-ide-helper/actions?query=workflow%3APHPStan+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/next-ide-helper/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/soyhuce/next-ide-helper/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/next-ide-helper/phpstan.yml?branch=main&label=phpstan&style=flat-square)](https://github.com/soyhuce/next-ide-helper/actions/workflows/phpstan.yml)
+[![GitHub PHPStan Action Status](https://img.shields.io/github/actions/workflow/status/soyhuce/next-ide-helper/php-cs-fixer.yml?branch=main&label=php-cs-fixer&style=flat-square)](https://github.com/soyhuce/next-ide-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/soyhuce/next-ide-helper.svg?style=flat-square)](https://packagist.org/packages/soyhuce/next-ide-helper)
 
 This package aims to be an easy extendable ide-helper generator.
