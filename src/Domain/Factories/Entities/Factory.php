@@ -9,20 +9,20 @@ use Soyhuce\NextIdeHelper\Support\Type;
 
 class Factory
 {
-    /** @var class-string<\Illuminate\Database\Eloquent\Factories\Factory> */
+    /** @var class-string<EloquentFactory> */
     public string $fqcn;
 
     public string $filePath;
 
     public Model $model;
 
-    /** @var \Illuminate\Support\Collection<string> */
+    /** @var Collection<string> */
     public Collection $extraMethods;
 
     private ?EloquentFactory $instance = null;
 
     /**
-     * @param class-string<\Illuminate\Database\Eloquent\Factories\Factory> $fqcn
+     * @param class-string<EloquentFactory> $fqcn
      */
     public function __construct(string $fqcn, string $filePath)
     {

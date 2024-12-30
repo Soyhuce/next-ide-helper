@@ -12,10 +12,10 @@ class Klass
 
     private ?string $extends = null;
 
-    /** @var \Illuminate\Support\Collection<int, string> */
+    /** @var Collection<int, string> */
     private Collection $docTags;
 
-    /** @var \Illuminate\Support\Collection<int, \Soyhuce\NextIdeHelper\Entities\Method> */
+    /** @var Collection<int, Method> */
     private Collection $methods;
 
     public function __construct(string $name)
@@ -112,7 +112,7 @@ class Klass
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function docblockLines(): Collection
     {
@@ -137,7 +137,7 @@ class Klass
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function methodsLines(): Collection
     {

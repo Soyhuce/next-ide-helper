@@ -158,7 +158,7 @@ class Method
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function docblockLines(): Collection
     {

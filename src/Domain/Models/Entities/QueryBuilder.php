@@ -3,21 +3,22 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Collection;
 use Soyhuce\NextIdeHelper\Support\Type;
 
 class QueryBuilder
 {
-    /** @var class-string<\Illuminate\Database\Eloquent\Builder> */
+    /** @var class-string<EloquentBuilder<EloquentModel>> */
     public string $fqcn;
 
     public string $filePath;
 
-    /** @var \Illuminate\Support\Collection<int, string> */
+    /** @var Collection<int, string> */
     public Collection $extras;
 
     /**
-     * @param class-string<\Illuminate\Database\Eloquent\Builder> $fqcn
+     * @param class-string<EloquentBuilder<EloquentModel>> $fqcn
      */
     public function __construct(string $fqcn, string $filePath)
     {

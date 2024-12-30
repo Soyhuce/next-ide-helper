@@ -34,6 +34,10 @@ namespace
     {
     }
 
+    class Concurrency extends \Illuminate\Support\Facades\Concurrency
+    {
+    }
+
     class Config extends \Illuminate\Support\Facades\Config
     {
     }
@@ -126,10 +130,6 @@ namespace
     {
     }
 
-    class RedisManager extends \Illuminate\Support\Facades\Redis
-    {
-    }
-
     class Request extends \Illuminate\Support\Facades\Request
     {
     }
@@ -163,6 +163,10 @@ namespace
     }
 
     class URL extends \Illuminate\Support\Facades\URL
+    {
+    }
+
+    class Uri extends \Illuminate\Support\Uri
     {
     }
 

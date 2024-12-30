@@ -8,7 +8,7 @@ class IdeHelperClass
 {
     /**
      * @param class-string<\Illuminate\Database\Eloquent\Model> $modelFqcn
-     * @return class-string<\Illuminate\Database\Eloquent\Builder>
+     * @return class-string<\Illuminate\Database\Eloquent\Builder<\Illuminate\Database\Eloquent\Model>>
      */
     public static function eloquentBuilder(string $modelFqcn): string
     {

@@ -12,7 +12,7 @@ use function in_array;
 
 class Model
 {
-    /** @var class-string<\Illuminate\Database\Eloquent\Model> */
+    /** @var class-string<EloquentModel> */
     public string $fqcn;
 
     public string $filePath;
@@ -25,13 +25,13 @@ class Model
 
     public RelationCollection $relations;
 
-    /** @var array<\Soyhuce\NextIdeHelper\Entities\Method> */
+    /** @var array<Method> */
     public array $scopes = [];
 
     private ?EloquentModel $instance = null;
 
     /**
-     * @param class-string<\Illuminate\Database\Eloquent\Model> $fqcn
+     * @param class-string<EloquentModel> $fqcn
      */
     public function __construct(string $fqcn, string $filePath)
     {
