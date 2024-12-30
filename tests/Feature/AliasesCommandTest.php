@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Tests\Feature;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Tests\ResetsFixtures;
 use Soyhuce\NextIdeHelper\Tests\TestCase;
@@ -18,6 +19,13 @@ class AliasesCommandTest extends TestCase
      */
     public function theCommandIsSuccessful(): void
     {
+        if (config('app.aliases.Concurrency') === null) {
+            AliasLoader::getInstance(['Concurrency' => \Illuminate\Support\Facades\Concurrency::class]);
+        }
+        if (config('app.aliases.Uri') === null) {
+            AliasLoader::getInstance(['Number' => \Illuminate\Support\Uri::class]);
+        }
+
         config([
             'next-ide-helper.aliases' => [
                 'file_name' => $this->fixturePath() . '/_ide_aliases.php',
