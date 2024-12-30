@@ -62,7 +62,7 @@ class ModelsCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>
+     * @return array<ModelResolver>
      */
     private function resolvers(ModelCollection $models): array
     {
@@ -87,7 +87,7 @@ class ModelsCommand extends Command
     }
 
     /**
-     * @return array<int, class-string<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>>
+     * @return array<int, class-string<ModelResolver>>
      */
     private function modelExtensions(): array
     {

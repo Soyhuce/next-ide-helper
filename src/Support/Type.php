@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Support;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class Type
 {
@@ -27,7 +28,7 @@ class Type
      */
     public static function qualify(string $type): string
     {
-        $type = ltrim($type, '\\');
+        $type = Str::ltrim($type, '\\');
         if (self::isBuiltIn($type)) {
             return $type;
         }

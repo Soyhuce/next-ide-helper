@@ -24,7 +24,7 @@ class AllCommand extends Command
     }
 
     /**
-     * @return array<class-string<\Illuminate\Console\Command>>
+     * @return array<class-string<Command>>
      */
     private function resolveCommands(): array
     {

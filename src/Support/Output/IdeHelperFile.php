@@ -14,7 +14,7 @@ class IdeHelperFile
 
     private string $filePath;
 
-    /** @var \Illuminate\Support\Collection<string, \Soyhuce\NextIdeHelper\Entities\Nemespace> */
+    /** @var Collection<string, Nemespace> */
     private Collection $namespaces;
 
     public function __construct(string $filePath)
@@ -55,7 +55,7 @@ class IdeHelperFile
             $lines = $lines->merge($namespace->toArray())->add('');
         }
 
-        $content = $lines->map(fn (string $line) => rtrim($line, ' '))->implode(PHP_EOL);
+        $content = $lines->map(fn (string $line) => Str::rtrim($line, ' '))->implode(PHP_EOL);
         File::put($this->filePath, $content);
     }
 }

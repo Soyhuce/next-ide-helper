@@ -19,7 +19,7 @@ class FunctionReflection
 
         $lines = Str::of($docBlock)->explode(PHP_EOL);
 
-        $spaces = Str::length($lines->last()) - Str::length(ltrim($lines->last(), ' ')) - 1;
+        $spaces = Str::length($lines->last()) - Str::length(Str::ltrim($lines->last(), ' ')) - 1;
 
         return $lines->splice(1, -1)
             ->map(static fn (string $line) => Str::substr($line, $spaces))

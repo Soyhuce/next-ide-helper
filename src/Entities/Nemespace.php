@@ -11,7 +11,7 @@ class Nemespace
 
     private string $name;
 
-    /** @var \Illuminate\Support\Collection<string, \Soyhuce\NextIdeHelper\Entities\Klass> */
+    /** @var Collection<string, Klass> */
     private Collection $classes;
 
     public function __construct(string $name)
@@ -60,7 +60,7 @@ class Nemespace
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     protected function classesLines(): Collection
     {

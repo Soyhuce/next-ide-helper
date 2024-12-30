@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
@@ -52,6 +53,9 @@ class Relation
         $this->returnType = $returnType;
     }
 
+    /**
+     * @return EloquentRelation<EloquentModel, EloquentModel, mixed>
+     */
     public function eloquentRelation(): EloquentRelation
     {
         return $this->parent->instance()->{$this->name}();
@@ -62,6 +66,9 @@ class Relation
         return "{$this->related->collection->fqcn}<int, {$this->related->fqcn}>";
     }
 
+    /**
+     * @param EloquentRelation<EloquentModel, EloquentModel, mixed> $relation
+     */
     private function isNullable(EloquentRelation $relation): bool
     {
         if ($relation instanceof HasOne) {

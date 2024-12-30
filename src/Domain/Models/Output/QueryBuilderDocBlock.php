@@ -31,7 +31,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     public function docTags(): Collection
     {
@@ -64,7 +64,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function attributeScopes(): Collection
     {
@@ -96,7 +96,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function scopeMethods(): Collection
     {
@@ -108,7 +108,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function resultMethods(): Collection
     {
@@ -141,7 +141,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function softDeletesMethods(): Collection
     {
@@ -157,7 +157,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, string>
+     * @return Collection<int, string>
      */
     private function templateBlock(): Collection
     {

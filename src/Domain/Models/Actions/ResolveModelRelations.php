@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
 use Exception;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use ReflectionClass;
 use ReflectionMethod;
@@ -80,7 +81,7 @@ class ResolveModelRelations implements ModelResolver
     private function findRelatedFromRelation(Model $model, string $method): Model
     {
         try {
-            /** @var EloquentRelation */
+            /** @var EloquentRelation<EloquentModel, EloquentModel, mixed> $relation */
             $relation = $model->instance()->{$method}();
         } catch (Exception) {
             throw new UnsupportedRelation();
@@ -97,7 +98,7 @@ class ResolveModelRelations implements ModelResolver
     }
 
     /**
-     * @param class-string<\Illuminate\Database\Eloquent\Model> $class
+     * @param class-string<EloquentModel> $class
      */
     private function resolveOutsideModel(string $class): Model
     {
