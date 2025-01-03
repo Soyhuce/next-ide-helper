@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 1.0.1 - 2025-01-03
+
+### What's Changed
+
+* Use $this return type for builders @methods by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/123
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/1.0.0...1.0.1
+
 ## 1.0.0 - 2024-12-30
 
 ### What's Changed
