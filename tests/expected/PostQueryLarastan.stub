@@ -5,17 +5,17 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereId(int|string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereTitle(string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereSubtitle(string|null $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereContent(string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUserId(int|string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereLikes(string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereAddress(string|null $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereMetas(array|string|null $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereCreatedAt(\Illuminate\Support\Carbon|string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)
+ * @method $this whereId(int|string $value)
+ * @method $this whereTitle(string $value)
+ * @method $this whereSubtitle(string|null $value)
+ * @method $this whereContent(string $value)
+ * @method $this whereUserId(int|string $value)
+ * @method $this whereLikes(string $value)
+ * @method $this whereAddress(string|null $value)
+ * @method $this whereMetas(array|string|null $value)
+ * @method $this whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+ * @method $this whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+ * @method $this whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post create(array $attributes = [])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post>|\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null find($id, array $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> findMany($id, array $columns = ['*'])
@@ -33,9 +33,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post sole(array|string $columns = ['*'])
  * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post updateOrCreate(array $attributes, array $values = [])
  * @method int restore()
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery withTrashed(bool $withTrashed = true)
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery withoutTrashed()
- * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery onlyTrashed()
+ * @method $this withTrashed(bool $withTrashed = true)
+ * @method $this withoutTrashed()
+ * @method $this onlyTrashed()
  * @template TModelClass of \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
  * @extends \Illuminate\Database\Eloquent\Builder<TModelClass>
  */

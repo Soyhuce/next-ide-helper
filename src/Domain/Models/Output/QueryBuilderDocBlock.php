@@ -73,8 +73,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             ->onlyInDatabase(true)
             ->toBase()
             ->map(fn (Attribute $attribute): string => sprintf(
-                ' * @method %s where%s(%s $value)',
-                $this->model->queryBuilder->fqcn,
+                ' * @method $this where%s(%s $value)',
                 Str::studly($attribute->name),
                 $this->attributeScopeValueType($attribute)
             ));
@@ -102,7 +101,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     {
         return collect($this->model->scopes)
             ->flatMap(fn (Method $scope): array => array_filter([
-                $scope->returnType($this->model->queryBuilder->fqcn)->toDocTag(),
+                $scope->returnType('$this')->toDocTag(),
                 $scope->toLinkTag(),
             ]));
     }
@@ -145,13 +144,11 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
      */
     private function softDeletesMethods(): Collection
     {
-        $builder = $this->model->queryBuilder->fqcn;
-
         return Collection::make([
             'int restore()',
-            "{$builder} withTrashed(bool \$withTrashed = true)",
-            "{$builder} withoutTrashed()",
-            "{$builder} onlyTrashed()",
+            '$this withTrashed(bool $withTrashed = true)',
+            '$this withoutTrashed()',
+            '$this onlyTrashed()',
         ])
             ->map(static fn (string $method) => " * @method {$method}");
     }
