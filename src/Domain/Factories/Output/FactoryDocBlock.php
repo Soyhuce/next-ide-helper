@@ -32,7 +32,6 @@ class FactoryDocBlock extends DocBlock
     {
         return Collection::make([
             '/**',
-            $this->creationMethods(),
             $this->relations(),
             $this->extraMethods(),
             $this->template(),
@@ -40,17 +39,6 @@ class FactoryDocBlock extends DocBlock
         ])
             ->map(fn (?string $line): string => $this->line($line))
             ->implode('');
-    }
-
-    private function creationMethods(): string
-    {
-        return collect([
-            " * @method {$this->factory->model->fqcn} createOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} create(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
-            " * @method {$this->factory->model->fqcn} makeOne(\$attributes = [])",
-            " * @method {$this->factory->model->fqcn}|{$this->factory->model->collection->fqcn} make(\$attributes = [], \\Illuminate\\Database\\Eloquent\\Model|null \$parent = null)",
-            " * @method {$this->factory->model->fqcn} newModel(array \$attributes = [])",
-        ])->implode(PHP_EOL);
     }
 
     private function relations(): string
