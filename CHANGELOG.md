@@ -2,6 +2,16 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 1.1.0 - 2025-02-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/124
+* Run tests with Laravel 12 by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/126
+* Remove creation methods in factories docblocks by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/127
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/1.0.1...1.1.0
+
 ## 1.0.1 - 2025-01-03
 
 ### What's Changed
