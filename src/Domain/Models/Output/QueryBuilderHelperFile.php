@@ -2,7 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Contracts\Amender;
@@ -16,6 +15,7 @@ class QueryBuilderHelperFile implements Amender
 {
     public function __construct(
         private Model $model,
+        private string $modelFqcn,
     ) {}
 
     public function amend(IdeHelperFile $file): void
@@ -31,18 +31,20 @@ class QueryBuilderHelperFile implements Amender
         $queryBuilderDocBlock = new QueryBuilderDocBlock($clone);
 
         $file->getOrAddClass($fakeEloquentBuilder)
-            ->extends(EloquentBuilder::class)
+            ->extends($this->model->queryBuilder->fqcn)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
-        $model = $file->getOrAddClass($this->model->fqcn)
+        $model = $file->getOrAddClass($this->modelFqcn)
             ->addDocTags(Collection::make([
                 " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",
             ]));
 
-        $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
-        if ($constructor !== null) {
-            $model->addMethod(Method::fromMethod('__construct', $constructor));
+        if ($this->model->fqcn === $this->modelFqcn) {
+            $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
+            if ($constructor !== null) {
+                $model->addMethod(Method::fromMethod('__construct', $constructor));
+            }
         }
     }
 }

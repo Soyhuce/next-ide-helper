@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#'
+			message: '#^Parameter \#2 \$map of method Soyhuce\\NextIdeHelper\\Support\\Output\\PhpstormMetaFile\:\:addOverrideMap\(\) expects Illuminate\\Support\\Collection\<string, string\>, Illuminate\\Support\\Collection\<string, non\-falsy\-string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Console/MetaCommand.php
@@ -88,6 +88,30 @@ parameters:
 			message: '#^Call to an undefined static method Illuminate\\Database\\Eloquent\\Model\:\:factory\(\)\.$#'
 			identifier: staticMethod.notFound
 			count: 1
+			path: src/Domain/Models/Entities/Model.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:properties\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, non\-falsy\-string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Domain/Models/Output/ModelDocBlock.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:propertiesRead\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, non\-falsy\-string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Domain/Models/Output/ModelDocBlock.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:propertiesWrite\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, non\-falsy\-string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Domain/Models/Output/ModelDocBlock.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:relations\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, non\-falsy\-string\>\.$#'
+			identifier: return.type
+			count: 1
 			path: src/Domain/Models/Output/ModelDocBlock.php
 
 		-
@@ -140,6 +164,12 @@ parameters:
 
 		-
 			message: '#^Method Soyhuce\\NextIdeHelper\\Support\\Output\\IdeHelperClass\:\:eloquentBuilder\(\) should return class\-string\<Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\> but returns string\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Support/Output/IdeHelperClass.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Support\\Output\\IdeHelperClass\:\:model\(\) should return class\-string\<Illuminate\\Database\\Eloquent\\Model\> but returns string\.$#'
 			identifier: return.type
 			count: 1
 			path: src/Support/Output/IdeHelperClass.php

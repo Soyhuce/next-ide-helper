@@ -2,12 +2,14 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\AttributeCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\RelationCollection;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Type;
+use Throwable;
 use function in_array;
 
 class Model
@@ -70,5 +72,22 @@ class Model
     public function softDeletes(): bool
     {
         return in_array(SoftDeletes::class, class_uses_recursive($this->fqcn), true);
+    }
+
+    public function factory(): ?string
+    {
+        if (!in_array(
+            HasFactory::class,
+            class_uses_recursive($this->fqcn),
+            true
+        )) {
+            return null;
+        }
+
+        try {
+            return $this->fqcn::factory()::class;
+        } catch (Throwable) {
+            return null;
+        }
     }
 }

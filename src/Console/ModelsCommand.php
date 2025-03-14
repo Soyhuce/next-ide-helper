@@ -3,9 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
-use Soyhuce\NextIdeHelper\Contracts\Amender;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
-use Soyhuce\NextIdeHelper\Contracts\Renderer;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ApplyAttributeOverrides;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
@@ -18,11 +16,9 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Domain\Models\Output\ModelDocBlock;
-use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderDocBlock;
-use Soyhuce\NextIdeHelper\Domain\Models\Output\QueryBuilderHelperFile;
-use Soyhuce\NextIdeHelper\Domain\Models\Output\RelationsHelperFile;
-use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
+use Soyhuce\NextIdeHelper\Domain\Models\Printers\ModelDocBlockPrinter;
+use Soyhuce\NextIdeHelper\Domain\Models\Printers\ModelMixinPrinter;
+use Soyhuce\NextIdeHelper\Domain\Models\Printers\ModelPrinter;
 
 class ModelsCommand extends Command
 {
@@ -42,8 +38,7 @@ class ModelsCommand extends Command
         foreach (config('next-ide-helper.models.directories') as $directory) {
             $models = $models->merge($findModels->execute($directory));
         }
-
-        $ideHelperFile = new IdeHelperFile(config('next-ide-helper.models.file_name'));
+        $models = $models->sortBy(fn (Model $model) => $model->fqcn)->values();
 
         foreach ($this->resolvers($models) as $resolver) {
             foreach ($models as $model) {
@@ -51,16 +46,7 @@ class ModelsCommand extends Command
             }
         }
 
-        foreach ($models as $model) {
-            foreach ($this->renderers($model) as $renderer) {
-                $renderer->render();
-            }
-            foreach ($this->amenders($model) as $amender) {
-                $amender->amend($ideHelperFile);
-            }
-        }
-
-        $ideHelperFile->render();
+        $this->printer()->print($models);
     }
 
     /**
@@ -96,25 +82,10 @@ class ModelsCommand extends Command
         return config('next-ide-helper.models.extensions', []);
     }
 
-    /**
-     * @return array<Renderer>
-     */
-    private function renderers(Model $model): array
+    private function printer(): ModelPrinter
     {
-        return [
-            new ModelDocBlock($model),
-            new QueryBuilderDocBlock($model),
-        ];
-    }
-
-    /**
-     * @return array<Amender>
-     */
-    private function amenders(Model $model): array
-    {
-        return [
-            new QueryBuilderHelperFile($model),
-            new RelationsHelperFile($model),
-        ];
+        return config('next-ide-helper.models.use_mixin', false)
+            ? new ModelMixinPrinter()
+            : new ModelDocBlockPrinter();
     }
 }
