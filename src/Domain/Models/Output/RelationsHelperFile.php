@@ -33,9 +33,11 @@ class RelationsHelperFile implements Amender
             $model = $file->getOrAddClass($this->modelFqcn)
                 ->addDocTag(Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag());
 
-            $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
-            if ($constructor !== null) {
-                $model->addMethod(Method::fromMethod('__construct', $constructor));
+            if ($this->model->fqcn === $this->modelFqcn) {
+                $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
+                if ($constructor !== null) {
+                    $model->addMethod(Method::fromMethod('__construct', $constructor));
+                }
             }
 
             $file->getOrAddClass($fakeRelationClass)
