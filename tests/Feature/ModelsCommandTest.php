@@ -18,6 +18,7 @@ beforeEach(function (): void {
 
 afterEach(function (): void {
     File::delete($this->fixturePath('_ide_models.php'));
+    File::deleteDirectory($this->fixturePath('ide_helper'));
 });
 
 test('the command is successful', function (): void {
@@ -76,4 +77,31 @@ test('the command is successful with larastan friendly comments', function (): v
     expect($this->fixtureFile('Blog/PostQuery.php'))->toMatchSnapshot();
 
     expect($this->fixtureFile('_ide_models.php'))->toMatchSnapshot();
+});
+
+test('the command is successful when writing mixins', function (): void {
+    config([
+        'next-ide-helper.models' => [
+            'directories' => [$this->fixturePath()],
+            'file_name' => $this->fixturePath() . '/ide_helper/models.php',
+            'use_mixin' => true,
+            'mixin_attributes' => true,
+            'mixin_meta' => $this->fixturePath() . '/ide_helper/.phpstorm.meta.php/models.php',
+        ],
+    ]);
+
+    $this->artisan('next-ide-helper:models')
+        ->assertExitCode(0);
+
+    expect($this->fixtureFile('Blog/Post.php'))->toMatchSnapshot();
+
+    expect($this->fixtureFile('User.php'))->toMatchSnapshot();
+
+    expect($this->fixtureFile('Comment.php'))->toMatchSnapshot();
+
+    expect($this->fixtureFile('Blog/PostQuery.php'))->toMatchSnapshot();
+
+    expect($this->fixtureFile('ide_helper/models.php'))->toMatchSnapshot();
+
+    expect($this->fixtureFile('ide_helper/.phpstorm.meta.php/models.php'))->toMatchSnapshot();
 });

@@ -46,6 +46,13 @@ class PhpstormMetaFile
         );
     }
 
+    public function addSimpleOverride(string $function, string $type): void
+    {
+        $this->lines->push(
+            "override({$function}(), map(['' => {$type}]));",
+        );
+    }
+
     public function render(): void
     {
         $content = $this->lines
@@ -65,6 +72,7 @@ class PhpstormMetaFile
             {$content}
             
             }
+
             PHP
         );
     }

@@ -17,6 +17,7 @@ class RelationsHelperFile implements Amender
 {
     public function __construct(
         private Model $model,
+        private string $modelFqcn,
     ) {}
 
     public function amend(IdeHelperFile $file): void
@@ -29,7 +30,7 @@ class RelationsHelperFile implements Amender
 
             $fakeRelationClass = IdeHelperClass::relation($this->model->fqcn, $relation->name);
 
-            $model = $file->getOrAddClass($this->model->fqcn)
+            $model = $file->getOrAddClass($this->modelFqcn)
                 ->addDocTag(Method::new($relation->name)->returnType($fakeRelationClass)->toDocTag());
 
             $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();

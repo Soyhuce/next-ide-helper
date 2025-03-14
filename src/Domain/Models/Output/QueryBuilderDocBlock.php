@@ -59,7 +59,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
         return $this->docTags()
             ->prepend('/**')
             ->push(' */')
-            ->map(fn (?string $line): string => $this->line($line))
+            ->map(fn (string $line): string => $this->line($line))
             ->implode('');
     }
 

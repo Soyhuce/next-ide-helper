@@ -1,0 +1,68 @@
+<?php declare(strict_types=1);
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Comment;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
+
+/**
+ * @property int $id
+ * @property string $title
+ * @property string|null $subtitle
+ * @property string $content
+ * @property int $user_id
+ * @property string $likes
+ * @property string|null $address
+ * @property array|null $metas
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read string $slug
+ * @property-read mixed $mixed
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> $comments
+ * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User $user
+ * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\__Post
+ */
+final class Post extends Model
+{
+    use SoftDeletes;
+
+    protected $casts = [
+        'metas' => 'array',
+    ];
+
+    public function newEloquentBuilder($query)
+    {
+        return new PostQuery($query);
+    }
+
+    public function newCollection(array $models = [])
+    {
+        return new PostCollection($models);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function getSlugAttribute(): string
+    {
+        return Str::slug($this->title);
+    }
+
+    public function getMixedAttribute()
+    {
+        return 'foo';
+    }
+}

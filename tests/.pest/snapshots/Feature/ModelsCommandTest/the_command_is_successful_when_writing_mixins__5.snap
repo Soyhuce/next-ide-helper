@@ -1,0 +1,216 @@
+<?php
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
+{
+    /**
+     * @property int $id
+     * @property string $content
+     * @property string $commentable_type
+     * @property int $commentable_id
+     * @property \Illuminate\Support\Carbon $created_at
+     * @property \Illuminate\Support\Carbon $updated_at
+     * @property \Illuminate\Support\Carbon $datetime
+     * @property \Illuminate\Support\Carbon $date
+     * @property array $encrypted_array
+     * @property mixed $encrypted
+     * @property-read mixed $commentable
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery
+     */
+    class __Comment
+    {
+        /**
+         * Create a new Eloquent model instance.
+         *
+         * @param  array  $attributes
+         * @return void
+        */
+        public function __construct(array $attributes = [])
+        {
+        }
+    }
+
+    /**
+     * @method $this whereId(int|string $value)
+     * @method $this whereContent(string $value)
+     * @method $this whereCommentableType(string $value)
+     * @method $this whereCommentableId(int|string $value)
+     * @method $this whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method $this whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment create(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|null find($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment findOrFail($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment findOrNew($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment|null first(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrCreate(array $attributes, array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrFail(array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment firstOrNew(array $attributes = [], array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment forceCreate(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment getModel()
+     * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment newModelInstance(array $attributes = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment sole(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment updateOrCreate(array $attributes, array $values = [])
+     */
+    class __CommentQuery extends \Illuminate\Database\Eloquent\Builder
+    {
+    }
+
+    /**
+     * @property int $id
+     * @property string $email
+     * @property string $password
+     * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address $address
+     * @property string $name
+     * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Role $role
+     * @property string|null $nullable_name
+     * @property string|null $remember_token
+     * @property \Illuminate\Support\Carbon $created_at
+     * @property \Carbon\CarbonImmutable $updated_at
+     * @property string $screamed_email
+     * @property \Soyhuce\NextIdeHelper\Tests\Fixtures\Address|null $shipping_address
+     * @property-read string|null $city
+     * @property-write string $new_password
+     * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $laravelPosts
+     * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null $latestPost
+     * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $posts
+     * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
+     * @method static \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery query()
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__Posts posts()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LatestPost latestPost()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LaravelPosts laravelPosts()
+     */
+    class __User
+    {
+        /**
+         * Create a new Eloquent model instance.
+         *
+         * @param  array  $attributes
+         * @return void
+        */
+        public function __construct(array $attributes = [])
+        {
+        }
+    }
+
+    /**
+     * @method $this whereId(int|string $value)
+     * @method $this whereEmail(string $value)
+     * @method $this wherePassword(string $value)
+     * @method $this whereAddress(\Soyhuce\NextIdeHelper\Tests\Fixtures\Address|string $value)
+     * @method $this whereName(string $value)
+     * @method $this whereRole(\Soyhuce\NextIdeHelper\Tests\Fixtures\Role|string $value)
+     * @method $this whereNullableName(string|null $value)
+     * @method $this whereRememberToken(string|null $value)
+     * @method $this whereCreatedAt(\Illuminate\Support\Carbon|string $value)
+     * @method $this whereUpdatedAt(\Carbon\CarbonImmutable|string $value)
+     * @method $this whereEmailDomain(string $domain, ?string $area = null)
+     * @see project://Fixtures/User.php L76
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
+     * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User findOrFail($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User findOrNew($id, array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User|null first(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrCreate(array $attributes, array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrFail(array $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User firstOrNew(array $attributes = [], array $values = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User forceCreate(array $attributes = [])
+     * @method \Illuminate\Database\Eloquent\Collection get(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User getModel()
+     * @method \Illuminate\Database\Eloquent\Collection getModels(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User newModelInstance(array $attributes = [])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User sole(array|string $columns = ['*'])
+     * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User updateOrCreate(array $attributes, array $values = [])
+     */
+    class __UserQuery extends \Illuminate\Database\Eloquent\Builder
+    {
+    }
+}
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
+{
+    /**
+     * @property int $id
+     * @property string $title
+     * @property string|null $subtitle
+     * @property string $content
+     * @property int $user_id
+     * @property string $likes
+     * @property string|null $address
+     * @property array|null $metas
+     * @property \Illuminate\Support\Carbon $created_at
+     * @property \Illuminate\Support\Carbon $updated_at
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property-read string $slug
+     * @property-read mixed $mixed
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Comment> $comments
+     * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\User $user
+     * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection all(array|mixed $columns = ['*'])
+     * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery query()
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__Comments comments()
+     * @method \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__User user()
+     */
+    class __Post
+    {
+        /**
+         * Create a new Eloquent model instance.
+         *
+         * @param  array  $attributes
+         * @return void
+        */
+        public function __construct(array $attributes = [])
+        {
+        }
+    }
+}
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post
+{
+    /**
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    class __Comments
+    {
+    }
+
+    /**
+     * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    class __User
+    {
+    }
+}
+
+namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User
+{
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    class __LaravelPosts
+    {
+    }
+
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    class __LatestPost
+    {
+    }
+
+    /**
+     * @mixin \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery
+     * @mixin \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    class __Posts
+    {
+    }
+}

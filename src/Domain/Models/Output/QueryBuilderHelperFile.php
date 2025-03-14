@@ -16,6 +16,7 @@ class QueryBuilderHelperFile implements Amender
 {
     public function __construct(
         private Model $model,
+        private string $modelFqcn,
     ) {}
 
     public function amend(IdeHelperFile $file): void
@@ -34,7 +35,7 @@ class QueryBuilderHelperFile implements Amender
             ->extends(EloquentBuilder::class)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
-        $model = $file->getOrAddClass($this->model->fqcn)
+        $model = $file->getOrAddClass($this->modelFqcn)
             ->addDocTags(Collection::make([
                 " * @method static {$fakeEloquentBuilder} query()",
                 " * @mixin {$fakeEloquentBuilder}",

@@ -16,7 +16,7 @@ return [
         /**
          * Name of the generated file.
          */
-        'file_name' => '_ide_aliases.php',
+        'file_name' => 'ide_helper/aliases.php',
     ],
 
     /**
@@ -31,7 +31,24 @@ return [
         /**
          * Name of the generated file in addition to the php docblocks.
          */
-        'file_name' => '_ide_models.php',
+        'file_name' => 'ide_helper/models.php',
+
+        /**
+         * Insert a mixin annotation to the model class instead of writing the full docblock.
+         */
+        'use_mixin' => false,
+
+        /**
+         *  When using the mixin annotation, you may still want to add model attributes to the docblock.
+         *  Setting this to true will add the attributes to the model docblock.
+         */
+        'mixin_attributes' => true,
+
+        /**
+         * When using the mixin annotation, some completions may not be available. We can help PHPStorm to understand
+         * what's going on by generating a meta file.
+         */
+        'mixin_meta' => 'ide_helper/.phpstorm.meta.php/models.php',
 
         /**
          * List of the extensions you want to use to tweak the way models are resolved
@@ -75,7 +92,7 @@ return [
         /**
          * Name of the generated file.
          */
-        'file_name' => '_ide_macros.php',
+        'file_name' => 'ide_helper/macros.php',
     ],
 
     /**
@@ -84,8 +101,9 @@ return [
     'meta' => [
         /**
          * Name of the generated file.
+         * Be sure the file is within a .phpstorm.meta.php directory.
          */
-        'file_name' => '.phpstorm.meta.php',
+        'file_name' => 'ide_helper/.phpstorm.meta.php/helpers.php',
     ],
 
     /**
