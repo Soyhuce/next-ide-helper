@@ -1,34 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Feature;
-
 use Illuminate\Support\Facades\File;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Console\MetaCommand
- */
-class MetaCommandTest extends TestCase
-{
-    /**
-     * @test
-     * @covers ::handle
-     */
-    public function theCommandIsSuccessful(): void
-    {
-        config([
-            'next-ide-helper.meta' => [
-                'file_name' => $this->fixturePath() . '/.phpstorm.meta.php',
-            ],
-        ]);
+afterEach(function (): void {
+    File::delete($this->fixturePath('.phpstorm.meta.php'));
+});
 
-        $this->artisan('next-ide-helper:meta')
-            ->assertExitCode(0);
-    }
+test('the command is successful', function (): void {
+    config([
+        'next-ide-helper.meta' => [
+            'file_name' => $this->fixturePath() . '/.phpstorm.meta.php',
+        ],
+    ]);
 
-    protected function tearDown(): void
-    {
-        File::delete($this->fixturePath('.phpstorm.meta.php'));
-        parent::tearDown();
-    }
-}
+    $this->artisan('next-ide-helper:meta')
+        ->assertExitCode(0);
+});

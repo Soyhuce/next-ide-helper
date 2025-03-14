@@ -1,52 +1,35 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Illuminate\Database\Eloquent\Collection;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversNothing
- */
-class ResolveModelCollectionTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function itFindsBuiltinCollection(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+it('finds builtin collection', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveModelCollection = new ResolveModelCollection();
+    $resolveModelCollection = new ResolveModelCollection();
 
-        $resolveModelCollection->execute($model);
+    $resolveModelCollection->execute($model);
 
-        $this->assertNotNull($model->collection);
+    expect($model->collection)->not->toBeNull();
 
-        $this->assertEquals('\\' . Collection::class, $model->collection->fqcn);
-        $this->assertTrue($model->collection->isBuiltIn());
-    }
+    expect($model->collection->fqcn)->toEqual('\\' . Collection::class);
+    expect($model->collection->isBuiltIn())->toBeTrue();
+});
 
-    /**
-     * @test
-     */
-    public function itFindsCustomCollection(): void
-    {
-        $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
+it('finds custom collection', function (): void {
+    $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 
-        $resolveModelCollection = new ResolveModelCollection();
+    $resolveModelCollection = new ResolveModelCollection();
 
-        $resolveModelCollection->execute($model);
+    $resolveModelCollection->execute($model);
 
-        $this->assertNotNull($model->collection);
+    expect($model->collection)->not->toBeNull();
 
-        $this->assertEquals('\\' . PostCollection::class, $model->collection->fqcn);
-        $this->assertEquals($this->fixturePath('Blog/PostCollection.php'), $model->collection->filePath);
-        $this->assertFalse($model->collection->isBuiltIn());
-    }
-}
+    expect($model->collection->fqcn)->toEqual('\\' . PostCollection::class);
+    expect($model->collection->filePath)->toEqual($this->fixturePath('Blog/PostCollection.php'));
+    expect($model->collection->isBuiltIn())->toBeFalse();
+});

@@ -1,42 +1,22 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
-use PHPUnit\Framework\TestCase;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
-use Soyhuce\NextIdeHelper\Tests\UsesFixtures;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels
- */
-class FindModelsTest extends TestCase
-{
-    use UsesFixtures;
+it('finds all models', function (): void {
+    $finder = new FindModels();
 
-    /**
-     * @test
-     */
-    public function itFindsAllModels(): void
-    {
-        $finder = new FindModels();
+    $models = $finder->execute($this->fixturePath());
 
-        $models = $finder->execute($this->fixturePath());
+    expect($models)->toHaveCount(3);
+});
 
-        $this->assertCount(3, $models);
-    }
+test('model name and paths are correct', function (): void {
+    $finder = new FindModels();
 
-    /**
-     * @test
-     */
-    public function modelNameAndPathsAreCorrect(): void
-    {
-        $finder = new FindModels();
+    /** @var Model $model */
+    $model = $finder->execute($this->fixturePath('Blog'))->first();
 
-        /** @var Model $model */
-        $model = $finder->execute($this->fixturePath('Blog'))->first();
-
-        $this->assertEquals('\\Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Blog\\Post', $model->fqcn);
-        $this->assertEquals($this->fixturePath('Blog/Post.php'), $model->filePath);
-    }
-}
+    expect($model->fqcn)->toEqual('\\Soyhuce\\NextIdeHelper\\Tests\\Fixtures\\Blog\\Post');
+    expect($model->filePath)->toEqual($this->fixturePath('Blog/Post.php'));
+});
