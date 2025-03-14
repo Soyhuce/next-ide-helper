@@ -46,30 +46,15 @@ test('the command is successful', function (): void {
     $this->artisan('next-ide-helper:models')
         ->assertExitCode(0);
 
-    $this->assertFileEquals(
-        $this->expectedPath('Post.stub'),
-        $this->fixturePath('Blog/Post.php')
-    );
+    expect($this->fixtureFile('Blog/Post.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('User.stub'),
-        $this->fixturePath('User.php')
-    );
+    expect($this->fixtureFile('User.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('Comment.stub'),
-        $this->fixturePath('Comment.php')
-    );
+    expect($this->fixtureFile('Comment.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('PostQuery.stub'),
-        $this->fixturePath('Blog/PostQuery.php')
-    );
+    expect($this->fixtureFile('Blog/PostQuery.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('_ide_models.stub'),
-        $this->fixturePath('_ide_models.php')
-    );
+    expect($this->fixtureFile('_ide_models.php'))->toMatchSnapshot();
 });
 
 test('the command is successful with larastan friendly comments', function (): void {
@@ -84,23 +69,11 @@ test('the command is successful with larastan friendly comments', function (): v
     $this->artisan('next-ide-helper:models')
         ->assertExitCode(0);
 
-    $this->assertFileEquals(
-        $this->expectedPath('PostLarastan.stub'),
-        $this->fixturePath('Blog/Post.php')
-    );
+    expect($this->fixtureFile('Blog/Post.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('CommentLarastan.stub'),
-        $this->fixturePath('Comment.php')
-    );
+    expect($this->fixtureFile('Comment.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('PostQueryLarastan.stub'),
-        $this->fixturePath('Blog/PostQuery.php')
-    );
+    expect($this->fixtureFile('Blog/PostQuery.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('_ide_modelsLarastan.stub'),
-        $this->fixturePath('_ide_models.php')
-    );
+    expect($this->fixtureFile('_ide_models.php'))->toMatchSnapshot();
 });

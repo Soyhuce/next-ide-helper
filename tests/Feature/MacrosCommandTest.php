@@ -26,8 +26,5 @@ test('the command is successful', function (): void {
     $this->artisan('next-ide-helper:macros')
         ->assertExitCode(0);
 
-    $this->assertFileEquals(
-        $this->expectedPath('_ide_macros.stub'),
-        $this->fixturePath('_ide_macros.php')
-    );
+    expect($this->fixtureFile('_ide_macros.php'))->toMatchSnapshot();
 });
