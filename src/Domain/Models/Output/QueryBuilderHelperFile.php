@@ -2,7 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Contracts\Amender;
@@ -32,7 +31,7 @@ class QueryBuilderHelperFile implements Amender
         $queryBuilderDocBlock = new QueryBuilderDocBlock($clone);
 
         $file->getOrAddClass($fakeEloquentBuilder)
-            ->extends(EloquentBuilder::class)
+            ->extends($this->model->queryBuilder->fqcn)
             ->addDocTags($queryBuilderDocBlock->docTags());
 
         $model = $file->getOrAddClass($this->modelFqcn)

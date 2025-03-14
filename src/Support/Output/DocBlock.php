@@ -19,16 +19,20 @@ class DocBlock
         $content = File::get($file);
         $previousDocBlock = $this->previousDocBlock($fqcn);
 
-        $docBlock = $this->injectUserDefinedTags($docBlock, $previousDocBlock);
+        if ($previousDocBlock === null) {
+            $class = Str::afterLast($fqcn, '\\');
+            $classDeclaration = $this->classDeclaration($content, $class);
 
-        $class = Str::afterLast($fqcn, '\\');
-        $classDeclaration = $this->classDeclaration($content, $class);
+            $updatedContent = Str::replaceFirst(
+                $classDeclaration,
+                "{$docBlock}{$classDeclaration}",
+                $content
+            );
+        } else {
+            $docBlock = $this->injectUserDefinedTags($docBlock, $previousDocBlock);
 
-        $updatedContent = str_replace(
-            "{$previousDocBlock}{$classDeclaration}",
-            "{$docBlock}{$classDeclaration}",
-            $content
-        );
+            $updatedContent = Str::replaceFirst($previousDocBlock, $docBlock, $content);
+        }
 
         File::put($file, $updatedContent);
     }
@@ -36,12 +40,12 @@ class DocBlock
     /**
      * @param class-string $fqcn
      */
-    private function previousDocBlock(string $fqcn): string
+    private function previousDocBlock(string $fqcn): ?string
     {
         $docBlock = (new ReflectionClass($fqcn))->getDocComment();
 
         if ($docBlock === false) {
-            return '';
+            return null;
         }
 
         return $docBlock . PHP_EOL;
