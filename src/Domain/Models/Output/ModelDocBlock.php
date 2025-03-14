@@ -37,6 +37,7 @@ class ModelDocBlock extends DocBlock implements Renderer
             $this->propertiesRead(),
             $this->propertiesWrite(),
             $this->relations(),
+            $this->scopes(),
             $this->all(),
             $this->query(),
             $this->queryMixin(),
@@ -89,6 +90,14 @@ class ModelDocBlock extends DocBlock implements Renderer
         return $this->model->relations
             ->sortBy('name')
             ->map(static fn (Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
+            ->implode(PHP_EOL);
+    }
+
+    private function scopes(): string
+    {
+        return collect($this->model->scopes)
+            ->sortBy('name')
+            ->map(static fn (\Soyhuce\NextIdeHelper\Entities\Method $scope) => $scope->toDocTag())
             ->implode(PHP_EOL);
     }
 
