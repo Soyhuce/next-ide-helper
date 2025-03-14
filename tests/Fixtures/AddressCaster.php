@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Database\Eloquent\Model;
 
 class AddressCaster implements CastsAttributes
 {
@@ -12,7 +13,7 @@ class AddressCaster implements CastsAttributes
     }
 
     /**
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @param Address $value
      * @return array|false|string
      */

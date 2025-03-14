@@ -3,7 +3,9 @@
 namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
+use Soyhuce\NextIdeHelper\Contracts\Amender;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
+use Soyhuce\NextIdeHelper\Contracts\Renderer;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ApplyAttributeOverrides;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
@@ -95,7 +97,7 @@ class ModelsCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Contracts\Renderer>
+     * @return array<Renderer>
      */
     private function renderers(Model $model): array
     {
@@ -106,7 +108,7 @@ class ModelsCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Contracts\Amender>
+     * @return array<Amender>
      */
     private function amenders(Model $model): array
     {
