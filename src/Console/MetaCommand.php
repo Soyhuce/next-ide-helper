@@ -36,8 +36,12 @@ class MetaCommand extends Command
             'bindings' => $resolveContainerBindings->execute(),
         ]);
 
+        $filePath = config('next-ide-helper.meta.file_name');
+        if (!File::isDirectory(dirname($filePath))) {
+            File::makeDirectory(dirname($filePath), recursive: true);
+        }
         File::put(
-            config('next-ide-helper.meta.file_name'),
+            $filePath,
             <<<PHP
             <?php
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Entities\Klass;
 use Soyhuce\NextIdeHelper\Entities\Nemespace;
+use function dirname;
 
 class IdeHelperFile
 {
@@ -56,6 +57,10 @@ class IdeHelperFile
         }
 
         $content = $lines->map(fn (string $line) => Str::rtrim($line, ' '))->implode(PHP_EOL);
+
+        if (!File::isDirectory(dirname($this->filePath))) {
+            File::makeDirectory(dirname($this->filePath), recursive: true);
+        }
         File::put($this->filePath, $content);
     }
 }
