@@ -9,14 +9,9 @@ trait UsesFixtures
         return realpath(__DIR__ . '/Fixtures/' . $path);
     }
 
-    protected function fixture80Path(?string $path = null): string
+    protected function fixtureFile(string $path): string
     {
-        return realpath(__DIR__ . '/Fixtures80/' . $path);
-    }
-
-    protected function fixture81Path(?string $path = null): string
-    {
-        return realpath(__DIR__ . '/Fixtures81/' . $path);
+        return file_get_contents($this->fixturePath($path));
     }
 
     protected function expectedPath(?string $path = null): string

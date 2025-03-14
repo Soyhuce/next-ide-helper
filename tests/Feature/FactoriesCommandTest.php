@@ -10,18 +10,9 @@ test('the command is successful', function (): void {
     $this->artisan('next-ide-helper:factories')
         ->assertExitCode(0);
 
-    $this->assertFileEquals(
-        $this->expectedPath('PostFactory.stub'),
-        $this->fixturePath('Factories/PostFactory.php')
-    );
+    expect($this->fixtureFile('Factories/PostFactory.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('UserFactory.stub'),
-        $this->fixturePath('Factories/UserFactory.php')
-    );
+    expect($this->fixtureFile('Factories/UserFactory.php'))->toMatchSnapshot();
 
-    $this->assertFileEquals(
-        $this->expectedPath('CommentFactory.stub'),
-        $this->fixturePath('Factories/CommentFactory.php')
-    );
+    expect($this->fixtureFile('Factories/CommentFactory.php'))->toMatchSnapshot();
 });

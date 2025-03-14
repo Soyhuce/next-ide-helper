@@ -26,8 +26,5 @@ test('the command is successful', function (): void {
     $this->artisan('next-ide-helper:aliases')
         ->assertExitCode(0);
 
-    $this->assertFileEquals(
-        $this->expectedPath('_ide_aliases.stub'),
-        $this->fixturePath('_ide_aliases.php')
-    );
+    expect($this->fixtureFile('_ide_aliases.php'))->toMatchSnapshot();
 });
