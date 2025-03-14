@@ -3,8 +3,8 @@
 namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Soyhuce\NextIdeHelper\Domain\Meta\Actions\ResolveContainerBindings;
+use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
 class MetaCommand extends Command
 {
@@ -21,8 +21,8 @@ class MetaCommand extends Command
         '\\Illuminate\\Container\\Container::makeWith',
         '\\Illuminate\\Contracts\\Container\\Container::make',
         '\\Illuminate\\Contracts\\Container\\Container::makeWith',
-        '\\App::make',
-        '\\App::makeWith',
+        '\\Illuminate\\Support\\Facades\\App::make',
+        '\\Illuminate\\Support\\Facades\\App::makeWith',
         '\\app',
         '\\resolve',
     ];
@@ -31,22 +31,45 @@ class MetaCommand extends Command
     {
         $this->bootstrapApplication();
 
-        $view = view('next-ide-helper::meta', [
-            'methods' => $this->methods,
-            'bindings' => $resolveContainerBindings->execute(),
-        ]);
+        $bindings = $resolveContainerBindings->execute()
+            ->prepend(value: '@', key: '')
+            ->mapWithKeys(fn (string $value, string $key) => ["'{$key}'" => "'{$value}'"]);
 
-        $filePath = config('next-ide-helper.meta.file_name');
-        if (!File::isDirectory(dirname($filePath))) {
-            File::makeDirectory(dirname($filePath), recursive: true);
+        $metaFile = new PhpstormMetaFile(config('next-ide-helper.meta.file_name'));
+
+        foreach ($this->methods as $method) {
+            $metaFile->addOverrideMap($method, $bindings);
         }
-        File::put(
-            $filePath,
-            <<<PHP
-            <?php
 
-            {$view->render()}
-            PHP
-        );
+        $this->addArr($metaFile);
+        $this->addHelpers($metaFile);
+
+        $metaFile->render();
+    }
+
+    private function addArr(PhpstormMetaFile $metaFile): void
+    {
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::add', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::except', 0);
+        $metaFile->addOverrideElementType('\\Illuminate\\Support\\Arr::first', 0);
+        $metaFile->addOverrideElementType('\\Illuminate\\Support\\Arr::last', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::take', 0);
+        $metaFile->addOverrideElementType('\\Illuminate\\Support\\Arr::get', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::only', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::prepend', 0);
+        $metaFile->addOverrideElementType('\\Illuminate\\Support\\Arr::pull', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::set', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::shuffle', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::sort', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::sortDesc', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::sortRecursive', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::sortRecursiveDesc', 0);
+        $metaFile->addOverrideType('\\Illuminate\\Support\\Arr::where', 0);
+    }
+
+    private function addHelpers(PhpstormMetaFile $metaFile): void
+    {
+        $metaFile->addOverrideElementType('\\head', 0);
+        $metaFile->addOverrideElementType('\\last',0);
     }
 }

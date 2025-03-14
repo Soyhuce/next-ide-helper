@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Parameter \#1 \$view of function view expects view\-string\|null, string given\.$#'
+			message: '#^Parameter \#2 \$map of method Soyhuce\\NextIdeHelper\\Support\\Output\\PhpstormMetaFile\:\:addOverrideMap\(\) expects Illuminate\\Support\\Collection\<string, string\>, Illuminate\\Support\\Collection\<string, non\-falsy\-string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Console/MetaCommand.php
