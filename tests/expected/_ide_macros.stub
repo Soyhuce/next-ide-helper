@@ -4,7 +4,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     /**
      * @method static string foo(string $bar)
-     * @see project://Feature/MacrosCommandTest.php L20
+     * @see project://Feature/MacrosCommandTest.php L9
      * @method static string toLower(string $value)
      * @see project://Fixtures/Macroable/SomeMixin.php L17
      * @method void havingVariadic(string &...$params)

@@ -1,52 +1,35 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Illuminate\Database\Eloquent\Builder;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelQueryBuilder;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostQuery;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelQueryBuilder
- */
-class ResolveModelQueryBuilderTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function itFindsBuiltinBuilder(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+it('finds builtin builder', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveQueryBuilder = new ResolveModelQueryBuilder();
+    $resolveQueryBuilder = new ResolveModelQueryBuilder();
 
-        $resolveQueryBuilder->execute($model);
+    $resolveQueryBuilder->execute($model);
 
-        $this->assertNotNull($model->queryBuilder);
+    expect($model->queryBuilder)->not->toBeNull();
 
-        $this->assertEquals('\\' . Builder::class, $model->queryBuilder->fqcn);
-        $this->assertTrue($model->queryBuilder->isBuiltIn());
-    }
+    expect($model->queryBuilder->fqcn)->toEqual('\\' . Builder::class);
+    expect($model->queryBuilder->isBuiltIn())->toBeTrue();
+});
 
-    /**
-     * @test
-     */
-    public function itFindsCustomBuilder(): void
-    {
-        $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
+it('finds custom builder', function (): void {
+    $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 
-        $resolveQueryBuilder = new ResolveModelQueryBuilder();
+    $resolveQueryBuilder = new ResolveModelQueryBuilder();
 
-        $resolveQueryBuilder->execute($model);
+    $resolveQueryBuilder->execute($model);
 
-        $this->assertNotNull($model->queryBuilder);
+    expect($model->queryBuilder)->not->toBeNull();
 
-        $this->assertEquals('\\' . PostQuery::class, $model->queryBuilder->fqcn);
-        $this->assertEquals($this->fixturePath('Blog/PostQuery.php'), $model->queryBuilder->filePath);
-        $this->assertFalse($model->queryBuilder->isBuiltIn());
-    }
-}
+    expect($model->queryBuilder->fqcn)->toEqual('\\' . PostQuery::class);
+    expect($model->queryBuilder->filePath)->toEqual($this->fixturePath('Blog/PostQuery.php'));
+    expect($model->queryBuilder->isBuiltIn())->toBeFalse();
+});

@@ -1,66 +1,49 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\FindModels;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations
- */
-class ResolveModelRelationsTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function itFindsModelRelations(): void
-    {
-        $finder = new FindModels();
-        $models = $finder->execute($this->fixturePath());
-        $post = $models->findByFqcn(Post::class);
+it('finds model relations', function (): void {
+    $finder = new FindModels();
+    $models = $finder->execute($this->fixturePath());
+    $post = $models->findByFqcn(Post::class);
 
-        $resolveModelRelation = new ResolveModelRelations($models);
+    $resolveModelRelation = new ResolveModelRelations($models);
 
-        $resolveModelRelation->execute($post);
+    $resolveModelRelation->execute($post);
 
-        $this->assertCount(2, $post->relations);
+    expect($post->relations)->toHaveCount(2);
 
-        /** @var Relation $user */
-        $user = $post->relations->first(fn (Relation $relation) => $relation->name === 'user');
-        $this->assertNotNull($user);
-        $this->assertEquals($post, $user->parent);
-        $this->assertEquals($models->findByFqcn(User::class), $user->related);
-    }
+    /** @var Relation $user */
+    $user = $post->relations->first(fn (Relation $relation) => $relation->name === 'user');
+    expect($user)->not->toBeNull();
+    expect($user->parent)->toEqual($post);
+    expect($user->related)->toEqual($models->findByFqcn(User::class));
+});
 
-    /**
-     * @test
-     */
-    public function itFindsModelCustomRelations(): void
-    {
-        $finder = new FindModels();
-        $models = $finder->execute($this->fixturePath());
-        $user = $models->findByFqcn(User::class);
+it('finds model custom relations', function (): void {
+    $finder = new FindModels();
+    $models = $finder->execute($this->fixturePath());
+    $user = $models->findByFqcn(User::class);
 
-        $resolveModelRelation = new ResolveModelRelations($models);
+    $resolveModelRelation = new ResolveModelRelations($models);
 
-        $resolveModelRelation->execute($user);
+    $resolveModelRelation->execute($user);
 
-        $this->assertCount(3, $user->relations);
+    expect($user->relations)->toHaveCount(3);
 
-        /** @var Relation $posts */
-        $posts = $user->relations->findByName('posts');
-        $this->assertEquals('posts', $posts->name);
-        $this->assertEquals($user, $posts->parent);
-        $this->assertEquals($models->findByFqcn(Post::class), $posts->related);
+    /** @var Relation $posts */
+    $posts = $user->relations->findByName('posts');
+    expect($posts->name)->toEqual('posts');
+    expect($posts->parent)->toEqual($user);
+    expect($posts->related)->toEqual($models->findByFqcn(Post::class));
 
-        /** @var Relation $laravelPosts */
-        $laravelPosts = $user->relations->findByName('laravelPosts');
-        $this->assertEquals('laravelPosts', $laravelPosts->name);
-        $this->assertEquals($user, $laravelPosts->parent);
-        $this->assertEquals($models->findByFqcn(Post::class), $laravelPosts->related);
-    }
-}
+    /** @var Relation $laravelPosts */
+    $laravelPosts = $user->relations->findByName('laravelPosts');
+    expect($laravelPosts->name)->toEqual('laravelPosts');
+    expect($laravelPosts->parent)->toEqual($user);
+    expect($laravelPosts->related)->toEqual($models->findByFqcn(Post::class));
+});

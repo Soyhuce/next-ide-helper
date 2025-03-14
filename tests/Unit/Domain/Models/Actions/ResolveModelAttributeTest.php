@@ -1,65 +1,44 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Illuminate\Support\Facades\Date;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributes
- */
-class ResolveModelAttributeTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function attributesAreResolvedFromDatabase(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+test('attributes are resolved from database', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveAttributes = new ResolveModelAttributes();
+    $resolveAttributes = new ResolveModelAttributes();
 
-        $resolveAttributes->execute($model);
+    $resolveAttributes->execute($model);
 
-        $this->assertCount(10, $model->attributes);
-    }
+    expect($model->attributes)->toHaveCount(10);
+});
 
-    /**
-     * @test
-     */
-    public function timestampsAreCorrectlyResolved(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+test('timestamps are correctly resolved', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveAttributes = new ResolveModelAttributes();
+    $resolveAttributes = new ResolveModelAttributes();
 
-        $resolveAttributes->execute($model);
+    $resolveAttributes->execute($model);
 
-        $createdAt = $model->attributes->findByName('created_at');
-        $this->assertNotNull($createdAt);
-        $this->assertEquals('\\' . Date::now()::class, $createdAt->type);
-        $this->assertFalse($createdAt->nullable);
-    }
+    $createdAt = $model->attributes->findByName('created_at');
+    expect($createdAt)->not->toBeNull();
+    expect($createdAt->type)->toEqual('\\' . Date::now()::class);
+    expect($createdAt->nullable)->toBeFalse();
+});
 
-    /**
-     * @test
-     */
-    public function timestampsNullabilityCanBeConfigured(): void
-    {
-        config(['next-ide-helper.models.nullable_timestamps' => true]);
+test('timestamps nullability can be configured', function (): void {
+    config(['next-ide-helper.models.nullable_timestamps' => true]);
 
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveAttributes = new ResolveModelAttributes();
+    $resolveAttributes = new ResolveModelAttributes();
 
-        $resolveAttributes->execute($model);
+    $resolveAttributes->execute($model);
 
-        $createdAt = $model->attributes->findByName('created_at');
-        $this->assertNotNull($createdAt);
-        $this->assertEquals('\\' . Date::now()::class, $createdAt->type);
-        $this->assertTrue($createdAt->nullable);
-    }
-}
+    $createdAt = $model->attributes->findByName('created_at');
+    expect($createdAt)->not->toBeNull();
+    expect($createdAt->type)->toEqual('\\' . Date::now()::class);
+    expect($createdAt->nullable)->toBeTrue();
+});

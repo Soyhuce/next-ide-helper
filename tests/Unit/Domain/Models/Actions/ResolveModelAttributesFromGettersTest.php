@@ -1,50 +1,33 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters
- */
-class ResolveModelAttributesFromGettersTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function itDoesNotResolveAnythingIfModelHasNoGetter(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+it('does not resolve anything if model has no getter', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveAttributes = new ResolveModelAttributesFromGetters();
+    $resolveAttributes = new ResolveModelAttributesFromGetters();
 
-        $resolveAttributes->execute($model);
+    $resolveAttributes->execute($model);
 
-        $this->assertCount(0, $model->attributes);
-    }
+    expect($model->attributes)->toHaveCount(0);
+});
 
-    /**
-     * @test
-     */
-    public function itDoesResolveReadOnlyAttributes(): void
-    {
-        $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
+it('does resolve read only attributes', function (): void {
+    $model = new Model(Post::class, $this->fixturePath('Blog/Post.php'));
 
-        $resolveAttributes = new ResolveModelAttributesFromGetters();
+    $resolveAttributes = new ResolveModelAttributesFromGetters();
 
-        $resolveAttributes->execute($model);
+    $resolveAttributes->execute($model);
 
-        $this->assertCount(2, $model->attributes);
+    expect($model->attributes)->toHaveCount(2);
 
-        /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute $attribute */
-        $attribute = $model->attributes->first();
-        $this->assertEquals('slug', $attribute->name);
-        $this->assertFalse($attribute->nullable);
-        $this->assertTrue($attribute->readOnly);
-        $this->assertEquals('string', $attribute->type);
-    }
-}
+    /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute $attribute */
+    $attribute = $model->attributes->first();
+    expect($attribute->name)->toEqual('slug');
+    expect($attribute->nullable)->toBeFalse();
+    expect($attribute->readOnly)->toBeTrue();
+    expect($attribute->type)->toEqual('string');
+});

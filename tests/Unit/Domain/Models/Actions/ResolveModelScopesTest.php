@@ -1,47 +1,30 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Tests\Unit\Domain\Models\Actions;
-
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
-use Soyhuce\NextIdeHelper\Tests\TestCase;
 
-/**
- * @coversDefaultClass \Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes
- */
-class ResolveModelScopesTest extends TestCase
-{
-    /**
-     * @test
-     */
-    public function itFindsScopes(): void
-    {
-        $model = new Model(User::class, $this->fixturePath('User.php'));
+it('finds scopes', function (): void {
+    $model = new Model(User::class, $this->fixturePath('User.php'));
 
-        $resolveModelScope = new ResolveModelScopes();
+    $resolveModelScope = new ResolveModelScopes();
 
-        $resolveModelScope->execute($model);
+    $resolveModelScope->execute($model);
 
-        $this->assertCount(1, $model->scopes);
+    expect($model->scopes)->toHaveCount(1);
 
-        $scope = $model->scopes[0];
-        $this->assertEquals('whereEmailDomain', $scope->name);
-        $this->assertEquals('string $domain, ?string $area = null', $scope->parameters);
-    }
+    $scope = $model->scopes[0];
+    expect($scope->name)->toEqual('whereEmailDomain');
+    expect($scope->parameters)->toEqual('string $domain, ?string $area = null');
+});
 
-    /**
-     * @test
-     */
-    public function modelCanHaveNoScope(): void
-    {
-        $model = new Model(Post::class, $this->fixturePath('/Blog/Post.php'));
+test('model can have no scope', function (): void {
+    $model = new Model(Post::class, $this->fixturePath('/Blog/Post.php'));
 
-        $resolveModelScope = new ResolveModelScopes();
+    $resolveModelScope = new ResolveModelScopes();
 
-        $resolveModelScope->execute($model);
+    $resolveModelScope->execute($model);
 
-        $this->assertCount(0, $model->scopes);
-    }
-}
+    expect($model->scopes)->toHaveCount(0);
+});
