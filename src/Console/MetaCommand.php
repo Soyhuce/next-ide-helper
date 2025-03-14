@@ -70,6 +70,6 @@ class MetaCommand extends Command
     private function addHelpers(PhpstormMetaFile $metaFile): void
     {
         $metaFile->addOverrideElementType('\\head', 0);
-        $metaFile->addOverrideElementType('\\last',0);
+        $metaFile->addOverrideElementType('\\last', 0);
     }
 }
