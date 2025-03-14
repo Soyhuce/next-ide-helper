@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AllCommand extends Command
 {
@@ -35,7 +36,7 @@ class AllCommand extends Command
             ModelsCommand::class,
         ];
 
-        if (class_exists(\Illuminate\Database\Eloquent\Factories\Factory::class)) {
+        if (class_exists(Factory::class)) {
             $commands[] = FactoriesCommand::class;
         }
 

@@ -2,13 +2,15 @@
 
 namespace Soyhuce\NextIdeHelper\Support\Output;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class IdeHelperClass
 {
     /**
-     * @param class-string<\Illuminate\Database\Eloquent\Model> $modelFqcn
-     * @return class-string<\Illuminate\Database\Eloquent\Builder<\Illuminate\Database\Eloquent\Model>>
+     * @param class-string<Model> $modelFqcn
+     * @return class-string<Builder<Model>>
      */
     public static function eloquentBuilder(string $modelFqcn): string
     {

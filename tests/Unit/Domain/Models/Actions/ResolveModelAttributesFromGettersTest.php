@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelAttributesFromGetters;
+use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
@@ -24,7 +25,7 @@ it('does resolve read only attributes', function (): void {
 
     expect($model->attributes)->toHaveCount(2);
 
-    /** @var \Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute $attribute */
+    /** @var Attribute $attribute */
     $attribute = $model->attributes->first();
     expect($attribute->name)->toEqual('slug');
     expect($attribute->nullable)->toBeFalse();

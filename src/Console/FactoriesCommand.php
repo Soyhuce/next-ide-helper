@@ -4,6 +4,8 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Soyhuce\NextIdeHelper\Contracts\FactoryResolver;
+use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
 use Soyhuce\NextIdeHelper\Domain\Factories\Actions\FindFactories;
 use Soyhuce\NextIdeHelper\Domain\Factories\Actions\ResolveModels;
 use Soyhuce\NextIdeHelper\Domain\Factories\Output\FactoryDocBlock;
@@ -50,7 +52,7 @@ class FactoriesCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Contracts\ModelResolver>
+     * @return array<ModelResolver>
      */
     private function modelResolver(ModelCollection $models): array
     {
@@ -61,7 +63,7 @@ class FactoriesCommand extends Command
     }
 
     /**
-     * @return array<\Soyhuce\NextIdeHelper\Contracts\FactoryResolver>
+     * @return array<FactoryResolver>
      */
     private function factoryResolvers(): array
     {
@@ -71,7 +73,7 @@ class FactoriesCommand extends Command
     }
 
     /**
-     * @return array<int, class-string<\Soyhuce\NextIdeHelper\Contracts\FactoryResolver>>
+     * @return array<int, class-string<FactoryResolver>>
      */
     private function factoryExtensions(): array
     {

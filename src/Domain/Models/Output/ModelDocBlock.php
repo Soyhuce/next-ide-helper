@@ -2,6 +2,7 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Contracts\Renderer;
@@ -136,12 +137,12 @@ class ModelDocBlock extends DocBlock implements Renderer
 
     private function factory(): ?string
     {
-        if (!trait_exists(\Illuminate\Database\Eloquent\Factories\HasFactory::class)) {
+        if (!trait_exists(HasFactory::class)) {
             return null;
         }
 
         if (!in_array(
-            \Illuminate\Database\Eloquent\Factories\HasFactory::class,
+            HasFactory::class,
             class_uses_recursive($this->model->fqcn),
             true
         )) {
