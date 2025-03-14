@@ -5,7 +5,9 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Entities;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Support\Type;
+use function in_array;
 
 class QueryBuilder
 {
@@ -29,7 +31,13 @@ class QueryBuilder
 
     public function isBuiltIn(): bool
     {
-        return $this->fqcn === '\\' . EloquentBuilder::class;
+        $builtIn = config('next-ide-helper.built_in_query_builders', [EloquentBuilder::class]);
+
+        return in_array(
+            Str::ltrim($this->fqcn, '\\'),
+            $builtIn,
+            true
+        );
     }
 
     public function addExtra(string $extra): self

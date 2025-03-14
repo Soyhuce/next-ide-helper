@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+
 return [
     /**
      * The bootstrapper use to boot your application before running analyses.
@@ -78,6 +80,10 @@ return [
          * Setting this to true will force the timestamps to be documented as nullable.
          */
         'nullable_timestamps' => false,
+
+        'built_in_builder' => [
+            EloquentBuilder::class,
+        ],
     ],
 
     /**
