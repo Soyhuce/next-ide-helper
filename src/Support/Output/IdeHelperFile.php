@@ -11,8 +11,6 @@ use function dirname;
 
 class IdeHelperFile
 {
-    use WritesMultiline;
-
     private string $filePath;
 
     /** @var Collection<string, Nemespace> */
