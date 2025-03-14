@@ -41,9 +41,11 @@ class QueryBuilderHelperFile implements Amender
                 " * @mixin {$fakeEloquentBuilder}",
             ]));
 
-        $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
-        if ($constructor !== null) {
-            $model->addMethod(Method::fromMethod('__construct', $constructor));
+        if ($this->model->fqcn === $this->modelFqcn) {
+            $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
+            if ($constructor !== null) {
+                $model->addMethod(Method::fromMethod('__construct', $constructor));
+            }
         }
     }
 }

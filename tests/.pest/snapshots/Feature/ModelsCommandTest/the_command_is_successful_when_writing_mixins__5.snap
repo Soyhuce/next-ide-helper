@@ -19,15 +19,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      */
     class __Comment
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-         * @return void
-        */
-        public function __construct(array $attributes = [])
-        {
-        }
     }
 
     /**
@@ -85,15 +76,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      */
     class __User
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-         * @return void
-        */
-        public function __construct(array $attributes = [])
-        {
-        }
     }
 
     /**
@@ -157,15 +139,6 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
      */
     class __Post
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-         * @return void
-        */
-        public function __construct(array $attributes = [])
-        {
-        }
     }
 }
 
