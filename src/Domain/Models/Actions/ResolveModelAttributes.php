@@ -34,8 +34,6 @@ class ResolveModelAttributes implements ModelResolver
      */
     private function resolveColumns(Model $model): array
     {
-        $model->instance()->getTable();
-
         return $model->instance()
             ->getConnection()
             ->getSchemaBuilder()
