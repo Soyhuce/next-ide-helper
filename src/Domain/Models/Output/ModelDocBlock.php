@@ -2,22 +2,29 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Output;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Contracts\Amender;
 use Soyhuce\NextIdeHelper\Contracts\Renderer;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Support\Output\DocBlock;
-use Throwable;
-use function in_array;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperClass;
+use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
 use function sprintf;
 
-class ModelDocBlock extends DocBlock implements Renderer
+class ModelDocBlock extends DocBlock implements Amender, Renderer
 {
+    public const int FULL = 0x0001;
+    public const int PROPERTIES = 0x0010;
+    public const int MODEL_MIXIN = 0x0100;
+
+    /**
+     * @param int-mask-of<self::*> $flags
+     */
     public function __construct(
         private Model $model,
+        private int $flags,
     ) {}
 
     public function render(): void
@@ -29,49 +36,90 @@ class ModelDocBlock extends DocBlock implements Renderer
         );
     }
 
+    public function amend(IdeHelperFile $file): void
+    {
+        $fakeModel = IdeHelperClass::model($this->model->fqcn);
+
+        $file->getOrAddClass($fakeModel)
+            ->addDocTags($this->docTags());
+    }
+
+    /**
+     * @return Collection<int, string>
+     */
+    private function docTags(): Collection
+    {
+        return Collection::make()
+            ->when(
+                $this->wants(self::FULL | self::PROPERTIES),
+                fn (Collection $collection) => $collection->merge([
+                    ...$this->properties(),
+                    ...$this->propertiesRead(),
+                    ...$this->propertiesWrite(),
+                    ...$this->relations(),
+                ]),
+            )
+            ->when(
+                $this->wants(self::FULL),
+                fn (Collection $collection) => $collection->merge([
+                    $this->all(),
+                    $this->query(),
+                    $this->queryMixin(),
+                    $this->factory(),
+                ])
+            )
+            ->when(
+                $this->wants(self::MODEL_MIXIN),
+                fn (Collection $collection) => $collection->merge([
+                    $this->ideModelMixin(),
+                ])
+            )
+            ->filter();
+    }
+
     protected function docblock(): string
     {
-        return Collection::make([
-            '/**',
-            $this->properties(),
-            $this->propertiesRead(),
-            $this->propertiesWrite(),
-            $this->relations(),
-            $this->all(),
-            $this->query(),
-            $this->queryMixin(),
-            $this->factory(),
-            ' */',
-        ])
-            ->map(fn (?string $line): string => $this->line($line))
+        return $this->docTags()
+            ->prepend('/**')
+            ->push(' */')
+            ->map(fn (string $line): string => $this->line($line))
             ->implode('');
     }
 
-    private function properties(): string
+    /**
+     * @return Collection<int, string>
+     */
+    private function properties(): Collection
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
             ->onlyWriteOnly(false)
-            ->map(fn (Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute))
-            ->implode(PHP_EOL);
+            ->collect()
+            ->map(fn (Attribute $attribute) => ' * @property ' . $this->propertyLine($attribute));
     }
 
-    private function propertiesRead(): string
+    /**
+     * @return Collection<int, string>
+     */
+    private function propertiesRead(): Collection
     {
         return $this->model->attributes
             ->onlyReadOnly(true)
             ->onlyWriteOnly(false)
-            ->map(fn (Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute))
-            ->implode(PHP_EOL);
+            ->collect()
+            ->map(fn (Attribute $attribute) => ' * @property-read ' . $this->propertyLine($attribute));
     }
 
-    private function propertiesWrite(): string
+    /**
+     * @return Collection<int, string>
+     */
+    private function propertiesWrite(): Collection
     {
         return $this->model->attributes
             ->onlyReadOnly(false)
             ->onlyWriteOnly(true)
-            ->map(fn (Attribute $attribute) => ' * @property-write ' . $this->propertyLine($attribute))
-            ->implode(PHP_EOL);
+            ->collect()
+            ->map(fn (Attribute $attribute) => ' * @property-write ' . $this->propertyLine($attribute));
     }
 
     private function propertyLine(Attribute $attribute): string
@@ -84,12 +132,15 @@ class ModelDocBlock extends DocBlock implements Renderer
         return $line;
     }
 
-    private function relations(): string
+    /**
+     * @return Collection<int, string>
+     */
+    private function relations(): Collection
     {
         return $this->model->relations
             ->sortBy('name')
-            ->map(static fn (Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}")
-            ->implode(PHP_EOL);
+            ->collect()
+            ->map(fn (Relation $relation) => " * @property-read {$relation->returnType()} \${$relation->name}");
     }
 
     private function query(): ?string
@@ -137,25 +188,24 @@ class ModelDocBlock extends DocBlock implements Renderer
 
     private function factory(): ?string
     {
-        if (!trait_exists(HasFactory::class)) {
+        $factory = $this->model->factory();
+        if ($factory === null) {
             return null;
         }
 
-        if (!in_array(
-            HasFactory::class,
-            class_uses_recursive($this->model->fqcn),
-            true
-        )) {
-            return null;
-        }
+        return " * @method static \\{$factory} factory(\$count = 1, \$state = [])";
+    }
 
-        try {
-            $factory = Str::start($this->model->fqcn::factory()::class, '\\');
+    private function ideModelMixin(): string
+    {
+        $ideModel = IdeHelperClass::model($this->model->fqcn);
 
-            return " * @method static {$factory} factory(\$count = 1, \$state = [])";
-        } catch (Throwable) {
-            return null;
-        }
+        return " * @mixin {$ideModel}";
+    }
+
+    private function wants(int $flag): bool
+    {
+        return ($this->flags & $flag) !== 0;
     }
 
     private function larastanFriendly(): bool

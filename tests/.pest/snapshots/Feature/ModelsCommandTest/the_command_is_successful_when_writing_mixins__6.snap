@@ -1,0 +1,14 @@
+<?php
+
+namespace PHPSTORM_META {
+
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post::comments(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__Comments::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post::user(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post\__User::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\Comment::query(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__CommentQuery::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\User::query(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__UserQuery::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\User::factory(), map(['' => \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\User::posts(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__Posts::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\User::latestPost(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LatestPost::class]));
+    override(\Soyhuce\NextIdeHelper\Tests\Fixtures\User::laravelPosts(), map(['' => \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\User\__LaravelPosts::class]));
+
+}

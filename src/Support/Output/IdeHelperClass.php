@@ -10,6 +10,22 @@ class IdeHelperClass
 {
     /**
      * @param class-string<Model> $modelFqcn
+     * @return class-string<Model>
+     */
+    public static function model(string $modelFqcn): string
+    {
+        $classBasename = class_basename($modelFqcn);
+
+        return Str::of($modelFqcn)
+            ->trim('\\')
+            ->beforeLast($classBasename)
+            ->prepend('\\IdeHelper\\')
+            ->append("__{$classBasename}")
+            ->toString();
+    }
+
+    /**
+     * @param class-string<Model> $modelFqcn
      * @return class-string<Builder<Model>>
      */
     public static function eloquentBuilder(string $modelFqcn): string

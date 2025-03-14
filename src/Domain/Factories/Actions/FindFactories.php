@@ -35,6 +35,10 @@ class FindFactories
      */
     private function isEloquentFactory(string $class): bool
     {
+        if (!class_exists($class)) {
+            return false;
+        }
+
         $reflexion = new ReflectionClass($class);
 
         if (!$reflexion->isSubclassOf(EloquentFactory::class)) {

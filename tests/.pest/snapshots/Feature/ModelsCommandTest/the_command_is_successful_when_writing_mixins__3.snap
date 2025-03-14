@@ -1,0 +1,35 @@
+<?php declare(strict_types=1);
+
+namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+
+/**
+ * @property int $id
+ * @property string $content
+ * @property string $commentable_type
+ * @property int $commentable_id
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @property \Illuminate\Support\Carbon $datetime
+ * @property \Illuminate\Support\Carbon $date
+ * @property array $encrypted_array
+ * @property mixed $encrypted
+ * @property-read mixed $commentable
+ * @mixin \IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures\__Comment
+ */
+class Comment extends Model
+{
+    protected $casts = [
+        'datetime' => 'datetime:Y-m-d H:i:s',
+        'date' => 'date:Y-m-d',
+        'encrypted_array' => 'encrypted:array',
+        'encrypted' => 'encrypted',
+    ];
+
+    public function commentable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+}
