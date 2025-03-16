@@ -32,6 +32,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post;
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $laravelPosts
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post|null $latestPost
  * @property-read \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\PostCollection<int, \Soyhuce\NextIdeHelper\Tests\Fixtures\Blog\Post> $posts
+ * @method mixed whereEmailDomain(string $domain, ?string $area = null)
  * @method static \Soyhuce\NextIdeHelper\Tests\Fixtures\Factories\UserFactory factory($count = 1, $state = [])
  */
 class User extends Model
