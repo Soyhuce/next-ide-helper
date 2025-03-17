@@ -7,6 +7,7 @@ use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\ArrTypes;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\ContainerBindings;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\HelperTypes;
+use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\RouteNames;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
 class MetaCommand extends Command
@@ -41,6 +42,7 @@ class MetaCommand extends Command
             ContainerBindings::class,
             ArrTypes::class,
             HelperTypes::class,
+            RouteNames::class,
         ];
     }
 }
