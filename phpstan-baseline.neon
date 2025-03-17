@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Parameter \#2 \$map of method Soyhuce\\NextIdeHelper\\Support\\Output\\PhpstormMetaFile\:\:addOverrideMap\(\) expects Illuminate\\Support\\Collection\<string, string\>, Illuminate\\Support\\Collection\<string, non\-falsy\-string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Console/MetaCommand.php
-
-		-
 			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Factories\\Actions\\FindFactories\:\:execute\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
 			identifier: missingType.generics
 			count: 1
@@ -73,10 +67,16 @@ parameters:
 			path: src/Domain/Macros/Output/MacrosHelperFile.php
 
 		-
-			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Meta\\Actions\\ResolveContainerBindings\:\:execute\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Meta\\Fragments\\ContainerBindings\:\:resolveBindings\(\) should return Illuminate\\Support\\Collection\<string, string\> but returns Illuminate\\Support\\Collection\<string, class\-string&literal\-string\>\.$#'
+			identifier: return.type
 			count: 1
-			path: src/Domain/Meta/Actions/ResolveContainerBindings.php
+			path: src/Domain/Meta/Fragments/ContainerBindings.php
+
+		-
+			message: '#^Parameter \#2 \$map of method Soyhuce\\NextIdeHelper\\Support\\Output\\PhpstormMetaFile\:\:addOverrideMap\(\) expects Illuminate\\Support\\Collection\<string, string\>, Illuminate\\Support\\Collection\<string, non\-falsy\-string\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Domain/Meta/Fragments/ContainerBindings.php
 
 		-
 			message: '#^Parameter \#1 \$fqcn of class Soyhuce\\NextIdeHelper\\Domain\\Models\\Entities\\Model constructor expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, class\-string given\.$#'
