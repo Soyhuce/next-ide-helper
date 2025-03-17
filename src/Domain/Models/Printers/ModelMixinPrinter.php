@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Domain\Models\Printers;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Soyhuce\NextIdeHelper\Contracts\Amender;
 use Soyhuce\NextIdeHelper\Contracts\Renderer;
+use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Output\ModelDocBlock;
@@ -67,7 +68,7 @@ class ModelMixinPrinter implements ModelPrinter
     {
         if ($model->queryBuilder->isBuiltIn()) {
             $metaFile->addSimpleOverride(
-                "{$model->fqcn}::query",
+                new MetaCallable([$model->fqcn, 'query']),
                 IdeHelperClass::eloquentBuilder($model->fqcn) . '::class'
             );
         }
@@ -75,7 +76,7 @@ class ModelMixinPrinter implements ModelPrinter
         $factory = $model->factory();
         if ($factory !== null) {
             $metaFile->addSimpleOverride(
-                "{$model->fqcn}::factory",
+                new MetaCallable([$model->fqcn, 'factory']),
                 "\\{$factory}::class"
             );
         }
@@ -86,7 +87,7 @@ class ModelMixinPrinter implements ModelPrinter
             }
 
             $metaFile->addSimpleOverride(
-                "{$model->fqcn}::{$relation->name}",
+                new MetaCallable([$model->fqcn, $relation->name]),
                 IdeHelperClass::relation($model->fqcn, $relation->name) . '::class'
             );
         }
