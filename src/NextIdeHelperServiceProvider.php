@@ -18,7 +18,6 @@ class NextIdeHelperServiceProvider extends PackageServiceProvider
         $package
             ->name('next-ide-helper')
             ->hasConfigFile()
-            ->hasViews()
             ->hasCommands(
                 AliasesCommand::class,
                 AllCommand::class,
