@@ -7,6 +7,9 @@ use function is_string;
 
 class MetaCallable
 {
+    /**
+     * @param array{0: class-string, 1: string}|string $method
+     */
     public function __construct(
         public string|array $method,
         public int $argumentIndex = 0,

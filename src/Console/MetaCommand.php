@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Console;
 use Illuminate\Console\Command;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\ArrTypes;
+use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\Configs;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\ContainerBindings;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\HelperTypes;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\RouteNames;
@@ -42,6 +43,7 @@ class MetaCommand extends Command
             ContainerBindings::class,
             ArrTypes::class,
             HelperTypes::class,
+            Configs::class,
             RouteNames::class,
         ];
     }

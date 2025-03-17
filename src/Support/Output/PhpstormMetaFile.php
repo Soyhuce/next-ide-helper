@@ -54,6 +54,9 @@ class PhpstormMetaFile
         );
     }
 
+    /**
+     * @param Collection<int, mixed> $allowedValues
+     */
     public function registerArgumentSet(string $argumentSet, Collection $allowedValues): void
     {
         $this->lines->push(

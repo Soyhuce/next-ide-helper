@@ -30,6 +30,9 @@ class ContainerBindings implements MetaFragment
         }
     }
 
+    /**
+     * @return array<int, MetaCallable>
+     */
     public function methods(): array
     {
         return [
