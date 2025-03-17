@@ -2,26 +2,19 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Meta\Fragments;
 
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\Container as ContainerContract;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
+use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 use Throwable;
 use function is_object;
 
 class ContainerBindings implements MetaFragment
 {
-    /** @var array<string> */
-    protected array $methods = [
-        '\\Illuminate\\Container\\Container::makeWith',
-        '\\Illuminate\\Contracts\\Container\\Container::make',
-        '\\Illuminate\\Contracts\\Container\\Container::makeWith',
-        '\\Illuminate\\Support\\Facades\\App::make',
-        '\\Illuminate\\Support\\Facades\\App::makeWith',
-        '\\app',
-        '\\resolve',
-    ];
-
     public function __construct(
         private Application $application,
     ) {}
@@ -32,9 +25,24 @@ class ContainerBindings implements MetaFragment
             ->prepend(value: '@', key: '')
             ->mapWithKeys(fn (string $value, string $key) => ["'{$key}'" => "'{$value}'"]);
 
-        foreach ($this->methods as $method) {
+        foreach ($this->methods() as $method) {
             $metaFile->addOverrideMap($method, $bindings);
         }
+    }
+
+    public function methods(): array
+    {
+        return [
+            new MetaCallable([Container::class, 'makeWith']),
+            new MetaCallable([ContainerContract::class, 'make']),
+            new MetaCallable([ContainerContract::class, 'makeWith']),
+            new MetaCallable([App::class, 'make']),
+            new MetaCallable([App::class, 'makeWith']),
+            new MetaCallable([Application::class, 'make']),
+            new MetaCallable([Application::class, 'makeWith']),
+            new MetaCallable('app'),
+            new MetaCallable('resolve'),
+        ];
     }
 
     /**

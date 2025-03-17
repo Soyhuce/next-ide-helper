@@ -5,6 +5,7 @@ namespace Soyhuce\NextIdeHelper\Support\Output;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use function dirname;
 
 class PhpstormMetaFile
@@ -20,23 +21,23 @@ class PhpstormMetaFile
         $this->lines = new Collection();
     }
 
-    public function addOverrideType(string $function, int $argumentIndex): void
+    public function addOverrideType(MetaCallable $callable): void
     {
-        $this->lines->push("override({$function}(0), type({$argumentIndex}));");
+        $this->lines->push("override({$callable->toFunction()}(0), type({$callable->argumentIndex}));");
     }
 
-    public function addOverrideElementType(string $function, int $argumentIndex): void
+    public function addOverrideElementType(MetaCallable $callable): void
     {
-        $this->lines->push("override({$function}(0), elementType({$argumentIndex}));");
+        $this->lines->push("override({$callable->toFunction()}(0), elementType({$callable->argumentIndex}));");
     }
 
     /**
      * @param Collection<string, string> $map
      */
-    public function addOverrideMap(string $function, Collection $map): void
+    public function addOverrideMap(MetaCallable $callable, Collection $map): void
     {
         $this->lines->push(
-            "override({$function}(), map([",
+            "override({$callable->toFunction()}(), map([",
         );
         $map->each(function (string $value, string $key): void {
             $this->lines->push("    {$key} => {$value},");
@@ -46,10 +47,29 @@ class PhpstormMetaFile
         );
     }
 
-    public function addSimpleOverride(string $function, string $type): void
+    public function addSimpleOverride(MetaCallable $callable, string $type): void
     {
         $this->lines->push(
-            "override({$function}(), map(['' => {$type}]));",
+            "override({$callable->toFunction()}(), map(['' => {$type}]));",
+        );
+    }
+
+    public function registerArgumentSet(string $argumentSet, Collection $allowedValues): void
+    {
+        $this->lines->push(
+            "registerArgumentsSet('{$argumentSet}',"
+        );
+        foreach ($allowedValues as $allowedValue) {
+            $value = var_export($allowedValue, true);
+            $this->lines->push("    {$value},");
+        }
+        $this->lines->push(');');
+    }
+
+    public function expectedArgumentsFromSet(MetaCallable $callable, string $argumentSet): void
+    {
+        $this->lines->push(
+            "expectedArguments({$callable->toFunction()}(), {$callable->argumentIndex}, argumentsSet('{$argumentSet}'));"
         );
     }
 
