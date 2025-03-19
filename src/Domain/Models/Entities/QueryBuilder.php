@@ -31,11 +31,11 @@ class QueryBuilder
 
     public function isBuiltIn(): bool
     {
-        $builtIn = config('next-ide-helper.built_in_query_builders', [EloquentBuilder::class]);
+        $generic = config('next-ide-helper.generic_builder', [EloquentBuilder::class]);
 
         return in_array(
             Str::ltrim($this->fqcn, '\\'),
-            $builtIn,
+            $generic,
             true
         );
     }

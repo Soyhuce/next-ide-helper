@@ -44,7 +44,7 @@ return [
          *  When using the mixin annotation, you may still want to add model attributes to the docblock.
          *  Setting this to true will add the attributes to the model docblock.
          */
-        'mixin_attributes' => true,
+        'mixin_attributes' => false,
 
         /**
          * When using the mixin annotation, some completions may not be available. We can help PHPStorm to understand
@@ -81,7 +81,7 @@ return [
          */
         'nullable_timestamps' => false,
 
-        'built_in_builder' => [
+        'generic_builder' => [
             EloquentBuilder::class,
         ],
     ],
