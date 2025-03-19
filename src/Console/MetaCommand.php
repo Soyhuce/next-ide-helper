@@ -10,6 +10,7 @@ use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\ContainerBindings;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\HelperTypes;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\RouteNames;
 use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\Translations;
+use Soyhuce\NextIdeHelper\Domain\Meta\Fragments\Views;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
 class MetaCommand extends Command
@@ -47,6 +48,7 @@ class MetaCommand extends Command
             Configs::class,
             RouteNames::class,
             Translations::class,
+            Views::class,
         ];
     }
 }
