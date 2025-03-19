@@ -79,6 +79,18 @@ parameters:
 			path: src/Domain/Meta/Fragments/ContainerBindings.php
 
 		-
+			message: '#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Domain/Meta/Fragments/Translations.php
+
+		-
+			message: '#^Unable to resolve the template type TMakeValue in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Domain/Meta/Fragments/Translations.php
+
+		-
 			message: '#^Parameter \#1 \$fqcn of class Soyhuce\\NextIdeHelper\\Domain\\Models\\Entities\\Model constructor expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, class\-string given\.$#'
 			identifier: argument.type
 			count: 1
