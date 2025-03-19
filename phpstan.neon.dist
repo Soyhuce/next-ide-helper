@@ -6,5 +6,8 @@ parameters:
     paths:
         - src
         - config
+    excludePaths:
+        - src/Domain/Meta/Helpers/*
+
     checkOctaneCompatibility: true
     checkModelProperties: true
