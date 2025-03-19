@@ -20,6 +20,8 @@ classes, container instances, ...
         - [Custom Collection](#custom-collection)
         - [Query Builder](#query-builder)
         - [Relations](#relations)
+        - [Mixin style helper](#mixin-style-helper)
+        - [Eloquent Builders](#eloquent-builders)
         - [Extensions](#extensions)
     - [Macros](#macros)
     - [Phpstorm meta](#phpstorm-meta)
@@ -288,6 +290,61 @@ and in your custom builders
  */
 class UserBuilder extends Builder {}
 ```
+
+### Mixin style helper
+
+Instead of adding every tag in the model, this package can add a `@mixin` tag in the model docblock. The mixin will be located in the configured ide helper file.
+
+```php
+/**
+ * @mixin \IdeHelper\App\Models\__User
+ */
+class User extends \Illuminate\Database\Eloquent\Model
+{
+    // ...
+}
+```
+
+To enable this feature, you need to set `models.use_mixin` to `true` in your config file.
+
+You can still have model's attributes added to your model docblock by setting `models.mixin_attributes` to `true`.
+
+```php
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ * @mixin \IdeHelper\App\Models\__User
+ */
+class User extends \Illuminate\Database\Eloquent\Model
+{
+    // ...
+}
+```
+
+#### PHPStan gotchas
+
+While this feature is convenient, it has some drawbacks. We strongly encourage you to define `models.mixin_attributes` to `true` as PHPStan does not read properties from the mixin class.
+
+You may also have analysis errors like `PHPDoc tag @mixin contains unknown class \IdeHelper\App\Models\__User`. To solve this, you can add the following to your `phpstan.neon` file:
+
+```neon
+parameters:
+  scanFiles:
+    - ide_helper/models.php
+```
+
+### Eloquent builders
+
+This package tries to automate as much as possible, but sometimes it cannot guess everything. 
+
+When using custom Eloquent builders for your model, it cannot guess if the builder is a specific one (used only for one model) or a generic one (used for multiple models).
+For the package to understand which builders are generic, you will have to define them in `models.generic_builder` config array.
 
 ### Extensions
 
