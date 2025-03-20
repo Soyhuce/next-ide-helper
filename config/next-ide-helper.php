@@ -82,7 +82,7 @@ return [
          */
         'nullable_timestamps' => false,
 
-        'generic_builder' => [
+        'generic_builders' => [
             EloquentBuilder::class,
         ],
     ],
