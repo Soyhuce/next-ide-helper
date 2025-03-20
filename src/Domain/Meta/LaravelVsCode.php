@@ -9,7 +9,7 @@ use Throwable;
 /**
  * Extracted from laravel/vs-code-extension.
  *
- * @see https://github.com/laravel/vs-code-extension/blob/main/php-templates/translations.php
+ * @see https://github.com/laravel/vs-code-extension/blob/main/php-templates/bootstrap-laravel.php
  */
 class LaravelVsCode
 {
