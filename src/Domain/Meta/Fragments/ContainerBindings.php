@@ -8,6 +8,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
+use Soyhuce\NextIdeHelper\Domain\Meta\LaravelVsCodeLoader;
 use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 use Throwable;

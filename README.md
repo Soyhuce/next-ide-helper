@@ -521,7 +521,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Bastien Philippe](https://github.com/bastien-phi)
-- [Laravel team and all contributors for laravel/cs-code-extension](https://github.com/laravel/vs-code-extension)
+- [Laravel team and all contributors for laravel/vs-code-extension](https://github.com/laravel/vs-code-extension)
 - [All Contributors](../../contributors)
 
 ## License
