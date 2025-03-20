@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
+use Soyhuce\NextIdeHelper\Domain\Meta\LaravelVsCodeLoader;
 use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
@@ -49,8 +50,10 @@ class RouteNames implements MetaFragment
      */
     private function resolveRouteNames(): Collection
     {
-        return Collection::make(Route::getRoutes()->getRoutesByName())
-            ->keys()
+        return LaravelVsCodeLoader::load('routes')
+            ->map(fn (array $route) => $route['name'])
+            ->filter()
+            ->unique()
             ->sort()
             ->values();
     }

@@ -13,6 +13,8 @@ test('the command is successful', function (): void {
         ],
     ]);
 
+    $this->app->setBasePath(realpath(__DIR__ . '/../../'));
+
     $this->artisan('next-ide-helper:meta')
         ->assertExitCode(0);
 });

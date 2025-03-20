@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Factory;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
-use Soyhuce\NextIdeHelper\Domain\Meta\Helpers\ViewResolver;
+use Soyhuce\NextIdeHelper\Domain\Meta\LaravelVsCodeLoader;
 use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
@@ -43,14 +43,10 @@ class Views implements MetaFragment
      */
     private function resolveViews(): Collection
     {
-        $resolver = new ViewResolver();
         $anonymousComponentPaths = Collection::make(app('blade.compiler')->getAnonymousComponentPaths())
             ->pluck('prefixHash');
 
-        return Collection::make([
-            ...$resolver->getAllViews(),
-            ...$resolver->getAllComponents(),
-        ])
+        return LaravelVsCodeLoader::load('views')
             ->map(fn (array $view) => $view['key'])
             ->filter(function (string $view) use ($anonymousComponentPaths) {
                 if (!Str::contains($view, '::')) {

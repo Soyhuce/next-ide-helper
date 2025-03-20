@@ -91,6 +91,12 @@ parameters:
 			path: src/Domain/Meta/Fragments/Translations.php
 
 		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Domain/Meta/LaravelVsCodeLoader.php
+
+		-
 			message: '#^Parameter \#1 \$fqcn of class Soyhuce\\NextIdeHelper\\Domain\\Models\\Entities\\Model constructor expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, class\-string given\.$#'
 			identifier: argument.type
 			count: 1

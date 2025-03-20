@@ -1,23 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace Soyhuce\NextIdeHelper\Domain\Meta\Helpers;
-
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\LazyCollection;
-use ReflectionClass;
-use Throwable;
-use function array_key_exists;
-use function count;
-use function in_array;
-use function is_array;
-
-/**
- * Extracted from laravel/vs-code-extension.
- *
- * @see https://github.com/laravel/vs-code-extension/blob/main/php-templates/translations.php
- */
-class TranslationResolver
+$translator = new class
 {
     public $paths = [];
 
@@ -38,27 +21,27 @@ class TranslationResolver
         $final = [];
 
         foreach ($this->retrieve() as $value) {
-            if ($value instanceof LazyCollection) {
+            if ($value instanceof \Illuminate\Support\LazyCollection) {
                 foreach ($value as $val) {
-                    $dotKey = $val['k'];
+                    $dotKey = $val["k"];
                     $final[$dotKey] ??= [];
 
-                    if (!in_array($val['la'], $this->languages, true)) {
-                        $this->languages[] = $val['la'];
+                    if (!in_array($val["la"], $this->languages)) {
+                      $this->languages[] = $val["la"];
                     }
 
-                    $final[$dotKey][$val['la']] = $val['vs'];
+                    $final[$dotKey][$val["la"]] = $val["vs"];
                 }
             } else {
-                foreach ($value['vs'] as $v) {
-                    $dotKey = "{$value['k']}.{$v['k']}";
+                foreach ($value["vs"] as $v) {
+                    $dotKey = "{$value["k"]}.{$v['k']}";
                     $final[$dotKey] ??= [];
 
-                    if (!in_array($value['la'], $this->languages, true)) {
-                        $this->languages[] = $value['la'];
+                    if (!in_array($value["la"], $this->languages)) {
+                      $this->languages[] = $value["la"];
                     }
 
-                    $final[$dotKey][$value['la']] = $v['arr'];
+                    $final[$dotKey][$value["la"]] = $v['arr'];
                 }
             }
         }
@@ -68,17 +51,17 @@ class TranslationResolver
 
     protected function retrieve()
     {
-        $loader = app('translator')->getLoader();
+        $loader = app("translator")->getLoader();
         $namespaces = $loader->namespaces();
 
         $paths = $this->getPaths($loader);
 
         $default = collect($paths)->flatMap(
-            fn ($path) => $this->collectFromPath($path)
+            fn($path) => $this->collectFromPath($path)
         );
 
         $namespaced = collect($namespaces)->flatMap(
-            fn ($path, $namespace) => $this->collectFromPath($path, $namespace)
+            fn($path, $namespace) => $this->collectFromPath($path, $namespace)
         );
 
         return $default->merge($namespaced);
@@ -89,16 +72,15 @@ class TranslationResolver
         $reflection = new ReflectionClass($loader);
         $property = null;
 
-        if ($reflection->hasProperty('paths')) {
-            $property = $reflection->getProperty('paths');
-        } elseif ($reflection->hasProperty('path')) {
-            $property = $reflection->getProperty('path');
+        if ($reflection->hasProperty("paths")) {
+            $property = $reflection->getProperty("paths");
+        } else if ($reflection->hasProperty("path")) {
+            $property = $reflection->getProperty("path");
         }
 
         if ($property !== null) {
             $property->setAccessible(true);
-
-            return Arr::wrap($property->getValue($loader));
+            return \Illuminate\Support\Arr::wrap($property->getValue($loader));
         }
 
         return [];
@@ -108,20 +90,22 @@ class TranslationResolver
     {
         $realPath = realpath($path);
 
-        if ($realPath === false || !is_dir($realPath)) {
+        if (!is_dir($realPath)) {
             return [];
         }
 
+        if (!LaravelVsCode::isVendor($realPath)) {
+            $this->directoriesToWatch[] = LaravelVsCode::relativePath($realPath);
+        }
+
         return array_map(
-            fn ($file) => $this->fromFile($file, $path, $namespace),
-            File::allFiles($realPath),
+            fn($file) => $this->fromFile($file, $path, $namespace),
+            \Illuminate\Support\Facades\File::allFiles($realPath),
         );
     }
 
     protected function fromFile($file, $path, $namespace)
     {
-        $file = (string) $file;
-
         if (pathinfo($file, PATHINFO_EXTENSION) === 'json') {
             return $this->fromJsonFile($file, $path, $namespace);
         }
@@ -135,7 +119,7 @@ class TranslationResolver
 
         try {
             $json = json_decode($contents, true) ?? [];
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             return [[], []];
         }
 
@@ -145,7 +129,7 @@ class TranslationResolver
 
         $lines = explode(PHP_EOL, $contents);
         $encoded = array_map(
-            fn ($k) => [json_encode($k), $k],
+            fn($k) => [json_encode($k), $k],
             array_keys($json),
         );
         $result = [];
@@ -153,9 +137,8 @@ class TranslationResolver
 
         foreach ($encoded as $index => $keys) {
             // Pretty likely to be on the line that is the index, go happy path first
-            if (str_contains($lines[$index + 1] ?? '', $keys[0])) {
+            if (strpos($lines[$index + 1] ?? '', $keys[0]) !== false) {
                 $result[$keys[1]] = $index + 2;
-
                 continue;
             }
 
@@ -165,9 +148,8 @@ class TranslationResolver
             $current = $start;
 
             while ($current <= $end) {
-                if (str_contains($lines[$current], $keys[0])) {
+                if (strpos($lines[$current], $keys[0]) !== false) {
                     $result[$keys[1]] = $current + 1;
-
                     break;
                 }
 
@@ -208,9 +190,9 @@ class TranslationResolver
             }
 
             if ($inArrayKey && $token[0] === T_CONSTANT_ENCAPSED_STRING) {
-                $depthKeys[$arrayDepth] = mb_trim($token[1], '"\'');
+                $depthKeys[$arrayDepth] = trim($token[1], '"\'');
 
-                Arr::set($found, implode('.', $depthKeys), $token[2]);
+                \Illuminate\Support\Arr::set($found, implode('.', $depthKeys), $token[2]);
             }
 
             if (!$inArrayKey && $token[0] === T_CONSTANT_ENCAPSED_STRING) {
@@ -218,18 +200,18 @@ class TranslationResolver
             }
         }
 
-        return Arr::dot($found);
+        return \Illuminate\Support\Arr::dot($found);
     }
 
     protected function getDotted($key, $lang)
     {
         try {
-            return Arr::dot(
-                Arr::wrap(
+            return \Illuminate\Support\Arr::dot(
+                \Illuminate\Support\Arr::wrap(
                     __($key, [], $lang),
                 ),
             );
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             // Most likely, in this case, the lang file doesn't return an array
             return [];
         }
@@ -271,18 +253,18 @@ class TranslationResolver
             return $processed[0];
         }
 
-        if (in_array($key, $this->emptyParams, true)) {
-            return;
+        if (in_array($key, $this->emptyParams)) {
+            return null;
         }
 
-        $params = preg_match_all('/\\:([A-Za-z0-9_]+)/', $key, $matches)
+        $params = preg_match_all("/\:([A-Za-z0-9_]+)/", $key, $matches)
             ? $matches[1]
             : [];
 
         if (count($params) === 0) {
             $this->emptyParams[] = $key;
 
-            return;
+            return null;
         }
 
         $paramKey = json_encode($params);
@@ -310,16 +292,16 @@ class TranslationResolver
 
         $relativePath = $this->getPathIndex($file);
 
-        $lines = File::lines($file);
+        $lines = \Illuminate\Support\Facades\File::lines($file);
 
-        return LazyCollection::make(function () use ($file, $lang, $relativePath, $lines) {
+        return \Illuminate\Support\LazyCollection::make(function () use ($file, $lang, $relativePath, $lines) {
             [$json, $lines] = $this->linesFromJsonFile($file);
 
             foreach ($json as $key => $value) {
                 yield [
-                    'k' => $key,
-                    'la' => $lang,
-                    'vs' => [
+                    "k" => $key,
+                    "la" => $lang,
+                    "vs" => [
                         $this->getValueIndex($value),
                         $relativePath,
                         $lines[$key] ?? null,
@@ -338,7 +320,7 @@ class TranslationResolver
             $key = "{$namespace}::{$key}";
         }
 
-        $lang = collect(explode(DIRECTORY_SEPARATOR, str_replace($path, '', $file)))
+        $lang = collect(explode(DIRECTORY_SEPARATOR, str_replace($path, "", $file)))
             ->filter()
             ->slice(-2, 1)
             ->first();
@@ -347,9 +329,9 @@ class TranslationResolver
         $lines = $this->linesFromPhpFile($file);
 
         return [
-            'k' => $key,
-            'la' => $lang,
-            'vs' => LazyCollection::make(function () use ($key, $lang, $relativePath, $lines) {
+            "k" => $key,
+            "la" => $lang,
+            "vs" => \Illuminate\Support\LazyCollection::make(function () use ($key, $lang, $relativePath, $lines) {
                 foreach ($this->getDotted($key, [], $lang) as $key => $value) {
                     if (!array_key_exists($key, $lines) || is_array($value)) {
                         continue;
@@ -368,4 +350,14 @@ class TranslationResolver
             }),
         ];
     }
-}
+};
+
+echo json_encode([
+    'default' => \Illuminate\Support\Facades\App::currentLocale(),
+    'translations' => $translator->all(),
+    'languages' => $translator->languages,
+    'paths' => array_keys($translator->paths),
+    'values' => array_keys($translator->values),
+    'params' => array_map(fn($p) => json_decode($p, true), array_keys($translator->paramResults)),
+    'to_watch' => $translator->directoriesToWatch,
+]);

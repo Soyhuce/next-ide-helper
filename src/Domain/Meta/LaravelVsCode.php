@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Soyhuce\NextIdeHelper\Domain\Meta\Helpers;
+namespace Soyhuce\NextIdeHelper\Domain\Meta;
 
+use Error;
 use Throwable;
 
 /**
@@ -11,16 +12,16 @@ use Throwable;
  */
 class LaravelVsCode
 {
-    public static function relativePath($path)
+    public static function relativePath(string $path)
     {
         if (!str_contains($path, base_path())) {
-            return (string) $path;
+            return $path;
         }
 
         return mb_ltrim(str_replace(base_path(), '', realpath($path) ?: $path), DIRECTORY_SEPARATOR);
     }
 
-    public static function isVendor($path)
+    public static function isVendor(string $path)
     {
         return str_contains($path, base_path('vendor'));
     }
