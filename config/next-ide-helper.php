@@ -82,6 +82,10 @@ return [
          */
         'nullable_timestamps' => false,
 
+        /**
+         * If an Eloquent Builder can be used by multiple models, we should not add docblock header.
+         * Provide here the list of generic builders you use in order te keep them untouched.
+         */
         'generic_builders' => [
             EloquentBuilder::class,
         ],
