@@ -2,6 +2,20 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.0.0 - 2025-03-20
+
+### What's Changed
+
+* Migrate tests to pest by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/130
+* Allow model mixin by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/131
+* Fix config by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/134
+* Add completion for configs, route names, views and translations by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/133
+* Fix relation resolution by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/136
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/1.1.0...2.0.0
+
+Please review [UPGRADING.md](https://github.com/Soyhuce/next-ide-helper/blob/main/UPGRADING.md) for upgrade path between V1 and V2
+
 ## 1.1.0 - 2025-02-24
 
 ### What's Changed
