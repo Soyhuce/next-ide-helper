@@ -5,8 +5,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Meta\Fragments;
 use Illuminate\Config\Repository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
+use Soyhuce\NextIdeHelper\Domain\Meta\LaravelVsCodeLoader;
 use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
@@ -42,34 +42,9 @@ class Configs implements MetaFragment
      */
     private function resolveConfigs(): Collection
     {
-        return (new Collection(config()->all()))
-            ->dot()
-            ->keys()
-            ->flatMap(fn (string $key) => $this->explodeKey($key))
+        return LaravelVsCodeLoader::load('configs')
+            ->map(fn (array $config) => $config['name'])
             ->sort()
-            ->unique()
             ->values();
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    private function explodeKey(string $key, string $prefix = ''): array
-    {
-        if ($prefix === $key) {
-            return [];
-        }
-
-        $segment = (string) Str::of($key)->after($prefix)->ltrim('.')->before('.');
-        if (is_numeric($segment)) {
-            return [];
-        }
-
-        $nextPrefix = Str::ltrim($prefix . '.' . $segment, '.');
-
-        return [
-            $nextPrefix,
-            ...$this->explodeKey($key, $nextPrefix),
-        ];
     }
 }

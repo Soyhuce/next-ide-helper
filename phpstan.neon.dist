@@ -7,7 +7,7 @@ parameters:
         - src
         - config
     excludePaths:
-        - src/Domain/Meta/Helpers/*
+        - src/Domain/Meta/LaravelVsCode.php
 
     checkOctaneCompatibility: true
     checkModelProperties: true

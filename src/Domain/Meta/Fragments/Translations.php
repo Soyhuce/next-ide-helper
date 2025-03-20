@@ -6,7 +6,7 @@ use Illuminate\Contracts\Translation\Translator as TranslatorContract;
 use Illuminate\Support\Collection;
 use Illuminate\Translation\Translator;
 use Soyhuce\NextIdeHelper\Contracts\MetaFragment;
-use Soyhuce\NextIdeHelper\Domain\Meta\Helpers\TranslationResolver;
+use Soyhuce\NextIdeHelper\Domain\Meta\LaravelVsCodeLoader;
 use Soyhuce\NextIdeHelper\Domain\Meta\MetaCallable;
 use Soyhuce\NextIdeHelper\Support\Output\PhpstormMetaFile;
 
@@ -46,7 +46,7 @@ class Translations implements MetaFragment
      */
     private function resolveTranslations(): Collection
     {
-        return Collection::make((new TranslationResolver())->all())
+        return Collection::make(LaravelVsCodeLoader::load('translations')->get('translations'))
             ->keys()
             ->sort()
             ->values();
