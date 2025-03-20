@@ -49,6 +49,7 @@ return [
         /**
          * When using the mixin annotation, some completions may not be available. We can help PHPStorm to understand
          * what's going on by generating a meta file.
+         * Be sure the file is within a .phpstorm.meta.php directory or is named .phpstorm.meta.php.
          */
         'mixin_meta' => 'ide_helper/.phpstorm.meta.php/models.php',
 
@@ -107,7 +108,7 @@ return [
     'meta' => [
         /**
          * Name of the generated file.
-         * Be sure the file is within a .phpstorm.meta.php directory.
+         * Be sure the file is within a .phpstorm.meta.php directory or is named .phpstorm.meta.php.
          */
         'file_name' => 'ide_helper/.phpstorm.meta.php/helpers.php',
     ],
