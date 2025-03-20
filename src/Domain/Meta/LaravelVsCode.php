@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Domain\Meta;
 
 use Error;
+use Illuminate\Support\Str;
 use Throwable;
 
 /**
@@ -18,7 +19,7 @@ class LaravelVsCode
             return $path;
         }
 
-        return mb_ltrim(str_replace(base_path(), '', realpath($path) ?: $path), DIRECTORY_SEPARATOR);
+        return Str::ltrim(str_replace(base_path(), '', realpath($path) ?: $path), DIRECTORY_SEPARATOR);
     }
 
     public static function isVendor(string $path)
