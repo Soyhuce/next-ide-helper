@@ -2,7 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
-use Exception;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\Relation as EloquentRelation;
 use ReflectionClass;
@@ -13,6 +12,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Relation;
 use Soyhuce\NextIdeHelper\Exceptions\UnsupportedRelation;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
+use Throwable;
 use function in_array;
 
 class ResolveModelRelations implements ModelResolver
@@ -83,7 +83,7 @@ class ResolveModelRelations implements ModelResolver
         try {
             /** @var EloquentRelation<EloquentModel, EloquentModel, mixed> $relation */
             $relation = $model->instance()->{$method}();
-        } catch (Exception) {
+        } catch (Throwable) {
             throw new UnsupportedRelation();
         }
 
