@@ -3,8 +3,16 @@
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     /**
+     * @method static string test()
+     * @see project://Feature/MacrosCommandTest.php L14
+     */
+    class SomeFacade
+    {
+    }
+
+    /**
      * @method static string foo(string $bar)
-     * @see project://Feature/MacrosCommandTest.php L9
+     * @see project://Feature/MacrosCommandTest.php L10
      * @method static string toLower(string $value)
      * @see project://Fixtures/Macroable/SomeMixin.php L17
      * @method void havingVariadic(string &...$params)

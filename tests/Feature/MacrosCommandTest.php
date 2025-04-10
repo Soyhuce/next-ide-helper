@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeFacade;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeMacroable;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeMixin;
 
@@ -9,6 +10,8 @@ beforeEach(function (): void {
     SomeMacroable::macro('foo', static fn (string $bar): string => Str::upper($bar));
 
     SomeMacroable::mixin(new SomeMixin());
+
+    SomeFacade::macro('test', fn(): string => 'foo');
 });
 
 afterEach(function (): void {

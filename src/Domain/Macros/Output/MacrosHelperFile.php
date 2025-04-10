@@ -22,6 +22,10 @@ class MacrosHelperFile
             $macro = new ReflectionFunction($macro);
 
             $method = Method::fromFunction($name, $macro);
+            if( $this->inFacade()) {
+                $method->isStatic(true);
+            }
+
             $class->addDocTag($method->toDocTag());
 
             $link = $method->toLinkTag();
@@ -55,5 +59,10 @@ class MacrosHelperFile
         }
 
         return Method::fromMethod('__construct', $constructor);
+    }
+
+    private function inFacade(): bool
+    {
+        return $this->class->isSubclassOf('Illuminate\Support\Facades\Facade');
     }
 }
