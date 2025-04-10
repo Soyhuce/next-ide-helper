@@ -22,7 +22,7 @@ class MacrosHelperFile
             $macro = new ReflectionFunction($macro);
 
             $method = Method::fromFunction($name, $macro);
-            if( $this->inFacade()) {
+            if ($this->inFacade()) {
                 $method->isStatic(true);
             }
 
@@ -63,6 +63,6 @@ class MacrosHelperFile
 
     private function inFacade(): bool
     {
-        return $this->class->isSubclassOf('Illuminate\Support\Facades\Facade');
+        return $this->class->isSubclassOf('Illuminate\\Support\\Facades\\Facade');
     }
 }
