@@ -42,7 +42,9 @@ namespace IdeHelper\Soyhuce\NextIdeHelper\Tests\Fixtures
      * @method $this whereCreatedAt(\Illuminate\Support\Carbon|string $value)
      * @method $this whereUpdatedAt(\Carbon\CarbonImmutable|string $value)
      * @method $this whereEmailDomain(string $domain, ?string $area = null)
-     * @see project://Fixtures/User.php L76
+     * @see project://Fixtures/User.php L77
+     * @method $this whereIsAuthor()
+     * @see project://Fixtures/User.php L87
      * @method \Soyhuce\NextIdeHelper\Tests\Fixtures\User create(array $attributes = [])
      * @method \Illuminate\Database\Eloquent\Collection|\Soyhuce\NextIdeHelper\Tests\Fixtures\User|null find($id, array $columns = ['*'])
      * @method \Illuminate\Database\Eloquent\Collection findMany($id, array $columns = ['*'])
@@ -123,7 +125,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
          * Create a new Eloquent model instance.
          *
          * @param  array  $attributes
-         * @return void
         */
         public function __construct(array $attributes = [])
         {
@@ -143,7 +144,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
          * Create a new Eloquent model instance.
          *
          * @param  array  $attributes
-         * @return void
         */
         public function __construct(array $attributes = [])
         {
@@ -163,7 +163,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
          * Create a new Eloquent model instance.
          *
          * @param  array  $attributes
-         * @return void
         */
         public function __construct(array $attributes = [])
         {
