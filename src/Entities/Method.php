@@ -69,7 +69,7 @@ class Method
         return $this;
     }
 
-    private function isStatic(bool $isStatic): self
+    public function isStatic(bool $isStatic): self
     {
         $this->isStatic = $isStatic;
 
