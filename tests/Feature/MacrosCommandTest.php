@@ -11,7 +11,7 @@ beforeEach(function (): void {
 
     SomeMacroable::mixin(new SomeMixin());
 
-    SomeFacade::macro('test', fn(): string => 'foo');
+    SomeFacade::macro('test', fn (): string => 'foo');
 });
 
 afterEach(function (): void {
