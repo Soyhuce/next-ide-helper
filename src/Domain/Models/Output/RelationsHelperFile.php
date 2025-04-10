@@ -36,7 +36,9 @@ class RelationsHelperFile implements Amender
             if ($this->model->fqcn === $this->modelFqcn) {
                 $constructor = (new ReflectionClass($this->model->fqcn))->getConstructor();
                 if ($constructor !== null) {
-                    $model->addMethod(Method::fromMethod('__construct', $constructor));
+                    $model->addMethod(
+                        Method::fromMethod('__construct', $constructor)->docblock(null)
+                    );
                 }
             }
 
