@@ -121,11 +121,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
      */
     class Comment
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-        */
         public function __construct(array $attributes = [])
         {
         }
@@ -140,11 +135,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures
      */
     class User
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-        */
         public function __construct(array $attributes = [])
         {
         }
@@ -159,11 +149,6 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Blog
      */
     class Post
     {
-        /**
-         * Create a new Eloquent model instance.
-         *
-         * @param  array  $attributes
-        */
         public function __construct(array $attributes = [])
         {
         }
