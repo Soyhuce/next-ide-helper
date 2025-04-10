@@ -14,6 +14,7 @@ use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelQueryBuilder;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelRelations;
 use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopes;
+use Soyhuce\NextIdeHelper\Domain\Models\Actions\ResolveModelScopesFromAttribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Collections\ModelCollection;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
 use Soyhuce\NextIdeHelper\Domain\Models\Printers\ModelDocBlockPrinter;
@@ -63,6 +64,7 @@ class ModelsCommand extends Command
                 new ResolveModelCollection(),
                 new ResolveModelQueryBuilder(),
                 new ResolveModelScopes(),
+                new ResolveModelScopesFromAttribute(),
                 new ResolveModelRelations($models),
             ],
             collect($this->modelExtensions())

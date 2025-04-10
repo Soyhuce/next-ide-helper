@@ -3,6 +3,7 @@
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures;
 
 use Exception;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -80,6 +81,12 @@ class User extends Model
         }
 
         return $query->where('email', 'like', "%@{$domain}");
+    }
+
+    #[Scope]
+    protected function whereIsAuthor($query): void
+    {
+        $query->whereHas('posts');
     }
 
     public function intOrString(): int|string
