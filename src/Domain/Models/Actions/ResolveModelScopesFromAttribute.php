@@ -2,7 +2,6 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Models\Actions;
 
-use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
 use Soyhuce\NextIdeHelper\Contracts\ModelResolver;
@@ -45,7 +44,7 @@ class ResolveModelScopesFromAttribute implements ModelResolver
     {
         foreach ($method->getAttributes() as $attribute) {
             // using string instead of class constant to avoid failing on older Laravel versions
-            if ($attribute->getName() === 'Illuminate\Database\Eloquent\Attributes\Scope') {
+            if ($attribute->getName() === 'Illuminate\\Database\\Eloquent\\Attributes\\Scope') {
                 return true;
             }
         }
