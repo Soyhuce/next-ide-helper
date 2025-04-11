@@ -12,25 +12,26 @@ class MacrosHelperFile
 {
     public function __construct(
         private ReflectionClass $class,
+        private ?string $facade,
     ) {}
 
     public function amend(IdeHelperFile $ideHelperFile): void
     {
         $class = $ideHelperFile->getOrAddClass($this->class->getName());
+        $facade = $this->facade !== null ? $ideHelperFile->getOrAddClass($this->facade) : null;
 
         foreach ($this->macros() as $name => $macro) {
             $macro = new ReflectionFunction($macro);
 
             $method = Method::fromFunction($name, $macro);
-            if ($this->inFacade()) {
-                $method->isStatic(true);
-            }
-
             $class->addDocTag($method->toDocTag());
+
+            $facade?->addDocTag($method->isStatic(true)->toDocTag());
 
             $link = $method->toLinkTag();
             if ($link !== null) {
                 $class->addDocTag($link);
+                $facade?->addDocTag($link);
             }
         }
 
@@ -59,10 +60,5 @@ class MacrosHelperFile
         }
 
         return Method::fromMethod('__construct', $constructor);
-    }
-
-    private function inFacade(): bool
-    {
-        return $this->class->isSubclassOf('Illuminate\\Support\\Facades\\Facade');
     }
 }

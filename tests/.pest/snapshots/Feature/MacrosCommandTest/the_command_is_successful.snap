@@ -3,7 +3,23 @@
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     /**
-     * @method static string test()
+     * @method static string foo(string $bar)
+     * @see project://Feature/MacrosCommandTest.php L10
+     * @method static string toLower(string $value)
+     * @see project://Fixtures/Macroable/SomeMixin.php L17
+     * @method static void havingVariadic(string &...$params)
+     * @see project://Fixtures/Macroable/SomeMixin.php L22
+     * @method static self havingSelfAsReturnType()
+     * @see project://Fixtures/Macroable/SomeMixin.php L32
+     * @method static void havingArrayAsDefaultValue(array $array = [1, 2, 3, ['some' => 'value']])
+     * @see project://Fixtures/Macroable/SomeMixin.php L37
+     * @method static mixed havingNullableMixed(mixed $value = null)
+     * @see project://Fixtures/Macroable/SomeMixin.php L44
+     * @method static mixed havingNullableUnionType(string|int|null $value = null)
+     * @see project://Fixtures/Macroable/SomeMixin.php L49
+     * @method static string|null returningNullableString()
+     * @see project://Fixtures/Macroable/SomeMixin.php L54
+     * @method static string testFacade()
      * @see project://Feature/MacrosCommandTest.php L14
      */
     class SomeFacade
@@ -27,10 +43,12 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
      * @see project://Fixtures/Macroable/SomeMixin.php L49
      * @method string|null returningNullableString()
      * @see project://Fixtures/Macroable/SomeMixin.php L54
+     * @method string testFacade()
+     * @see project://Feature/MacrosCommandTest.php L14
      */
     class SomeMacroable
     {
-        public function __construct(int $foo)
+        public function __construct(int $foo = 0)
         {
         }
     }
