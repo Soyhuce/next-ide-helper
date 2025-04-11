@@ -2,6 +2,16 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.1.0 - 2025-04-11
+
+### What's Changed
+
+* Support scope attribute by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/139
+* Add more completions for configuration methods by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/141
+* Document macros as static when on facades by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/140
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.0.0...2.1.0
+
 ## 2.0.0 - 2025-03-20
 
 ### What's Changed
