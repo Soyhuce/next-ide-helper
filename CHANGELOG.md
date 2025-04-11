@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.1.1 - 2025-04-11
+
+### What's Changed
+
+* Don't add leading backslash on some phpstan types by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/143
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.1.0...2.1.1
+
 ## 2.1.0 - 2025-04-11
 
 ### What's Changed
