@@ -29,10 +29,26 @@ class Configs implements MetaFragment
     private function methods(): array
     {
         return [
+            new MetaCallable([Repository::class, 'has'], 0),
             new MetaCallable([Repository::class, 'get'], 0),
+            new MetaCallable([Repository::class, 'string'], 0),
+            new MetaCallable([Repository::class, 'integer'], 0),
+            new MetaCallable([Repository::class, 'float'], 0),
+            new MetaCallable([Repository::class, 'boolean'], 0),
+            new MetaCallable([Repository::class, 'array'], 0),
             new MetaCallable([Repository::class, 'set'], 0),
+            new MetaCallable([Repository::class, 'prepend'], 0),
+            new MetaCallable([Repository::class, 'push'], 0),
+            new MetaCallable([Config::class, 'has'], 0),
             new MetaCallable([Config::class, 'get'], 0),
+            new MetaCallable([Config::class, 'string'], 0),
+            new MetaCallable([Config::class, 'integer'], 0),
+            new MetaCallable([Config::class, 'float'], 0),
+            new MetaCallable([Config::class, 'boolean'], 0),
+            new MetaCallable([Config::class, 'array'], 0),
             new MetaCallable([Config::class, 'set'], 0),
+            new MetaCallable([Config::class, 'prepend'], 0),
+            new MetaCallable([Config::class, 'push'], 0),
             new MetaCallable('config', 0),
         ];
     }
