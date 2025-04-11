@@ -19,6 +19,17 @@ class Type
         'string',
         'mixed',
         'null',
+        // Not built-in but acts like one for PHPStan
+        'positive-int',
+        'negative-int',
+        'non-positive-int',
+        'non-negative-int',
+        'non-zero-int',
+        'non-empty-array',
+        'list',
+        'non-empty-list',
+        'key-of',
+        'value-of',
     ];
 
     /**
