@@ -8,7 +8,9 @@ class SomeMacroable
 {
     use Macroable;
 
-    public function __construct(int $foo)
+    public int $plop;
+
+    public function __construct(int $foo = 0)
     {
         $this->plop = $foo;
     }
