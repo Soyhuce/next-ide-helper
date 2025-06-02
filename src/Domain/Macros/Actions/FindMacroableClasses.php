@@ -5,6 +5,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Macros\Actions;
 use Carbon\FactoryImmutable;
 use Carbon\Traits\Macro as CarbonMacro;
 use Composer\ClassMapGenerator\ClassMapGenerator;
+use Composer\InstalledVersions;
+use Composer\Semver\VersionParser;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable as IlluminateMacroable;
 use ReflectionClass;
@@ -76,6 +78,21 @@ class FindMacroableClasses
             return false;
         }
 
+        if (InstalledVersions::satisfies(new VersionParser(), 'nesbot/carbon', '^2.0')) {
+            $reflectionClass = new ReflectionClass($class);
+
+            if (!$reflectionClass->hasProperty('globalMacros')) {
+                return false;
+            }
+
+            $property = $reflectionClass->getProperty('globalMacros');
+
+            if (empty($property->getValue())) {
+                return false;
+            }
+
+            return true;
+        }
         $macros = FactoryImmutable::getDefaultInstance()->getSettings()['macros'] ?? [];
 
         if (empty($macros)) {

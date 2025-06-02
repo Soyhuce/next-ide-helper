@@ -5,6 +5,8 @@ namespace Soyhuce\NextIdeHelper\Domain\Macros\Output;
 use Carbon\FactoryImmutable;
 use Carbon\Traits\Macro as CarbonMacro;
 use Closure;
+use Composer\InstalledVersions;
+use Composer\Semver\VersionParser;
 use Illuminate\Support\Traits\Macroable as IlluminateMacroable;
 use ReflectionClass;
 use ReflectionFunction;
@@ -66,9 +68,7 @@ class MacrosHelperFile
      */
     private function illuminateMacros(): array
     {
-        $property = $this->class->getProperty('macros');
-
-        return $property->getValue();
+        return $this->class->getProperty('macros')->getValue();
     }
 
     /**
@@ -76,6 +76,10 @@ class MacrosHelperFile
      */
     private function carbonMacros(): array
     {
+        if (InstalledVersions::satisfies(new VersionParser(), 'nesbot/carbon', '^2.0')) {
+            return $this->class->getProperty('globalMacros')->getValue();
+        }
+
         return FactoryImmutable::getDefaultInstance()->getSettings()['macros'];
     }
 
