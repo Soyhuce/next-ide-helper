@@ -93,6 +93,7 @@ class FindMacroableClasses
 
             return true;
         }
+
         $macros = FactoryImmutable::getDefaultInstance()->getSettings()['macros'] ?? [];
 
         if (empty($macros)) {
