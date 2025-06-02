@@ -14,9 +14,12 @@ namespace Illuminate\Support
          * Please see the testing aids section (specifically static::setTestNow())
          * for more on the possibility of this constructor returning a test instance.
          *
+         * @param DateTimeInterface|string|null $time
+         * @param DateTimeZone|string|null      $tz
+         *
          * @throws InvalidFormatException
         */
-        public function __construct(\DateTimeInterface|\Carbon\WeekDay|\Carbon\Month|string|int|float|null $time = null, \DateTimeZone|string|int|null $timezone = null)
+        public function __construct($time = null, $tz = null)
         {
         }
     }
