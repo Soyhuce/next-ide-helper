@@ -2,6 +2,15 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.2.0 - 2025-06-02
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/145
+* Document Carbon macros by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/147
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.1.1...2.2.0
+
 ## 2.1.1 - 2025-04-11
 
 ### What's Changed
