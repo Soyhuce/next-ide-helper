@@ -2,9 +2,11 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Macros\Actions;
 
+use Carbon\FactoryImmutable;
+use Carbon\Traits\Macro as CarbonMacro;
 use Composer\ClassMapGenerator\ClassMapGenerator;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Traits\Macroable;
+use Illuminate\Support\Traits\Macroable as IlluminateMacroable;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Exceptions\DirectoryDoesNotExist;
 use function in_array;
@@ -28,13 +30,25 @@ class FindMacroableClasses
         return $macroables;
     }
 
+    /**
+     * @param class-string $class
+     */
     private function isMacroable(string $class): bool
     {
         if (!class_exists($class, false)) {
             return false;
         }
 
-        if (!in_array(Macroable::class, class_uses_recursive($class), true)) {
+        return $this->isIlluminateMacroable($class)
+            || $this->isCarbonMacro($class);
+    }
+
+    /**
+     * @param class-string $class
+     */
+    private function isIlluminateMacroable(string $class): bool
+    {
+        if (!in_array(IlluminateMacroable::class, class_uses_recursive($class), true)) {
             return false;
         }
 
@@ -45,9 +59,26 @@ class FindMacroableClasses
         }
 
         $property = $reflectionClass->getProperty('macros');
-        $property->setAccessible(true);
 
         if (empty($property->getValue())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param class-string $class
+     */
+    private function isCarbonMacro(string $class): bool
+    {
+        if (!in_array(CarbonMacro::class, class_uses_recursive($class), true)) {
+            return false;
+        }
+
+        $macros = FactoryImmutable::getDefaultInstance()->getSettings()['macros'] ?? [];
+
+        if (empty($macros)) {
             return false;
         }
 

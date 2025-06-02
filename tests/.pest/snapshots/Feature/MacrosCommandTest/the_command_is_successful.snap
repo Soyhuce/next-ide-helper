@@ -1,10 +1,43 @@
 <?php
 
+namespace Illuminate\Support
+{
+    /**
+     * @method string testDateMacro()
+     * @see project://Feature/MacrosCommandTest.php L17
+     */
+    class Carbon
+    {
+        /**
+         * Create a new Carbon instance.
+         *
+         * Please see the testing aids section (specifically static::setTestNow())
+         * for more on the possibility of this constructor returning a test instance.
+         *
+         * @throws InvalidFormatException
+        */
+        public function __construct(\DateTimeInterface|\Carbon\WeekDay|\Carbon\Month|string|int|float|null $time = null, \DateTimeZone|string|int|null $timezone = null)
+        {
+        }
+    }
+}
+
+namespace Illuminate\Support\Facades
+{
+    /**
+     * @method static string testDateMacro()
+     * @see project://Feature/MacrosCommandTest.php L17
+     */
+    class Date
+    {
+    }
+}
+
 namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 {
     /**
      * @method static string foo(string $bar)
-     * @see project://Feature/MacrosCommandTest.php L10
+     * @see project://Feature/MacrosCommandTest.php L11
      * @method static string toLower(string $value)
      * @see project://Fixtures/Macroable/SomeMixin.php L17
      * @method static void havingVariadic(string &...$params)
@@ -20,7 +53,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
      * @method static string|null returningNullableString()
      * @see project://Fixtures/Macroable/SomeMixin.php L54
      * @method static string testFacade()
-     * @see project://Feature/MacrosCommandTest.php L14
+     * @see project://Feature/MacrosCommandTest.php L15
      */
     class SomeFacade
     {
@@ -28,7 +61,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
 
     /**
      * @method static string foo(string $bar)
-     * @see project://Feature/MacrosCommandTest.php L10
+     * @see project://Feature/MacrosCommandTest.php L11
      * @method static string toLower(string $value)
      * @see project://Fixtures/Macroable/SomeMixin.php L17
      * @method void havingVariadic(string &...$params)
@@ -44,7 +77,7 @@ namespace Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable
      * @method string|null returningNullableString()
      * @see project://Fixtures/Macroable/SomeMixin.php L54
      * @method string testFacade()
-     * @see project://Feature/MacrosCommandTest.php L14
+     * @see project://Feature/MacrosCommandTest.php L15
      */
     class SomeMacroable
     {

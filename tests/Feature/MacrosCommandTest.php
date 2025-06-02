@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Soyhuce\NextIdeHelper\Tests\Fixtures\Macroable\SomeFacade;
@@ -12,6 +13,8 @@ beforeEach(function (): void {
     SomeMacroable::mixin(new SomeMixin());
 
     SomeFacade::macro('testFacade', fn (): string => 'foo');
+
+    Date::macro('testDateMacro', fn (): string => 'bar');
 });
 
 afterEach(function (): void {
@@ -21,7 +24,10 @@ afterEach(function (): void {
 test('the command is successful', function (): void {
     config([
         'next-ide-helper.macros' => [
-            'directories' => [$this->fixturePath('Macroable')],
+            'directories' => [
+                $this->fixturePath('Macroable'),
+                __DIR__ . '/../../vendor/laravel/framework/src/Illuminate/Support',
+            ],
             'file_name' => $this->fixturePath() . '/_ide_macros.php',
         ],
     ]);
