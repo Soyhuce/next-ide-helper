@@ -81,7 +81,6 @@ class Relation
         }
 
         $foreignKey = $object->getProperty('foreignKey');
-        $foreignKey->setAccessible(true);
 
         $attribute = $this->parent->attributes->findByName($foreignKey->getValue($relation));
         if ($attribute === null) {

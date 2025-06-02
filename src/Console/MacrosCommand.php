@@ -4,6 +4,7 @@ namespace Soyhuce\NextIdeHelper\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Facade;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Macros\Actions\FindFacadeClasses;
@@ -53,6 +54,10 @@ class MacrosCommand extends Command
      */
     public function resolveFacadeRoot(string $facade): array
     {
+        if ($facade === Date::class) {
+            return [Date::now()::class => $facade];
+        }
+
         try {
             return [$facade::getFacadeRoot()::class => $facade];
         } catch (Throwable) {

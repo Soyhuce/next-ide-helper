@@ -2,11 +2,15 @@
 
 namespace Soyhuce\NextIdeHelper\Domain\Macros\Output;
 
+use Carbon\FactoryImmutable;
+use Carbon\Traits\Macro as CarbonMacro;
 use Closure;
+use Illuminate\Support\Traits\Macroable as IlluminateMacroable;
 use ReflectionClass;
 use ReflectionFunction;
 use Soyhuce\NextIdeHelper\Entities\Method;
 use Soyhuce\NextIdeHelper\Support\Output\IdeHelperFile;
+use function in_array;
 
 class MacrosHelperFile
 {
@@ -46,10 +50,33 @@ class MacrosHelperFile
      */
     private function macros(): array
     {
+        if (in_array(IlluminateMacroable::class, class_uses_recursive($this->class->getName()), true)) {
+            return $this->illuminateMacros();
+        }
+
+        if (in_array(CarbonMacro::class, class_uses_recursive($this->class->getName()), true)) {
+            return $this->carbonMacros();
+        }
+
+        return [];
+    }
+
+    /**
+     * @return array<string, Closure>
+     */
+    private function illuminateMacros(): array
+    {
         $property = $this->class->getProperty('macros');
-        $property->setAccessible(true);
 
         return $property->getValue();
+    }
+
+    /**
+     * @return array<string, Closure>
+     */
+    private function carbonMacros(): array
+    {
+        return FactoryImmutable::getDefaultInstance()->getSettings()['macros'];
     }
 
     private function constructor(ReflectionClass $class): ?Method
