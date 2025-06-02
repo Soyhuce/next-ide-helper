@@ -4,7 +4,7 @@ namespace Illuminate\Support
 {
     /**
      * @method string testDateMacro()
-     * @see project://Feature/MacrosCommandTest.php L18
+     * @see project://Feature/MacrosCommandTest.php L19
      */
     class Carbon
     {
@@ -29,7 +29,7 @@ namespace Illuminate\Support\Facades
 {
     /**
      * @method static string testDateMacro()
-     * @see project://Feature/MacrosCommandTest.php L18
+     * @see project://Feature/MacrosCommandTest.php L19
      */
     class Date
     {
