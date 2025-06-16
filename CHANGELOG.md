@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.2.1 - 2025-06-16
+
+### What's Changed
+
+* composer/semver is required by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/148
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.2.0...2.2.1
+
 ## 2.2.0 - 2025-06-02
 
 ### What's Changed
