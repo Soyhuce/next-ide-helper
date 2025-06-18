@@ -47,7 +47,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
                 fn (Collection $collection) => $collection->merge($this->softDeletesMethods())
             )
             ->when(
-                $this->larastanFriendly(),
+                Generics::isEnabled(),
                 fn (Collection $collection) => $collection
                     ->merge($this->templateBlock())
             )
@@ -112,11 +112,7 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
     private function resultMethods(): Collection
     {
         $model = $this->model->fqcn;
-        $collection = $this->model->collection->fqcn;
-
-        if ($this->larastanFriendly()) {
-            $collection .= "<int, {$this->model->fqcn}>";
-        }
+        $collection = Generics::get($this->model->collection->fqcn, "<int, {$this->model->fqcn}>");
 
         return Collection::make([
             "{$model} create(array \$attributes = [])",
@@ -162,10 +158,5 @@ class QueryBuilderDocBlock extends DocBlock implements Renderer
             " * @template TModelClass of {$this->model->fqcn}",
             ' * @extends \\Illuminate\\Database\\Eloquent\\Builder<TModelClass>',
         ]);
-    }
-
-    private function larastanFriendly(): bool
-    {
-        return (bool) config('next-ide-helper.models.larastan_friendly', false);
     }
 }

@@ -149,10 +149,7 @@ class ModelDocBlock extends DocBlock implements Amender, Renderer
             return null;
         }
 
-        $type = $this->model->queryBuilder->fqcn;
-        if ($this->larastanFriendly()) {
-            $type .= "<{$this->model->fqcn}>";
-        }
+        $type = Generics::get($this->model->queryBuilder->fqcn, $this->model->fqcn);
 
         return " * @method static {$type} query()";
     }
@@ -163,10 +160,7 @@ class ModelDocBlock extends DocBlock implements Amender, Renderer
             return null;
         }
 
-        $type = $this->model->collection->fqcn;
-        if ($this->larastanFriendly()) {
-            $type .= "<int, {$this->model->fqcn}>";
-        }
+        $type = Generics::get($this->model->collection->fqcn, "<int, {$this->model->fqcn}>");
 
         return " * @method static {$type} all(array|mixed \$columns = ['*'])";
     }
@@ -177,13 +171,7 @@ class ModelDocBlock extends DocBlock implements Amender, Renderer
             return null;
         }
 
-        $mixin = " * @mixin {$this->model->queryBuilder->fqcn}";
-
-        if ($this->larastanFriendly()) {
-            $mixin .= "<{$this->model->fqcn}>";
-        }
-
-        return $mixin;
+        return ' * @mixin ' . Generics::get($this->model->queryBuilder->fqcn, $this->model->fqcn);
     }
 
     private function factory(): ?string
@@ -206,10 +194,5 @@ class ModelDocBlock extends DocBlock implements Amender, Renderer
     private function wants(int $flag): bool
     {
         return ($this->flags & $flag) !== 0;
-    }
-
-    private function larastanFriendly(): bool
-    {
-        return (bool) config('next-ide-helper.models.larastan_friendly', false);
     }
 }
