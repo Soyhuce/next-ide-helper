@@ -5,13 +5,24 @@ namespace Soyhuce\NextIdeHelper\Domain\Models;
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
+use Illuminate\Database\Eloquent\Casts\ArrayObject;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedArrayObject;
+use Illuminate\Database\Eloquent\Casts\AsEncryptedCollection;
+use Illuminate\Database\Eloquent\Casts\AsEnumArrayObject;
 use Illuminate\Database\Eloquent\Casts\AsEnumCollection;
+use Illuminate\Database\Eloquent\Casts\AsHtmlString;
+use Illuminate\Database\Eloquent\Casts\AsStringable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
+use Illuminate\Support\Stringable;
 use ReflectionClass;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Attribute;
 use Soyhuce\NextIdeHelper\Domain\Models\Entities\Model;
+use Soyhuce\NextIdeHelper\Domain\Models\Output\Generics;
 use Soyhuce\NextIdeHelper\Support\Reflection\FunctionReflection;
 use function in_array;
 
@@ -67,7 +78,7 @@ class AttributeTypeCaster
             $castType = 'string';
         }
 
-        switch (Str::lower($castType)) {
+        switch ($castType) {
             case 'int':
             case 'integer':
             case 'timestamp':
@@ -75,8 +86,8 @@ class AttributeTypeCaster
             case 'real':
             case 'float':
             case 'double':
-            case 'decimal':
                 return 'float';
+            case 'decimal':
             case 'string':
                 return 'string';
             case 'bool':
@@ -86,15 +97,16 @@ class AttributeTypeCaster
                 return 'object';
             case 'array':
             case 'json':
-                return 'array';
+                return Generics::get('array', '<array-key, mixed>');
             case 'collection':
-                return '\\' . Collection::class;
+                return Generics::get('\\' . Collection::class, '<array-key, mixed>');
             case 'date':
             case 'datetime':
             case 'custom_datetime':
                 return $this->dateClass();
             case 'immutable_date':
             case 'immutable_datetime':
+            case 'immutable_custom_datetime':
                 return $this->immutableDateClass();
         }
 
@@ -199,7 +211,23 @@ class AttributeTypeCaster
         $arguments = $arguments === null ? [] : explode(',', $arguments);
 
         return match ($castType) {
-            AsEnumCollection::class => "\\Illuminate\\Support\\Collection<array-key, {$arguments[0]}>",
+            AsArrayObject::class,
+            AsEncryptedArrayObject::class => Generics::get('\\' . ArrayObject::class, '<array-key, mixed>'),
+            AsCollection::class,
+            AsEncryptedCollection::class => Generics::get(
+                '\\' . ($arguments[0] ?: Collection::class),
+                'array-key, ' . (filled($arguments[1]) ? '\\' . $arguments[1] : 'mixed')
+            ),
+            AsEnumArrayObject::class => Generics::get(
+                '\\' . ArrayObject::class,
+                "<array-key, \\{$arguments[0]}>"
+            ),
+            AsEnumCollection::class => Generics::get(
+                '\\' . Collection::class,
+                "<array-key, \\{$arguments[0]}>"
+            ),
+            AsHtmlString::class => HtmlString::class,
+            AsStringable::class => Stringable::class,
             default => "\\{$castType}",
         };
     }

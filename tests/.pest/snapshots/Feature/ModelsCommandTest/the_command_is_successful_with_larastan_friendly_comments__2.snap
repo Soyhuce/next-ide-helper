@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $datetime
  * @property \Illuminate\Support\Carbon $date
- * @property array $encrypted_array
+ * @property array<array-key, mixed> $encrypted_array
  * @property mixed $encrypted
  * @property-read mixed $commentable
  */

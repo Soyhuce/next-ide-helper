@@ -18,7 +18,7 @@ use Soyhuce\NextIdeHelper\Tests\Fixtures\User;
  * @property int $user_id
  * @property string $likes
  * @property string|null $address
- * @property array|null $metas
+ * @property array<array-key, mixed>|null $metas
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
