@@ -2,6 +2,15 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.2.2 - 2025-06-18
+
+### What's Changed
+
+* Support more casts by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/150
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot in https://github.com/Soyhuce/next-ide-helper/pull/149
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.2.1...2.2.2
+
 ## 2.2.1 - 2025-06-16
 
 ### What's Changed
