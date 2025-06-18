@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @method $this whereUserId(int|string $value)
  * @method $this whereLikes(string $value)
  * @method $this whereAddress(string|null $value)
- * @method $this whereMetas(array|string|null $value)
+ * @method $this whereMetas(array<array-key, mixed>|string|null $value)
  * @method $this whereCreatedAt(\Illuminate\Support\Carbon|string $value)
  * @method $this whereUpdatedAt(\Illuminate\Support\Carbon|string $value)
  * @method $this whereDeletedAt(\Illuminate\Support\Carbon|string|null $value)
