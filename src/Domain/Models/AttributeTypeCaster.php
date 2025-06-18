@@ -215,8 +215,8 @@ class AttributeTypeCaster
             AsEncryptedArrayObject::class => Generics::get('\\' . ArrayObject::class, '<array-key, mixed>'),
             AsCollection::class,
             AsEncryptedCollection::class => Generics::get(
-                '\\' . ($arguments[0] ?: Collection::class),
-                'array-key, ' . (filled($arguments[1]) ? '\\' . $arguments[1] : 'mixed')
+                '\\' . (filled($arguments[0] ?? null) ? $arguments[0] : Collection::class),
+                'array-key, ' . (filled($arguments[1] ?? null) ? '\\' . $arguments[1] : 'mixed')
             ),
             AsEnumArrayObject::class => Generics::get(
                 '\\' . ArrayObject::class,
