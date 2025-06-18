@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.2.3 - 2025-06-18
+
+### What's Changed
+
+* Fix AsCollection cast by @bastien-phi in https://github.com/Soyhuce/next-ide-helper/pull/151
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.2.2...2.2.3
+
 ## 2.2.2 - 2025-06-18
 
 ### What's Changed
