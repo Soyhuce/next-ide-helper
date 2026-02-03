@@ -79,7 +79,6 @@ $translator = new class
         }
 
         if ($property !== null) {
-            $property->setAccessible(true);
             return \Illuminate\Support\Arr::wrap($property->getValue($loader));
         }
 

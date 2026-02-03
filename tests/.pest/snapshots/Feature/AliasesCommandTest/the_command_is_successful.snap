@@ -18,6 +18,10 @@ namespace
     {
     }
 
+    class Benchmark extends \Illuminate\Support\Benchmark
+    {
+    }
+
     class Blade extends \Illuminate\Support\Facades\Blade
     {
     }

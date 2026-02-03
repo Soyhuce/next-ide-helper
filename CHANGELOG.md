@@ -2,6 +2,12 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.3.0 - 2026-02-03
+
+### What's Changed
+
+* Add support for PHP 8.5
+
 ## 2.2.3 - 2025-06-18
 
 ### What's Changed
