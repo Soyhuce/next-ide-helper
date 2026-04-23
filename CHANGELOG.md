@@ -2,6 +2,14 @@
 
 All notable changes to `soyhuce/next-ide-helper` will be documented in this file
 
+## 2.3.0 - 2026-04-16
+
+### What's Changed
+
+* Add support for Laravel 13.x in https://github.com/Soyhuce/next-ide-helper/pull/158
+
+**Full Changelog**: https://github.com/Soyhuce/next-ide-helper/compare/2.2.3...2.3.0
+
 ## 2.2.3 - 2025-06-18
 
 ### What's Changed

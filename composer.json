@@ -1,78 +1,78 @@
 {
-  "name": "soyhuce/next-ide-helper",
-  "description": "Laravel ide helper rebuilt under steroids",
-  "keywords": [
-    "laravel",
-    "ide",
-    "autocompletion",
-    "phpdoc",
-    "phpstorm"
-  ],
-  "homepage": "https://github.com/soyhuce/next-ide-helper",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Bastien Philippe",
-      "email": "bastien.philippe@soyhuce.fr",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "php": "^8.3",
-    "composer/class-map-generator": "^1.1",
-    "composer/semver": "^3.0",
-    "illuminate/console": "^11.0|^12.0",
-    "illuminate/database": "^11.0|^12.0",
-    "illuminate/support": "^11.0|^12.0",
-    "illuminate/view": "^11.0|^12.0",
-    "spatie/laravel-package-tools": "^1.9.2"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.6",
-    "nunomaduro/collision": "^8.0",
-    "nunomaduro/larastan": "^3.0",
-    "orchestra/testbench": "^9.0|^10.0",
-    "pestphp/pest": "^3.0",
-    "pestphp/pest-plugin-laravel": "^3.0",
-    "phpstan/extension-installer": "^1.1",
-    "phpstan/phpstan-deprecation-rules": "^2.0",
-    "phpstan/phpstan-phpunit": "^2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Soyhuce\\NextIdeHelper\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "cs": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix",
-    "analyse": "vendor/bin/phpstan analyse",
-    "test": "vendor/bin/pest",
-    "test-coverage": "vendor/bin/pest --coverage",
-    "all": [
-      "@cs",
-      "@test",
-      "@analyse"
-    ]
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "pestphp/pest-plugin": true,
-      "phpstan/extension-installer": true
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
-      ]
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "soyhuce/next-ide-helper",
+    "description": "Laravel ide helper rebuilt under steroids",
+    "keywords": [
+        "laravel",
+        "ide",
+        "autocompletion",
+        "phpdoc",
+        "phpstorm"
+    ],
+    "homepage": "https://github.com/soyhuce/next-ide-helper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bastien Philippe",
+            "email": "bastien.philippe@soyhuce.fr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "composer/class-map-generator": "^1.1",
+        "composer/semver": "^3.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "illuminate/view": "^11.0|^12.0|^13.0",
+        "spatie/laravel-package-tools": "^1.9.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.6",
+        "nunomaduro/collision": "^8.0",
+        "nunomaduro/larastan": "^3.0",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.4",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Soyhuce\\NextIdeHelper\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Soyhuce\\NextIdeHelper\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "cs": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "all": [
+            "@cs",
+            "@test",
+            "@analyse"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Soyhuce\\NextIdeHelper\\NextIdeHelperServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

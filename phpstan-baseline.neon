@@ -79,13 +79,13 @@ parameters:
 			path: src/Domain/Meta/Fragments/ContainerBindings.php
 
 		-
-			message: '#^Unable to resolve the template type TMakeKey in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			message: '#^Unable to resolve the template type TMakeKey in call to static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
 			identifier: argument.templateType
 			count: 1
 			path: src/Domain/Meta/Fragments/Translations.php
 
 		-
-			message: '#^Unable to resolve the template type TMakeValue in call to method static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
+			message: '#^Unable to resolve the template type TMakeValue in call to static method Illuminate\\Support\\Collection\<\(int\|string\),mixed\>\:\:make\(\)$#'
 			identifier: argument.templateType
 			count: 1
 			path: src/Domain/Meta/Fragments/Translations.php
@@ -107,6 +107,12 @@ parameters:
 			identifier: staticMethod.notFound
 			count: 1
 			path: src/Domain/Models/Entities/Model.php
+
+		-
+			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:docTags\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<\*NEVER\*, non\-falsy\-string\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Domain/Models/Output/ModelDocBlock.php
 
 		-
 			message: '#^Method Soyhuce\\NextIdeHelper\\Domain\\Models\\Output\\ModelDocBlock\:\:properties\(\) should return Illuminate\\Support\\Collection\<int, string\> but returns Illuminate\\Support\\Collection\<int, non\-falsy\-string\>\.$#'
@@ -169,13 +175,7 @@ parameters:
 			path: src/Entities/Klass.php
 
 		-
-			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, non\-falsy\-string\>\|iterable\<int, non\-falsy\-string\>, Illuminate\\Support\\Collection\<int, string\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Entities/Nemespace.php
-
-		-
-			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, non\-falsy\-string\>\|iterable\<int, non\-falsy\-string\>, Illuminate\\Support\\Collection\<string, string\> given\.$#'
+			message: '#^Parameter \#1 \$items of method Illuminate\\Support\\Collection\<int,string\>\:\:merge\(\) expects Illuminate\\Contracts\\Support\\Arrayable\<int, string\>\|iterable\<int, string\>, Illuminate\\Support\\Collection\<string, string\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: src/Entities/Nemespace.php

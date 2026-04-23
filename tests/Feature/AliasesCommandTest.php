@@ -1,6 +1,7 @@
 <?php declare(strict_types=1);
 
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\Concurrency;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Uri;
@@ -13,8 +14,13 @@ test('the command is successful', function (): void {
     if (config('app.aliases.Concurrency') === null) {
         AliasLoader::getInstance(['Concurrency' => Concurrency::class]);
     }
+
     if (config('app.aliases.Uri') === null) {
         AliasLoader::getInstance(['Uri' => Uri::class]);
+    }
+
+    if (config('app.aliases.Benchmark') === null) {
+        AliasLoader::getInstance(['Benchmark' => Benchmark::class]);
     }
 
     config([

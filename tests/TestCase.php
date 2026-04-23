@@ -46,7 +46,7 @@ abstract class TestCase extends Orchestra
             ): void {
                 if (in_array($level, [E_DEPRECATED, E_USER_DEPRECATED], true) || (error_reporting() & $level)) {
                     // Silenced vendor errors
-                    if (str_starts_with($file, base_path(__DIR__ . '/../vendor/symfony/'))) {
+                    if (str_starts_with($file, realpath(__DIR__ . '/../vendor/symfony/'))) {
                         return;
                     }
 
